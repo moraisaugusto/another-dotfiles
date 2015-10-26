@@ -53,9 +53,9 @@ colorscheme solizared
 To change Airline Theme just change the line above [bling/vim-airline](https://github.com/bling/vim-airline). There is some colorscheme installed too [Tomorrow](https://github.com/chriskempson/tomorrow-theme). 
 
 
-![Shell](https://augustomorais.com.br/shell.png)
+![Shell](http://augustomorais.com.br/shell.png)
 
-![Vim](https://augustomorais.com.br/vim.png)
+![Vim](http://augustomorais.com.br/vim.png)
 
 
 ## License
