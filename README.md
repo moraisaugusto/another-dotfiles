@@ -46,7 +46,7 @@ VIM
 Edit the .vimrc and change the line: 462 
 
 ```shell
-let g:airline_theme='solizared' # Check the others themes
+let g:airline_theme='solarized' # Check the others themes
 colorscheme solizared 
 ```
 
