@@ -1,40 +1,56 @@
 #!/bin/bash
 
+set -e
+# setting colors
+RED="$(tput setaf 1)"
+GREEN="$(tput setaf 2)"
+GRAY="$(tput setaf 7)"
+BLUE="$(tput setaf 4)"
+BOLD="$(tput bold)"
+NORMAL="$(tput sgr0)"
+
 main() {
-    $DOTFILES=$HOME/.dotfiles
-
-    # setting colors
-    RED="$(tput setaf 1)"
-    GREEN="$(tput setaf 2)"
-    YELLOW="$(tput setaf 3)"
-    BLUE="$(tput setaf 4)"
-    BOLD="$(tput bold)"
-    NORMAL="$(tput sgr0)"
-
     # clonnig repositories
-    printf "${GREEN}"
+    printf "${BOLD}"
     echo 'Clonning Respository...'
+    printf "${NORMAL}${GRAY}"
     git clone https://github.com/aflavio/another-dotfiles.git .dotfiles
     cd .dotfiles
     git submodule update --init --recursive 
+    cd ..
     echo 'done.'
+    DOTFILES=$HOME/.dotfiles
     printf "${NORMAL}"
 
     # creating symlinks
-    printf "${GREEN}"
-    echo 'Installing...'
-    ln -s $HOME/vim .vim
-    linkables=$( find -name '*.symlink' )
+    printf "${BOLD}"
+    echo -e '\nCreating symlinks...'
+    ln -s $DOTFILES/vim .vim
+    linkables=$( find -H "$DOTFILES" -name '*.symlink' )
     
     for file in $linkables ; do
         target="$HOME/.$( basename $file ".symlink" )"
-        ln -s $DOTFILES/$file $target
+        ln -s $file $target
     done
+    #source $HOME/.zshrc
 
     echo 'done.'
     printf "${NORMAL}"
 
+    # installing vim plugins
+    printf "${BOLD}"
+    echo -e '\nNow, all Vim Plugins will be installed. This can will take a while...'
+    echo 'If it`s fail, please run manually the follow command on shell:'
+    printf "${RED}vim +PlugInstall${NORMAL}${BOLD}"
+    echo -e '\nPress any key to continue'
+    #read flag
+    vim +PlugInstall +qall
+    echo 'done.'
+    printf "${NORMAL}"
 
+}
+
+splash() {
     printf "${BLUE}" 
     echo '██      ▄   ████▄    ▄▄▄▄▀ ▄  █ ▄███▄   █▄▄▄▄          '
     echo '█ █      █  █   █ ▀▀▀ █   █   █ █▀   ▀  █  ▄▀          '
@@ -49,29 +65,22 @@ main() {
     echo '█  █  ▀████    █     █      ▐█ ███▄  █▄   ▄▀ ▀▄▄▄▄▀    '
     echo '███▀          ▀       █      ▐     ▀ ▀███▀             '
     echo '                       ▀                               '
-    echo 'Installing...' 
+    echo -e 'Installing...\n'
     printf "${NORMAL}"
 
   #env zsh
 }
 
+bye() {
+    printf "${BLUE}"
+    echo -e '\n\n'
+    echo 'Thanks for installing Another Dotfiles'
+    echo 'Suggestions: aflavio at gmail.com'
+}
+
+
+
+
+splash
 main
-
-
-
-
-
-
-
-
-
-
-#echo "Initializing submodule(s)"
-#git submodule update --init --recursive
-
-
-
-#"echo "Configuring zsh as default shell"
-#"chsh -s $(which zsh)
-
-#"echo "Done."
+bye
