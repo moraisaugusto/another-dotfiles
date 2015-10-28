@@ -25,12 +25,12 @@ set history=1000 " change history to 1000
 set textwidth=120
 
 " Tab control
-set noexpandtab " insert tabs rather than spaces for <Tab>
 set smarttab " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
 set tabstop=4 " the visible width of tabs
 set softtabstop=4 " edit as if the tabs are 4 characters wide
 set shiftwidth=4 " number of spaces to use for indent and unindent
 set shiftround " round indent to a multiple of 'shiftwidth'
+set expandtab " convert tabs to spaces for <Tab>
 set completeopt+=longest
 
 if has('mouse')
@@ -52,8 +52,7 @@ if has('autocmd') && !exists('autocommands_loaded')
     autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
     autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
-    autocmd FileType html setlocal ts=4 sts=4 sw=4 noexpandtab indentkeys-=*<return>
-    autocmd FileType jade setlocal ts=2 sts=2 sw=2 noexpandtab
+    autocmd FileType html setlocal ts=4 sts=4 sw=4 expandtab indentkeys-=*<return>
     autocmd FileType *.md.js :call SyntasticReset<cr>
     autocmd FileType markdown,textile setlocal textwidth=0 wrapmargin=0 wrap spell
     autocmd FileType .xml exe ":silent %!xmllint --format --recover - 2>/dev/null"
@@ -126,10 +125,11 @@ set tm=500
 syntax on
 
 set encoding=utf8
-let base16colorspace=256  " Access colors present in 256 colorspace"
-set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors"
-execute "set background=".$BACKGROUND
-execute "colorscheme ".$THEME
+set t_Co=256
+
+" vim theme
+set background=dark
+colorscheme solarized
 
 " set number " show line numbers
 " set relativenumber " show relative line numbers
@@ -139,10 +139,19 @@ set wrap "turn on line wrapping
 set wrapmargin=8 " wrap lines when coming within n characters from side
 set linebreak " set soft wrapping
 set showbreak=… " show ellipsis at breaking
-
+set colorcolumn=100 " show column width 
 set autoindent " automatically set indent of new line
 set smartindent
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => text limits (disable by default)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"set textwidth=100
+"augroup vimrc_autocmds
+"autocmd BufRead * highlight OverLength ctermbg=darkgrey guibg=#592929
+"autocmd BufRead * match OverLength /\%100v.*/
+"augroup END
+"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups, and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -150,8 +159,8 @@ set smartindent
 "set nobackup
 "set nowritebackup
 "set noswapfile
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupdir=~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.tmp,~/tmp,/var/tmp,/tmp
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -173,8 +182,8 @@ set laststatus=2 " show the satus line all the time
 " remap esc
 inoremap jk <esc>
 
-" markdown to html
-nmap <leader>md :%!markdown --html4tags <cr>
+" markdown to html - disable by default
+"nmap <leader>md :%!markdown --html4tags <cr>
 
 " remove extra whitespace
 nmap <leader><space> :%s/\s\+$<cr>
@@ -198,8 +207,8 @@ map <leader>v :set paste!<cr>
 map <leader>ev :e! ~/.vimrc<cr>
 " edit vim plugins
 map <leader>evp :e! ~/.vim/plugins.vim<cr>
-" edit vim functions
-map <leader>evf :e! ~/.vim/functions.vim<cr>
+" edit vim functions - disable by default
+"map <leader>evf :e! ~/.vim/functions.vim<cr>
 " edit gitconfig
 map <leader>eg :e! ~/.gitconfig<cr>
 
@@ -233,8 +242,6 @@ map <silent> <C-j> :call WinMove('j')<cr>
 map <silent> <C-k> :call WinMove('k')<cr>
 map <silent> <C-l> :call WinMove('l')<cr>
 
-map <leader>wc :wincmd q<cr>
-
 " toggle cursor line
 nnoremap <leader>i :set cursorline!<cr>
 
@@ -261,6 +268,7 @@ let g:silent_custom_command = 0
 nmap \t :set ts=4 sts=4 sw=4 noet<cr>
 nmap \s :set ts=4 sts=4 sw=4 et<cr>
 
+" Centralize textfile
 nmap <leader>w :setf textile<cr> :Goyo<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -403,7 +411,7 @@ nmap <silent> <leader>k :NERDTreeToggle<cr>
 nmap <silent> <leader>y :NERDTreeFind<cr>
 
 " map fuzzyfinder (CtrlP) plugin
-" nmap <silent> <leader>t :CtrlP<cr>
+nmap <silent> <leader>t :CtrlP<cr>
 nmap <silent> <leader>r :CtrlPBuffer<cr>
 let g:ctrlp_map='<leader>t'
 let g:ctrlp_dotfiles=1
@@ -451,19 +459,18 @@ let g:SuperTabCrMapping = 0
 let g:airline_powerline_fonts=1
 let g:airline_theme='solarized'
 let g:solarized_termcolors=256
-set guioptions=egmrt
 
-if has('gui_running')
+if (has("gui_running"))
     set background=light
 else
     set background=dark
 endif
 
-colorscheme solarized
+call ApplyLocalSettings(expand('.'))
 
 "system font
 "set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
-"let g:webdevicons_enable_nerdtree = 1
+let g:webdevicons_enable_nerdtree = 1
 "let g:webdevicons_enabl = 1
 "let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
