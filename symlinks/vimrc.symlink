@@ -52,6 +52,7 @@ if has('autocmd') && !exists('autocommands_loaded')
     autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
     autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
+    autocmd FileType *.c,*.cpp  set setlocal ts=2 sts=2 sw=4 noexpandtab
     autocmd FileType html setlocal ts=4 sts=4 sw=4 expandtab indentkeys-=*<return>
     autocmd FileType *.md.js :call SyntasticReset<cr>
     autocmd FileType markdown,textile setlocal textwidth=0 wrapmargin=0 wrap spell
@@ -170,6 +171,26 @@ set directory=~/.tmp,~/tmp,/var/tmp,/tmp
 set laststatus=2 " show the satus line all the time
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Languages - YouCompleteMe
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <F8> : !gcc -lstdc++ % && ./a.out <CR>
+
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/color_coded/.ycm_extra_conf.py'
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
+
+" color coded
+let g:color_coded_enabled = 1
+let g:color_coded_filetypes = ['c', 'cpp', 'objc']
+
+
+"nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+""Do not ask when starting vim
+"let g:syntastic_always_populate_loc_list = 1
+"let g:ycm_collect_identifiers_from_tags_files = 1
+"set tags+=./.tags
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General mappings/shortcuts for functionality
@@ -177,7 +198,7 @@ set laststatus=2 " show the satus line all the time
 " the plugins section
 
 " Close the current buffer
-" noremap <C-x> :q<cr>
+noremap <C-x> :q<cr>
 
 " remap esc
 inoremap jk <esc>
@@ -413,6 +434,7 @@ nmap <silent> <leader>y :NERDTreeFind<cr>
 " map fuzzyfinder (CtrlP) plugin
 nmap <silent> <leader>t :CtrlP<cr>
 nmap <silent> <leader>r :CtrlPBuffer<cr>
+nnoremap <leader>n :CtrlPTag<cr>
 let g:ctrlp_map='<leader>t'
 let g:ctrlp_dotfiles=1
 let g:ctrlp_working_path_mode = 'ra'
@@ -453,7 +475,7 @@ let g:ctrlp_working_path_mode = 2
 " don't hide quotes in json files
 let g:vim_json_syntax_conceal = 0
 
-let g:SuperTabCrMapping = 0
+"let g:SuperTabCrMapping = 0
 
 " airline options
 let g:airline_powerline_fonts=1
