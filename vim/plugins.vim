@@ -11,8 +11,9 @@ call vundle#end()
 Plug 'gmarik/vundle'
 "
 " colorschemes
-Plug 'chriskempson/base16-vim'
-
+"Plug 'chriskempson/base16-vim'
+Plugin 'Valloric/YouCompleteMe' "code completation
+Plugin 'jeaye/color_coded' "color coded for c and c++ 
 
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons'
@@ -34,7 +35,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'sotte/presenting.vim'
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 Plug 'tpope/vim-dispatch'
 " Plug 'mtth/scratch.vim'
 Plug 'tpope/vim-vinegar'
@@ -58,6 +59,8 @@ Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'Quramy/tsuquyomi', { 'for': 'typescript', 'do': 'npm install' }
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+"Plug 'octol/vim-cpp-enhanced-highlight:'
+
 " Plug 'juvenn/mustache.vim', { 'for': 'mustache' }
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'digitaltoad/vim-jade', { 'for': 'jade' }
