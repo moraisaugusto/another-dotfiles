@@ -32,6 +32,9 @@ main() {
         target="$HOME/.$( basename $file ".symlink" )"
         ln -s $file $target
     done
+
+    # linking font files
+    ls -s $DOTFILES/fonts .fonts
     #source $HOME/.zshrc
 
     echo 'done.'
