@@ -1,15 +1,9 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " load plugins from vundle
 source ~/.vim/plugins.vim
-
-" Abbreviations
-abbr funciton function
-abbr teh the
-abbr tempalte template
-abbr fitler filter
 
 set nocompatible " not compatible with vi
 set autoread " detect when a file is changed
@@ -22,7 +16,6 @@ let mapleader = ','
 let g:mapleader = ','
 
 set history=1000 " change history to 1000
-set textwidth=120
 
 " Tab control
 set smarttab " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
@@ -58,8 +51,6 @@ if has('autocmd') && !exists('autocommands_loaded')
     autocmd FileType markdown,textile setlocal textwidth=0 wrapmargin=0 wrap spell
     autocmd FileType .xml exe ":silent %!xmllint --format --recover - 2>/dev/null"
     autocmd FileType crontab setlocal nobackup nowritebackup
-    "autocmd WinEnter * setlocal cursorline
-    "autocmd WinLeave * setlocal nocursorline
 
     " automatically resize panes on resize
     autocmd VimResized * exe 'normal! \<c-w>='
@@ -79,7 +70,6 @@ if has('autocmd') && !exists('autocommands_loaded')
     autocmd BufNewFile,BufReadPost *.md set filetype=markdown
     let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'stylus', 'html']
 
-    " autocmd! BufEnter * call ApplyLocalSettings(expand('<afile>:p:h'))
 endif
 
 " code folding settings
@@ -87,6 +77,8 @@ set foldmethod=syntax " fold based on indent
 set foldnestmax=10 " deepest fold is 10 levels
 set nofoldenable " don't fold by default
 set foldlevel=1
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => User Interface
@@ -126,15 +118,13 @@ set tm=500
 syntax on
 
 set encoding=utf8
-set t_Co=256
+"set t_Co=256
 
-" vim theme
+" theme
 set background=dark
-colorscheme solarized
 
-" set number " show line numbers
-" set relativenumber " show relative line numbers
 set number " show the current line number"
+set relativenumber " show relative line numbers
 
 set wrap "turn on line wrapping
 set wrapmargin=8 " wrap lines when coming within n characters from side
@@ -143,6 +133,9 @@ set showbreak=… " show ellipsis at breaking
 set colorcolumn=100 " show column width 
 set autoindent " automatically set indent of new line
 set smartindent
+
+set laststatus=2 " show the satus line all the time
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => text limits (disable by default)
@@ -165,12 +158,6 @@ set directory=~/.tmp,~/tmp,/var/tmp,/tmp
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => StatusLine
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-set laststatus=2 " show the satus line all the time
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Languages - YouCompleteMe
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <F8> : !gcc -lstdc++ % && ./a.out <CR>
@@ -183,13 +170,13 @@ let g:ycm_key_list_previous_completion=[]
 let g:color_coded_enabled = 1
 let g:color_coded_filetypes = ['c', 'cpp', 'objc']
 
-
 "nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 ""Do not ask when starting vim
 "let g:syntastic_always_populate_loc_list = 1
 "let g:ycm_collect_identifiers_from_tags_files = 1
 "set tags+=./.tags
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Mappings
@@ -199,13 +186,10 @@ let g:color_coded_filetypes = ['c', 'cpp', 'objc']
 " the plugins section
 
 " Close the current buffer
-noremap <C-x> :q<cr>
+noremap <C-x> :q<cr> 
 
 " remap esc
 inoremap jk <esc>
-
-" markdown to html - disable by default
-"nmap <leader>md :%!markdown --html4tags <cr>
 
 " remove extra whitespace
 nmap <leader><space> :%s/\s\+$<cr>
@@ -227,10 +211,13 @@ map <leader>v :set paste!<cr>
 
 " edit ~/.vimrc
 map <leader>ev :e! ~/.vimrc<cr>
+
 " edit vim plugins
 map <leader>evp :e! ~/.vim/plugins.vim<cr>
+
 " edit vim functions - disable by default
 "map <leader>evf :e! ~/.vim/functions.vim<cr>
+
 " edit gitconfig
 map <leader>eg :e! ~/.gitconfig<cr>
 
@@ -247,12 +234,6 @@ highlight SpecialKey ctermbg=none " make the highlighting of tabs less annoying
 set showbreak=↪
 nmap <leader>l :set list!<cr>
 
-" Textmate style indentation
-vmap <leader>[ <gv
-vmap <leader>] >gv
-nmap <leader>[ <<
-nmap <leader>] >>
-
 " switch between current and last buffer
 nmap <leader>. <c-^>
 
@@ -268,8 +249,8 @@ map <silent> <C-l> :call WinMove('l')<cr>
 nnoremap <leader>i :set cursorline!<cr>
 
 " scroll the viewport faster
-nnoremap <C-e> 3<C-e>
-nnoremap <C-y> 3<C-y>
+nnoremap <C-e> 4<C-e>
+nnoremap <C-y> 4<C-y>
 
 " moving up and down work as you would expect
 nnoremap <silent> j gj
@@ -283,7 +264,7 @@ nnoremap <leader>/ "fyiw :/<c-r>f<cr>
 " inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 
 map <leader>r :call RunCustomCommand()<cr>
-" map <leader>s :call SetCustomCommand()<cr>
+"map <leader>s :call SetCustomCommand()<cr>
 let g:silent_custom_command = 0
 
 " helpers for dealing with other people's code
@@ -292,6 +273,7 @@ nmap \s :set ts=4 sts=4 sw=4 et<cr>
 
 " Centralize textfile
 nmap <leader>w :setf textile<cr> :Goyo<cr>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Functions
@@ -307,6 +289,7 @@ function! DelTagOfFile(file)
   let resp = system(cmd)
 endfunction
 
+" update ctags from source code
 function! UpdateTags()
   let f = expand("%:p")
   let cwd = getcwd()
@@ -316,9 +299,6 @@ function! UpdateTags()
   let resp = system(cmd)
 endfunction
 autocmd BufWritePost *.cpp,*.h,*.c call UpdateTags()
-
-
-
 
 " Window movement shortcuts
 " move to the window in the direction shown, or create a new window
@@ -501,23 +481,35 @@ let g:vim_json_syntax_conceal = 0
 
 "let g:SuperTabCrMapping = 0
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Themes 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " airline options
 let g:airline_powerline_fonts=1
 let g:airline_theme='solarized'
 let g:solarized_termcolors=256
+let g:solarized_bold = 0
 
-if (has("gui_running"))
-    set background=light
-else
-    set background=dark
-endif
+" GUI mode - Disabled
+"if (has("gui_running"))
+"    set background=light
+"else
+"    set background=dark
+"endif
 
 call ApplyLocalSettings(expand('.'))
 
-"system font
+" system font - disabled
 "set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
+
+" webdev icons
 let g:webdevicons_enable_nerdtree = 1
-"let g:webdevicons_enabl = 1
-"let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
+let g:webdevicons_enabl = 1
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-call ApplyLocalSettings(expand('.'))
+"let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
+
+" Vim colorscheme
+set background=dark
+colorscheme solarized
