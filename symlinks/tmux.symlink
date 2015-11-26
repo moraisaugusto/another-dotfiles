@@ -71,6 +71,7 @@ bind -r C-l select-window -t :+
 bind -r H resize-pane -L 10
 bind -r J resize-pane -D 10
 bind -r K resize-pane -U 10
+bind -r L resize-pane -R 10
 
 # enable mouse support for switching panes/windows
 set -g mouse-select-pane on
