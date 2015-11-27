@@ -56,7 +56,7 @@ ZSH_TMUX_FIXTERM=true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages emoji-clock tmux)
+plugins=(git colored-man-pages emoji-clock tmux tmuxninator)
 
 # User configuration
 
@@ -69,11 +69,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vi'
+else
+  export EDITOR='vim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -84,3 +84,8 @@ source $ZSH/oh-my-zsh.sh
 # tmux
 PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 export TMUX_POWERLINE_SEG_WEATHER_LOCATION="455821"
+
+
+# Tmuxinator
+alias pccp="tmuxinator start pccp"
+alias spotify-dl="tmuxinator start spotify-dl"
