@@ -83,7 +83,6 @@ fi
 
 # tmux
 PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
-export TMUX_POWERLINE_SEG_WEATHER_LOCATION="455821"
 
 
 # Tmuxinator
