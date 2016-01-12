@@ -160,7 +160,7 @@ set directory=~/.tmp,~/tmp,/var/tmp,/tmp
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Languages - YouCompleteMe
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <F8> : !gcc -lstdc++ % && ./a.out <CR>
+map <F8> : !gcc -lstdc++ -lm % && ./a.out <CR>
 
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/color_coded/.ycm_extra_conf.py'
 let g:ycm_key_list_select_completion=[]

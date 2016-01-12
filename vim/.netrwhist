@@ -1,7 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/augusto/.dotfiles/zsh/plugins/common-aliases'
-let g:netrw_dirhist_2='/home/augusto/.dotfiles/vim/plugged/ctrlp.vim/autoload/ctrlp'
-let g:netrw_dirhist_3='/home/augusto'
-let g:netrw_dirhist_4='/home'
-let g:netrw_dirhist_5='/home/augusto/.dotfiles/vim'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/home/augusto/Development/php/site-mary.local'

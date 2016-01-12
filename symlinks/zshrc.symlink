@@ -88,3 +88,4 @@ PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -
 # Tmuxinator
 alias pccp="tmuxinator start pccp"
 alias spotify-dl="tmuxinator start spotify-dl"
+alias site-mary="tmuxinator start site-mary"
