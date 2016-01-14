@@ -4,16 +4,16 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
 call plug#begin('~/.vim/plugged')
 
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-call vundle#end()
+"call vundle#begin()
+"Plugin 'VundleVim/Vundle.vim'
+"call vundle#end()
 
-Plug 'gmarik/vundle'
+"Plug 'gmarik/vundle'
 "
 " colorschemes
 "Plug 'chriskempson/base16-vim'
-Plugin 'Valloric/YouCompleteMe' "code completation
-Plugin 'jeaye/color_coded' "color coded for c and c++ 
+Plug 'Valloric/YouCompleteMe' "code completation
+Plug 'jeaye/color_coded' "color coded for c and c++ 
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons'
