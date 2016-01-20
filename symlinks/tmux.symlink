@@ -74,8 +74,8 @@ bind -r K resize-pane -U 10
 bind -r L resize-pane -R 10
 
 # enable mouse support for switching panes/windows
-set -g mouse-select-pane on
-set -g mouse-select-window on
+set -g mouse-utf8 on 
+set -g mouse on
 
 
 ######################
@@ -129,3 +129,10 @@ set-option -g status-right "#(~/.dotfiles/tmux-powerline/powerline.sh right)"
 set-window-option -g window-status-current-format "#[fg=colour235, bg=colour27]⮀#[fg=colour255, bg=colour27] #I ⮁ #[fg=colour27, bg=colour235]⮀"
 bind C-[ run '~/path/to/tmux-powerline/mute_powerline.sh left'      # Mute left statusbar.
 bind C-] run '~/path/to/tmux-powerline/mute_powerline.sh right'     # Mute right statusbar.
+
+
+
+# vi mode
+set-window-option -g mode-keys vi
+bind-key -t vi-copy 'v' begin-selection
+bind-key -t vi-copy 'y' copy-selection
