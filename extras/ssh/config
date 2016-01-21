@@ -1,0 +1,21 @@
+#Github (default)
+#  Host gh
+#  HostName github.com
+#  User aflavio@gmail.com
+#  IdentityFile ~/.ssh/id_rsa
+
+#Bitbucket (primary)
+  Host bb
+  HostName bitbucket.org
+  User git
+
+#Github (secondary)
+  Host gh
+  HostName github.com 
+  User git
+  IdentityFile ~/.ssh/id_rsa_gh
+
+#Servers (thirty)
+  Host * 
+  #User root 
+  IdentityFile ~/.ssh/id_rsa_servers
