@@ -63,6 +63,12 @@ plugins=(git colored-man-pages emoji-clock tmux tmuxninator)
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
+# jdk
+JAVA_HOME=/usr/local/lib/jdk1.8.0_72
+PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+export JAVA_HOME
+export PATH
+
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -83,7 +89,6 @@ fi
 
 # tmux
 PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
-
 
 # Tmuxinator
 alias pccp="tmuxinator start pccp"
