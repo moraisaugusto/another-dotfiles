@@ -5,17 +5,17 @@
 #  IdentityFile ~/.ssh/id_rsa
 
 #Bitbucket (primary)
-  Host bb
+ Host bitbucket.org 
   HostName bitbucket.org
   User git
 
 #Github (secondary)
-  Host gh
+ Host github.com 
   HostName github.com 
   User git
   IdentityFile ~/.ssh/id_rsa_gh
 
 #Servers (thirty)
-  Host * 
+ Host * 
   #User root 
   IdentityFile ~/.ssh/id_rsa_servers

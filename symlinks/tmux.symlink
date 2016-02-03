@@ -135,4 +135,4 @@ bind C-] run '~/path/to/tmux-powerline/mute_powerline.sh right'     # Mute right
 # vi mode
 set-window-option -g mode-keys vi
 bind-key -t vi-copy 'v' begin-selection
-bind-key -t vi-copy 'y' copy-selection
+bind-key -t vi-copy 'y' copy-pipe "xsel -i -p -b" 

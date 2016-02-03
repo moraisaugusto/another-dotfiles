@@ -467,10 +467,10 @@ let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 
 " CtrlP ignore patterns
-" let g:ctrlp_custom_ignore = {
-"             \ 'dir': '\.git$\|node_modules$\|bower_components$\|\.hg$\|\.svn$',
-"             \ 'file': '\.exe$\|\.so$'
-"             \ }
+let g:ctrlp_custom_ignore = {
+            \ 'dir': '\.git$\|node_modules$\|bower_components$\|\.hg$\|\.svn$',
+            \ 'file': '\.exe$\|\.so|\.dll$'
+            \ }
 " only show files that are not ignored by git
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
