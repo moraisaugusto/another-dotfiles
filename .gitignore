@@ -1,4 +1,4 @@
-vim/plugged/matchit.zip/doc 
-vim/plugged/tsuquyomi/doc 
-vim/plugged/vim-devicons/doc
-vim/plugged/vim-marked/doc
+vim/plugged/matchit.zip/doc/* 
+vim/plugged/tsuquyomi/doc/* 
+vim/plugged/vim-devicons/doc/*
+vim/plugged/vim-marked/doc/*
