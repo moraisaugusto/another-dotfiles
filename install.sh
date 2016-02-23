@@ -51,6 +51,9 @@ main() {
     echo 'done.'
     printf "${NORMAL}"
 
+    # copyng init.d script files
+    ln -s $DOTFILES/scripts/init.d/reset-ethernet.sh /etc/init.d/reset-ethernet.sh 
+
 }
 
 splash() {
