@@ -20,7 +20,7 @@ sh -c "$(wget https://raw.githubusercontent.com/aflavio/another-dotfiles/master/
 ```
 
 #### Init.d Scripts
-I added an script thats restart (unload/load) ethernet drive. This is usefull for r8169 ethernet drive when the system is resumed from suspended status.
+Added a script that restart (unload/load) ethernet drive. It's usefull for r8169 ethernet drive when the system is resumed from suspended state.
 
 #### Enabling Plugins
 
