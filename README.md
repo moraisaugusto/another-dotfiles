@@ -19,6 +19,9 @@ Download the following install file and run it.
 sh -c "$(wget https://raw.githubusercontent.com/aflavio/another-dotfiles/master/install.sh -O -)"
 ```
 
+#### Init.d Scripts
+I added an script thats restart (unload/load) ethernet drive. This is usefull for r8169 ethernet drive when the system is resumed from suspended status.
+
 #### Enabling Plugins
 
 The install file automatically download and install all vim Plugins. Normally, you don't need run the command: vim +Pluginstall +qall. But, if it's fails, run again. 
