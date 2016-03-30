@@ -104,8 +104,8 @@ alias aed-prob-1="tmuxinator start aed-prob-1"
 alias fix-win-parts="sudo ntfsfix /dev/sda4 && sudo ntfsfix /dev/sda5"
 
 #ssh keys
-if [ -z "$SSH_AUTH_SOCK" ] ; then
-  eval `ssh-agent -s`
-  ssh-add
-fi
+#if [ -z "$SSH_AUTH_SOCK" ] ; then
+#  eval `ssh-agent -s`
+  ssh-add 2>/dev/null
+#fi
 
