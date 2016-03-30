@@ -299,7 +299,7 @@ function! UpdateTags()
   call DelTagOfFile(f)
   let resp = system(cmd)
 endfunction
-autocmd BufWritePost *.cpp,*.h,*.c call UpdateTags()
+autocmd BufWritePost *.cpp,*.h,*.c,*.py call UpdateTags()
 
 " Window movement shortcuts
 " move to the window in the direction shown, or create a new window
@@ -419,7 +419,6 @@ function! HtmlUnEscape()
 endfunction
 
 nnoremap <silent> <leader>u :call HtmlUnEscape()<cr>
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins

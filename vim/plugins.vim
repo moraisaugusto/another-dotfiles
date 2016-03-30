@@ -73,6 +73,7 @@ Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' }
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'timcharper/textile.vim', { 'for': 'textile' }
+Plug 'davidhalter/jedi-vim', { 'for': 'python'}
 " Plug 'tclem/vim-arduino'
 " Plug 'davidoc/taskpaper.vim'
 
