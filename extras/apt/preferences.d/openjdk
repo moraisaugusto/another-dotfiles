@@ -1,0 +1,3 @@
+Package: openjdk-8-jre 
+Pin: release a=unstable
+Pin-Priority: 900

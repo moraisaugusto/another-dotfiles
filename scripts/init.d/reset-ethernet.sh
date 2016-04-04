@@ -1,6 +1,10 @@
 #! /bin/sh
 ### BEGIN INIT INFO
 # Provides:          reset-ethernet
+# Required-Start:    $local_fs $remote_fs $network $syslog $named
+# Required-Stop:     $local_fs $remote_fs $network $syslog $named
+# Default-Start:     
+# Default-Stop:      
 # Short-Description: reset ethernet network connection
 # Description:       Daemon for reset ethernet drive network
 ### END INIT INFO

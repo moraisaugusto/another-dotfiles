@@ -1,0 +1,14 @@
+#### testing ####
+deb http://ftp.br.debian.org/debian/ testing main
+deb-src http://ftp.br.debian.org/debian/ testing main
+
+deb http://security.debian.org/ testing/updates main contrib
+deb-src http://security.debian.org/ testing/updates main contrib
+
+deb http://ftp.br.debian.org/debian/ testing non-free
+deb-src http://ftp.br.debian.org/debian/ testing non-free
+
+deb http://www.bchemnet.com/suldr/ debian extra
+
+#### unstable ####
+deb http://ftp.us.debian.org/debian unstable main contrib non-free
