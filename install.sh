@@ -11,14 +11,14 @@ NORMAL="$(tput sgr0)"
 
 main() {
     # clonnig repositories
-    printf "${BOLD}"
-    echo 'Clonning Respository...'
-    printf "${NORMAL}${GRAY}"
-    git clone https://github.com/aflavio/another-dotfiles.git .dotfiles
-    cd .dotfiles
-    git submodule update --init --recursive 
-    cd ..
-    echo 'done.'
+    #printf "${BOLD}"
+    #echo 'Clonning Respository...'
+    #printf "${NORMAL}${GRAY}"
+    #git clone https://github.com/aflavio/another-dotfiles.git .dotfiles
+    #cd .dotfiles
+    #git submodule update --init --recursive 
+    #cd ..
+    #echo 'done.'
     DOTFILES=$HOME/.dotfiles
     printf "${NORMAL}"
 
@@ -35,7 +35,7 @@ main() {
 
     # linking font files
     ls -s $DOTFILES/fonts .fonts
-    #source $HOME/.zshrc
+    source $HOME/.zshrc
 
     echo 'done.'
     printf "${NORMAL}"

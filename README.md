@@ -3,6 +3,9 @@
 
 __Another dotfiles__ is a collection of ZSH and VIM configurations based on [robbyrussell/oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) and [nicknisi/dotfiles](https://github.com/nicknisi/dotfiles). 
 
+* power line used
+https://github.com/powerline/powerline
+
 ### Prerequisites
 
 * Linux (tested on Debian)
@@ -10,6 +13,32 @@ __Another dotfiles__ is a collection of ZSH and VIM configurations based on [rob
 * `wget`
 * `git`
 * `vim`
+* `xsel` # for copy/paste tmux/X11
+
+### Fonts ###
+
+* Gnome
+    https://github.com/powerline/fonts
+    * Interface: Meslo LG L for Powerline RegularForPowerline - 10
+    * Window Titles: Meslo LG L DZ for Powerline Bold - 11
+    * Documents: Sans Regular - 11 (default)
+    * Monospace: Monospace Regular - 11 (default)
+
+### Gnome ###
+
+* Settings
+
+# Dump Gnome current confs
+$ gconftool-2 --dump / > gconf_dump.xml
+$ gconftool-2 --unload clean-settings.xml
+
+# Load Gnome confs
+$ gconftool-2 --load gconf_dump.xml
+
+* Tweaks
+    * Global Dark Theme: On
+    * Icons: Numix-Circle
+    * Theme: Adwaita (default)
 
 ### Installation
 

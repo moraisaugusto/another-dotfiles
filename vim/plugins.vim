@@ -12,8 +12,8 @@ call plug#begin('~/.vim/plugged')
 "
 " colorschemes
 "Plug 'chriskempson/base16-vim'
-Plug 'Valloric/YouCompleteMe' "code completation
-Plug 'jeaye/color_coded' "color coded for c and c++ 
+"Plug 'Valloric/YouCompleteMe' "code completation
+"Plug 'jeaye/color_coded' "color coded for c and c++ 
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons'
@@ -25,7 +25,8 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-surround'
 Plug 'benmills/vimux'
-Plug 'bling/vim-airline'
+"Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/syntastic'
 " Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'

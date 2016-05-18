@@ -6,7 +6,7 @@ export ZSH=$HOME/.dotfiles/zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="augusto-default"
+ZSH_THEME="agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -101,7 +101,7 @@ alias ec-prob-1="tmuxinator start ec-prob-1"
 alias ec-prob-2="tmuxinator start ec-prob-2"
 alias aed-prob-1="tmuxinator start aed-prob-1"
 
-alias fix-win-parts="sudo ntfsfix /dev/sda4 && sudo ntfsfix /dev/sda5"
+#alias fix-win-parts="sudo ntfsfix /dev/sda4 && sudo ntfsfix /dev/sda5"
 
 #ssh keys
 #if [ -z "$SSH_AUTH_SOCK" ] ; then
