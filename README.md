@@ -82,7 +82,7 @@ let g:airline_theme='solarized' # Check the others themes
 colorscheme solizared 
 ```
 
-Vim Themes are based on Airline [bling/vim-airline](https://github.com/bling/vim-airline). There are some Colorscheme installed too [Tomorrow](https://github.com/chriskempson/tomorrow-theme). 
+Vim Themes are based on Airline [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline). There are some Colorscheme installed too [Tomorrow](https://github.com/chriskempson/tomorrow-theme). 
 
 
 ![Shell](http://augustomorais.com.br/shell.png)
