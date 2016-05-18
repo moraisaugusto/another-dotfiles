@@ -123,7 +123,7 @@ set-option -g status-left-length 60
 set-option -g status-right-length 90
 set-option -g status-left "#(~/.dotfiles/tmux-powerline/powerline.sh left)"
 set-option -g status-right "#(~/.dotfiles/tmux-powerline/powerline.sh right)"
-set-window-option -g window-status-current-format "#[fg=colour235, bg=colour27]⮀#[fg=colour255, bg=colour27] #I ⮁ #[fg=colour27, bg=colour235]⮀"
+set-window-option -g window-status-current-format "#[fg=colour235, bg=colour27]-#[fg=colour255, bg=colour27] #I - #[fg=colour27, bg=colour235]-"
 bind C-[ run '~/.dotfiles/tmux-powerline/mute_powerline.sh left'      # Mute left statusbar.
 bind C-] run '~/.dotfiles/tmux-powerline/mute_powerline.sh right'     # Mute right statusbar.
 
