@@ -99,6 +99,7 @@ alias spotify-dl="tmuxinator start spotify-dl"
 alias site-mary="tmuxinator start site-mary"
 alias ec-prob-1="tmuxinator start ec-prob-1"
 alias ec-prob-2="tmuxinator start ec-prob-2"
+alias ec-prob-6="tmuxinator start ec-prob-6"
 alias aed-prob-1="tmuxinator start aed-prob-1"
 
 alias fix-win-parts="sudo ntfsfix /dev/sda4 && sudo ntfsfix /dev/sda5"
