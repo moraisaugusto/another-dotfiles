@@ -78,6 +78,9 @@ Plug 'timcharper/textile.vim', { 'for': 'textile' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python'}
 " Plug 'tclem/vim-arduino'
 " Plug 'davidoc/taskpaper.vim'
+"
+" Colors schemes
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 filetype plugin indent on
