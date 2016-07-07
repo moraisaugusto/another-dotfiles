@@ -131,7 +131,7 @@ set wrap "turn on line wrapping
 set wrapmargin=8 " wrap lines when coming within n characters from side
 set linebreak " set soft wrapping
 set showbreak=… " show ellipsis at breaking
-set colorcolumn=100 " show column width 
+set colorcolumn=100 " show column width
 set autoindent " automatically set indent of new line
 set smartindent
 
@@ -186,8 +186,11 @@ let g:color_coded_filetypes = ['c', 'cpp', 'objc']
 " Additional, plugin-specific mappings are located under
 " the plugins section
 
+" shortcut to open a lib in new tab
+nnoremap <silent><Leader><C-]> <C-w><C-]><C-w>T
+
 " Close the current buffer
-noremap <C-x> :q<cr> 
+noremap <C-x> :q<cr>
 
 " remap esc
 inoremap jk <esc>
@@ -483,13 +486,14 @@ let g:vim_json_syntax_conceal = 0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Themes 
+" => Themes
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " airline options
 let g:airline_powerline_fonts=1
 let g:airline_theme='solarized'
 let g:solarized_termcolors=256
+let g:airline_theme='gruvbox'
 let g:solarized_bold = 0
 
 " GUI mode - Disabled
@@ -503,6 +507,7 @@ call ApplyLocalSettings(expand('.'))
 
 " system font - disabled
 "set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
+set guifont=SourceCodePro-Regular
 
 " webdev icons
 let g:webdevicons_enable_nerdtree = 1
@@ -512,4 +517,5 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
 " Vim colorscheme
 set background=dark
+"colorscheme solarized
 colorscheme solarized
