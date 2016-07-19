@@ -1,12 +1,8 @@
 filetype off
 
-" let vundle manage vundle
+" let vundle manage vundle- https://github.com/junegunn/vim-plug
 set rtp+=~/.vim/bundle/Vundle.vim/
 call plug#begin('~/.vim/plugged')
-
-"call vundle#begin()
-"Plugin 'VundleVim/Vundle.vim'
-"call vundle#end()
 
 "Plug 'gmarik/vundle'
 "
