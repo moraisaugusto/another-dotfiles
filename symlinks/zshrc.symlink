@@ -61,12 +61,14 @@ plugins=(git colored-man-pages emoji-clock tmux tmuxninator nmap systemadmin bat
 # User configuration
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-# export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="/usr/local/man:$MANPATH"
 
 # jdk
-JAVA_HOME=/usr/local/lib/jdk1.8.0_72
-PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64/
+ANDROID_HOME=/usr/lib/android-sdk-linux
+PATH=$PATH:$HOME/bin:$JAVA_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 export JAVA_HOME
+export ANDROID_HOME
 export PATH
 
 source $ZSH/oh-my-zsh.sh
@@ -104,6 +106,7 @@ alias ec-prob-6="tmuxinator start ec-prob-6"
 alias aed-prob-1="tmuxinator start aed-prob-1"
 alias aed-prob-6="tmuxinator start aed-prob-6"
 alias bancocred="tmuxinator start bancocred"
+alias website="tmuxinator start website"
 
 alias fix-win-parts="sudo ntfsfix /dev/sda4 && sudo ntfsfix /dev/sda5"
 alias npm="node --max-old-space-size=6144 /usr/local/bin/npm"
