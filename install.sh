@@ -11,13 +11,14 @@ NORMAL="$(tput sgr0)"
 
 main() {
     # clonnig repositories
-    #printf "${BOLD}"
-    #echo 'Clonning Respository...'
-    #printf "${NORMAL}${GRAY}"
-    #git clone https://github.com/aflavio/another-dotfiles.git .dotfiles
-    #cd .dotfiles
-    #git submodule update --init --recursive 
-    #cd ..
+    printf "${BOLD}"
+    echo 'Clonning Respository...'
+    printf "${NORMAL}${GRAY}"
+    mkdir ~/.dotfiles
+    git clone https://github.com/aflavio/another-dotfiles.git .dotfiles
+    cd .dotfiles
+    git submodule update --init --recursive 
+    cd ..
     #echo 'done.'
     DOTFILES=$HOME/.dotfiles
     printf "${NORMAL}"
