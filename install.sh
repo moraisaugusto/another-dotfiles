@@ -9,26 +9,46 @@ BLUE="$(tput setaf 4)"
 BOLD="$(tput bold)"
 NORMAL="$(tput sgr0)"
 
+checkDirectories() {
+    local_dirs=("$@")
+
+    for (( i = 0 ; i < ${#local_dirs[@]} ; i++ ))
+        do
+            if [ ! -d "$i" ]; then
+                mkdir ${local_dirs[$i]}
+            fi
+    done
+}
+
 main() {
-    # clonnig repositories
-    printf "${BOLD}"
-    echo 'Clonning Respository...'
-    printf "${NORMAL}${GRAY}"
-    mkdir ~/.dotfiles
-    git clone https://github.com/aflavio/another-dotfiles.git .dotfiles
-    cd .dotfiles
-    git submodule update --init --recursive 
-    cd ..
-    #echo 'done.'
+    # vars
     DOTFILES=$HOME/.dotfiles
-    printf "${NORMAL}"
+
+    # create directories
+    directories=(".dotfiles")
+
+    # checking directories
+    echo "${BOLD}Checking Directories..."
+    checkDirectories "${directories[@]}" 
+
+    # clonnig repositories
+    echo "${BOLD}Clonning Respository..."
+    printf "${NORMAL}${GRAY}"
+
+    git clone https://github.com/aflavio/another-dotfiles.git .dotfiles
+
+    cd .dotfiles
+    git submodule update --init --recursive
+    cd ..
+    echo "done."
 
     # creating symlinks
-    printf "${BOLD}"
-    echo -e '\nCreating symlinks...'
-    ln -s $DOTFILES/vim .vim
+    printf ""
+    echo -e "${BOLD}Creating symlinks..."
+
+    ln -s $DOTFILES/vim ~/.vim
     linkables=$( find -H "$DOTFILES" -name '*.symlink' )
-    
+
     for file in $linkables ; do
         target="$HOME/.$( basename $file ".symlink" )"
         ln -s $file $target
@@ -53,12 +73,12 @@ main() {
     printf "${NORMAL}"
 
     # copyng init.d script files
-    ln -s $DOTFILES/scripts/init.d/reset-ethernet.sh /etc/init.d/reset-ethernet.sh 
+    ln -s $DOTFILES/scripts/init.d/reset-ethernet.sh /etc/init.d/reset-ethernet.sh
 
 }
 
 splash() {
-    printf "${BLUE}" 
+    printf "${BLUE}"
     echo '██      ▄   ████▄    ▄▄▄▄▀ ▄  █ ▄███▄   █▄▄▄▄          '
     echo '█ █      █  █   █ ▀▀▀ █   █   █ █▀   ▀  █  ▄▀          '
     echo '█▄▄█ ██   █ █   █     █   ██▀▀█ ██▄▄    █▀▀▌           '

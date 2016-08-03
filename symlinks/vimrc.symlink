@@ -118,7 +118,7 @@ set tm=500
 syntax on
 
 set encoding=utf8
-"set t_Co=256
+set t_Co=256
 
 " theme
 set background=dark
