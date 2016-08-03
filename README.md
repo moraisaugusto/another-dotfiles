@@ -49,7 +49,12 @@ Download the following install file and run it.
 ```shell
 bash -c "$(wget https://raw.githubusercontent.com/aflavio/another-dotfiles/master/install.sh -O -)"
 ```
-
+ When the installation finish, do:
+ 
+ ```shell
+source .zshrc
+```
+ 
 #### Init.d Scripts
 Added a script that restart (unload/load) ethernet drive. It's usefull for r8169 ethernet drive when the system is resumed from suspended state.
 
