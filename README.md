@@ -23,6 +23,8 @@ https://github.com/powerline/powerline
     * Window Titles: Meslo LG L DZ for Powerline Bold - 11
     * Documents: Sans Regular - 11 (default)
     * Monospace: Monospace Regular - 11 (default)
+    * Terminal (guake): Source Code Pro for Powerline - 10 
+    * Quake (color scheme): Frontend Delight
 
 ### Gnome ###
 
@@ -45,7 +47,7 @@ $ gconftool-2 --load gconf_dump.xml
 Download the following install file and run it. 
 
 ```shell
-sh -c "$(wget https://raw.githubusercontent.com/aflavio/another-dotfiles/master/install.sh -O -)"
+bash -c "$(wget https://raw.githubusercontent.com/aflavio/another-dotfiles/master/install.sh -O -)"
 ```
 
 #### Init.d Scripts
