@@ -24,7 +24,7 @@ https://github.com/powerline/powerline
     * Documents: Sans Regular - 11 (default)
     * Monospace: Monospace Regular - 11 (default)
     * Terminal (guake): Source Code Pro for Powerline - 10 
-    * Quake (color scheme): Frontend Delight
+    * Guake (color scheme): Frontend Delight
 
 ### Gnome ###
 
