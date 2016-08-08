@@ -3,6 +3,8 @@
 
 __Another dotfiles__ is a collection of ZSH and VIM configurations based on [robbyrussell/oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) and [nicknisi/dotfiles](https://github.com/nicknisi/dotfiles). 
 
+![alt tag](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/demo.gif)
+
 * power line used
 https://github.com/powerline/powerline
 
@@ -23,6 +25,8 @@ https://github.com/powerline/powerline
     * Window Titles: Meslo LG L DZ for Powerline Bold - 11
     * Documents: Sans Regular - 11 (default)
     * Monospace: Monospace Regular - 11 (default)
+    * Terminal (guake): Source Code Pro for Powerline - 10 
+    * Guake (color scheme): Frontend Delight
 
 ### Gnome ###
 
@@ -45,9 +49,14 @@ $ gconftool-2 --load gconf_dump.xml
 Download the following install file and run it. 
 
 ```shell
-sh -c "$(wget https://raw.githubusercontent.com/aflavio/another-dotfiles/master/install.sh -O -)"
+bash -c "$(wget https://raw.githubusercontent.com/aflavio/another-dotfiles/master/install.sh -O -)"
 ```
-
+ When the installation finish, do:
+ 
+ ```shell
+source .zshrc
+```
+ 
 #### Init.d Scripts
 Added a script that restart (unload/load) ethernet drive. It's usefull for r8169 ethernet drive when the system is resumed from suspended state.
 
