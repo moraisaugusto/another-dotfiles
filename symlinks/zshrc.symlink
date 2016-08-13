@@ -102,7 +102,7 @@ alias npm="node --max-old-space-size=6144 /usr/local/bin/npm"
 #ssh keys
 #if [ -z "$SSH_AUTH_SOCK" ] ; then
 #  eval `ssh-agent -s`
-  ssh-add 2>/dev/null
+  ls ~/.ssh/id_rsa* | awk '!/pub$/ {system("ssh-add "$0 " 2>/dev/null")} '
 #fi
 #
 # Tmuxinator Projects
