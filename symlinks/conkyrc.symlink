@@ -58,11 +58,12 @@ TEXT
 
 ${offset 0}${font}${font Zegoe:weight=Light:pixelsize=12}
 	Battery: ${battery_percent BAT0}%
+	${goto 37}CPU: ${cpu cpu1}% - ${cpu cpu2}% - ${cpu cpu3}% - ${cpu cpu4}%
 	Mem: $mem / $memmax
 	SSD:  ${fs_free /} / ${fs_used /}
 
 	Signal: ${wireless_link_qual wlp2s0}%
-				${font DejaVu Sans:pixelsize=12}⬆:${font Zegoe:weight=Light:pixelsize=12} ${upspeed wlp2s0} kb/s
-				${font DejaVu Sans:pixelsize=12}⬇${font Zegoe:weight=Light:pixelsize=12} ${downspeed wlp2s0} kb/s
+	${goto 37}${font DejaVu Sans:pixelsize=12}⬆:${font Zegoe:weight=Light:pixelsize=12} ${upspeed wlp2s0} kb/s
+	${goto 37}${font DejaVu Sans:pixelsize=12}⬇:${font Zegoe:weight=Light:pixelsize=12} ${downspeed wlp2s0} kb/s
 ${font}
 
