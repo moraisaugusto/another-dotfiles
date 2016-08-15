@@ -1,0 +1,69 @@
+#!/usr/bin/conky -d -c
+##	.conkyrc configuration
+alignment top_left
+background yes
+border_margin 5
+border_width 5
+color0 555555
+color1 FCAF3E
+color2 2a2a2a
+color3 a82553
+color4 5e1014
+color5 64574e
+color6 2a2a2a
+color7 8888CC
+color8 9d9c61
+color9 525276
+cpu_avg_samples 2
+default_color 000000
+default_outline_color 000000 
+default_shade_color 000000
+double_buffer yes
+draw_borders no
+draw_graph_borders no
+draw_outline no
+draw_shades no
+gap_x 0
+gap_y 50
+max_specials 1024
+max_user_text 10000
+maximum_width 200
+minimum_size 175
+net_avg_samples 2
+no_buffers yes
+override_utf8_locale yes
+own_window yes
+own_window_colour 000000
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_transparent yes
+own_window_type desktop 
+pad_percents 2
+short_units yes
+stippled_borders 3
+text_buffer_size 8000
+total_run_times 0
+update_interval 1.0
+uppercase no
+use_spacer right
+use_xft yes
+xftalpha 1
+xftfont Freesans:pixelsize=9
+#
+#${diskiograph /dev/sda 15,180 a7a7a7 a7a7a7}
+
+
+TEXT
+#${font Zegoe Light - U:pixelsize=24}${time %H:%M:%S}${font} 
+#${font Zegoe Light - U:pixelsize=12}${time %A} - ${time  %B %d, %Y}${font}
+
+${offset 0}${font}${font Zegoe Light - U:pixelsize=12}
+	Battery: ${battery_percent BAT0}%
+	Mem: $mem / $memmax
+	SSD:  ${fs_free /} / ${fs_used /}
+
+
+	Signal: ${wireless_link_qual wlp2s0}% 
+	⬆: ${upspeed wlp2s0} kb/s 
+	⬇: ${downspeed wlp2s0} kb/s 
+${font}
+
