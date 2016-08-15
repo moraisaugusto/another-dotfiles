@@ -16,7 +16,7 @@ color8 9d9c61
 color9 525276
 cpu_avg_samples 2
 default_color 000000
-default_outline_color 000000 
+default_outline_color 000000
 default_shade_color 000000
 double_buffer yes
 draw_borders no
@@ -36,7 +36,7 @@ own_window yes
 own_window_colour 000000
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 own_window_transparent yes
-own_window_type desktop 
+own_window_type desktop
 pad_percents 2
 short_units yes
 stippled_borders 3
@@ -53,17 +53,16 @@ xftfont Freesans:pixelsize=9
 
 
 TEXT
-#${font Zegoe Light - U:pixelsize=24}${time %H:%M:%S}${font} 
+#${font Zegoe Light - U:pixelsize=24}${time %H:%M:%S}${font}
 #${font Zegoe Light - U:pixelsize=12}${time %A} - ${time  %B %d, %Y}${font}
 
-${offset 0}${font}${font Zegoe Light - U:pixelsize=12}
+${offset 0}${font}${font Zegoe:weight=Light:pixelsize=12}
 	Battery: ${battery_percent BAT0}%
 	Mem: $mem / $memmax
 	SSD:  ${fs_free /} / ${fs_used /}
 
-
-	Signal: ${wireless_link_qual wlp2s0}% 
-	⬆: ${upspeed wlp2s0} kb/s 
-	⬇: ${downspeed wlp2s0} kb/s 
+	Signal: ${wireless_link_qual wlp2s0}%
+				${font DejaVu Sans:pixelsize=12}⬆:${font Zegoe:weight=Light:pixelsize=12} ${upspeed wlp2s0} kb/s
+				${font DejaVu Sans:pixelsize=12}⬇${font Zegoe:weight=Light:pixelsize=12} ${downspeed wlp2s0} kb/s
 ${font}
 
