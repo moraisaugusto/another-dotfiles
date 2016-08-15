@@ -1,7 +1,7 @@
 #!/usr/bin/conky -d -c
 ##	.conkyrc configuration
 alignment top_left
-background yes
+background no
 border_margin 5
 border_width 5
 color0 555555
