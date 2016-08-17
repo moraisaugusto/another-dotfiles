@@ -56,17 +56,21 @@ TEXT
 #${font Zegoe Light - U:pixelsize=12}${time %A} - ${time  %B %d, %Y}${font}
 
 ${color2}${offset 0}${font}${font Zegoe:weight=Light:pixelsize=12}
+	${goto 37}${cpugraph 16,160 FFFFFF a2a2a2}
 	${goto 37}CPU: ${cpu cpu1}% - ${cpu cpu2}% - ${cpu cpu3}% - ${cpu cpu4}%
+
 # Numbers
 #	Mem: $mem / $memmax  -
 #	SSD:  ${fs_free /} / ${fs_used /}
 # Bars
-	Mem: ${goto 70} ${color3}${membar 6,75} ${color2} $mem
-	SSD: ${goto 70} ${color3}${fs_bar 6,75 /} ${color2} ${fs_free /}
+	Mem: ${goto 70} ${color3}${membar 6,90} ${color2} ${memperc}%
+	SSD: ${goto 70} ${color3}${fs_bar 6,90 /} ${color2} ${fs_used_perc /}%
 	Battery: ${battery_percent BAT0}%
 
 	Signal: ${wireless_link_qual wlp2s0}%
 	${goto 37}${font DejaVu Sans:pixelsize=12}⬆:${font Zegoe:weight=Light:pixelsize=12} ${upspeed wlp2s0} kb/s
 	${goto 37}${font DejaVu Sans:pixelsize=12}⬇:${font Zegoe:weight=Light:pixelsize=12} ${downspeed wlp2s0} kb/s
+	${goto 37}${upspeedgraph wlp2s0 16,160 FFFFFF a2a2a2 150}
+	${goto 37}${downspeedgraph wlp2s0 16,160 FFFFFF  a2a2a2 150}
 ${font}
 
