@@ -13,7 +13,7 @@ color6 2a2a2a
 color7 8888CC
 color8 9d9c61
 color9 525276
-cpu_avg_samples 2
+cpu_avg_samples 4
 default_color 000000
 default_outline_color 000000
 default_shade_color 000000
@@ -55,11 +55,15 @@ TEXT
 #${font Zegoe Light - U:pixelsize=24}${time %H:%M:%S}${font}
 #${font Zegoe Light - U:pixelsize=12}${time %A} - ${time  %B %d, %Y}${font}
 
-${offset 0}${font}${font Zegoe:weight=Light:pixelsize=12}
-	Battery: ${battery_percent BAT0}%
+${color2}${offset 0}${font}${font Zegoe:weight=Light:pixelsize=12}
 	${goto 37}CPU: ${cpu cpu1}% - ${cpu cpu2}% - ${cpu cpu3}% - ${cpu cpu4}%
-	Mem: $mem / $memmax
-	SSD:  ${fs_free /} / ${fs_used /}
+# Numbers
+#	Mem: $mem / $memmax  -
+#	SSD:  ${fs_free /} / ${fs_used /}
+# Bars
+	Mem: ${goto 70} ${color3}${membar 6,75} ${color2} $mem
+	SSD: ${goto 70} ${color3}${fs_bar 6,75 /} ${color2} ${fs_free /}
+	Battery: ${battery_percent BAT0}%
 
 	Signal: ${wireless_link_qual wlp2s0}%
 	${goto 37}${font DejaVu Sans:pixelsize=12}⬆:${font Zegoe:weight=Light:pixelsize=12} ${upspeed wlp2s0} kb/s
