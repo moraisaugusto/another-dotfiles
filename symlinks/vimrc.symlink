@@ -277,6 +277,14 @@ nmap \s :set ts=4 sts=4 sw=4 et<cr>
 " Centralize textfile
 nmap <leader>w :setf textile<cr> :Goyo<cr>
 
+" Permanent 'very magic' mode
+nnoremap / /\v
+vnoremap / /\v
+cnoremap %s/ %smagic/
+cnoremap \>s/ \>smagic/
+nnoremap :g/ :g/\v
+nnoremap :g// :g//
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Functions
