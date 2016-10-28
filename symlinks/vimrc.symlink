@@ -507,9 +507,9 @@ let g:vim_json_syntax_conceal = 0
 
 " airline options
 let g:airline_powerline_fonts=1
-let g:airline_theme='solarized'
-let g:solarized_termcolors=256
-let g:solarized_bold = 0
+let g:airline_theme='gruvbox'
+let g:gruvbox_termcolors=256
+let g:gruvbox_bold = 0
 
 " GUI mode - Disabled
 "if (has("gui_running"))
@@ -532,4 +532,4 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
 " Vim colorscheme
 set background=dark
-colorscheme solarized
+colorscheme gruvbox
