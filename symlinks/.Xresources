@@ -1,19 +1,8 @@
 ! urxvt
 
 ! font
-URxvt.font: xft:Source Code Pro Medium:antialias=true:hinting=true:size=10, \
-                                                 xft:PowerlineSymbols:size=10, \
-                                                 xft:PowerlineSymbols:size=10, \
-                                                 xft:WenQuanYi Bitmap Song:size=10, \
-                                                 xft:FreeSerif:style=Regular, \
-                                                 xft:unifont:style=Medium:antialias=false
+URxvt.font: xft:Source Code Pro Medium:antialias=true:hinting=true:size=10, xft:PowerlineSymbols:size=10
 !URxvt*letterSpace: -2
-!
-!
-!Urxvt*font: xft:DejaVu Sans Mono:style=Book:antialias=false:size=10, \
-!                                       xft:WenQuanYi Bitmap Song:size=10, \
-!                                       xft:FreeSerif:style=Regular, \
-!                                       xft:unifont:style=Medium:antialias=false
 
 ! tranparency
 URxvt.tranparent: true
