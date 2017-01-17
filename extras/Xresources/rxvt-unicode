@@ -1,0 +1,47 @@
+URxvt*scrollBar: False
+URxvt*imLocale: pt_BR.UTF-8
+URxvt.saveLines: 5000
+URxvt.geometry: 95x46+50+50
+
+!-- Xft settings -- !
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.pixelsize:  14
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+
+URxvt*font: xft:Knack Nerd Font:Regular:pixelsize=12:antialias=true:hinting=true,\
+            !-- xft:SauceCodePro Nerd Font:pixelsize=14:antialias=true:hinting=true --!
+            !-- xft:DroidSansMonoForPowerline NF:pixelsize=14:antialias=true:hinting=true --!
+!--            xft:FontAwesome:pixelsize=12:antialias=true:hinting=true --!
+!--URxvt*font: xft:Source Code Pro for Powerline Medium:pixelsize=10 --!
+!--            xft:Droid Sans Mono for Powerline Plus Nerd File Types Mono:pixelsize=12:antialias=true:hinting=true --!
+!--            xft:Inconsolata for Powerline Nerd Font Medium:pixelsize=10:antialias=true:hinting=true,\ --!
+!--            !xft:Inconsolata for Powerline:pixelsize=10:antialias=true:hinting=true,\ --!
+!--            !xft:PowerlineSymbols Medium:pixelsize=12:antialias=true:hinting=true,\ --!
+!--            xft:Inconsolata for Powerline Nerd Medium:pixelsize=12:antialias=true:hinting=true --!
+
+URxvt.letterSpace: 2 
+URxvt*.background: [90]#202020
+URxvt*fading: 0
+URxvt*.fadeColor: #202020
+
+! url open
+URxvt.perl-ext-common: default,matcher
+URxvt.matcher.button: 1
+URxvt.url-launcher: /usr/bin/google-chrome-stable
+URxvt.matcher.rend.0: Uline Bold fg5
+URxvt.colorUL: #4682B4
+URxvt.keysym.C-Delete: perl:matcher:last
+URxvt.keysym.M-Delete: perl:matcher:list
+
+
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
