@@ -47,8 +47,8 @@ if has('autocmd') && !exists('autocommands_loaded')
     autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType *.c,*.cpp  set setlocal ts=2 sts=2 sw=4 expandtab
     autocmd FileType php setlocal ts=4 sts=4 sw=4 expandtab
-    autocmd FileType tex,latex setlocal ts=2 sts=2 sw=2 expandtab
-    autocmd FileType *.md.js :call SyntasticReset<cr>
+    "autocmd FileType tex,latex setlocal ts=2 sts=2 sw=2 expandtab
+    "autocmd FileType *.md.js :call SyntasticReset<cr>
     autocmd FileType markdown,textile setlocal textwidth=0 wrapmargin=0 wrap spell
     autocmd FileType .xml exe ":silent %!xmllint --format --recover - 2>/dev/null"
     autocmd FileType crontab setlocal nobackup nowritebackup
@@ -279,6 +279,7 @@ nmap \s :set ts=4 sts=4 sw=4 et<cr>
 nmap <leader>w :setf textile<cr> :Goyo<cr>
 
 " Move lines
+
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
 inoremap <A-j> <Esc>:m .+1<CR>==gi

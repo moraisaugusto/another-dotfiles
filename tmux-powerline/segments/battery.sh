@@ -3,8 +3,8 @@
 TMUX_POWERLINE_SEG_BATTERY_TYPE_DEFAULT="percentage"
 TMUX_POWERLINE_SEG_BATTERY_NUM_HEARTS_DEFAULT=5
 
-HEART_FULL="♥"
-HEART_EMPTY="♡"
+HEART_FULL=" "
+HEART_EMPTY="♡ "
 
 generate_segmentrc() {
 	read -d '' rccontents  << EORC

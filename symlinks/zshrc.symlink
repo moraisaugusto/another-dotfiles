@@ -117,6 +117,7 @@ alias aed-prob-1="tmuxinator start aed-prob-1"
 alias aed-prob-6="tmuxinator start aed-prob-6"
 alias bancocred="tmuxinator start bancocred"
 alias website="tmuxinator start website"
+alias mestrado="cd ~/Google\ Drive/Augusto\ Morais/Mestrado/ && clear && ls"
 
 
 
