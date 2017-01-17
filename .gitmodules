@@ -1,3 +1,11 @@
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
-	url = https://github.com/robbyrussell/oh-my-zsh.git
+	url = https://github.com/robbyrussell/oh-my-zsh
+
+[submodule "vim/bundle/Vundle.vim"]
+        path = vim/bundle/Vundle.vim
+        url = https://github.com/VundleVim/Vundle.vim.git
+
+[submodule "i3lock-fancy-multimonitor"]
+			path = extras/config/i3
+			url = https://github.com/aflavio/i3lock-fancy-multimonitor

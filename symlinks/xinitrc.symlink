@@ -1,0 +1,2 @@
+export XENVIRONMENT="$HOME/.Xresources"
+exec i3

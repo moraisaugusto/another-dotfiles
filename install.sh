@@ -164,7 +164,7 @@ main() {
     (git clone -q https://github.com/aflavio/another-dotfiles.git .dotfiles) & loaderSpinner " Clonning another dotfiles..."
 
     cd .dotfiles
-    (git submodule -q update --init --recursive)  & loaderSpinner " Clonning submodules (including oh-my-zsh)..."
+    (git submodule update --init --recursive)  & loaderSpinner " Clonning submodules (including oh-my-zsh)..."
     cd ..
 
     # creating symlinks
