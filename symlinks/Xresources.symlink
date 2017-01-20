@@ -1,2 +1,4 @@
-#include ".Xresources.d/rxvt-unicode"
-#include ".Xresources.d/solarized"
+!#include ".Xresources.d/rxvt-unicode"
+#include ".Xresources.d/rxvt-unicode-2"
+#include ".Xresources.d/gruvbox"
+!#include ".Xresources.d/solarized"
