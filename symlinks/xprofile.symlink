@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+# ~/.xinitrc
+#
+
+# change background
+feh --bg-scale /usr/share/backgrounds/background.png
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources 
+
+
+##
+# X
+##
+
+# custom fonts
+xset +fp /home/augusto/.fonts/tewi 
+xset +fp /home/augusto/.fonts/tamzen-font/bdf 
+xset fp rehash &
