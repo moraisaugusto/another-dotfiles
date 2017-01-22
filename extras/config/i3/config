@@ -36,8 +36,6 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 
-#################################################################################################
-
 # set workspace name
 set $tag1 "1;"
 set $tag2 "2;"
@@ -56,15 +54,12 @@ exec --no-startup-id i3-msg 'workspace $tag2; exec urxvt'
 exec --no-startup-id i3-msg 'workspace $tag3; exec spotify'
 exec --no-startup-id i3-msg 'workspace $tag4; exec thunar'
 
-
-
 #i3-gaps
 new_window 1pixel
 smart_borders on
 gaps inner 4
 gaps outer -4
 smart_gaps on
-
 
 #################################################################################################
 #
@@ -79,6 +74,8 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioStop exec playerctl stop
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+
+#################################################################################################
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
@@ -169,14 +166,13 @@ assign [class="URxvt"] 2
 for_window [class="Spotify"] move to workspace 3
 assign [class="Thunar"] 4
 
-
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#lock screen customized
 bindsym $mod+Control+l exec "$HOME/.dotfiles/extras/config/i3/i3lock-fancy-multimonitor/lock"
 
 # resize window (you can also use the mouse for that)
