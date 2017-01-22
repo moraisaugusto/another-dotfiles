@@ -526,9 +526,9 @@ call ApplyLocalSettings(expand('.'))
 set guifont=SourceCodePro-Regular
 
 " webdev icons
-let g:webdevicons_enable_nerdtree = 1
-let g:webdevicons_enabl = 1
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+"let g:webdevicons_enable_nerdtree = 1
+"let g:webdevicons_enabl = 1
+"let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 "let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
 
 " Vim colorscheme

@@ -4,7 +4,6 @@
 *italicFont: -lucy-tewi-medium-r-normal--11-90-100-100-c-60-iso10646-1
 !*font:       -*-tamzenforpowerline-medium-r-normal-*-12-*-*-*-*-*-*-*
 
-
 !URXVT SETTINGS
 URxvt*dynamicColors:   on
 URxvt.internalBorder:  10
@@ -21,7 +20,7 @@ URxvt*perl-lib:        /usr/lib/urxvt/perl/
 URxvt*perl-ext-common: default,matcher
 
 !CLICKABLE LINKS
-URxvt*url-launcher:   google-chrome
+URxvt*url-launcher:   google-chrome-stable
 URxvt*matcher.button: 1
 
 

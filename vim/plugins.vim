@@ -9,10 +9,11 @@ call plug#begin('~/.vim/plugged')
 " colorschemes
 "Plug 'chriskempson/base16-vim'
 "Plug 'Valloric/YouCompleteMe' "code completation
-"Plug 'jeaye/color_coded' "color coded for c and c++ 
+"Plug 'jeaye/color_coded' "color coded for c and c++
 
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons'
+"Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons'
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'mileszs/ack.vim'
 "Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-commentary'
