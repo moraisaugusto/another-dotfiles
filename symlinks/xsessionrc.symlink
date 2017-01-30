@@ -1,0 +1,5 @@
+
+# custom fonts
+xset +fp /home/augusto/.fonts/tewi
+xset +fp /home/augusto/.fonts/tamzen
+xset fp rehash
