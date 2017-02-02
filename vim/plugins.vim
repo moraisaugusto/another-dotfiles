@@ -11,6 +11,7 @@ call plug#begin('~/.vim/plugged')
 "Plug 'Valloric/YouCompleteMe' "code completation
 "Plug 'jeaye/color_coded' "color coded for c and c++ 
 
+Plug 'honza/vim-snippets'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons'
 Plug 'mileszs/ack.vim'

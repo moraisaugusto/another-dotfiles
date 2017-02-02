@@ -79,7 +79,11 @@ set foldnestmax=10 " deepest fold is 10 levels
 set nofoldenable " don't fold by default
 set foldlevel=1
 
-
+"snipMate - snippets
+let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
+let g:snipMate.scope_aliases = {}
+let g:snipMate.scope_aliases['html'] = 'html'
+"ActivateAddons vim-snippets snipmate
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => User Interface
