@@ -4,7 +4,10 @@
 !*font:        -*-tamzenforpowerline-medium-r-normal-*-14-*-*-*-*-*-*-*,-wuncon-siji-medium-*-*-*-10-*-*-*-*-*-*-*
 
 
-URxvt*font: -*-tamzenforpowerline-medium-r-normal-*-14-*-*-*-*-*-*-*,-wuncon-siji-medium-*-*-*-10-*-*-*-*-*-*-*,xft:Knack Nerd Font:Regular:pixelsize=8:antialias=true:hinting=true
+URxvt*font: -*-tamzenforpowerline-medium-r-normal-*-13-*-*-*-*-*-*-*,-wuncon-siji-medium-*-*-*-10-*-*-*-*-*-*-*,xft:Knack Nerd Font:Regular:pixelsize=8:antialias=true:hinting=true
+
+
+URxvt.letterSpace: 0
 
 !URXVT SETTINGS
 URxvt*dynamicColors:   on
@@ -16,6 +19,7 @@ URxvt*saveLines:       5000
 URxvt*cursorUnderline: false
 URxvt*cursorBlink:     true
 URxvt*allow_bold:      true
+URxvt.transparent:     false
 
 !PERL
 URxvt*perl-lib:        /usr/lib/urxvt/perl/
