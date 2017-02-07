@@ -1,7 +1,6 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.dotfiles/oh-my-zsh
-export LC_ALL=en_US.UTF-8
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -32,7 +31,7 @@ DISABLE_AUTO_TITLE="true"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+#COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -53,8 +52,6 @@ ZSH_TMUX_AUTOCONNECT=true
 ZSH_TMUX_AUTOSTART_ONCE=true
 ZSH_TMUX_FIXTERM=true
 
-# EXTRAS
-export QUOTING_STYLE=literal ls
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -62,8 +59,9 @@ export QUOTING_STYLE=literal ls
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git colored-man-pages emoji-clock tmux tmuxinator nmap systemadmin battery)
 
+# 
 # User configuration
-
+#
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export MANPATH="/usr/local/man:$MANPATH"
 
@@ -75,10 +73,17 @@ export JAVA_HOME
 export ANDROID_HOME
 export PATH
 
+# literal ls command
+export QUOTING_STYLE=literal ls
+
+# R Libs
+export R_LIBS_USER="~/.R_libs"
+
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -88,10 +93,7 @@ else
 fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+export ARCHFLAGS="-arch x86_64"
 
 # tmux
 PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
@@ -110,7 +112,7 @@ alias npm="node --max-old-space-size=6144 /usr/local/bin/npm"
   eval `ssh-agent -s` >&/dev/null
   ls ~/.ssh/id_rsa* | awk '!/pub$/ {system("ssh-add "$0 " 2>/dev/null")} '
 #fi
-#
+
 # Tmuxinator Projects
 alias pccp="tmuxinator start pccp"
 alias pccp-py="tmuxinator start pccp-py"
@@ -124,9 +126,4 @@ alias aed-prob-6="tmuxinator start aed-prob-6"
 alias bancocred="tmuxinator start bancocred"
 alias website="tmuxinator start website"
 alias mestrado="cd ~/Google\ Drive/Augusto\ Morais/Mestrado/ && clear && ls"
-
-
-
-# R Libs
-export R_LIBS_USER="~/.R_libs"
 
