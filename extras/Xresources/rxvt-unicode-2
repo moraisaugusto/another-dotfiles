@@ -4,6 +4,8 @@
 !*font:        -*-tamzenforpowerline-medium-r-normal-*-14-*-*-*-*-*-*-*,-wuncon-siji-medium-*-*-*-10-*-*-*-*-*-*-*
 
 
+!URxvt*font: -*-tamzenforpowerline-medium-r-normal-*-13-*-*-*-*-*-*-*,-wuncon-siji-medium-*-*-*-10-*-*-*-*-*-*-*
+!URxvt*font: -*-tamzenforpowerline-medium-r-normal-*-13-*-*-*-*-*-*-*
 URxvt*font: -*-tamzenforpowerline-medium-r-normal-*-13-*-*-*-*-*-*-*,-wuncon-siji-medium-*-*-*-10-*-*-*-*-*-*-*,xft:Knack Nerd Font:Regular:pixelsize=8:antialias=true:hinting=true
 
 
