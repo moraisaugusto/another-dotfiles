@@ -91,6 +91,8 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='vim'
 fi
+# GTK theme on QT
+export QT_QPA_PLATFORMTHEME=qt5ct
 
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
