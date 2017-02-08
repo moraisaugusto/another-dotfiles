@@ -126,7 +126,7 @@ label-mounted = "%{F#5b5b5b}%{F-} %percentage_used%%"
 
 [module/i3]
 type = internal/i3
-pin-workspaces = true 
+pin-workspaces = true
 strip-wsnumbers = true
 index-sort = true
 enable-click = true
@@ -150,7 +150,7 @@ ws-icon-default = 
 
 label-mode = %mode%
 label-mode-padding = 2
-label-mode-background = ${colors.primary} 
+label-mode-background = ${colors.primary}
 
 label-focused = %icon%
 label-focused-foreground = ${colors.foreground}
@@ -159,15 +159,15 @@ label-focused-background = ${colors.background-alt}
 label-focused-padding = 2
 
 label-unfocused-foreground = ${colors.foreground-alt}
-label-unfocused = %icon% 
+label-unfocused = %icon%
 label-unfocused-padding = 2
 
 label-visible = %icon%
 label-visible-padding = 2
 
 label-urgent = %icon%
-label-urgent-foreground = ${colors.foreground} 
-label-urgent-background = ${colors.alert} 
+label-urgent-foreground = ${colors.foreground}
+label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
 [module/mpd]
@@ -425,27 +425,24 @@ label-close-foreground = ${colors.secondary}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
-menu-0-0 = reboot
+menu-0-0 =  Reboot
 menu-0-0-exec = menu-open-1
-menu-0-1 = power off
+menu-0-1 =  Power off
 menu-0-1-exec = menu-open-2
-menu-0-2 = log out
+menu-0-2 =  Log out
 menu-0-2-exec = menu-open-3
-menu-0-3 = 
-menu-0-3-exec = "~/.i3/i3lock-fancy-multimonitor/lock &"
+menu-0-3 =  Lock
+menu-0-3-exec = lock &
 
-menu-1-0 = cancel
+menu-1-0 =  Reboot
 menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
 menu-1-1-exec = reboot
 
-menu-2-0 = power off
+menu-2-0 =  Power off
 menu-2-0-exec = shutdown now
-menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 
-menu-3-0 = log out
+menu-3-0 =  Log out
 menu-3-0-exec = i3-msg exit
-menu-3-1 = cancel
-menu-3-1-exec = menu-open-0
-; vim:ft=dosini
+menu-3-1-exec = logout
+

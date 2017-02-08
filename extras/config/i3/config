@@ -157,6 +157,7 @@ assign [class="URxvt"] 2
 for_window [class="Spotify"] move to workspace 3
 assign [class="Nautilus"] 4
 assign [class="mpv"] 5
+assign [class="VirtualBox"] 6
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
