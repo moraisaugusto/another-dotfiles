@@ -1,0 +1,36 @@
+rofi.switchers:         window,run,ssh
+rofi.opacity:           50
+rofi.width:             50
+rofi.lines:             5
+rofi.columns:           1
+rofi.font:              Roboto 12
+rofi.color-enabled: true
+rofi.color-window: #273238, #273238, #1e2529
+rofi.color-normal: #273238, #c1c1c1, #273238, #394249, #ffffff
+rofi.color-active: #273238, #80cbc4, #273238, #394249, #80cbc4
+rofi.color-urgent: #273238, #ff1844, #273238, #394249, #ff1844
+!rofi.fg:                #ffffff
+!rofi.bg:                #3b5998
+!rofi.hlfg:              #3b5998
+!rofi.hlbg:              #ffffff
+rofi.fake-transparency: false
+rofi.fake-background:   screenshot
+rofi.separator-style:   none
+rofi.fullscreen:        false
+rofi.bc:                white
+rofi.bw:                0
+rofi.location:          0
+rofi.padding:           30
+rofi.yoffset:           -150
+rofi.xoffset:           0
+rofi.fixed-num-lines:   false
+rofi.hmode:             false
+rofi.terminal:          urxvt
+rofi.ssh-client:        ssh
+rofi.ssh-command:       {terminal} -e {ssh-client} {host}
+rofi.run-command:       {cmd}
+rofi.run-shell-command: {terminal} -e {cmd}
+rofi.disable-history:   false
+rofi.levenshtein-sort:  true
+rofi.key:               mod4+d
+rofi.sidebar-mode:      true
