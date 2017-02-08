@@ -68,7 +68,7 @@ export MANPATH="/usr/local/man:$MANPATH"
 # jdk
 JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64/
 ANDROID_HOME=/usr/lib/android-sdk-linux
-PATH=$PATH:$HOME/bin:$JAVA_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+PATH=$PATH:$HOME/bin:$JAVA_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$HOME/.config/i3/i3lock-fancy-multimonitor
 export JAVA_HOME
 export ANDROID_HOME
 export PATH
