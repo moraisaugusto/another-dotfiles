@@ -156,6 +156,7 @@ assign [class="Google-chrome"] 1
 assign [class="URxvt"] 2
 for_window [class="Spotify"] move to workspace 3
 assign [class="Nautilus"] 4
+assign [class="mpv"] 5
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
