@@ -1,0 +1,27 @@
+//polkit.addRule(function(action, subject) {  
+//	var YES = polkit.Result.YES;  
+//	var permission = {  
+//		"org.freedesktop.udisks2.filesystem-mount": YES,  
+//		"org.freedesktop.udisks2.filesystem-mount-system": YES,  
+//		"org.freedesktop.udisks2.encrypted-unlock": YES,  
+//		"org.freedesktop.udisks2.eject-media": YES,  
+//		"org.freedesktop.udisks2.power-off-drive": YES  
+//	};  
+//	if (subject.isInGroup("storage")) {  
+//		return permission\[action.id\];  
+//	}  
+//});
+
+//polkit.addRule(function(action, subject) {
+//	if ((action.id == "org.freedesktop.udisks2.filesystem-mount-system" ||
+//		action.id == "org.freedesktop.udisks2.filesystem-mount") &&
+//		subject.isInGroup("wheel")) {
+//		return polkit.Result.YES;
+//	}
+//});
+//
+polkit.addRule(function(action, subject) {
+	if (action.id == "org.freedesktop.udisks2.filesystem-mount-system" && subject.isInGroup("wheel")) {
+		return polkit.Result.YES;
+	}
+});

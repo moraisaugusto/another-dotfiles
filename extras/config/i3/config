@@ -213,4 +213,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec xrandr && xrandr --output HDMI1 --primary --mode 1680x1050 --pos 0x0 --rotate normal --output LVDS1 --mode 1366x768 --pos 1680x0 --rotate normal --output VIRTUAL1 --off --output DP1 --off --output VGA1 --off
 
 # Background
-exec --no-startup-id sleep 1 & feh --bg-fill ~/Google\ Drive/Augusto\ Morais/Backgrounds/Mel-wallpaper702248-2013-01-11-1959.jpg ~/Google\ Drive/Augusto\ Morais/Backgrounds/42418.jpg
+exec --no-startup-id sleep 0.1 & feh --bg-fill ~/Google\ Drive/Augusto\ Morais/Backgrounds/Mel-wallpaper702248-2013-01-11-1959.jpg ~/Google\ Drive/Augusto\ Morais/Backgrounds/42418.jpg
+
+# mount partitions as user
+#exec --no-startup-id "devmon --no-gui"
