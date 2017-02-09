@@ -71,7 +71,7 @@ font-0 = Knack\ Nerd\ Font:pixelsize=10;1
 
 modules-left =  i3 xwindow
 modules-center = date
-modules-right = backlight volume pkg wlan battery temperature powermenu
+modules-right = monitor backlight volume pkg wlan battery temperature powermenu
 
 tray-position = left
 tray-padding = 4
@@ -443,3 +443,10 @@ menu-2-0-exec = shutdown now
 menu-3-0 =  Log out
 menu-3-0-exec = i3-msg exit
 
+[module/monitor]
+type = custom/script
+
+label = 
+;this is just a garbage to it works
+exec = echo ""
+click-left = arandr
