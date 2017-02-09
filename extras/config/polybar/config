@@ -435,14 +435,11 @@ menu-0-3 =  Lock
 menu-0-3-exec = lock &
 
 menu-1-0 =  Reboot
-menu-1-0-exec = menu-open-0
-menu-1-1-exec = reboot
+menu-1-0-exec = reboot
 
 menu-2-0 =  Power off
 menu-2-0-exec = shutdown now
-menu-2-1-exec = menu-open-0
 
 menu-3-0 =  Log out
 menu-3-0-exec = i3-msg exit
-menu-3-1-exec = logout
 
