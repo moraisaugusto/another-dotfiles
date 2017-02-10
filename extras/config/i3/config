@@ -57,9 +57,9 @@ exec --no-startup-id i3-msg 'workspace $tag4; exec nautilus'
 #i3-gaps
 new_window 1pixel
 smart_borders on
-gaps inner 4
-gaps outer -4
-smart_gaps on
+gaps inner 0
+#gaps outer 10
+#smart_gaps on
 
 #################################################################################################
 #
@@ -167,7 +167,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 #lock screen customized
 bindsym $mod+Control+l exec "$HOME/.dotfiles/extras/config/i3/i3lock-fancy-multimonitor/lock"
-#monitor configuration 
+#monitor configuration
 bindsym $mod+Shift+p exec arandr
 
 # resize window (you can also use the mouse for that)

@@ -116,6 +116,7 @@ alias npm="node --max-old-space-size=6144 /usr/local/bin/npm"
 #fi
 
 # Tmuxinator Projects
+alias carnaval="tmuxinator start ondetembloco"
 alias pccp="tmuxinator start pccp"
 alias pccp-py="tmuxinator start pccp-py"
 alias spotify-dl="tmuxinator start spotify-dl"

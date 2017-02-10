@@ -426,22 +426,13 @@ label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
 menu-0-0 =  Reboot
-menu-0-0-exec = menu-open-1
+menu-0-0-exec = reboot
 menu-0-1 =  Power off
-menu-0-1-exec = menu-open-2
+menu-0-1-exec = showdown now
 menu-0-2 =  Log out
-menu-0-2-exec = menu-open-3
+menu-0-2-exec = i3-msg exit
 menu-0-3 =  Lock
 menu-0-3-exec = lock &
-
-menu-1-0 =  Reboot
-menu-1-0-exec = reboot
-
-menu-2-0 =  Power off
-menu-2-0-exec = shutdown now
-
-menu-3-0 =  Log out
-menu-3-0-exec = i3-msg exit
 
 [module/monitor]
 type = custom/script

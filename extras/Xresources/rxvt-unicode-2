@@ -13,15 +13,15 @@ URxvt*font: -*-tamzenforpowerline-medium-r-normal-*-13-*-*-*-*-*-*-*,-wuncon-sij
 URxvt.letterSpace: 0
 
 !URXVT SETTINGS
-URxvt*dynamicColors:   on
+URxvt.dynamicColors:   on
 URxvt.internalBorder:  10
-URxvt*lineSpace:       0
-URxvt*scrollBar:       false
+URxvt.lineSpace:       0
+URxvt.scrollBar:       false
 URxvt.geometry:        96x24
-URxvt*saveLines:       5000
-URxvt*cursorUnderline: false
-URxvt*cursorBlink:     true
-URxvt*allow_bold:      true
+URxvt.saveLines:       5000
+URxvt.cursorUnderline: false
+URxvt.cursorBlink:     true
+URxvt.allow_bold:      true
 URxvt.transparent:     false
 
 !PERL
