@@ -208,3 +208,8 @@ exec xrandr && xrandr --output HDMI1 --primary --mode 1680x1050 --pos 0x0 --rota
 # Background
 exec sleep 2 && feh --bg-fill ~/Google\ Drive/Augusto\ Morais/Backgrounds/Mel-wallpaper702248-2013-01-11-1959.jpg ~/Google\ Drive/Augusto\ Morais/Backgrounds/42418.jpg
 
+# autolock i3
+exec xautolock  -time 15 -locker '~/.config/i3/i3lock-fancy-multimonitor/lock' &
+
+
+
