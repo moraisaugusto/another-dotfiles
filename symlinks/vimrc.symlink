@@ -283,13 +283,14 @@ nmap \s :set ts=4 sts=4 sw=4 et<cr>
 nmap <leader>w :setf textile<cr> :Goyo<cr>
 
 " Move lines
+"set termencoding=utf8 "necessary to work with accents
 
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-inoremap <A-j> <Esc>:m .+1<CR>==gi
-inoremap <A-k> <Esc>:m .-2<CR>==gi
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
+nnoremap <M-j> :m .+1<CR>==
+nnoremap <M-k> :m .-2<CR>==
+inoremap <M-k> <Esc>:m .-2<CR>==gi
+inoremap <M-j> <Esc>:m .+1<CR>==gi
+vnoremap <M-j> :m '>+1<CR>gv=gv
+vnoremap <M-k> :m '<-2<CR>gv=gv
 
 " Permanent 'very magic' mode
 "nnoremap / /\v
@@ -504,7 +505,6 @@ let g:ctrlp_working_path_mode = 2
 let g:vim_json_syntax_conceal = 0
 
 "let g:SuperTabCrMapping = 0
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Themes

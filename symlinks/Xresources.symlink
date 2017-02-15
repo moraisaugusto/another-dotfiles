@@ -1,5 +1,6 @@
 !#include ".Xresources.d/rxvt-unicode"
 #include ".Xresources.d/rxvt-unicode-2"
+#include ".Xresources.d/alt-keys-fixed"
 #include ".Xresources.d/rofi"
 #include ".Xresources.d/gruvbox"
 !#include ".Xresources.d/solarized"
