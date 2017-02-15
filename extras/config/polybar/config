@@ -71,7 +71,7 @@ font-0 = Knack\ Nerd\ Font:pixelsize=10;1
 
 modules-left =  i3 xwindow
 modules-center = date
-modules-right = monitor backlight volume pkg wlan battery temperature powermenu
+modules-right = backlight volume pkg wlan battery temperature powermenu
 
 tray-position = left
 tray-padding = 4
@@ -199,9 +199,9 @@ bar-progress-fill = ─
 bar-progress-empty = ─
 
 [module/backlight]
-type = internal/backlight
+type = internal/xbacklight
 card = intel_backlight
-click-left = connman-gtk
+output = LVDS-1 
 
 format = <label> <bar>
 label = ""
