@@ -212,8 +212,8 @@ exec sleep 2 && feh --bg-fill ~/Google\ Drive/Augusto\ Morais/Backgrounds/Mel-wa
 exec xautolock  -time 15 -locker '~/.config/i3/i3lock-fancy-multimonitor/lock' &
 
 # screenshot - 
-bindsym Control+Shift+Print exec imgur-screenshot
-#bindsym Shift+Print exec scrot -s -e 'mv $f ~/Pictures/$f'
+bindsym --release Control+Shift+Print exec imgur-screenshot
+bindsym --release Shift+Print exec scrot -s -e 'mv $f ~/Pictures/$f'
 bindsym Print exec scrot -e 'mv $f ~/Pictures/$f'
 
 
