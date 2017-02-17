@@ -151,6 +151,9 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+# Remove title for all apps
+for_window [class="^.*"] border pixel 1
+
 # Workspace assignment #
 assign [class="Google-chrome"] 1
 assign [class="URxvt"] 2
@@ -158,6 +161,7 @@ for_window [class="Spotify"] move to workspace 3
 assign [class="Nautilus"] 4
 assign [class="mpv"] 5
 assign [class="VirtualBox"] 6
+
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
