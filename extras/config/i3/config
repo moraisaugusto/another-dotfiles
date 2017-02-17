@@ -216,4 +216,7 @@ bindsym --release Control+Shift+Print exec imgur-screenshot
 bindsym --release Shift+Print exec scrot -s -e 'mv $f ~/Pictures/$f'
 bindsym Print exec scrot -e 'mv $f ~/Pictures/$f'
 
+# insync
+exec insync start
+
 
