@@ -73,9 +73,9 @@ modules-left =  i3 xwindow
 modules-center = date
 modules-right = backlight volume pkg lw temperature filesystem-home filesystem-slash wlan battery powermenu
 
-tray-position = left
+tray-position = right
 tray-padding = 4
-;tray-transparent = true
+; tray-transparent = true
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
