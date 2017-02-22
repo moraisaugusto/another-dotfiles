@@ -105,8 +105,8 @@ alias mpv="mpv --hwdec=vaapi --vo=opengl"
 alias vi=vim
 
 
-alias fix-win-parts="sudo ntfsfix /dev/sda4 && sudo ntfsfix /dev/sda5"
-alias npm="node --max-old-space-size=6144 /usr/local/bin/npm"
+#alias fix-win-parts="sudo ntfsfix /dev/sda4 && sudo ntfsfix /dev/sda5"
+#alias npm="node --max-old-space-size=6144 /usr/local/bin/npm"
 
 #ssh keys
 #if [ -z "$SSH_AUTH_SOCK" ] ; then
