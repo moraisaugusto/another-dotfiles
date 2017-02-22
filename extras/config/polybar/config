@@ -59,11 +59,11 @@ border-bottom-color = ${colors.background}
 
 spacing = 1
 padding-left = 0
-padding-right = 2
+padding-right = 1
 module-margin-left = 1
-module-margin-right = 2
+module-margin-right = 1
 
-font-0 = Knack\ Nerd\ Font:pixelsize=10;1
+font-0 = Knack\ Nerd\ Font:pixelsize=9;1
 ;font-0 = hack:pixelsize=12;1
 ;font-1 = unifont:size=6:heavy:fontformat=truetype;-2
 ;font-2 = siji:pixelsize=10;0
@@ -113,14 +113,14 @@ type = internal/fs
 interval = 25
 
 mount-0 = /home
-label-mounted = "%{F#5b5b5b}%{F-} %percentage_used%"
+label-mounted = "%{F#5b5b5b}%{F-} %percentage_used%%"
 
 [module/filesystem-slash]
 type = internal/fs
 interval = 25
 
 mount-0 = /
-label-mounted = "%{F#5b5b5b}%{F-} %percentage_used%"
+label-mounted = "%{F#5b5b5b}%{F-} %percentage_used%%"
 
 ;label-unmounted = %mountpoint%: not mounted
 ;label-unmounted-foreground = ${colors.foreground-alt}
@@ -264,7 +264,7 @@ interval = 3.0
 ;format-connected-prefix = " "
 ;format-connected-prefix-foreground = #5b
 
-format-connected-underline = #9f78e1
+;format-connected-underline = #9f78e1
 ;format-disconnected-underline = ${self.format-connected-underline}
 
 ;label-connected = "%{A1:connman-gtk &:}%essid%%{A}"
@@ -314,7 +314,7 @@ type = internal/date
 interval = 30
 
 date = "%d/%m/%y"
-date-alt = " %d"
+date-alt = "%d/%m/%y"
 
 time = "%H:%M"
 time-alt =  %H:%M
@@ -394,9 +394,9 @@ thermal-zone = 6
 warn-temperature = 80
 
 format = <ramp> <label>
-format-underline = #f50a4d
+;format-underline = #f50a4d
 format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
+;format-warn-underline = ${self.format-underline}
 
 label = %temperature%
 label-warn = %temperature%
@@ -412,7 +412,7 @@ type = custom/script
 ;tail = true
 interval = 1200
 format = <label>
-format-underline = #ff5c57
+;format-underline = #ff5c57
 label = "%output:0:30%"
 exec = ~/.config/polybar/pkg.sh
 exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
