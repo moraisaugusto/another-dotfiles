@@ -117,6 +117,8 @@ alias vi=vim
 
 # Tmuxinator Projects
 alias carnaval="tmuxinator start ondetembloco"
+alias unixSystem="tmuxinator start unixSystem"
+alias fakeBusy="tmuxinator start fakeBusy"
 alias pccp="tmuxinator start pccp"
 alias pccp-py="tmuxinator start pccp-py"
 alias spotify-dl="tmuxinator start spotify-dl"
