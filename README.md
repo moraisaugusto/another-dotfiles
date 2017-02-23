@@ -3,10 +3,17 @@
 
 __Another dotfiles__ is a collection of ZSH and VIM configurations based on [robbyrussell/oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) and [nicknisi/dotfiles](https://github.com/nicknisi/dotfiles). 
 
-![alt tag](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/demo.gif)
+![Installation](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/demo.gif)
 
 * power line used
 https://github.com/powerline/powerline
+
+### Preview (Arch, i3, vim...)
+
+![Vim and htop](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/image-2.gif)
+
+![neofetch and vim](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/image-3.gif)
+
 
 ### Prerequisites
 
