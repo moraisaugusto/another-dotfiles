@@ -23,6 +23,7 @@ URxvt.cursorUnderline: false
 URxvt.cursorBlink:     true
 URxvt.allow_bold:      true
 URxvt.transparent:     false
+URxvt*iso14755:        false
 
 !PERL
 URxvt*perl-lib:        /usr/lib/urxvt/perl/
