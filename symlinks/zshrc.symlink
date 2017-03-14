@@ -66,7 +66,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.gem/ruby/2.4.0/bin
 export MANPATH="/usr/local/man:$MANPATH"
 
 # jdk
-JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64/
+JAVA_HOME=/usr/lib/jvm/java-8-openjdk/jre/
 ANDROID_HOME=/usr/lib/android-sdk-linux
 PATH=$PATH:$HOME/bin:$JAVA_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$HOME/.config/i3/i3lock-fancy-multimonitor
 export JAVA_HOME
