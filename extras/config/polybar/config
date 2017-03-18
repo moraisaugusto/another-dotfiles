@@ -432,10 +432,12 @@ menu-0-0 =  Reboot
 menu-0-0-exec = reboot
 menu-0-1 =  Power off
 menu-0-1-exec = shutdown now
-menu-0-2 =  Log out
-menu-0-2-exec = i3-msg exit
-menu-0-3 =  Lock
-menu-0-3-exec = lock &
+menu-0-2 =  Sleep
+menu-0-2-exec = systemctl hybrid-sleep
+menu-0-3 =  Log out
+menu-0-3-exec = i3-msg exit
+menu-0-4 =  Lock
+menu-0-4-exec = lock &
 
 [module/monitor]
 type = custom/script
