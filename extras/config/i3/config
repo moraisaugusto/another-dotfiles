@@ -33,6 +33,9 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
+# move workspace to left
+bindsym $mod+m move workspace to output left
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
