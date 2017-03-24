@@ -60,7 +60,7 @@ exec --no-startup-id i3-msg 'workspace $tag4; exec nautilus'
 #i3-gaps
 new_window 1pixel
 smart_borders on
-gaps inner 2 
+gaps inner 0 
 #gaps outer 5
 #smart_gaps on
 
