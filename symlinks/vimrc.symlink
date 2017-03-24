@@ -298,6 +298,9 @@ vnoremap <M-k> :m '<-2<CR>gv=gv
 "nnoremap :g/ :g/\v
 "nnoremap :g// :g//
 
+" Unmapping keys
+iunmap ê
+iunmap ë
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Functions
