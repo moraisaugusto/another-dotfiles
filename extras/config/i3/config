@@ -60,8 +60,8 @@ exec --no-startup-id i3-msg 'workspace $tag4; exec nautilus'
 #i3-gaps
 new_window 1pixel
 smart_borders on
-gaps inner 0
-#gaps outer 10
+gaps inner 2 
+#gaps outer 5
 #smart_gaps on
 
 #################################################################################################
@@ -214,7 +214,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec xrandr && xrandr --output HDMI1 --primary --mode 1680x1050 --pos 0x0 --rotate normal --output LVDS1 --mode 1366x768 --pos 1680x0 --rotate normal --output VIRTUAL1 --off --output DP1 --off --output VGA1 --off
 
 # Background
-exec sleep 2 && feh --bg-fill ~/Google\ Drive/Augusto\ Morais/Backgrounds/Mel-wallpaper702248-2013-01-11-1959.jpg ~/Google\ Drive/Augusto\ Morais/Backgrounds/42418.jpg
+exec sleep 2 && feh --bg-fill ~/Google\ Drive/Augusto\ Morais/Backgrounds/mount.png ~/Google\ Drive/Augusto\ Morais/Backgrounds/Energy_sunset.png
 
 # autolock i3
 exec xautolock  -time 15 -locker '~/.config/i3/i3lock-fancy-multimonitor/lock' &

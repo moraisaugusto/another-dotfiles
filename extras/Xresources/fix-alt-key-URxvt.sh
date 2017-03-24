@@ -4,7 +4,7 @@ import locale
 
 locale.setlocale(locale.LC_ALL, "")
 encoding = locale.getlocale()[1]
-ignoredChars = ['f', 'b']
+ignoredChars = ['f', 'b', 'ć']
 
 print('!; mapping rxvt keys for alt work on vim')
 print('!; ignored keys: ', end='')

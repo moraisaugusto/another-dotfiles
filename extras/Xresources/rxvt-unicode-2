@@ -33,6 +33,15 @@ URxvt*perl-ext-common: default,matcher
 URxvt*url-launcher:   google-chrome-stable
 URxvt*matcher.button: 1
 
+!SCROLLBAR
+!URxvt*termName:         rxvt
+!URxvt*borderless: 1
+!URxvt*scrollBar:        false
+!URxvt*scrollBar_right:  true
+!URxvt*scrollColor:      #000000
+!URxvt*tintColor:                        #000000
+!URxvt*shading:                         0
+!URxvt*inheritPixmap:                false
 
 !MISC
 Xcursor*size: 16
