@@ -104,6 +104,9 @@ PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -
 alias mpv="mpv --hwdec=vaapi --vo=opengl"
 alias vi=vim
 
+# beep alert
+alias beep="~/.dotfiles/scripts/bin/beep.sh 1000 200"
+
 
 #alias fix-win-parts="sudo ntfsfix /dev/sda4 && sudo ntfsfix /dev/sda5"
 #alias npm="node --max-old-space-size=6144 /usr/local/bin/npm"
