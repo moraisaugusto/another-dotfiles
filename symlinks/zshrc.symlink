@@ -115,12 +115,7 @@ alias vi=vim
 #fi
 
 # Tmuxinator Projects
-alias carnaval="tmuxinator start ondetembloco"
-alias unixSystem="tmuxinator start unixSystem"
-alias fakeBusy="tmuxinator start fakeBusy"
-alias csp="tmuxinator start csp"
-alias sbpo-2017="tmuxinator start sbpo-2017"
-alias spotify-dl="tmuxinator start spotify-dl"
-alias website="tmuxinator start website"
-alias mestrado="cd ~/Google\ Drive/Augusto\ Morais/Mestrado/ && clear && ls"
+if [ -f ~/.zshAlias ]; then
+    source ~/.zshAlias
+fi
 
