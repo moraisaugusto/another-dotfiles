@@ -172,6 +172,7 @@ main() {
     checkSymlink $DOTFILES/fonts .fonts
     checkSymlink $DOTFILES/extras/oh-my-zsh/custom/themes $DOTFILES/oh-my-zsh/custom/themes
     checkSymlink $DOTFILES/extras/oh-my-zsh/custom/plugins/tmux $DOTFILES/oh-my-zsh/custom/plugins/tmux
+    checkSymlink $DOTFILES/symlinkis/zshAlias.symlink $HOME/.zshAlias
 
     linkables=$( find -H "$DOTFILES" -name '*.symlink' )
     for file in $linkables ; do
