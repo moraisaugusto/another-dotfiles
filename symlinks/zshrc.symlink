@@ -59,10 +59,10 @@ ZSH_TMUX_FIXTERM=true
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git colored-man-pages emoji-clock tmux tmuxinator nmap systemadmin battery extract)
 
-# 
+#
 # User configuration
 #
-export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.gem/ruby/2.4.0/bin
+export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.gem/ruby/2.4.0/bin:/opt/gams/gams24.8_linux_x64_64_sfx
 export MANPATH="/usr/local/man:$MANPATH"
 
 # jdk
@@ -104,10 +104,6 @@ PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -
 alias mpv="mpv --hwdec=vaapi --vo=opengl"
 alias vi=vim
 
-# beep alert
-alias beep="~/.dotfiles/scripts/bin/beep.sh 1000 200"
-
-
 #alias fix-win-parts="sudo ntfsfix /dev/sda4 && sudo ntfsfix /dev/sda5"
 #alias npm="node --max-old-space-size=6144 /usr/local/bin/npm"
 
@@ -122,17 +118,9 @@ alias beep="~/.dotfiles/scripts/bin/beep.sh 1000 200"
 alias carnaval="tmuxinator start ondetembloco"
 alias unixSystem="tmuxinator start unixSystem"
 alias fakeBusy="tmuxinator start fakeBusy"
-alias pccp="tmuxinator start pccp"
+alias csp="tmuxinator start csp"
 alias sbpo-2017="tmuxinator start sbpo-2017"
-alias pccp-py="tmuxinator start pccp-py"
 alias spotify-dl="tmuxinator start spotify-dl"
-alias site-mary="tmuxinator start site-mary"
-alias ec-prob-1="tmuxinator start ec-prob-1"
-alias ec-prob-2="tmuxinator start ec-prob-2"
-alias ec-prob-6="tmuxinator start ec-prob-6"
-alias aed-prob-1="tmuxinator start aed-prob-1"
-alias aed-prob-6="tmuxinator start aed-prob-6"
-alias bancocred="tmuxinator start bancocred"
 alias website="tmuxinator start website"
 alias mestrado="cd ~/Google\ Drive/Augusto\ Morais/Mestrado/ && clear && ls"
 
