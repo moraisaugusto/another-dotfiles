@@ -465,8 +465,20 @@ nmap <silent> <leader>t :CtrlP<cr>
 nmap <silent> <leader>r :CtrlPBuffer<cr>
 nnoremap <leader>n :CtrlPTag<cr>
 let g:ctrlp_map='<leader>t'
-let g:ctrlp_dotfiles=1
-let g:ctrlp_working_path_mode = 'ra'
+"let g:ctrlp_dotfiles=1
+"let g:ctrlp_working_path_mode = 'ra'
+
+" CtrlP ignore patterns
+let g:ctrlp_custom_ignore = {
+            \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+            \ 'file': '\v\.(exe|so|dll|o)$',
+            \ }
+
+"" only show files that are not ignored by git
+"let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+"
+"" search the nearest ancestor that contains .git, .hg, .svn
+"let g:ctrlp_working_path_mode = 2
 
 " Fugitive Shortcuts
 nmap <silent> <leader>gs :Gstatus<cr>
@@ -490,16 +502,6 @@ let g:syntastic_javascript_checkers = ['jshint', 'jscs']
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 
-" CtrlP ignore patterns
-let g:ctrlp_custom_ignore = {
-            \ 'dir': '\.git$\|node_modules$\|bower_components$\|\.hg$\|\.svn$',
-            \ 'file': '\.exe$\|\.so|\.dll$'
-            \ }
-" only show files that are not ignored by git
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-
-" search the nearest ancestor that contains .git, .hg, .svn
-let g:ctrlp_working_path_mode = 2
 
 " don't hide quotes in json files
 let g:vim_json_syntax_conceal = 0
