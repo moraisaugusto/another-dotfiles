@@ -177,6 +177,8 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+Control+l exec "$HOME/.dotfiles/extras/config/i3/i3lock-fancy-multimonitor/lock"
 #monitor configuration
 bindsym $mod+Shift+p exec arandr
+#urxvt terminal
+bindsym $mod+F12 exec urxvt
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
