@@ -164,7 +164,8 @@ for_window [class="Spotify"] move to workspace 3
 assign [class="Nautilus"] 4
 assign [class="mpv"] 5
 assign [class="VirtualBox"] 6
-assign [class="Transmission-gtk"] 8
+assign [class="Transmission-gtk"] 0
+assign [class="Steam"] 8
 
 
 # reload the configuration file
