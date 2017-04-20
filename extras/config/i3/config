@@ -180,6 +180,8 @@ bindsym $mod+Control+l exec "$HOME/.dotfiles/extras/config/i3/i3lock-fancy-multi
 bindsym $mod+Shift+p exec arandr
 #urxvt terminal
 bindsym $mod+F12 exec urxvt
+#sound settings
+bindsym $mod+Shift+s exec pavucontrol
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

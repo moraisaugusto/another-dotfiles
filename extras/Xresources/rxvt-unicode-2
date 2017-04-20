@@ -6,8 +6,8 @@
 !URxvt*font: -*-tamzenforpowerline-medium-r-normal-*-13-*-*-*-*-*-*-*,-wuncon-siji-medium-*-*-*-10-*-*-*-*-*-*-*
 !URxvt*font: -*-tamzenforpowerline-medium-r-normal-*-13-*-*-*-*-*-*-*,-wuncon-siji-medium-*-*-*-10-*-*-*-*-*-*-*,-*-unifont-medium-*-*-*-16-*-*-*-*-*-*-*
 !URxvt*font: -*-tamzenforpowerline-medium-r-normal-*-13-*-*-*-*-*-*-*
+!siji font doesnt fit well
 URxvt*font: -*-tamzenforpowerline-medium-r-normal-*-13-*-*-*-*-*-*-*,-*-siji-medium-r-normal-*-10-100-75-*-*-*-*-*,xft:Knack Nerd Font:Regular:pixelsize=8:antialias=true:hinting=true
-
 
 !urxvt settings
 URxvt.letterSpace:     0
