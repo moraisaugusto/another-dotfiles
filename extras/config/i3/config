@@ -167,6 +167,9 @@ assign [class="VirtualBox"] 6
 assign [class="Transmission-gtk"] 0
 assign [class="Steam"] 8
 
+# Setting app as floating
+for_window [class="Subdownloader"] floating enable
+for_window [class="KeePass2"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
