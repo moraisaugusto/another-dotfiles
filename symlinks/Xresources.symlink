@@ -1,6 +1,12 @@
+! styles
 !#include ".Xresources.d/rxvt-unicode"
 #include ".Xresources.d/rxvt-unicode-2"
+
+! misc
 #include ".Xresources.d/alt-keys-fixed"
 #include ".Xresources.d/rofi"
+
+! themes
 #include ".Xresources.d/gruvbox"
+!#include ".Xresources.d/neon"
 !#include ".Xresources.d/solarized"
