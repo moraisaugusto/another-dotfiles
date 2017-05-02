@@ -36,10 +36,8 @@ Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'moll/vim-node', { 'for': 'javascript' }
 Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
-Plug 'mxw/vim-jsx', { 'for': 'jsx' }
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-"Plug 'mustache/vim-mustache-handlebars'
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' }
 Plug 'wavded/vim-stylus', { 'for': ['stylus', 'markdown'] }
 Plug 'groenewege/vim-less', { 'for': 'less' }
@@ -50,6 +48,8 @@ Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'timcharper/textile.vim', { 'for': 'textile' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python'}
+Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
+Plug 'majutsushi/tagbar'
 "
 " Colors schemes
 Plug 'morhetz/gruvbox'

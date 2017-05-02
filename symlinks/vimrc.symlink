@@ -133,7 +133,7 @@ set relativenumber " show relative line numbers
 set wrapmargin=8 " wrap lines when coming within n characters from side
 set linebreak " set soft wrapping
 set showbreak=… " show ellipsis at breaking
-set colorcolumn=100 " show column width
+set colorcolumn=120 " show column width
 set autoindent " automatically set indent of new line
 set smartindent
 
@@ -165,7 +165,7 @@ set directory=~/.tmp,~/tmp,/var/tmp,/tmp
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "map <F8> : !gcc -lstdc++ -lm % && ./a.out <CR>
 
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/color_coded/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
 
@@ -173,8 +173,8 @@ let g:ycm_key_list_previous_completion=[]
 let g:color_coded_enabled = 1
 let g:color_coded_filetypes = ['c', 'cpp', 'objc']
 
-"nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-"nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <F6> :YcmForceCompileAndDiagnostics<CR>
 ""Do not ask when starting vim
 "let g:syntastic_always_populate_loc_list = 1
 "let g:ycm_collect_identifiers_from_tags_files = 1
@@ -253,6 +253,7 @@ map <silent> <C-k> :call WinMove('k')<cr>
 map <silent> <C-l> :call WinMove('l')<cr>
 
 " toggle cursor line
+set cursorline!
 nnoremap <leader>i :set cursorline!<cr>
 
 " scroll the viewport faster
@@ -449,6 +450,12 @@ nnoremap <silent> <leader>u :call HtmlUnEscape()<cr>
 " => Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" ack plugin
+nnoremap <Leader>a :Ack!<Space>
+
+"tagbar
+nmap <F7> :TagbarToggle<CR>
+
 " close NERDTree after a file is opened
 let g:NERDTreeQuitOnOpen=0
 " show hidden files in NERDTree
@@ -514,7 +521,7 @@ let g:vim_json_syntax_conceal = 0
 
 " airline options
 let g:airline_powerline_fonts=1
-let g:airline_theme='gruvbox'
+let g:airline_theme='nord'
 
 " airline symbols - customized for unicode
 if !exists('g:airline_symbols')
@@ -548,8 +555,8 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
-let g:gruvbox_termcolors=256
-let g:gruvbox_bold = 0
+let g:nord_termcolors=256
+let g:nord_bold = 0
 
 " GUI mode - Disabled
 "if (has("gui_running"))
@@ -572,7 +579,7 @@ let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
 
 " Vim colorscheme
 set background=dark
-colorscheme gruvbox
+colorscheme nord   
 
 
 " Protect large files from sourcing and other overhead.

@@ -7,6 +7,7 @@
 #include ".Xresources.d/rofi"
 
 ! themes
-#include ".Xresources.d/gruvbox"
-!#include ".Xresources.d/neon"
-!#include ".Xresources.d/solarized"
+#include ".Xresources.d/schemes/nord"
+!#include ".Xresources.d/schemes/gruvbox"
+!#include ".Xresources.d/schemes/neon"
+!#include ".Xresources.d/schemes/solarized"
