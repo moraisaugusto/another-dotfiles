@@ -579,8 +579,7 @@ let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
 
 " Vim colorscheme
 set background=dark
-colorscheme nord   
-
+colorscheme nord
 
 " Protect large files from sourcing and other overhead.
 " Files become read only
