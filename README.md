@@ -34,15 +34,15 @@ https://github.com/powerline/powerline
     * Terminal (guake): Source Code Pro for Powerline - 10 
     * Guake (color scheme): Frontend Delight
 
-### Gnome ###
+### Gnome (I don't use gnome anymore) ###
 
-* Settings
+* GTK theme configuration
 
-# Dump Gnome current confs
+#### Dump Gnome current confs
 $ gconftool-2 --dump / > gconf_dump.xml
 $ gconftool-2 --unload clean-settings.xml
 
-# Load Gnome confs
+#### Load Gnome confs
 $ gconftool-2 --load gconf_dump.xml
 
 * Tweaks
