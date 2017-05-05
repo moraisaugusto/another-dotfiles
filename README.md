@@ -5,9 +5,9 @@ __Another dotfiles__ is a collection of ZSH and VIM configurations based on [rob
 
 ### Preview (Arch, i3, vim...)
 
-![screen 1](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/screen1.png)
+![screen 1](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/screenX.png)
 ![screen 2](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/screen2.png)
-![screen 3](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/screen3.png)
+![screen 1](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/screen1.png)
 ![screen 4](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/screen4.png)
 
 
