@@ -10,9 +10,10 @@ https://github.com/powerline/powerline
 
 ### Preview (Arch, i3, vim...)
 
-![Vim and htop](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/image-2.gif)
-
-![neofetch and vim](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/image-3.gif)
+![screen 1](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/screen1.png)
+![screen 2](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/screen2.png)
+![screen 3](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/screen3.png)
+![screen 4](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/screen4.png)
 
 
 ### Prerequisites
@@ -99,11 +100,6 @@ colorscheme solizared
 ```
 
 Vim Themes are based on Airline [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline). There are some Colorscheme installed too [Tomorrow](https://github.com/chriskempson/tomorrow-theme). 
-
-
-![Shell](http://augustomorais.com.br/shell.png)
-
-![Vim](http://augustomorais.com.br/vim.png)
 
 
 ## License
