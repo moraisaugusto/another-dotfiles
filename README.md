@@ -3,9 +3,6 @@
 
 __Another dotfiles__ is a collection of ZSH and VIM configurations based on [robbyrussell/oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) and Personal settings.
 
-* power line used
-https://github.com/powerline/powerline
-
 ### Preview (Arch, i3, vim...)
 
 ![screen 1](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/screen1.png)
@@ -23,6 +20,7 @@ https://github.com/powerline/powerline
 * `vim`
 * `xsel` # for copy/paste tmux/X11
 
+
 ### Fonts ###
 
 * Gnome
@@ -34,15 +32,16 @@ https://github.com/powerline/powerline
     * Terminal (guake): Source Code Pro for Powerline - 10 
     * Guake (color scheme): Frontend Delight
 
+
 ### Gnome (I don't use gnome anymore) ###
 
 * GTK theme configuration
 
-#### Dump Gnome current confs
+#### Dump Gnome current confs ####
 $ gconftool-2 --dump / > gconf_dump.xml
 $ gconftool-2 --unload clean-settings.xml
 
-#### Load Gnome confs
+#### Load Gnome confs ####
 $ gconftool-2 --load gconf_dump.xml
 
 * Tweaks
@@ -50,7 +49,7 @@ $ gconftool-2 --load gconf_dump.xml
     * Icons: Numix-Circle
     * Theme: Adwaita (default)
 
-### Installation
+### Installation ###
 
 Download the following install file and run it. 
 
@@ -63,10 +62,10 @@ bash -c "$(wget https://raw.githubusercontent.com/aflavio/another-dotfiles/maste
 source .zshrc
 ```
  
-#### Init.d Scripts
+#### Init.d Scripts ###
 Added a script that restart (unload/load) ethernet drive. It's usefull for r8169 ethernet drive when the system is resumed from suspended state.
 
-#### Enabling Plugins
+#### Enabling Plugins ###
 
 The install file automatically download and install all vim Plugins. Normally, you don't need run the command: vim +Pluginstall +qall. But, if it's fails, run again. 
 
@@ -74,11 +73,11 @@ The install file automatically download and install all vim Plugins. Normally, y
 vim +PlugInstall +qall
 ```
 
-### Themes
+### Themes ###
 
 Default themes are: agnoster for ZSH and solarized dark for vim. 
 
-#### Selecting a Theme
+#### Selecting a Theme ####
 
 ZSH
 
@@ -100,6 +99,6 @@ colorscheme solizared
 Vim Themes are based on Airline [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline). There are some Colorscheme installed too [Tomorrow](https://github.com/chriskempson/tomorrow-theme). 
 
 
-## License
+### License ###
 
 Another Dotfiles is released under the [MIT license](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/LICENSE).
