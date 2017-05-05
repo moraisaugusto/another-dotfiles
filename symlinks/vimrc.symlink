@@ -280,7 +280,11 @@ nmap \t :set ts=4 sts=4 sw=4 noet<cr>
 nmap \s :set ts=4 sts=4 sw=4 et<cr>
 
 " Centralize textfile
-nmap <leader>w :setf textile<cr> :Goyo<cr>
+let g:goyo_width = '50%'
+let g:goyo_height = '45%'
+
+nmap <leader>w :Goyo <cr>
+"nmap <leader>w :setf textile<cr> :Goyo 50%x45%<cr>
 
 " Move lines
 nnoremap <M-j> :m .+1<CR>==
