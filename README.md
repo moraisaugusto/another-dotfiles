@@ -16,7 +16,7 @@ https://github.com/powerline/powerline
 
 ### Prerequisites
 
-* Linux (tested on Debian)
+* Linux (tested on Debian and Arch)
 * [Zsh](http://www.zsh.org)
 * `wget`
 * `git`
