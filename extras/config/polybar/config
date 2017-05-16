@@ -261,6 +261,7 @@ type = internal/network
 interface = wlp2s0
 interval = 3.0
 
+
 ;format-connected = <label-connected>
 ;format-connected-prefix = " "
 ;format-connected-prefix-foreground = #5b
@@ -269,9 +270,11 @@ interval = 3.0
 ;format-disconnected-underline = ${self.format-connected-underline}
 
 ;label-connected = "%{A1:connman-gtk &:}%essid%%{A}"
-label-connected = "%{A1:connman-gtk &:}%{A}"
-label-disconnected = "%{A1:connman-gtk &:}%{A}"
+;label-connected = "%{A1:connman-gtk &:}%{A}"
+label-connected = "%{A1:wicd-gtk -n &:}%{A}"
+label-disconnected = "%{A1:wincd-gtk -n &:}%{A}"
 label-disconnected-foreground = #5b
+click-left = wicd-gtk -n
 
 ramp-signal-0 = 
 ramp-signal-1 = 
@@ -312,7 +315,7 @@ format-connected-prefix-foreground = #5b
 
 [module/date]
 type = internal/date
-interval = 1 
+interval = 1
 
 date = "%d/%m/%y"
 date-alt = "%d/%m/%y"

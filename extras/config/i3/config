@@ -171,6 +171,7 @@ assign [class="Steam"] 8
 for_window [class="Subdownloader"] floating enable
 for_window [class="KeePass2"] floating enable
 for_window [class="Transmission-gtk"] floating enable
+for_window [instance="wicd"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -227,6 +228,9 @@ exec sleep 2 && feh --bg-fill ~/Google\ Drive/Augusto\ Morais/Backgrounds/mount.
 
 # autolock i3
 exec xautolock  -time 15 -locker '~/.config/i3/i3lock-fancy-multimonitor/lock' &
+
+# connect Wifi | its not necessary enable it here (polybar already does it)
+# exec wicd-gtk -n
 
 # screenshot - 
 bindsym --release Control+Shift+Print exec imgur-screenshot
