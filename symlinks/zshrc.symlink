@@ -120,3 +120,10 @@ if [ -f ~/.zshAlias ]; then
 fi
 
 unsetopt prompt_cr prompt_sp
+
+# setting browse
+if [ -n "$DISPLAY" ]; then
+    export BROWSER=chromium
+else 
+    export BROWSER=links
+fi
