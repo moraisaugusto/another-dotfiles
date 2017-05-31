@@ -52,7 +52,7 @@ set $tag9 "9;"
 set $tag10 "10;"
 
 # exec startup apps
-exec --no-startup-id i3-msg 'workspace $tag1; exec chromium'
+exec --no-startup-id i3-msg 'workspace $tag1; exec google-chrome-stable'
 exec --no-startup-id i3-msg 'workspace $tag2; exec urxvt'
 exec --no-startup-id i3-msg 'workspace $tag3; exec spotify'
 exec --no-startup-id i3-msg 'workspace $tag4; exec nautilus'
@@ -172,9 +172,9 @@ assign [class="Steam"] 8
 for_window [class="Subdownloader"] floating enable
 for_window [class="KeePass2"] floating enable
 for_window [class="Transmission-gtk"] floating enable
-for_window [instance="wicd"] floating enable
-for_window [instance="Subl3"] floating enable
-for_window [instance="Qalculate-gtk"] floating enable
+for_window [class="wicd"] floating enable
+for_window [class="Subl3"] floating enable
+for_window [class="Qalculate-gtk"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
