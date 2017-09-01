@@ -2,5 +2,5 @@ oh-my-zsh
 vim/plugged
 vim/plugged/*
 vim/.netrwhist
-symlinks/.zshAlias.symlink
+symlinks/zshAlias.symlink
 
