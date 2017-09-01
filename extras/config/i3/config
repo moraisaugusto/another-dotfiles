@@ -168,6 +168,8 @@ assign [class="mpv"] 5
 assign [class="VirtualBox"] 6
 assign [class="Transmission-gtk"] 0
 assign [class="Steam"] 8
+assign [class="Oplide"] 5
+assign [class="zsnes"] 8
 
 # Setting app as floating
 for_window [class="Subdownloader"] floating enable
@@ -176,6 +178,9 @@ for_window [class="Transmission-gtk"] floating enable
 for_window [class="wicd"] floating enable
 for_window [class="Subl3"] floating enable
 for_window [class="Qalculate-gtk"] floating enable
+for_window [class="Kazam"] floating enable
+for_window [class="Gtk-recordMyDesktop"] floating enable
+
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -241,7 +246,8 @@ bindsym --release Control+Shift+Print exec imgur-screenshot
 bindsym --release Shift+Print exec scrot -s -e 'mv $f ~/Pictures/$f'
 bindsym Print exec scrot -e 'mv $f ~/Pictures/$f'
 
-# insync
+# insync & Dropbox
 exec insync start
+exec dropbox
 
 

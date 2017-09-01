@@ -35,7 +35,7 @@ URxvt.keysym.C-3: command:\033]710;-*-tamzenforpowerline-medium-r-normal-*-16-*-
 URxvt.keysym.C-4: command:\033]710;-*-tamzenforpowerline-medium-r-normal-*-20-*-*-*-*-*-*-*,-wuncon-siji-medium-*-*-*-17-*-*-*-*-*-*-*,xft:Knack Nerd Font:Regular:pixelsize=11:antialias=true:hinting=true\007
 
 !clickable links
-URxvt*url-launcher:   google-chrome-stable
+URxvt*url-launcher:   chromium
 URxvt*matcher.button: 1
 
 !scrollbar

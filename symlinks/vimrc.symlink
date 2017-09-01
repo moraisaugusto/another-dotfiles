@@ -39,6 +39,12 @@ set ttyfast
 " highlight conflicts
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
+" Persistent undo
+if has('persistent_undo')      "check if your vim version supports it
+  set undofile                 "turn on the feature  
+  set undodir=$HOME/.vim/undo  "directory where the undo files will be stored
+  endif  
+
 " file type specific settings
 if has('autocmd') && !exists('autocommands_loaded')
     let autocommands_loaded = 1
@@ -143,7 +149,7 @@ set laststatus=2 " show the satus line all the time
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => text limits (disable by default)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set textwidth=100
+set textwidth=118
 "augroup vimrc_autocmds
 "autocmd BufRead * highlight OverLength ctermbg=darkgrey guibg=#592929
 "autocmd BufRead * match OverLength /\%100v.*/
@@ -231,7 +237,8 @@ map <leader>eg :e! ~/.gitconfig<cr>
 noremap <space> :set hlsearch! hlsearch?<cr>
 
 " activate spell-checking alternatives
-nmap ;s :set invspell spelllang=en<cr>
+nmap ;se :set invspell spelllang=en<cr>
+nmap ;sp :set invspell spelllang=pt_br<cr>
 
 " toggle invisible characters
 set invlist
@@ -251,6 +258,10 @@ map <silent> <C-h> :call WinMove('h')<cr>
 map <silent> <C-j> :call WinMove('j')<cr>
 map <silent> <C-k> :call WinMove('k')<cr>
 map <silent> <C-l> :call WinMove('l')<cr>
+
+
+" rewrap content
+map <C-r> {gq}
 
 " toggle cursor line
 set cursorline!
@@ -482,7 +493,7 @@ let g:ctrlp_map='<leader>t'
 " CtrlP ignore patterns
 let g:ctrlp_custom_ignore = {
             \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-            \ 'file': '\v\.(exe|so|dll|o)$',
+            \ 'file': '\v\.(exe|so|dll|o|aux)$',
             \ }
 
 "" only show files that are not ignored by git

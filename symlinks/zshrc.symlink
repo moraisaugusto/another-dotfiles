@@ -62,7 +62,7 @@ plugins=(git colored-man-pages emoji-clock tmux tmuxinator nmap systemadmin batt
 #
 # User configuration
 #
-export PATH=$HOME/.bin:/usr/local/bin:$PATH:$HOME/.gem/ruby/2.4.0/bin:/opt/gams/gams24.8_linux_x64_64_sfx:/opt/ibm/ILOG/CPLEX_Studio1271/cplex/bin/x86-64_linux:/opt/ibm/ILOG/CPLEX_Studio1271/opl/oplide
+export PATH=$HOME/.bin:/usr/local/bin:$PATH:$HOME/.gem/ruby/2.4.0/bin:/opt/gams/gams24.8_linux_x64_64_sfx:/opt/ibm/ILOG/CPLEX_Studio1271/cplex/bin/x86-64_linux:/opt/ibm/ILOG/CPLEX_Studio1271/opl/oplide:/opt/ibm/ILOG/CPLEX_Studio1271/opl/bin/x86-64_linux
 export MANPATH="/usr/local/man:$MANPATH"
 
 # jdk
@@ -72,6 +72,10 @@ PATH=$PATH:$HOME/bin:$JAVA_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-t
 export JAVA_HOME
 export ANDROID_HOME
 export PATH
+
+# Cplex
+LD_LIBRARY_PATH=/opt/ibm/ILOG/CPLEX_Studio1271/opl/bin/x86-64_linux
+export LD_LIBRARY_PATH
 
 # literal ls command
 export QUOTING_STYLE=literal ls
@@ -127,3 +131,9 @@ if [ -n "$DISPLAY" ]; then
 else 
     export BROWSER=links
 fi
+
+PATH="/home/augusto/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/augusto/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/augusto/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/augusto/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/augusto/perl5"; export PERL_MM_OPT;
