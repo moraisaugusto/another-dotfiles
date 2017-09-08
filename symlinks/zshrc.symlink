@@ -91,9 +91,9 @@ export LC_ALL=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vi'
-else
   export EDITOR='vim'
+else
+  export EDITOR='nvim'
 fi
 # GTK theme on QT
 export QT_QPA_PLATFORMTHEME=qt5ct
@@ -106,7 +106,7 @@ PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -
 
 # mpv
 alias mpv="mpv --hwdec=vaapi --vo=opengl"
-alias vi=vim
+alias vi=nvim
 
 #alias fix-win-parts="sudo ntfsfix /dev/sda4 && sudo ntfsfix /dev/sda5"
 #alias npm="node --max-old-space-size=6144 /usr/local/bin/npm"

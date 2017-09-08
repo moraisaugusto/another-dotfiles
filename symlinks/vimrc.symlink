@@ -26,9 +26,11 @@ set shiftround " round indent to a multiple of 'shiftwidth'
 set expandtab " convert tabs to spaces for <Tab>
 set completeopt+=longest
 
-if has('mouse')
-    set mouse=a
-    set ttymouse=xterm2
+if !has('nvim')
+    if has('mouse')
+        set mouse=a
+        set ttymouse=xterm2
+    endif
 endif
 
 set clipboard=unnamedplus
@@ -314,8 +316,10 @@ vnoremap <M-k> :m '<-2<CR>gv=gv
 "nnoremap :g// :g//
 
 " Unmapping keys
-iunmap ê
-iunmap ë
+if !has('nvim')
+    iunmap ê
+    iunmap ë
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Functions
