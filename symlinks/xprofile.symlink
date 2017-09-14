@@ -14,6 +14,6 @@ feh --bg-scale /usr/share/backgrounds/background.png
 
 # custom fonts
 xset +fp /home/augusto/.local/share/fonts/tewi
-xset +fp /home/augusto/.loca/share/fonts/tamzen
-xset +fp /home/augusto/.loca/share/fonts/siji
+xset +fp /home/augusto/.local/share/fonts/tamzen
+xset +fp /home/augusto/.local/share/fonts/siji
 xset fp rehash
