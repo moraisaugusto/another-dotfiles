@@ -176,6 +176,9 @@ set directory=~/.tmp,~/tmp,/var/tmp,/tmp
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
+" for debug
+" let g:ycm_keep_logfiles = 1
+" let g:ycm_log_level = 'debug'
 
 " color coded
 let g:color_coded_enabled = 1

@@ -236,7 +236,7 @@ exec xrandr && xrandr --output HDMI1 --primary --mode 1680x1050 --pos 0x0 --rota
 exec sleep 2 && feh --bg-fill ~/Google\ Drive/Augusto\ Morais/Backgrounds/mount.png ~/Google\ Drive/Augusto\ Morais/Backgrounds/Energy_sunset.png
 
 # autolock i3
-exec xautolock  -time 15 -locker '~/.config/i3/i3lock-fancy-multimonitor/lock' &
+exec xautolock  -time 15 -locker '~/.config/i3/i3lock-fancy-multimonitor/lock' --corners 0 0 --scrot -z &
 
 # connect Wifi | its not necessary enable it here (polybar already does it)
 # exec wicd-gtk -n
@@ -249,5 +249,8 @@ bindsym Print exec scrot -e 'mv $f ~/Pictures/$f'
 # insync & Dropbox
 exec insync start
 exec dropbox
+
+# i3lock prevent for videos
+exec ~/.dotfiles/scripts/bin/lightsOn.sh 300
 
 

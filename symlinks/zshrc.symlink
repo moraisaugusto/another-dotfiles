@@ -111,12 +111,13 @@ alias vi=nvim
 #alias fix-win-parts="sudo ntfsfix /dev/sda4 && sudo ntfsfix /dev/sda5"
 #alias npm="node --max-old-space-size=6144 /usr/local/bin/npm"
 
-#ssh keys
-#if [ -z "$SSH_AUTH_SOCK" ] ; then
-  #eval `ssh-agent -s` 2>&1
-  eval `ssh-agent -s` >&/dev/null
-  ls ~/.ssh/id_rsa* | awk '!/pub$/ {system("ssh-add "$0 " 2>/dev/null")} '
-#fi
+# SSH Keys
+ps -u $(whoami) | grep ssh-agent &> /dev/null
+if [ $? -ne 0 ];then
+    eval `ssh-agent -s` >&/dev/null
+    ls ~/.ssh/id_rsa* | awk '!/pub$/ {system("ssh-add "$0 " 2>/dev/null")} '
+fi
+trap 'ssh-agent -k; exit' 0
 
 # Tmuxinator Projects
 if [ -f ~/.zshAlias ]; then
