@@ -26,12 +26,13 @@ set shiftround " round indent to a multiple of 'shiftwidth'
 set expandtab " convert tabs to spaces for <Tab>
 set completeopt+=longest
 
-if !has('nvim')
-    if has('mouse')
-        set mouse=a
+if has('mouse')
+    set mouse=a
+    if !has('nvim')
         set ttymouse=xterm2
     endif
 endif
+
 
 set clipboard=unnamedplus
 
@@ -43,9 +44,9 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 " Persistent undo
 if has('persistent_undo')      "check if your vim version supports it
-  set undofile                 "turn on the feature  
+  set undofile                 "turn on the feature
   set undodir=$HOME/.vim/undo  "directory where the undo files will be stored
-  endif  
+  endif
 
 " file type specific settings
 if has('autocmd') && !exists('autocommands_loaded')

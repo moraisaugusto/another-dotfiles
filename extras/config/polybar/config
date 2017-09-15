@@ -11,7 +11,7 @@
 background = #222
 background-alt = #444
 foreground = #dfdfdf
-foreground-alt = #55
+foreground-alt = #7a7a7a
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
@@ -114,14 +114,14 @@ type = internal/fs
 interval = 25
 
 mount-0 = /home
-label-mounted = "%{F#5b5b5b}%{F-} %percentage_used%%"
+label-mounted = "%{F#7a7a7a}%{F-} %percentage_used%%"
 
 [module/filesystem-slash]
 type = internal/fs
 interval = 25
 
 mount-0 = /
-label-mounted = "%{F#5b5b5b}%{F-} %percentage_used%%"
+label-mounted = "%{F#7a7a7a}%{F-} %percentage_used%%"
 
 ;label-unmounted = %mountpoint%: not mounted
 ;label-unmounted-foreground = ${colors.foreground-alt}
