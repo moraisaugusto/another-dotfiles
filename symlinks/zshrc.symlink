@@ -117,7 +117,7 @@ NO_AT_BRIDGE=1
 # SSH Keys
 ps -u $(whoami) | grep ssh-agent &> /dev/null
 if [ $? -ne 0 ];then
-    eval `ssh-agent -s` >&/dev/null
+    eval "$(ssh-agent -s)" >&/dev/null
     ls ~/.ssh/id_rsa* | awk '!/pub$/ {system("ssh-add "$0 " 2>/dev/null")} '
 fi
 trap 'ssh-agent -k; exit' 0
