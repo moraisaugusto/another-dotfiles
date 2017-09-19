@@ -119,6 +119,7 @@ ps -u $(whoami) | grep ssh-agent &> /dev/null
 if [ $? -ne 0 ];then
     touch ~/ola
     eval "$(ssh-agent -s)" >&/dev/null
+    source $HOME/.dotfiles/scripts/bin/sshrc.sh
     ls ~/.ssh/id_rsa* | awk '!/pub$/ {system("ssh-add "$0 " 2>/dev/null")} '
 fi
 trap 'ssh-agent -k; exit' 0
