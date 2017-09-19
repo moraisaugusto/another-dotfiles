@@ -51,6 +51,7 @@ Plug 'timcharper/textile.vim', { 'for': 'textile' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python'}
 Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
 Plug 'majutsushi/tagbar'
+Plug 'critiqjo/lldb.nvim' "c++ debug
 "
 " Colors schemes
 Plug 'morhetz/gruvbox'
