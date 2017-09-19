@@ -3,7 +3,7 @@
 #include ".Xresources.d/rxvt-unicode-2"
 
 ! misc
-#include ".Xresources.d/alt-keys-fixed"
+#include ".Xresources.d/meta-keys-fixed-nvim"
 #include ".Xresources.d/rofi"
 
 ! themes

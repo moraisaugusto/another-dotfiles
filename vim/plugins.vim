@@ -1,7 +1,7 @@
 filetype off
 
 " let vundle manage vundle- https://github.com/junegunn/vim-plug
-set rtp+=~/.vim/bundle/Vundle.vim/
+" set rtp+=~/.vim/bundle/Vundle.vim/
 call plug#begin('~/.vim/plugged')
 
 Plug 'honza/vim-snippets'
@@ -28,7 +28,6 @@ Plug 'vim-scripts/matchit.zip'
 Plug 'sickill/vim-pasta' " context-aware pasting
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' } " distraction-free writing
 Plug 'junegunn/limelight.vim', { 'on': 'Limelight' } " focus tool. Good for presentating with vim
-Plug 'huawenyu/neogdb.vim' " gdb for c++
 
 " language-specific plugins
 Plug 'mattn/emmet-vim', { 'for': 'html' }
@@ -51,10 +50,9 @@ Plug 'timcharper/textile.vim', { 'for': 'textile' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python'}
 Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
 Plug 'majutsushi/tagbar'
-Plug 'critiqjo/lldb.nvim' "c++ debug
 "
 " Colors schemes
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
 
 call plug#end()
 filetype plugin indent on

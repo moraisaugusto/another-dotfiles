@@ -303,7 +303,7 @@ let g:goyo_height = '45%'
 nmap <leader>w :Goyo <cr>
 "nmap <leader>w :setf textile<cr> :Goyo 50%x45%<cr>
 
-" Move lines
+" Move lines - Meta keys
 nnoremap <M-j> :m .+1<CR>==
 nnoremap <M-k> :m .-2<CR>==
 inoremap <M-k> <Esc>:m .-2<CR>==gi
@@ -622,7 +622,3 @@ if !exists("my_auto_commands_loaded")
     augroup END
   endif
 
-
-
-highlight LLSelectedPCLine ctermbg=DarkGrey guibg=DarkGrey
-highlight LLBreakpointSign ctermfg=cyan guifg=cyan

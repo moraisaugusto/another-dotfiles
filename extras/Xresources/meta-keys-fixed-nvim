@@ -1,0 +1,101 @@
+!; mapping rxvt keys for alt work on vim
+!; ignored keys: f, b, ć, j, k
+!; http://www.unicodemap.org/search.asp?search=e
+
+
+urxvt*keysym.Meta-0X0020: \302\240  // char  
+urxvt*keysym.Meta-0X0021: \302\241  // char !
+urxvt*keysym.Meta-0X0022: \302\242  // char "
+urxvt*keysym.Meta-0X0023: \302\243  // char #
+urxvt*keysym.Meta-0X0024: \302\244  // char $
+urxvt*keysym.Meta-0X0025: \302\245  // char %
+urxvt*keysym.Meta-0X0026: \302\246  // char &
+urxvt*keysym.Meta-0X0027: \302\247  // char '
+urxvt*keysym.Meta-0X0028: \302\250  // char (
+urxvt*keysym.Meta-0X0029: \302\251  // char )
+urxvt*keysym.Meta-0X002A: \302\252  // char *
+urxvt*keysym.Meta-0X002B: \302\253  // char +
+urxvt*keysym.Meta-0X002C: \302\254  // char ,
+urxvt*keysym.Meta-0X002D: \302\255  // char -
+urxvt*keysym.Meta-0X002E: \302\256  // char .
+urxvt*keysym.Meta-0X002F: \302\257  // char /
+urxvt*keysym.Meta-0X0030: \302\260  // char 0
+urxvt*keysym.Meta-0X0031: \302\261  // char 1
+urxvt*keysym.Meta-0X0032: \302\262  // char 2
+urxvt*keysym.Meta-0X0033: \302\263  // char 3
+urxvt*keysym.Meta-0X0034: \302\264  // char 4
+urxvt*keysym.Meta-0X0035: \302\265  // char 5
+urxvt*keysym.Meta-0X0036: \302\266  // char 6
+urxvt*keysym.Meta-0X0037: \302\267  // char 7
+urxvt*keysym.Meta-0X0038: \302\270  // char 8
+urxvt*keysym.Meta-0X0039: \302\271  // char 9
+urxvt*keysym.Meta-0X003A: \302\272  // char :
+urxvt*keysym.Meta-0X003B: \302\273  // char ;
+urxvt*keysym.Meta-0X003C: \302\274  // char <
+urxvt*keysym.Meta-0X003D: \302\275  // char =
+urxvt*keysym.Meta-0X003E: \302\276  // char >
+urxvt*keysym.Meta-0X003F: \302\277  // char ?
+urxvt*keysym.Meta-0X0040: \303\200  // char @
+urxvt*keysym.Meta-0X0041: \303\201  // char A
+urxvt*keysym.Meta-0X0042: \303\202  // char B
+urxvt*keysym.Meta-0X0043: \303\203  // char C
+urxvt*keysym.Meta-0X0044: \303\204  // char D
+urxvt*keysym.Meta-0X0045: \303\205  // char E
+urxvt*keysym.Meta-0X0046: \303\206  // char F
+urxvt*keysym.Meta-0X0047: \303\207  // char G
+urxvt*keysym.Meta-0X0048: \303\210  // char H
+urxvt*keysym.Meta-0X0049: \303\211  // char I
+urxvt*keysym.Meta-0X004A: \303\212  // char J
+urxvt*keysym.Meta-0X004B: \303\213  // char K
+urxvt*keysym.Meta-0X004C: \303\214  // char L
+urxvt*keysym.Meta-0X004D: \303\215  // char M
+urxvt*keysym.Meta-0X004E: \303\216  // char N
+urxvt*keysym.Meta-0X004F: \303\217  // char O
+urxvt*keysym.Meta-0X0050: \303\220  // char P
+urxvt*keysym.Meta-0X0051: \303\221  // char Q
+urxvt*keysym.Meta-0X0052: \303\222  // char R
+urxvt*keysym.Meta-0X0053: \303\223  // char S
+urxvt*keysym.Meta-0X0054: \303\224  // char T
+urxvt*keysym.Meta-0X0055: \303\225  // char U
+urxvt*keysym.Meta-0X0056: \303\226  // char V
+urxvt*keysym.Meta-0X0057: \303\227  // char W
+urxvt*keysym.Meta-0X0058: \303\230  // char X
+urxvt*keysym.Meta-0X0059: \303\231  // char Y
+urxvt*keysym.Meta-0X005A: \303\232  // char Z
+urxvt*keysym.Meta-0X005B: \303\233  // char [
+urxvt*keysym.Meta-0X005C: \303\234  // char \
+urxvt*keysym.Meta-0X005D: \303\235  // char ]
+urxvt*keysym.Meta-0X005E: \303\236  // char ^
+urxvt*keysym.Meta-0X005F: \303\237  // char _
+urxvt*keysym.Meta-0X0060: \303\240  // char `
+urxvt*keysym.Meta-0X0061: \303\241  // char a
+!urxvt*keysym.Meta-0X0062: \303\242  // char b REMOVED
+urxvt*keysym.Meta-0X0063: \303\243  // char c
+urxvt*keysym.Meta-0X0064: \303\244  // char d
+urxvt*keysym.Meta-0X0065: \303\245  // char e
+!urxvt*keysym.Meta-0X0066: \303\246  // char f REMOVED
+urxvt*keysym.Meta-0X0067: \303\247  // char g
+urxvt*keysym.Meta-0X0068: \303\250  // char h
+urxvt*keysym.Meta-0X0069: \303\251  // char i
+!urxvt*keysym.Meta-0X006A: \303\252  // char j REMOVED
+!urxvt*keysym.Meta-0X006B: \303\253  // char k REMOVED
+urxvt*keysym.Meta-0X006C: \303\254  // char l
+urxvt*keysym.Meta-0X006D: \303\255  // char m
+urxvt*keysym.Meta-0X006E: \303\256  // char n
+urxvt*keysym.Meta-0X006F: \303\257  // char o
+urxvt*keysym.Meta-0X0070: \303\260  // char p
+urxvt*keysym.Meta-0X0071: \303\261  // char q
+urxvt*keysym.Meta-0X0072: \303\262  // char r
+urxvt*keysym.Meta-0X0073: \303\263  // char s
+urxvt*keysym.Meta-0X0074: \303\264  // char t
+urxvt*keysym.Meta-0X0075: \303\265  // char u
+urxvt*keysym.Meta-0X0076: \303\266  // char v
+urxvt*keysym.Meta-0X0077: \303\267  // char w
+urxvt*keysym.Meta-0X0078: \303\270  // char x
+urxvt*keysym.Meta-0X0079: \303\271  // char y
+urxvt*keysym.Meta-0X007A: \303\272  // char z
+urxvt*keysym.Meta-0X007B: \303\273  // char {
+urxvt*keysym.Meta-0X007C: \303\274  // char |
+urxvt*keysym.Meta-0X007D: \303\275  // char }
+urxvt*keysym.Meta-0X007E: \303\276  // char ~
+urxvt*keysym.Meta-0X007F: \303\277  // char 
