@@ -28,6 +28,7 @@ Plug 'vim-scripts/matchit.zip'
 Plug 'sickill/vim-pasta' " context-aware pasting
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' } " distraction-free writing
 Plug 'junegunn/limelight.vim', { 'on': 'Limelight' } " focus tool. Good for presentating with vim
+Plug 'jiangmiao/auto-pairs'
 
 " language-specific plugins
 Plug 'mattn/emmet-vim', { 'for': 'html' }
