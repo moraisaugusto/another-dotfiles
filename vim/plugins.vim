@@ -51,6 +51,7 @@ Plug 'timcharper/textile.vim', { 'for': 'textile' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python'}
 Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
 Plug 'majutsushi/tagbar'
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 "
 " Colors schemes
 " Plug 'morhetz/gruvbox'

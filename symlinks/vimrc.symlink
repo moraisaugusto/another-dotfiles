@@ -1,4 +1,5 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -55,7 +56,7 @@ if has('autocmd') && !exists('autocommands_loaded')
     autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
     autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType php setlocal ts=4 sts=4 sw=4 expandtab
-    "autocmd FileType tex,latex setlocal ts=2 sts=2 sw=2 expandtab
+    autocmd FileType tex,latex setlocal ts=2 sts=2 sw=2 expandtab
     "autocmd FileType *.md.js :call SyntasticReset<cr>
     autocmd FileType markdown,textile setlocal textwidth=0 wrapmargin=0 wrap spell
     autocmd FileType .xml exe ":silent %!xmllint --format --recover - 2>/dev/null"
@@ -542,6 +543,10 @@ let g:vim_json_syntax_conceal = 0
 
 "let g:SuperTabCrMapping = 0
 
+" Vim Latex Live Preview
+autocmd Filetype tex setl updatetime=1000
+let g:livepreview_previewer = 'zathura'
+let g:livepreview_engine = 'pdflatex'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Themes (airline)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""

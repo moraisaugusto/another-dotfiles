@@ -365,7 +365,7 @@ adapter = AC0
 full-at = 95
 time-format = "%H:%M"
 
-label-discharging = %percentage% %time%
+label-discharging = %percentage%% %time%
 
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = #f3f99d
