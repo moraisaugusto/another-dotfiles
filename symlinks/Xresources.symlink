@@ -1,6 +1,7 @@
 ! styles
-!#include ".Xresources.d/rxvt-unicode"
+/* #include ".Xresources.d/rxvt-unicode" */
 #include ".Xresources.d/rxvt-unicode-2"
+/* #include ".Xresources.d/rxvt-unicode-3" */
 
 ! misc
 #include ".Xresources.d/meta-keys-fixed-nvim"

@@ -11,7 +11,7 @@ Xft.rgba:       rgb
 Xft.hinting:    true
 Xft.hintstyle:  hintslight
 
-URxvt*font: xft:Knack Nerd Font:Regular:pixelsize=12:antialias=true:hinting=true,\
+URxvt*font: xft:Knack Nerd Font:Regular:pixelsize=14:antialias=true:hinting=true,\
             !-- xft:SauceCodePro Nerd Font:pixelsize=14:antialias=true:hinting=true --!
             !-- xft:DroidSansMonoForPowerline NF:pixelsize=14:antialias=true:hinting=true --!
 !--            xft:FontAwesome:pixelsize=12:antialias=true:hinting=true --!
@@ -22,7 +22,7 @@ URxvt*font: xft:Knack Nerd Font:Regular:pixelsize=12:antialias=true:hinting=true
 !--            !xft:PowerlineSymbols Medium:pixelsize=12:antialias=true:hinting=true,\ --!
 !--            xft:Inconsolata for Powerline Nerd Medium:pixelsize=12:antialias=true:hinting=true --!
 
-URxvt.letterSpace: -2
+URxvt.letterSpace: 2 
 URxvt*.background: [90]#202020
 URxvt*fading: 0
 URxvt*.fadeColor: #202020

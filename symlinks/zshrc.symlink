@@ -107,6 +107,7 @@ PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -
 # mpv
 alias mpv="mpv --hwdec=vaapi --vo=opengl"
 alias vi=nvim
+alias vim=nvim
 
 # zathura
 NO_AT_BRIDGE=1
@@ -117,7 +118,6 @@ NO_AT_BRIDGE=1
 # SSH Keys
 ps -u $(whoami) | grep ssh-agent &> /dev/null
 if [ $? -ne 0 ];then
-    touch ~/ola
     eval "$(ssh-agent -s)" >&/dev/null
     source $HOME/.dotfiles/scripts/bin/sshrc.sh
     ls ~/.ssh/id_rsa* | awk '!/pub$/ {system("ssh-add "$0 " 2>/dev/null")} '
