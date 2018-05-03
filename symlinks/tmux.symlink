@@ -52,6 +52,7 @@ bind r source-file ~/.tmux.conf \; display "Config Reloaded!"
 bind N new-window
 
 # split windows and fix path (tmux version 1.9)
+bind-key c new-window -c "#{pane_current_path}"
 bind | split-window -h -c "#{pane_current_path}"
 bind - split-window -v -c "#{pane_current_path}"
 

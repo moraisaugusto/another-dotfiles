@@ -161,14 +161,14 @@
     icon_position = left
 
     # Paths to default icons.
-    icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
     icon_position = off
     max_icon_size = 40
 
 [frame]
-    width = 3
-    color = "#232035"
+    frame_width = 3
+    frame_color = "#232035"
 
 [shortcuts]
 
@@ -186,7 +186,7 @@
     # Redisplay last message(s).
     # On the US keyboard layout "grave" is normally above TAB and left
     # of "1".
-    history = ctrl+grave
+    #history = ctrl+grave
 
     # Context menu.
     context = ctrl+shift+period
@@ -207,7 +207,6 @@
     background = "#1a1829"
     foreground = "#934972"
     timeout = 8
-
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.

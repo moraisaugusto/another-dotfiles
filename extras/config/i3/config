@@ -166,8 +166,8 @@ assign [class="VirtualBox"] 6
 assign [class="Transmission-gtk"] 0
 assign [class="Steam"] 8
 assign [class="Oplide"] 5
-assign [class="Franz"] 7
 assign [class="zsnes"] 8
+assign [class="Franz"] 9
 
 #################################################################################################
 #

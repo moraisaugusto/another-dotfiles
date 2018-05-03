@@ -10,7 +10,7 @@ URxvt*internalBorder: 20
 URxvt*iso14755_52: false
 URxvt*iso14755: false
 
-URxvt*letterSpace: -1
+URxvt*letterSpace: -2 
 !----------------
 !  Xft Settings
 !----------------
@@ -27,8 +27,9 @@ Xft*lcdfilter:  lcddefault
 !  Font Setting
 !----------------
 
-URxvt.font: xft:FuraCode Nerd Font:style=Regular:size=11
-URxvt.boldFont: xft:FuraCode Nerd Font:style=Regular:size=11
+URxvt.font: xft:SFMono Nerd Font:style=Regular:size=11
+!URxvt.font: xft:FuraCode Nerd Font:style=Regular:size=11
+!URxvt.boldFont: xft:FuraCode Nerd Font:style=Regular:size=11
 
 !----------
 !  Colors

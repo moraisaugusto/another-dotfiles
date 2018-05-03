@@ -108,6 +108,7 @@ PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -
 alias mpv="mpv --hwdec=vaapi --vo=opengl"
 alias vi=nvim
 alias vim=nvim
+alias open=xdg-open
 
 # zathura
 NO_AT_BRIDGE=1
@@ -147,3 +148,8 @@ PERL_MM_OPT="INSTALL_BASE=/home/augusto/perl5"; export PERL_MM_OPT;
 
 ## GCC error
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# ### Default Directoru
+# if [[ $PWD != $HOME ]]; then
+#     cd $HOME
+# fi
