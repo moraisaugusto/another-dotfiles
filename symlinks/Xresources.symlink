@@ -1,14 +1,21 @@
-! styles
-/* #include ".Xresources.d/rxvt-unicode" */
-#include ".Xresources.d/rxvt-unicode-2"
-!#include ".Xresources.d/rxvt-unicode-3"
-
-! misc
+!### Common Configs
 #include ".Xresources.d/meta-keys-fixed-nvim"
 #include ".Xresources.d/rofi"
 
-! themes
-#include ".Xresources.d/schemes/nord"
-!#include ".Xresources.d/schemes/gruvbox"
-!#include ".Xresources.d/schemes/neon"
-!#include ".Xresources.d/schemes/solarized"
+
+!### Home Configs
+! styles
+#include ".Xresources.d/rxvt-unicode-work"
+
+! Themes
+!#include ".Xresources.d/schemes/nord"
+
+
+!### Work Configs
+! styles
+#include ".Xresources.d/rxvt-unicode-work"
+
+! Themes
+#include ".Xresources.d/schemes/gruvbox"
+
+!
