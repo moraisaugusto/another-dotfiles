@@ -18,6 +18,7 @@ let g:mapleader = ','
 
 set history=1000 " change history to 1000
 
+
 " Tab control
 set smarttab " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
 set tabstop=4 " the visible width of tabs
@@ -480,15 +481,13 @@ nnoremap <silent> <leader>u :call HtmlUnEscape()<cr>
 " ack plugin
 nnoremap <Leader>a :Ack!<Space>
 
-"tagbar
-nmap <F7> :TagbarToggle<CR>
 
 " close NERDTree after a file is opened
 let g:NERDTreeQuitOnOpen=0
 " show hidden files in NERDTree
 let NERDTreeShowHidden=1
 " remove some files by extension
-let NERDTreeIgnore = ['\.js.map$']
+let NERDTreeIgnore = ['\.js.map$', '\.pyc']
 " Toggle NERDTree
 nmap <silent> <leader>k :NERDTreeToggle<cr>
 " expand to the path of the file in the current buffer
@@ -505,7 +504,7 @@ let g:ctrlp_map='<leader>t'
 " CtrlP ignore patterns
 let g:ctrlp_custom_ignore = {
             \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-            \ 'file': '\v\.(exe|so|dll|o|aux)$',
+            \ 'file': '\v\.(exe|so|dll|o|aux|pyc)$',
             \ }
 
 "" only show files that are not ignored by git
@@ -513,6 +512,22 @@ let g:ctrlp_custom_ignore = {
 "
 "" search the nearest ancestor that contains .git, .hg, .svn
 "let g:ctrlp_working_path_mode = 2
+
+" ctrlp-py-matcher
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+
+
+" jedi-vim plugin
+let g:jedi#use_tabs_not_buffers = 1
+let g:jedi#goto_command = "<leader>d"
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_definitions_command = ""
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#rename_command = "<leader>r"
+let g:jedi#completions_enabled = 1
+
 
 " Fugitive Shortcuts
 nmap <silent> <leader>gs :Gstatus<cr>
@@ -528,6 +543,15 @@ nmap <leader>s :SyntasticToggleMode<cr>
 
 " toggle Limelight
 nmap <leader>f :Limelight!!<cr>
+
+" flake8 - PEP8
+autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
+let g:flake8_show_in_gutter=1  " show
+let g:flake8_show_in_file=1  " show
+
+"tagbar
+nmap <F7> :TagbarToggle<CR>
+
 
 " allow es5 mode when looking at TypeScript
 let g:syntastic_typescript_tsc_args = '--module amd --target ES5 --noImplicitAny'
@@ -552,7 +576,7 @@ let g:livepreview_engine = 'pdflatex'
 
 " airline options
 let g:airline_powerline_fonts=1
-let g:airline_theme='nord'
+let g:airline_theme='gruvbox'
 
 " airline symbols - customized for unicode
 if !exists('g:airline_symbols')
@@ -603,14 +627,14 @@ call ApplyLocalSettings(expand('.'))
 set guifont=SourceCodePro-Regular
 
 " webdev icons
-"let g:webdevicons_enable_nerdtree = 1
-"let g:webdevicons_enabl = 1
-"let g:WebDevIconsUnicodeDecorateFolderNodes = 0
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
+let g:webdevicons_enable_nerdtree = 0
+let g:webdevicons_enabl = 0
+let g:WebDevIconsUnicodeDecorateFolderNodes = 0
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 
 " Vim colorscheme
 set background=dark
-colorscheme nord
+colorscheme gruvbox
 
 " Protect large files from sourcing and other overhead.
 " Files become read only

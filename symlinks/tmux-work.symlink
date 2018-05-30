@@ -1,0 +1,252 @@
+#set -g default-command "reattach-to-user-namespace -l zsh"
+# tmux display things in 256 colors
+#set -g default-terminal "xterm-256color"
+
+set -g history-limit 20000
+
+# automatically renumber tmux windows
+set -g renumber-windows on
+
+# unbind default prefix and set it to Ctrl+a
+unbind C-b
+set -g prefix C-a
+bind C-a send-prefix
+
+# for nested tmux sessions
+bind-key a send-prefix
+
+# Activity Monitoring
+setw -g monitor-activity off
+set -g visual-activity off
+
+# Rather than constraining window size to the maximum size of any client
+# connected to the *session*, constrain window size to the maximum size of any
+# client connected to *that window*. Much more reasonable.
+setw -g aggressive-resize on
+
+# make delay shorter
+set -sg escape-time 0
+
+# tile all windows
+unbind =
+bind = select-layout tiled
+
+# make window/pane index start with 1
+set -g base-index 1
+setw -g pane-base-index 1
+
+set-option -g set-titles on
+#set-option -g set-titles-string "#T - #W"
+set-option -g set-titles-string "#{pane_title}"
+# set-window-option -g automatic-rename on
+
+
+######################
+#### Key Bindings ####
+######################
+
+# reload config file
+bind r source-file ~/.tmux.conf \; display "Config Reloaded!"
+
+# quickly open a new window
+bind N new-window
+
+# split windows and fix path (tmux version 1.9)
+bind-key c new-window -c "#{pane_current_path}"
+bind | split-window -h -c "#{pane_current_path}"
+bind - split-window -v -c "#{pane_current_path}"
+
+# synchronize all panes in a window
+bind y setw synchronize-panes
+
+# pane movement shortcuts
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+bind -r C-h select-window -t :-
+bind -r C-l select-window -t :+
+
+# Resize pane shortcuts
+bind -r H resize-pane -L 10
+bind -r J resize-pane -D 10
+bind -r K resize-pane -U 10
+bind -r L resize-pane -R 10
+
+# enable mouse support for switching panes/windows
+set -g mouse on
+
+
+######################
+## User Interface ####
+######################
+
+### COLOUR (Solarized dark)
+set -g default-terminal "screen-256color"
+# default statusbar colors
+set-option -g status-bg black #base02
+set-option -g status-fg yellow #yellow
+set-option -g status-attr default
+
+# default window title colors
+set-window-option -g window-status-fg brightblue #base0
+set-window-option -g window-status-bg default
+#set-window-option -g window-status-attr dim
+
+# active window title colors
+set-window-option -g window-status-current-fg brightred #orange
+set-window-option -g window-status-current-bg default
+#set-window-option -g window-status-current-attr bright
+
+# pane border
+set-option -g pane-border-fg black #base02
+set-option -g pane-active-border-fg brightgreen #base01
+
+# message text
+set-option -g message-bg black #base02
+set-option -g message-fg brightred #orange
+
+# pane number display
+set-option -g display-panes-active-colour blue #blue
+set-option -g display-panes-colour brightred #orange
+
+# clock
+set-window-option -g clock-mode-colour green #green
+
+# bell
+set-window-option -g window-status-bell-style fg=black,bg=red #base02, red
+
+# tmux powerline
+set-option -g status on
+set-option -g status-interval 2
+set-option -g status-justify "centre"
+set-option -g status-left-length 60
+set-option -g status-right-length 90
+set-option -g status-left "#(~/.dotfiles/tmux-powerline/powerline.sh left)"
+set-option -g status-right "#(~/.dotfiles/tmux-powerline/powerline.sh right)"
+set-window-option -g window-status-current-format "#[fg=colour235, bg=colour27]-#[fg=colour255, bg=colour27] #I - #[fg=colour27, bg=colour235]-"
+bind C-[ run '~/.dotfiles/tmux-powerline/mute_powerline.sh left'      # Mute left statusbar.
+bind C-] run '~/.dotfiles/tmux-powerline/mute_powerline.sh right'     # Mute right statusbar.
+
+
+# vi mode
+set-window-option -g mode-keys vi
+
+# copy and paste (tmux version 2.4)
+bind-key -T copy-mode-vi 'v' send -X begin-selection
+bind-key -T copy-mode-vi 'y' send -X copy-pipe-and-cancel "xsel -i -p -b"
+
+# copy and paste (tmux version 2.2)
+#bind-key -t vi-copy 'v' begin-selection
+#bind-key -t vi-copy 'y' copy-pipe "xsel -i -p -b"
+
+
+
+
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# title      Nord tmux                                    +
+# project    nord-tmux                                    +
+# version    0.2.0                                        +
+# repository https://github.com/arcticicestudio/nord-tmux +
+# author     Arctic Ice Studio                            +
+# email      development@arcticicestudio.com              +
+# copyright  Copyright (C) 2017                           +
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#+----------------+
+#+ Plugin Support +
+#+----------------+
+#+--- tmux-prefix-highlight ---+
+set -g @prefix_highlight_fg black
+set -g @prefix_highlight_bg brightcyan
+set -g @prefix_highlight_copy_mode_attr "fg=brightcyan,bg=black,bold"
+set -g @prefix_highlight_output_prefix "#[fg=brightcyan]#[bg=black]#[nobold]#[noitalics]#[nounderscore]#[bg=brightcyan]#[fg=black]"
+set -g @prefix_highlight_output_suffix ""
+
+## COLORSCHEME: gruvbox dark
+set-option -g status "on"
+
+# default statusbar colors
+set-option -g status-bg colour237 #bg1
+set-option -g status-fg colour223 #fg1
+
+# default window title colors
+set-window-option -g window-status-bg colour214 #yellow
+set-window-option -g window-status-fg colour237 #bg1
+
+set-window-option -g window-status-activity-bg colour237 #bg1
+set-window-option -g window-status-activity-fg colour248 #fg3
+
+# active window title colors
+set-window-option -g window-status-current-bg default
+set-window-option -g window-status-current-fg colour237 #bg1
+
+# pane border
+set-option -g pane-active-border-fg colour250 #fg2
+set-option -g pane-border-fg colour237 #bg1
+
+# message infos
+set-option -g message-bg colour239 #bg2
+set-option -g message-fg colour223 #fg1
+
+# writting commands inactive
+set-option -g message-command-bg colour239 #fg3
+set-option -g message-command-fg colour223 #bg1
+
+# pane number display
+set-option -g display-panes-active-colour colour250 #fg2
+set-option -g display-panes-colour colour237 #bg1
+
+# clock
+set-window-option -g clock-mode-colour colour109 #blue
+
+# bell
+set-window-option -g window-status-bell-style fg=colour235,bg=colour167 #bg, red
+
+
+## Theme settings mixed with colors (unfortunately, but there is no cleaner way)
+set-option -g status-attr "none"
+set-option -g status-justify "left"
+set-option -g status-left-attr "none"
+set-option -g status-left-length "80"
+set-option -g status-right-attr "none"
+set-option -g status-right-length "80"
+set-window-option -g window-status-activity-attr "none"
+set-window-option -g window-status-attr "none"
+set-window-option -g window-status-separator ""
+
+set-option -g status-left "#[fg=colour248, bg=colour241] #S #[fg=colour241, bg=colour237, nobold, noitalics, nounderscore]"
+set-option -g status-right "#[fg=colour239, bg=colour237, nobold, nounderscore, noitalics]#[fg=colour246,bg=colour239] %Y-%m-%d  %H:%M #[fg=colour248, bg=colour239, nobold, noitalics, nounderscore]#[fg=colour237, bg=colour248] #h "
+
+set-window-option -g window-status-current-format "#[fg=colour239, bg=colour248, :nobold, noitalics, nounderscore]#[fg=colour239, bg=colour214] #I #[fg=colour239, bg=colour214, bold] #W #[fg=colour214, bg=colour237, nobold, noitalics, nounderscore]"
+set-window-option -g window-status-format "#[fg=colour237,bg=colour239,noitalics]#[fg=colour223,bg=colour239] #I #[fg=colour223, bg=colour239] #W #[fg=colour239, bg=colour237, noitalics]"
+
+#+-------+
+#+ Panes +
+#+-------+
+set -g pane-border-bg black
+set -g pane-border-fg black
+set -g pane-active-border-bg black
+set -g pane-active-border-fg brightblack
+set -g display-panes-colour black
+set -g display-panes-active-colour brightblack
+
+#+------------+
+#+ Clock Mode +
+#+------------+
+setw -g clock-mode-colour cyan
+
+#+----------+
+#+ Messages +
+#+---------+
+set -g message-fg cyan
+set -g message-bg brightblack
+set -g message-command-fg cyan
+set -g message-command-bg brightblack
+
+# Remove SSH_AUTH_SOCK to disable auto-resetting of Tmux variable
+set -g update-environment "DISPLAY SSH_ASKPASS SSH_AGENT_PID \
+                           SSH_CONNECTION WINDOWID XAUTHORITY"
+# Use a symlink to look up SSH authentication
+setenv -g SSH_AUTH_SOCK $HOME/.ssh/ssh_auth_sock

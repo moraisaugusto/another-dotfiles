@@ -65,7 +65,7 @@ plugins=(git colored-man-pages emoji-clock tmux tmuxinator nmap systemadmin batt
 export IRACE_HOME=~/.R_libs/irace
 export R_LIBS=~/.R_libs
 
-export PATH=$HOME/.bin:/usr/local/bin:$PATH:$HOME/.gem/ruby/2.4.0/bin:/opt/gams/gams24.8_linux_x64_64_sfx:/opt/ibm/ILOG/CPLEX_Studio1271/cplex/bin/x86-64_linux:/opt/ibm/ILOG/CPLEX_Studio1271/opl/oplide:/opt/ibm/ILOG/CPLEX_Studio1271/opl/bin/x86-64_linux:$IRACE_HOME/bin
+export PATH=$HOME/.bin:/usr/local/bin:$PATH:$HOME/.gem/ruby/2.5.0/bin:/opt/gams/gams24.8_linux_x64_64_sfx:/opt/ibm/ILOG/CPLEX_Studio1271/cplex/bin/x86-64_linux:/opt/ibm/ILOG/CPLEX_Studio1271/opl/oplide:/opt/ibm/ILOG/CPLEX_Studio1271/opl/bin/x86-64_linux:$IRACE_HOME/bin
 export MANPATH="/usr/local/man:$MANPATH"
 
 # jdk
@@ -106,8 +106,8 @@ PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -
 
 # mpv
 alias mpv="mpv --hwdec=vaapi --vo=opengl"
-alias vi=nvim
-alias vim=nvim
+alias vi=vim
+#alias vim=nvim
 alias open=xdg-open
 
 # zathura
@@ -121,7 +121,7 @@ ps -u $(whoami) | grep ssh-agent &> /dev/null
 if [ $? -ne 0 ];then
     eval "$(ssh-agent -s)" >&/dev/null
     source $HOME/.dotfiles/scripts/bin/sshrc.sh
-    ls ~/.ssh/id_rsa* | awk '!/pub$/ {system("ssh-add "$0 " 2>/dev/null")} '
+    #ls ~/.ssh/id_rsa* | awk '!/pub$/ {system("ssh-add "$0 " 2>/dev/null")} '
 fi
 trap 'ssh-agent -k; exit' 0
 
@@ -139,11 +139,11 @@ else
     export BROWSER=links
 fi
 
-PATH="/home/augusto/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/augusto/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/augusto/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/augusto/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/augusto/perl5"; export PERL_MM_OPT;
+#PATH="/home/augusto/perl5/bin${PATH:+:${PATH}}"; export PATH;
+#PERL5LIB="/home/augusto/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+#PERL_LOCAL_LIB_ROOT="/home/augusto/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+#PERL_MB_OPT="--install_base \"/home/augusto/perl5\""; export PERL_MB_OPT;
+#PERL_MM_OPT="INSTALL_BASE=/home/augusto/perl5"; export PERL_MM_OPT;
 
 
 ## GCC error
@@ -153,3 +153,14 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # if [[ $PWD != $HOME ]]; then
 #     cd $HOME
 # fi
+#
+
+
+## Setting Keyboard layout
+setxkbmap -model abnt2 -layout br -variant abnt2
+
+
+
+## asdf
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
