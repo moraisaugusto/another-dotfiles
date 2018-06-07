@@ -1,7 +1,8 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+runtime! plugin/python_setup.vim
 
 " load plugins from vundle
 source ~/.vim/plugins.vim
@@ -206,7 +207,7 @@ nnoremap <F6> :YcmForceCompileAndDiagnostics<CR>
 " the plugins section
 
 " shortcut to open a lib in new tab
-nnoremap <silent><Leader><C-]> <C-w><C-]><C-w>T
+nnoremap <silent><C-]> <C-w><C-]><C-w>T
 
 " Close the current buffer
 noremap <C-x> :q<cr>
@@ -272,7 +273,8 @@ map <silent> <C-l> :call WinMove('l')<cr>
 
 
 " rewrap content
-map <C-r> {gq}
+nmap <leader>p {gq}
+" map <C-r> {gq}
 
 " toggle cursor line
 set cursorline!
@@ -474,6 +476,9 @@ endfunction
 
 nnoremap <silent> <leader>u :call HtmlUnEscape()<cr>
 
+" goto tag new tab
+:nnoremap <silent><Leader><C-]> <C-w><C-]><C-w>T
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -519,14 +524,11 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " jedi-vim plugin
 let g:jedi#use_tabs_not_buffers = 1
-let g:jedi#goto_command = "<leader>d"
-let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_definitions_command = ""
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "<leader>n"
-let g:jedi#completions_command = "<C-Space>"
-let g:jedi#rename_command = "<leader>r"
 let g:jedi#completions_enabled = 1
+let g:python_host_prog="/home/augusto/.asdf/installs/python/2.7.15/bin/python"
+let g:python3_host_prog="/home/augusto/.asdf/installs/python/3.6.5/bin/python"
+" let did_python_setup = 1
+
 
 
 " Fugitive Shortcuts
@@ -545,6 +547,7 @@ nmap <leader>s :SyntasticToggleMode<cr>
 nmap <leader>f :Limelight!!<cr>
 
 " flake8 - PEP8
+let no_flake8_maps = 1
 autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
 let g:flake8_show_in_gutter=1  " show
 let g:flake8_show_in_file=1  " show
@@ -627,8 +630,8 @@ call ApplyLocalSettings(expand('.'))
 set guifont=SourceCodePro-Regular
 
 " webdev icons
-let g:webdevicons_enable_nerdtree = 0
-let g:webdevicons_enabl = 0
+let g:webdevicons_enable_nerdtree = 1
+let g:webdevicons_enabl = 1
 let g:WebDevIconsUnicodeDecorateFolderNodes = 0
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 
