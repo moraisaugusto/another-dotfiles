@@ -40,9 +40,9 @@ screenchange-reload = true
 
 [bar/top]
 monitor = ${env:MONITOR:HDMI-1}
-;monitor = ${env:MONITOR:LVDS-1}
+;monitor = ${env:MONITOR:eDP-1}
 width = 100%
-height = 20
+height = 25
 offset-x = 0
 offset-y = 0
 
@@ -58,13 +58,14 @@ underline-color = #00f
 border-bottom-size = 0
 border-bottom-color = ${colors.background}
 
-spacing = 1
+spacing = 2
 padding-left = 0
 padding-right = 1
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = Knack\ Nerd\ Font:pixelsize=8;1
+#font-0 = Knack\ Nerd\ Font:pixelsize=16;1
+font-0 = Hack Nerd Font:pixelsize=12;1
 ;font-0 = hack:pixelsize=12;1
 ;font-1 = unifont:size=6:heavy:fontformat=truetype;-2
 ;font-2 = siji:pixelsize=10;0
@@ -203,7 +204,7 @@ bar-progress-empty = ─
 [module/backlight]
 type = internal/xbacklight
 card = intel_backlight
-output = LVDS-1
+output = eDP-1
 
 format = <label> <bar>
 label = ""
@@ -258,7 +259,7 @@ bar-used-indicator =
 
 [module/wlan]
 type = internal/network
-interface = wlp2s0
+interface = enp4s0
 interval = 3.0
 
 
@@ -361,7 +362,7 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 [module/battery]
 type = internal/battery
 battery = BAT0
-adapter = AC0
+adapter = AC
 full-at = 95
 time-format = "%H:%M"
 
@@ -395,7 +396,7 @@ animation-charging-framerate = 750
 [module/temperature]
 type = internal/temperature
 thermal-zone = 6
-hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input
 warn-temperature = 80
 
 format = <ramp> <label>
@@ -414,7 +415,7 @@ ramp-foreground = ${colors.foreground-alt}
 
 [module/pkg]
 type = custom/script
-;tail = true
+tail = true
 interval = 1200
 format = <label>
 ;format-underline = #ff5c57
@@ -437,11 +438,11 @@ menu-0-0-exec = reboot
 menu-0-1 =  Power off
 menu-0-1-exec = shutdown now
 menu-0-2 =  Sleep
-menu-0-2-exec = systemctl hybrid-sleep
+menu-0-2-exec = ~/.config/i3/i3lock-fancy-multimonitor/lock && systemctl hybrid-sleep
 menu-0-3 =  Log out
 menu-0-3-exec = i3-msg exit
 menu-0-4 =  Lock
-menu-0-4-exec = lock &
+menu-0-4-exec = ~/.config/i3/i3lock-fancy-multimonitor/lock &
 
 [module/monitor]
 type = custom/script

@@ -59,6 +59,7 @@ set $tag10 "10;"
 new_window 1pixel
 smart_borders on
 gaps inner 10 
+# not used
 #gaps outer 5
 #smart_gaps on
 
@@ -66,15 +67,15 @@ gaps inner 10
 #
 # MULTIMEDIA
 #
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
-bindsym XF86Tools exec spotify
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioStop exec playerctl stop
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2%
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2%
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+#bindsym XF86Tools exec spotify
+#bindsym XF86AudioPlay exec playerctl play-pause
+#bindsym XF86AudioStop exec playerctl stop
+#bindsym XF86AudioNext exec playerctl next
+#bindsym XF86AudioPrev exec playerctl previous
+#
 #################################################################################################
 
 # change focus
@@ -187,25 +188,25 @@ for_window [class="Spotify"] move to workspace 3
 #
 # Workspaces
 #
-exec --no-startup-id "i3-msg 'workspace 3; append_layout /home/augusto/.i3/workspace-3.json'"
+#exec --no-startup-id "i3-msg 'workspace 3; append_layout /home/augusto/.i3/workspace-3.json'"
 
-
-# reload the configuration file
+#
+## reload the configuration file
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+## restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
+## exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-#lock screen customized
+##lock screen customized
 bindsym $mod+Control+l exec "$HOME/.dotfiles/extras/config/i3/i3lock-fancy-multimonitor/lock"
-#monitor configuration
+##monitor configuration
 bindsym $mod+Shift+p exec arandr
-#urxvt terminal
+##urxvt terminal
 bindsym $mod+F12 exec urxvt
-#sound settings
+##sound settings
 bindsym $mod+Shift+s exec pavucontrol
-
-# resize window (you can also use the mouse for that)
+#
+## resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
@@ -230,45 +231,46 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
-# rofi
+#
+## rofi
 bindsym $mod+d exec rofi -show drun
-
-# Polybar
+#
+## Polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
-# 2 monitors
-exec xrandr && xrandr --output HDMI1 --primary --mode 1680x1050 --pos 0x0 --rotate normal --output LVDS1 --mode 1366x768 --pos 1680x0 --rotate normal --output VIRTUAL1 --off --output DP1 --off --output VGA1 --off
-
-# Background
-exec sleep 2 && feh --bg-fill ~/Google\ Drive/Augusto\ Morais/Wallpapers/mount.png ~/Google\ Drive/Augusto\ Morais/Wallpapers/Energy_sunset.png
-
-# autolock i3
-exec xautolock  -time 15 -locker '~/.config/i3/i3lock-fancy-multimonitor/lock' --corners 0 0 --scrot -z &
-
-# connect Wifi | its not necessary enable it here (polybar already does it)
-# exec wicd-gtk -n
-
-# screenshot - 
+#
+## 2 monitors
+exec xrandr && xrandr --output HDMI2 --off --output HDMI1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output DP1 --off --output eDP1 --mode 1366x768 --pos 2560x0 --rotate normal --output VIRTUAL1 --off
+#
+## Background
+#exec sleep 2 && feh --bg-fill ~/Google\ Drive/Augusto\ Morais/Wallpapers/mount.png ~/Google\ Drive/Augusto\ Morais/Wallpapers/Energy_sunset.png
+#
+## autolock i3
+#exec xautolock  -time 15 -locker '~/.config/i3/i3lock-fancy-multimonitor/lock' --corners 0 0 --scrot -z &
+#
+## connect Wifi | its not necessary enable it here (polybar already does it)
+## exec wicd-gtk -n
+#
+## screenshot - 
 bindsym --release Control+Shift+Print exec imgur-screenshot
 bindsym --release Shift+Print exec scrot -s -e 'mv $f ~/Pictures/$f'
 bindsym Print exec scrot -e 'mv $f ~/Pictures/$f'
-
-# insync & Dropbox
-exec insync start
-exec dropbox
-
-# i3lock prevent for videos
-exec ~/.dotfiles/scripts/bin/lightsOn.sh 300
-
-# Startup Apps
-#################################################################################################
 #
-# Autostart
+## insync & Dropbox
+#exec insync start
+#exec dropbox
 #
+## i3lock prevent for videos
+#exec ~/.dotfiles/scripts/bin/lightsOn.sh 300
+#
+## Startup Apps
+##################################################################################################
+##
+## Autostart
+##
 exec --no-startup-id i3-msg 'workspace $tag1; exec chromium'
 exec --no-startup-id i3-msg 'workspace $tag2; exec urxvt'
-exec --no-startup-id i3-msg 'workspace $tag3; exec spotify'
-exec --no-startup-id i3-msg 'workspace $tag3; exec lyricfier'
+#exec --no-startup-id i3-msg 'workspace $tag3; exec spotify'
+#exec --no-startup-id i3-msg 'workspace $tag3; exec lyricfier'
 exec --no-startup-id i3-msg 'workspace $tag4; exec nautilus'
-
+exec --no-startup-id i3-msg 'workspace $tag9; exec franz'
+#

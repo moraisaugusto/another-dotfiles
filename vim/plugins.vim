@@ -49,12 +49,15 @@ Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'timcharper/textile.vim', { 'for': 'textile' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python'}
-Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
+"Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
 Plug 'majutsushi/tagbar'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'nvie/vim-flake8', {'for': 'python'} "pep8 style checker
 "
 " Colors schemes
-" Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 filetype plugin indent on

@@ -207,7 +207,7 @@ nnoremap <F6> :YcmForceCompileAndDiagnostics<CR>
 " the plugins section
 
 " shortcut to open a lib in new tab
-nnoremap <silent><C-]> <C-w><C-]><C-w>T
+nnoremap <silent><leader><C-]> <C-w><C-]><C-w>T
 
 " Close the current buffer
 noremap <C-x> :q<cr>

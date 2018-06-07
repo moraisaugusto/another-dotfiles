@@ -5,7 +5,7 @@
 
 !### Home Configs
 ! styles
-#include ".Xresources.d/rxvt-unicode-work"
+!#include ".Xresources.d/rxvt-unicode-home"
 
 ! Themes
 !#include ".Xresources.d/schemes/nord"

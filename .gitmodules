@@ -6,6 +6,3 @@
         path = vim/bundle/Vundle.vim
         url = https://github.com/VundleVim/Vundle.vim.git
 
-[submodule "i3lock-fancy-multimonitor"]
-			path = extras/config/i3
-			url = https://github.com/aflavio/i3lock-fancy-multimonitor

@@ -65,7 +65,7 @@ plugins=(git colored-man-pages emoji-clock tmux tmuxinator nmap systemadmin batt
 export IRACE_HOME=~/.R_libs/irace
 export R_LIBS=~/.R_libs
 
-export PATH=$HOME/.bin:/usr/local/bin:$PATH:$HOME/.gem/ruby/2.5.0/bin:/opt/gams/gams24.8_linux_x64_64_sfx:/opt/ibm/ILOG/CPLEX_Studio1271/cplex/bin/x86-64_linux:/opt/ibm/ILOG/CPLEX_Studio1271/opl/oplide:/opt/ibm/ILOG/CPLEX_Studio1271/opl/bin/x86-64_linux:$IRACE_HOME/bin
+export PATH=$HOME/.bin:/usr/local/bin:$PATH:$HOME/.gem/ruby/2.5.0/bin:/opt/gams/gams24.8_linux_x64_64_sfx:/opt/ibm/ILOG/CPLEX_Studio1271/cplex/bin/x86-64_linux:/opt/ibm/ILOG/CPLEX_Studio1271/opl/oplide:/opt/ibm/ILOG/CPLEX_Studio1271/opl/bin/x86-64_linux:$IRACE_HOME/bin:/opt/loggi/ops/ansible/bin
 export MANPATH="/usr/local/man:$MANPATH"
 
 # jdk
@@ -106,8 +106,8 @@ PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -
 
 # mpv
 alias mpv="mpv --hwdec=vaapi --vo=opengl"
-alias vi=vim
-#alias vim=nvim
+alias vi=nvim
+# alias vi=vim
 alias open=xdg-open
 
 # zathura
