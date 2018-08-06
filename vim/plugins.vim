@@ -25,7 +25,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'vim-scripts/matchit.zip'
-Plug 'sickill/vim-pasta' " context-aware pasting
+" Plug 'sickill/vim-pasta' " context-aware pasting
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' } " distraction-free writing
 Plug 'junegunn/limelight.vim', { 'on': 'Limelight' } " focus tool. Good for presentating with vim
 Plug 'jiangmiao/auto-pairs'
@@ -49,12 +49,13 @@ Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'timcharper/textile.vim', { 'for': 'textile' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python'}
-"Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
+Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
 Plug 'majutsushi/tagbar'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'nvie/vim-flake8', {'for': 'python'} "pep8 style checker
+Plug 'kshenoy/vim-signature'
 "
 " Colors schemes
 Plug 'morhetz/gruvbox'

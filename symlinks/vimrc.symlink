@@ -194,9 +194,26 @@ let g:color_coded_filetypes = ['c', 'cpp', 'objc']
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <F6> :YcmForceCompileAndDiagnostics<CR>
 ""Do not ask when starting vim
-"let g:syntastic_always_populate_loc_list = 1
-"let g:ycm_collect_identifiers_from_tags_files = 1
-"set tags+=./.tags
+let g:syntastic_always_populate_loc_list = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+set tags+=./.ctags
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugins - Gutentags
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:gutentags_enabled = 1
+let g:gutentags_generate_on_missing = 1      " Generate a tags file if there is none.
+let g:gutentags_generate_on_new = 0          " Don't regenerate tags file in a new Vim session (I tend to reopen Vim a lot).
+let g:gutentags_generate_on_write = 1        " Do update the tags file on file save.
+let g:gutentags_resolve_symlinks = 1
+let g:gutentags_ctags_tagfile = '.ctags'
+let g:gutentags_project_root = ['.git']
+let g:gutentags_add_default_project_roots = 0
+let g:gutentags_ctags_extra_args = ['--fields=+l']
+
+
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -310,6 +327,12 @@ let g:goyo_height = '45%'
 nmap <leader>w :Goyo <cr>
 "nmap <leader>w :setf textile<cr> :Goyo 50%x45%<cr>
 
+" format json 
+map <leader>fj :%!jq '.' <CR>
+
+" enable javascript syntax
+map <leader>ejs :set ft=javascript<CR> 
+
 " Move lines - Meta keys
 nnoremap <M-j> :m .+1<CR>==
 nnoremap <M-k> :m .-2<CR>==
@@ -339,7 +362,7 @@ endif
 function! DelTagOfFile(file)
   let fullpath = a:file
   let cwd = getcwd()
-  let tagfilename = cwd . "/tags"
+  let tagfilename = cwd . "/.ctags"
   let f = substitute(fullpath, cwd . "/", "", "")
   let f = escape(f, './')
   let cmd = 'sed -i "/' . f . '/d" "' . tagfilename . '"'
@@ -350,7 +373,7 @@ endfunction
 function! UpdateTags()
   let f = expand("%:p")
   let cwd = getcwd()
-  let tagfilename = cwd . "/tags"
+  let tagfilename = cwd . "/.ctags"
   let cmd = 'ctags -a -f ' . tagfilename . ' --c++-kinds=+p --fields=+iaS --extra=+q ' . '"' . f . '"'
   call DelTagOfFile(f)
   let resp = system(cmd)

@@ -69,10 +69,10 @@ bind -r C-h select-window -t :-
 bind -r C-l select-window -t :+
 
 # Resize pane shortcuts
-bind -r H resize-pane -L 10
-bind -r J resize-pane -D 10
-bind -r K resize-pane -U 10
-bind -r L resize-pane -R 10
+bind -r H resize-pane -L 5
+bind -r J resize-pane -D 5
+bind -r K resize-pane -U 5
+bind -r L resize-pane -R 5
 
 # enable mouse support for switching panes/windows
 set -g mouse on
@@ -240,9 +240,9 @@ setw -g clock-mode-colour cyan
 #+----------+
 #+ Messages +
 #+---------+
-set -g message-fg cyan
+set -g message-fg black
 set -g message-bg brightblack
-set -g message-command-fg cyan
+set -g message-command-fg black
 set -g message-command-bg brightblack
 
 # Remove SSH_AUTH_SOCK to disable auto-resetting of Tmux variable

@@ -65,7 +65,7 @@ plugins=(git colored-man-pages emoji-clock tmux tmuxinator nmap systemadmin batt
 export IRACE_HOME=~/.R_libs/irace
 export R_LIBS=~/.R_libs
 
-export PATH=$HOME/.bin:/usr/local/bin:$PATH:$HOME/.gem/ruby/2.5.0/bin:/opt/gams/gams24.8_linux_x64_64_sfx:/opt/ibm/ILOG/CPLEX_Studio1271/cplex/bin/x86-64_linux:/opt/ibm/ILOG/CPLEX_Studio1271/opl/oplide:/opt/ibm/ILOG/CPLEX_Studio1271/opl/bin/x86-64_linux:$IRACE_HOME/bin:/opt/loggi/ops/ansible/bin
+export PATH=$HOME/.bin:/usr/local/bin:$PATH:$HOME/.gem/ruby/2.5.0/bin:/opt/gams/gams24.8_linux_x64_64_sfx:/opt/ibm/ILOG/CPLEX_Studio1271/cplex/bin/x86-64_linux:/opt/ibm/ILOG/CPLEX_Studio1271/opl/oplide:/opt/ibm/ILOG/CPLEX_Studio1271/opl/bin/x86-64_linux:$IRACE_HOME/bin:/opt/loggi/ops/ansible/bin:/opt/mendeleydesktop-1.19.1-linux-x86_64/bin
 export MANPATH="/usr/local/man:$MANPATH"
 
 # jdk
@@ -109,6 +109,7 @@ alias mpv="mpv --hwdec=vaapi --vo=opengl"
 alias vi=nvim
 # alias vi=vim
 alias open=xdg-open
+alias wifi-menu="sudo wifi-menu"
 
 # zathura
 NO_AT_BRIDGE=1
@@ -121,7 +122,7 @@ ps -u $(whoami) | grep ssh-agent &> /dev/null
 if [ $? -ne 0 ];then
     eval "$(ssh-agent -s)" >&/dev/null
     source $HOME/.dotfiles/scripts/bin/sshrc.sh
-    #ls ~/.ssh/id_rsa* | awk '!/pub$/ {system("ssh-add "$0 " 2>/dev/null")} '
+    ls ~/.ssh/id_rsa* | awk '!/pub$/ {system("ssh-add "$0 " 2>/dev/null")} '
 fi
 trap 'ssh-agent -k; exit' 0
 
@@ -157,7 +158,9 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 
 
 ## Setting Keyboard layout
-setxkbmap -model abnt2 -layout br -variant abnt2
+# setxkbmap -model abnt2 -layout br -variant abnt2
+# Notebook keyboard
+setxkbmap -model thinkpad60 -layout br
 
 
 
