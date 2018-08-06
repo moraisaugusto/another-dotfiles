@@ -5,4 +5,5 @@ vim/.netrwhist
 vim/undo
 symlinks/zshAlias.symlink
 .uuid
-
+.ctags
+ctags
