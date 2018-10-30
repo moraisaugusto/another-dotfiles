@@ -8,22 +8,25 @@ import os
 import sys
 
 def run(args):
-    m_internal = 'eDP1'
-    m_external = 'HDMI1'
+    configs = {'external':
+                           {'output': 'HDMI1', 'resolution': '3840x2160', 'off_output': 'eDP1'},
+               'laptop':
+                           {'output': 'eDP1', 'resolution': '1366x768', 'off_output': 'HDMI1'}
+              }
 
-    if args.monitors == str(1) and args.output == 'external':
-        cmd = "xrandr --output {} --primary --mode 3840x2160 --scale 1x1".format(m_external)
+    if args.monitors == str(1) and \
+       args.output in list(configs.keys()):
+        output = configs[str(args.output)]['output']
+        resolution = configs[str(args.output)]['resolution']
+        off_output = configs[str(args.output)]['off_output']
+
+        cmd = "xrandr --output {} --primary --mode {} --scale 1x1".format(output, resolution)
+        cmd2 = "xrandr --output {} --off".format(off_output)
+
         os.system(cmd)
-        cmd2 = "xrandr --output {} --off".format(m_internal)
+        os.system('sleep 1')
         os.system(cmd2)
-        apps(args.output)
 
-
-    if args.monitors == str(1) and args.output == 'laptop':
-        cmd = "xrandr --output {} --primary --mode 1366x768 --scale 1x1".format(m_internal)
-        os.system(cmd)
-        cmd2 = "xrandr --output {} --off".format(m_external)
-        os.system(cmd2)
         apps(args.output)
 
     if args.monitors == str(2):
