@@ -65,7 +65,7 @@ plugins=(git colored-man-pages emoji-clock tmux tmuxinator nmap systemadmin batt
 export IRACE_HOME=~/.R_libs/irace
 export R_LIBS=~/.R_libs
 
-export PATH=$HOME/.bin:/usr/local/bin:$PATH:$HOME/.gem/ruby/2.5.0/bin:/opt/gams/gams24.8_linux_x64_64_sfx:/opt/ibm/ILOG/CPLEX_Studio1271/cplex/bin/x86-64_linux:/opt/ibm/ILOG/CPLEX_Studio1271/opl/oplide:/opt/ibm/ILOG/CPLEX_Studio1271/opl/bin/x86-64_linux:$IRACE_HOME/bin:/opt/loggi/ops/ansible/bin:/opt/mendeleydesktop-1.19.1-linux-x86_64/bin
+export PATH=$HOME/.bin:/usr/local/bin:$PATH:$HOME/.gem/ruby/2.5.0/bin:/opt/gams/gams24.8_linux_x64_64_sfx:/opt/ibm/ILOG/CPLEX_Studio1271/cplex/bin/x86-64_linux:/opt/ibm/ILOG/CPLEX_Studio1271/opl/oplide:/opt/ibm/ILOG/CPLEX_Studio1271/opl/bin/x86-64_linux:$IRACE_HOME/bin:/opt/loggi/ops/ansible/bin:/opt/mendeleydesktop-1.19.1-linux-x86_64/bin:$HOME/.asdf/shims
 export MANPATH="/usr/local/man:$MANPATH"
 
 # jdk
@@ -76,8 +76,13 @@ export JAVA_HOME
 export ANDROID_HOME
 export PATH
 
+# GUROBI
+GUROBI_HOME=/opt/gurobi801/linux64
+LD_LIBRARY_PATH=$GUROBI_HOME/lib
+PATH=$PATH:$GUROBI_HOME/bin
+
 # Cplex
-LD_LIBRARY_PATH=/opt/ibm/ILOG/CPLEX_Studio1271/opl/bin/x86-64_linux
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/ibm/ILOG/CPLEX_Studio1271/opl/bin/x86-64_linux
 export LD_LIBRARY_PATH
 
 # literal ls command
@@ -167,3 +172,11 @@ setxkbmap -model thinkpad60 -layout br
 ## asdf
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
+
+export QT_AUTO_SCREEN_SCALE_FACTOR=1.5
+export GDK_DPI_SCALE=1.0
+# export GDK_SCALE=2
+#
+#
+# Load privite infos
+source ~/.pass

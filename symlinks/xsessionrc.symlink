@@ -1,3 +1,6 @@
+if [ -f $HOME/.Xresources]; then
+  xrdb -merge ~/.Xresources
+fi
 
 # custom fonts
 xset +fp /home/augusto/.fonts/tewi

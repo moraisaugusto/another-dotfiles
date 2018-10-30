@@ -18,4 +18,6 @@
 ! Themes
 #include ".Xresources.d/schemes/gruvbox"
 
-!
+! 4k Resolution
+Xft.dpi: 120
+rofi.dpi: 120

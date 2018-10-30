@@ -198,7 +198,7 @@ bindsym $mod+Shift+r restart
 ## exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 ##lock screen customized
-bindsym $mod+Control+l exec "$HOME/.dotfiles/extras/config/i3/i3lock-fancy-multimonitor/lock"
+bindsym $mod+Control+l exec "$HOME/.dotfiles/extras/config/i3/i3lock-fancy-multimonitor/lock --no-text"
 ##monitor configuration
 bindsym $mod+Shift+p exec arandr
 ##urxvt terminal
@@ -239,7 +239,7 @@ bindsym $mod+d exec rofi -show drun
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #
 ## 2 monitors
-exec xrandr && xrandr --output HDMI2 --off --output HDMI1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output DP1 --off --output eDP1 --mode 1366x768 --pos 2560x0 --rotate normal --output VIRTUAL1 --off
+exec xrandr && xrandr --output HDMI2 --off --output HDMI1 --primary --mode 3840x2160 --pos 0x0 --scale 1x1 --rotate normal --off --output eDP1 --mode 1366x768 --pos 3840x0 --scale 1.2x1.2 --rotate normal --output VIRTUAL1 --off
 #
 ## Background
 #exec sleep 2 && feh --bg-fill ~/Google\ Drive/Augusto\ Morais/Wallpapers/mount.png ~/Google\ Drive/Augusto\ Morais/Wallpapers/Energy_sunset.png
