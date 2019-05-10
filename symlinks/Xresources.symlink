@@ -16,8 +16,8 @@
 #include ".Xresources.d/rxvt-unicode-work"
 
 ! Themes
-#include ".Xresources.d/schemes/gruvbox"
+#include ".Xresources.d/schemes/dracula"
 
 ! 4k Resolution
-Xft.dpi: 120
-rofi.dpi: 120
+Xft.dpi: 80
+rofi.dpi: 80

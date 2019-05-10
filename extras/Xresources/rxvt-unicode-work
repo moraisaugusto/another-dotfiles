@@ -5,7 +5,7 @@
 /* Xft.dpi: 144 */
 
 ! font type
-URxvt*font: -*-tamzenforpowerline-medium-r-normal-*-20-*-*-*-*-*-*-*,-*-siji-medium-r-normal-*-17-100-75-*-*-*-*-*,xft:MesloLGLDZ Nerd Font:pixelsize=18:antialias=true:hinting=true
+URxvt*font: -*-tamzenforpowerline-medium-r-normal-*-14-*-*-*-*-*-*-*,-*-siji-medium-r-normal-*-17-100-75-*-*-*-*-*,xft:MesloLGLDZ Nerd Font:pixelsize=18:antialias=true:hinting=true
 
 !urxvt settings
 URxvt.letterSpace:     0
