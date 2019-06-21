@@ -7,7 +7,7 @@ export ZSH=$HOME/.dotfiles/oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="augusto-default"
-
+#
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -57,7 +57,7 @@ ZSH_TMUX_FIXTERM=true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages emoji-clock tmux tmuxinator nmap systemadmin battery extract)
+plugins=(git colored-man-pages emoji-clock tmux tmuxinator nmap battery extract)
 
 #
 # User configuration
@@ -65,7 +65,7 @@ plugins=(git colored-man-pages emoji-clock tmux tmuxinator nmap systemadmin batt
 export IRACE_HOME=~/.R_libs/irace
 export R_LIBS=~/.R_libs
 
-export PATH=$HOME/.bin:/usr/local/bin:$PATH:$HOME/.gem/ruby/2.5.0/bin:/opt/gams/gams24.8_linux_x64_64_sfx:/opt/ibm/ILOG/CPLEX_Studio1271/cplex/bin/x86-64_linux:/opt/ibm/ILOG/CPLEX_Studio1271/opl/oplide:/opt/ibm/ILOG/CPLEX_Studio1271/opl/bin/x86-64_linux:$IRACE_HOME/bin:/opt/loggi/ops/ansible/bin:/opt/mendeleydesktop-1.19.1-linux-x86_64/bin:$HOME/.asdf/shims
+export PATH=$HOME/.bin:/usr/local/bin:$PATH:$HOME/.gem/ruby/2.5.0/bin:/opt/gams/gams24.8_linux_x64_64_sfx:/opt/ibm/ILOG/CPLEX_Studio1271/cplex/bin/x86-64_linux:/opt/ibm/ILOG/CPLEX_Studio1271/opl/oplide:/opt/ibm/ILOG/CPLEX_Studio1271/opl/bin/x86-64_linux:$IRACE_HOME/bin:/opt/loggi/ops/ansible/bin:/opt/mendeleydesktop-1.19.1-linux-x86_64/bin
 export MANPATH="/usr/local/man:$MANPATH"
 
 # jdk
@@ -164,14 +164,15 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 
 ## Setting Keyboard layout
 # setxkbmap -model abnt2 -layout br -variant abnt2
+setxkbmap -layout us -variant intl
 # Notebook keyboard
-setxkbmap -model thinkpad60 -layout br
 
 
 
 ## asdf
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
+export PATH="$HOME/.asdf/shims:$PATH"
 
 export QT_AUTO_SCREEN_SCALE_FACTOR=1.5
 export GDK_DPI_SCALE=1.0
@@ -179,4 +180,12 @@ export GDK_DPI_SCALE=1.0
 #
 #
 # Load privite infos
-source ~/.pass
+if [ -f ~/.pass ]; then
+    source ~/.pass
+fi
+
+# MSSQL workaround
+export LD_PRELOAD=/usr/lib/libcurl.so.3
+
+# Scope app Env variable
+export SCOPE_APP_ENV='development'

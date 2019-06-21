@@ -19,6 +19,8 @@ let g:mapleader = ','
 
 set history=1000 " change history to 1000
 
+" always use unix format
+set fileformat=unix
 
 " Tab control
 set smarttab " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
@@ -83,8 +85,8 @@ if has('autocmd') && !exists('autocommands_loaded')
 
 endif
 
-" code folding settings
-set foldmethod=syntax " fold based on indent
+"" code folding settings
+set foldmethod=indent " fold based on indent
 set foldnestmax=10 " deepest fold is 10 levels
 set nofoldenable " don't fold by default
 set foldlevel=1
@@ -95,7 +97,7 @@ let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['html'] = 'html'
 "ActivateAddons vim-snippets snipmate
 if !exists('g:snips_author')
-	let g:snips_author = 'Augusto Morais'
+    let g:snips_author = 'Augusto Morais'
     let g:snips_author_email = 'aflavio at gmail.com'
 endif
 
@@ -158,7 +160,7 @@ set laststatus=2 " show the satus line all the time
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => text limits (disable by default)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set textwidth=118
+set textwidth=99
 "augroup vimrc_autocmds
 "autocmd BufRead * highlight OverLength ctermbg=darkgrey guibg=#592929
 "autocmd BufRead * match OverLength /\%100v.*/
@@ -178,15 +180,17 @@ set directory=~/.tmp,~/tmp,/var/tmp,/tmp
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Languages - YouCompleteMe
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"map <F8> : !gcc -lstdc++ -lm % && ./a.out <CR>
+map <F8> : !gcc -lstdc++ -lm % && ./a.out <CR>
 
-let g:ycm_server_python_interpreter = '/usr/bin/python3'
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:loaded_youcompleteme = 1
+let g:ycm_server_python_interpreter = $HOME"/.asdf/shims/python"
+let g:ycm_global_ycm_extra_conf = $HOME"/.vim/.ycm_extra_conf.py"
 let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
+" let b:ycm_largefile=1
 " for debug
-" let g:ycm_keep_logfiles = 1
-" let g:ycm_log_level = 'debug'
+let g:ycm_keep_logfiles = 1
+let g:ycm_log_level = 'debug'
 
 " color coded
 let g:color_coded_enabled = 1
@@ -203,7 +207,7 @@ set tags+=./.ctags
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins - Gutentags
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:gutentags_enabled = 1
+let g:gutentags_enabled = 0
 let g:gutentags_generate_on_missing = 1      " Generate a tags file if there is none.
 let g:gutentags_generate_on_new = 0          " Don't regenerate tags file in a new Vim session (I tend to reopen Vim a lot).
 let g:gutentags_generate_on_write = 1        " Do update the tags file on file save.
@@ -214,7 +218,9 @@ let g:gutentags_add_default_project_roots = 0
 let g:gutentags_ctags_extra_args = ['--fields=+l']
 
 
-
+" editorconfig
+"let g:EditorConfig_core_mode= 'python_external'
+"let g:EditorConfig_exec_path = $HOME"/.asdf/shims/editorconfig"
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -452,7 +458,7 @@ function! SetCustomCommand()
 endfunction
 
 function! TrimWhiteSpace()
-	%s/\s\+$//e
+    %s/\s\+$//e
 endfunction
 
 function! HiInterestingWord(n)
@@ -511,12 +517,12 @@ nnoremap <silent> <leader>u :call HtmlUnEscape()<cr>
 nnoremap <Leader>a :Ack!<Space>
 
 
-" close NERDTree after a file is opened
+" close NERDTred after a file is opened
 let g:NERDTreeQuitOnOpen=0
 " show hidden files in NERDTree
 let NERDTreeShowHidden=1
 " remove some files by extension
-let NERDTreeIgnore = ['\.js.map$', '\.pyc', '\.ctags', '\.tool-versions', '\.flake8', '\tags']
+let NERDTreeIgnore = ['\.js.map$', '\.pyc', '\.ctags', '\.tool-versions', '\.flake8', '\tags', '\.git', '\.pytest_cache', '__pycache__']
 " Toggle NERDTree
 nmap <silent> <leader>k :NERDTreeToggle<cr>
 " expand to the path of the file in the current buffer
@@ -527,31 +533,33 @@ nmap <silent> <leader>t :CtrlP<cr>
 nmap <silent> <leader>r :CtrlPBuffer<cr>
 nnoremap <leader>n :CtrlPTag<cr>
 let g:ctrlp_map='<leader>t'
-"let g:ctrlp_dotfiles=1
-"let g:ctrlp_working_path_mode = 'ra'
+""let g:ctrlp_dotfiles=1
+"let g:ctrlp_working_path_mode = ''
 
 " CtrlP ignore patterns
-let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-            \ 'file': '\v\.(exe|so|dll|o|aux|pyc)$',
-            \ }
+" let g:ctrlp_custom_ignore = {
+"             \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+"             \ 'file': '\v\.(exe|so|dll|o|aux|pyc)$',
+"             \ }
 
 "" only show files that are not ignored by git
-"let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 "
 "" search the nearest ancestor that contains .git, .hg, .svn
 "let g:ctrlp_working_path_mode = 2
+" let g:ctrlp_max_depth=40
+" let g:ctrlp_max_files=0
 
 " ctrlp-py-matcher
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+" let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 
 " jedi-vim plugin
-let g:jedi#use_tabs_not_buffers = 1
+" let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#completions_enabled = 1
-let g:python_host_prog="/home/augusto/.asdf/installs/python/2.7.15/bin/python"
-let g:python3_host_prog="/home/augusto/.asdf/installs/python/3.6.5/bin/python"
-" let did_python_setup = 1
+" let g:python_host_prog=$HOME"/.asdf/installs/python/2.7.15/bin/python"
+let g:python3_host_prog= $HOME.'/.asdf/shims/python'
+let did_python_setup = 1
 
 
 
@@ -560,6 +568,7 @@ nmap <silent> <leader>gs :Gstatus<cr>
 nmap <leader>ge :Gedit<cr>
 nmap <silent><leader>gr :Gread<cr>
 nmap <silent><leader>gb :Gblame<cr>
+set diffopt+=vertical
 
 nmap <leader>m :MarkedOpen!<cr>
 nmap <leader>mq :MarkedQuit<cr>
@@ -570,20 +579,28 @@ nmap <leader>s :SyntasticToggleMode<cr>
 " toggle Limelight
 nmap <leader>f :Limelight!!<cr>
 
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+
 " flake8 - PEP8
-let no_flake8_maps = 1
+let no_flake8_maps = 0
 autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
-let g:flake8_show_in_gutter=1  " show
-let g:flake8_show_in_file=1  " show
+let g:flake8_show_in_gutter=0  " show
+let g:flake8_show_in_file=0  " show
+let g:flake8_max_markers=50 
 
 "tagbar
 nmap <F7> :TagbarToggle<CR>
 
 
 " allow es5 mode when looking at TypeScript
-let g:syntastic_typescript_tsc_args = '--module amd --target ES5 --noImplicitAny'
-let g:syntastic_typescript_checkers = ['tslint']
-let g:syntastic_javascript_checkers = ['jshint', 'jscs']
+" let g:syntastic_typescript_tsc_args = '--module amd --target ES5 --noImplicitAny'
+" let g:syntastic_typescript_checkers = ['tslint']
+" let g:syntastic_javascript_checkers = ['jshint', 'jscs']
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 1
+let g:syntastic_enable_highlighting = 0
+let g:syntastic_echo_current_error = 0
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 
@@ -603,12 +620,17 @@ let g:livepreview_engine = 'pdflatex'
 
 " airline options
 let g:airline_powerline_fonts=1
-let g:airline_theme='gruvbox'
+let g:airline_theme='dracula'
 
 " airline symbols - customized for unicode
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
+
+" ale - show error
+let g:airline#extensions#ale#enabled = 1
+let g:ale_set_highlights = 0
+noremap <leader>l :ALEToggle<CR>
 
 " unicode symbols
 let g:airline_left_sep = '»'
@@ -661,7 +683,7 @@ let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 
 " Vim colorscheme
 set background=dark
-colorscheme gruvbox
+colorscheme jellybeans
 
 " Protect large files from sourcing and other overhead.
 " Files become read only
