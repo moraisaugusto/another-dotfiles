@@ -15,7 +15,7 @@ set $CONFIG /home/augusto/.config/i3
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Terminus 9
+font pango:Terminus 0
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -67,10 +67,10 @@ gaps inner 10
 #
 # MULTIMEDIA
 #
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
-bindsym XF86Tools exec spotify
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle
+bindsym XF86Tools exec spotify 
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioStop exec playerctl stop
 bindsym XF86AudioNext exec playerctl next
@@ -159,7 +159,7 @@ for_window [class="^.*"] border pixel 1
 assign [class="Google-chrome"] 1
 assign [class="Chromium"] 1
 assign [class="URxvt"] 2
-# assign [class="Spotify"] 3
+assign [class="Spotify"] 3
 assign [class="lyricfier"] 3
 assign [class="Nautilus"] 4
 assign [class="mpv"] 5
@@ -238,17 +238,24 @@ bindsym $mod+d exec rofi -show drun
 ## Polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #
-## 2 monitors
-exec xrandr && xrandr --output HDMI2 --off --output HDMI1 --primary --mode 3840x2160 --pos 0x0 --scale 1x1 --rotate normal --off --output eDP1 --mode 1366x768 --pos 3840x0 --scale 1.2x1.2 --rotate normal --output VIRTUAL1 --off
+## monitors (4k)
+# 1 external monitor (4k)
+exec xrandr --output DP-4 --off --output HDMI-0 --primary --mode 3840x2160 --pos 0x0 --rotate normal
+# 2 monitors enabled
+# exec xrandr --output DP-4 --mode 1920x1080 --pos 849x2160 --rotate normal --scale 1.5x1.5 --off --output HDMI-0 --primary --mode 3840x2160 --pos 0x0 --rotate normal
 #
 ## Background
-#exec sleep 2 && feh --bg-fill ~/Google\ Drive/Augusto\ Morais/Wallpapers/mount.png ~/Google\ Drive/Augusto\ Morais/Wallpapers/Energy_sunset.png
+exec sleep 2 && feh --bg-fill ~/Google\ Drive/Augusto\ Morais/Wallpapers/mount.png ~/Google\ Drive/Augusto\ Morais/Wallpapers/Energy_sunset.png
 #
 ## autolock i3
-#exec xautolock  -time 15 -locker '~/.config/i3/i3lock-fancy-multimonitor/lock' --corners 0 0 --scrot -z &
+exec xautolock  -time 15 -locker '~/.config/i3/i3lock-fancy-multimonitor/lock' --corners 0 0 --scrot -z &
+
+## insync
+exec insync
 #
 ## connect Wifi | its not necessary enable it here (polybar already does it)
-## exec wicd-gtk -n
+# exec wicd-gtk -n
+exec wicd-client --tray
 #
 ## screenshot - 
 bindsym --release Control+Shift+Print exec imgur-screenshot
@@ -269,7 +276,7 @@ bindsym Print exec scrot -e 'mv $f ~/Pictures/$f'
 ##
 exec --no-startup-id i3-msg 'workspace $tag1; exec chromium'
 exec --no-startup-id i3-msg 'workspace $tag2; exec urxvt'
-#exec --no-startup-id i3-msg 'workspace $tag3; exec spotify'
+exec --no-startup-id i3-msg 'workspace $tag3; exec spotify --force-device-scale-factor=2.0'
 #exec --no-startup-id i3-msg 'workspace $tag3; exec lyricfier'
 exec --no-startup-id i3-msg 'workspace $tag4; exec nautilus'
 exec --no-startup-id i3-msg 'workspace $tag9; exec franz'

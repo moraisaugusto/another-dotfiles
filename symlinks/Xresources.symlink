@@ -5,19 +5,27 @@
 
 !### Home Configs
 ! styles
-!#include ".Xresources.d/rxvt-unicode-home"
+#include ".Xresources.d/rxvt-unicode-home"
 
 ! Themes
-!#include ".Xresources.d/schemes/nord"
+#include ".Xresources.d/schemes/nord"
 
 
 !### Work Configs
 ! styles
-#include ".Xresources.d/rxvt-unicode-work"
+!#include ".Xresources.d/rxvt-unicode-work"
 
 ! Themes
-#include ".Xresources.d/schemes/dracula"
+!#include ".Xresources.d/schemes/dracula"
 
 ! 4k Resolution
-Xft.dpi: 80
-rofi.dpi: 80
+*.dpi: 192
+Xft.dpi: 192
+rofi.dpi: 192
+Xcursor.size: 48
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintnone
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb

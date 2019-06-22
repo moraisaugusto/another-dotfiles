@@ -17,7 +17,7 @@ secondary = #e60053
 alert = #bd2c40
 
 [global/wm]
-margin-top = 5
+margin-top = 0
 margin-bottom = 5
 
 [settings]
@@ -30,7 +30,8 @@ margin-bottom = 5
 ; the bar would appear sluggish so we continue if timeout
 ; expires or limit is reached.
 throttle-output = 5
-throttle-output-for = 10
+throttle-output-for = 5 
+
 
 ; Time in milliseconds that the input handler will wait between processing events
 throttle-input-for = 30
@@ -39,9 +40,9 @@ throttle-input-for = 30
 screenchange-reload = true
 
 [bar/top]
-monitor = ${env:MONITOR:HDMI1}
+monitor = ${env:MONITOR:HDMI-0}
 width = 100%
-height = 40
+height = 50
 offset-x = 0
 offset-y = 0
 
@@ -64,7 +65,7 @@ module-margin-left = 1
 module-margin-right = 1
 
 ;font-0 = Knack\ Nerd\ Font:pixelsize=16;1
-font-0 = Hack Nerd Font:pixelsize=16;1
+font-0 = Hack Nerd Font:pixelsize=23;1
 ;font-0 = hack:pixelsize=12;1
 ;font-1 = unifont:size=6:heavy:fontformat=truetype;-2
 ;font-2 = siji:pixelsize=10;0
