@@ -158,6 +158,7 @@ for_window [class="^.*"] border pixel 1
 # Workspace assignment #
 assign [class="Google-chrome"] 1
 assign [class="Chromium"] 1
+assign [class="Firefox Developer Edition"] 1
 assign [class="URxvt"] 2
 assign [class="Spotify"] 3
 assign [class="lyricfier"] 3
