@@ -12,4 +12,4 @@ polybar top &
 #polybar top-left &
 #polybar top-up &
 
-echo "Bars launched..."
+

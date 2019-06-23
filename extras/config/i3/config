@@ -252,7 +252,7 @@ exec sleep 2 && feh --bg-fill ~/Google\ Drive/Augusto\ Morais/Wallpapers/mount.p
 exec xautolock  -time 15 -locker '~/.config/i3/i3lock-fancy-multimonitor/lock' --corners 0 0 --scrot -z &
 
 ## insync
-exec insync
+exec QT_AUTO_SCREEN_SCALE_FACTOR=1 insync start
 #
 ## connect Wifi | its not necessary enable it here (polybar already does it)
 # exec wicd-gtk -n

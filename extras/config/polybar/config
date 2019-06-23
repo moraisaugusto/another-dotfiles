@@ -17,7 +17,7 @@ secondary = #e60053
 alert = #bd2c40
 
 [global/wm]
-margin-top = 0
+margin-top = 9
 margin-bottom = 5
 
 [settings]
@@ -58,26 +58,28 @@ underline-color = #00f
 border-bottom-size = 0
 border-bottom-color = ${colors.background}
 
-spacing = 2
+spacing = 0
 padding-left = 0
 padding-right = 1
-module-margin-left = 1
-module-margin-right = 1
+module-margin-left = 0
+module-margin-right = 3
 
 ;font-0 = Knack\ Nerd\ Font:pixelsize=16;1
-font-0 = Hack Nerd Font:pixelsize=23;1
+font-0 = Hack Nerd Font:pixelsize=22;1
 ;font-0 = hack:pixelsize=12;1
 ;font-1 = unifont:size=6:heavy:fontformat=truetype;-2
 ;font-2 = siji:pixelsize=10;0
 ;font-3 = FontAwesome:pixelsize=14;0
 
-modules-left =  i3 ;xwindow
+modules-left =  i3 
 modules-center = date
-modules-right = backlight volume pkg temperature filesystem-home filesystem-slash wlan battery powermenu
+modules-right = backlight volume temperature filesystem-home filesystem-slash wlan battery powermenu
 
 tray-position = right
+tray-scale = 1.0
+tray-maxsize = 28
 tray-padding = 4
-; tray-transparent = true
+;tray-transparent = true
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
@@ -204,7 +206,7 @@ bar-progress-empty = ─
 [module/backlight]
 type = internal/xbacklight
 card = intel_backlight
-output = eDP-1
+output = DP-4
 
 format = <label> <bar>
 label = ""
@@ -259,7 +261,7 @@ bar-used-indicator =
 
 [module/wlan]
 type = internal/network
-interface = wlp5s0
+interface = wlp0s20f3
 interval = 3.0
 
 
@@ -331,7 +333,7 @@ format-prefix-foreground = ${colors.foreground-alt}
 label = %date% - %time%
 
 [module/volume]
-type = internal/volume
+type = internal/alsa
 
 format-volume = <label-volume> <bar-volume>
 label-volume = ""
@@ -361,42 +363,85 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
-battery = BAT0
-adapter = AC
-full-at = 95
-time-format = "%H:%M"
+battery = BAT1
+adapter = ACAD
+full-at = 100
+; see "man date" for details on how to format the time string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+; Default: %H:%M:%S
+time-format = %H:%M
 
-label-discharging = %percentage%% %time%
-
+; Available tags:
+;   <label-charging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;   <animation-charging>
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #f3f99d
 
+; Available tags:
+;   <label-discharging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;   <animation-discharging>
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
+; Available tags:
+;   <label-full> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+format-full = <ramp-capacity> <label-full>
 
+; Available tokens:
+;   %percentage% (default) - is set to 100 if full-at is reached
+;   %percentage_raw% (unreleased)
+;   %time%
+;   %consumption% (shows current charge rate in watts)
+label-charging = Charging %percentage%%
+
+; Available tokens:
+;   %percentage% (default) - is set to 100 if full-at is reached
+;   %percentage_raw% (unreleased)
+;   %time%
+;   %consumption% (shows current discharge rate in watts)
+label-discharging = Discharging %percentage%%
+
+; Available tokens:
+;   %percentage% (default) - is set to 100 if full-at is reached
+;   %percentage_raw% (unreleased)
+label-full = 
+
+; Only applies if <ramp-capacity> is used
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
 
+; Only applies if <bar-capacity> is used
+bar-capacity-width = 5 
+
+; Only applies if <animation-charging> is used
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
-animation-charging-foreground = ${colors.foreground-alt}
+; Framerate in milliseconds
 animation-charging-framerate = 750
+
+; Only applies if <animation-discharging> is used
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-3 = 
+animation-discharging-4 = 
+; Framerate in milliseconds
+animation-discharging-framerate = 500
 
 [module/temperature]
 type = internal/temperature
 thermal-zone = 6
-hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input
 warn-temperature = 80
 
 format = <ramp> <label>
@@ -404,8 +449,8 @@ format = <ramp> <label>
 format-warn = <ramp> <label-warn>
 ;format-warn-underline = ${self.format-underline}
 
-label = %temperature%
-label-warn = %temperature%
+#label = %temperature%
+#label-warn = %temperature%
 label-warn-foreground = ${colors.secondary}
 
 ramp-0 = 
