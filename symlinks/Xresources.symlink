@@ -19,9 +19,9 @@
 !#include ".Xresources.d/schemes/dracula"
 
 ! 4k Resolution
-*.dpi: 192
-Xft.dpi: 192
-rofi.dpi: 192
+*.dpi: 220
+Xft.dpi: 220
+rofi.dpi: 220
 Xcursor.size: 48
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault
