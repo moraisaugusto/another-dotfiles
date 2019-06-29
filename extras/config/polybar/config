@@ -66,6 +66,7 @@ module-margin-right = 3
 
 ;font-0 = Knack\ Nerd\ Font:pixelsize=16;1
 font-0 = Hack Nerd Font:pixelsize=22;1
+font-1 = Weather Icons:size=22;1
 ;font-0 = hack:pixelsize=12;1
 ;font-1 = unifont:size=6:heavy:fontformat=truetype;-2
 ;font-2 = siji:pixelsize=10;0
@@ -73,7 +74,7 @@ font-0 = Hack Nerd Font:pixelsize=22;1
 
 modules-left =  i3 
 modules-center = date
-modules-right = backlight volume temperature filesystem-home filesystem-slash wlan battery powermenu
+modules-right =  backlight volume vpn-nordvpn-status openweathermap-simple temperature filesystem-home filesystem-slash wlan battery powermenu
 
 tray-position = right
 tray-scale = 1.0
@@ -365,7 +366,7 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 type = internal/battery
 battery = BAT1
 adapter = ACAD
-full-at = 100
+full-at = 98
 ; see "man date" for details on how to format the time string
 ; NOTE: if you want to use syntax tags here you need to use %%{...}
 ; Default: %H:%M:%S
@@ -383,7 +384,7 @@ format-charging = <animation-charging> <label-charging>
 ;   <bar-capacity>
 ;   <ramp-capacity>
 ;   <animation-discharging>
-format-discharging = <ramp-capacity> <label-discharging>
+format-discharging = <animation-discharging> <label-discharging>
 
 ; Available tags:
 ;   <label-full> (default)
@@ -396,14 +397,14 @@ format-full = <ramp-capacity> <label-full>
 ;   %percentage_raw% (unreleased)
 ;   %time%
 ;   %consumption% (shows current charge rate in watts)
-label-charging = Charging %percentage%%
+label-charging = %percentage%%
 
 ; Available tokens:
 ;   %percentage% (default) - is set to 100 if full-at is reached
 ;   %percentage_raw% (unreleased)
 ;   %time%
 ;   %consumption% (shows current discharge rate in watts)
-label-discharging = Discharging %percentage%%
+label-discharging = %percentage%%
 
 ; Available tokens:
 ;   %percentage% (default) - is set to 100 if full-at is reached
@@ -436,7 +437,7 @@ animation-discharging-2 = 
 animation-discharging-3 = 
 animation-discharging-4 = 
 ; Framerate in milliseconds
-animation-discharging-framerate = 500
+animation-discharging-framerate = 750
 
 [module/temperature]
 type = internal/temperature
@@ -496,3 +497,14 @@ label = 
 ;this is just a garbage to it works
 exec = echo ""
 click-left = arandr
+
+[module/openweathermap-simple]
+type = custom/script
+exec = ~/.config/polybar/polybar-scripts/openweathermap-simple/openweathermap-simple.sh
+interval = 600
+label-font = 2
+
+[module/vpn-nordvpn-status]
+type = custom/script
+exec = ~/.config/polybar/polybar-scripts/vpn-nordvpn-status/vpn-nordvpn-status.sh
+interval = 5
