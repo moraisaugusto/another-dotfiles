@@ -163,7 +163,7 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 
 ## Setting Keyboard layout
 # setxkbmap -model abnt2 -layout br -variant abnt2
-setxkbmap -layout us -variant intl
+# setxkbmap -layout us -variant intl
 # Notebook keyboard
 # setxkbmap -model thinkpad60 -layout br
 setxkbmap -layout us -variant intl
@@ -179,3 +179,6 @@ export PATH="$HOME/.asdf/shims:$PATH"
 if [ -f ~/.pass ]; then
     source ~/.pass
 fi
+
+# user bins
+export PATH="$HOME/.local/bin:$PATH"

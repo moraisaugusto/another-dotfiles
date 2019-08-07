@@ -5,10 +5,10 @@
 
 !### Home Configs
 ! styles
-#include ".Xresources.d/rxvt-unicode-home"
+#include ".Xresources.d/rxvt-unicode-home-4k"
 
 ! Themes
-#include ".Xresources.d/schemes/nord"
+#include ".Xresources.d/schemes/skyfall"
 
 
 !### Work Configs
@@ -19,9 +19,9 @@
 !#include ".Xresources.d/schemes/dracula"
 
 ! 4k Resolution
-*.dpi: 220
-Xft.dpi: 220
-rofi.dpi: 220
+*.dpi: 180
+Xft.dpi: 180
+rofi.dpi: 180
 Xcursor.size: 48
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault

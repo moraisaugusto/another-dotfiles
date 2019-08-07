@@ -36,5 +36,5 @@ frames = [
 while True:
 	for frame in frames:
             a = os.system('clear')
-            print frame
+            print(frame)
             time.sleep(0.03)

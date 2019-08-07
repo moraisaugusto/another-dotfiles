@@ -27,7 +27,7 @@ Xft*lcdfilter:  lcddefault
 !  Font Setting
 !----------------
 
-URxvt.font: xft:SFMono Nerd Font:style=Regular:size=11
+URxvt.font: xft:TamzenForPowerline:style=Regular:size=28,xft:Siji:style=regular:size=11
 !URxvt.font: xft:FuraCode Nerd Font:style=Regular:size=11
 !URxvt.boldFont: xft:FuraCode Nerd Font:style=Regular:size=11
 

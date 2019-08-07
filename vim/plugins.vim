@@ -60,6 +60,7 @@ Plug 'kshenoy/vim-signature'
 "
 " Colors schemes
 Plug 'morhetz/gruvbox'
+Plug 'rishikanthc/skyfall-vim'
 
 call plug#end()
 filetype plugin indent on

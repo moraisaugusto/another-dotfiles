@@ -1,0 +1,50 @@
+! font type
+
+!URxvt.font: xft:Tamzen:style=Regular:size=14
+!URxvt*font: -*-tamzenforpowerline-*-*-*-*-32-*-*-*-*-*-*-*,-*-siji-medium-r-normal-*-28-100-75-*-*-*-*-*,xft:Hack Nerd Font:Regular:pixelsize=22:antialias=true:hinting=true
+!URxvt*font: -*-terminesspowerline-medium-r-normal-*-28-*-*-*-*-*-*-*,-*-siji-medium-r-normal-*-28-100-75-*-*-*-*-*,xft:Hack Nerd Font:Regular:pixelsize=22:antialias=true:hinting=true
+!URxvt*font: xft:Hack Nerd Font Mono:Regular:pixelsize=22:antialias=true:hinting=true
+URxvt*font: xft:Iosevka Custom:Regular:pixelsize=24:antialias=true:hinting=true,xft:Hack Nerd Font Mono:Regular:pixelsize=24:antialias=true:hinting=true
+
+!urxvt settings
+URxvt.letterSpace:     0
+URxvt.dynamicColors:   on
+URxvt.internalBorder:  10
+URxvt.lineSpace:       0
+URxvt.scrollBar:       false
+URxvt.geometry:        96x24
+URxvt.saveLines:       5000
+URxvt.cursorUnderline: false
+URxvt.cursorBlink:     true
+URxvt.allow_bold:      true
+URxvt.transparent:     false
+URxvt*iso14755:        false
+
+! perl extentions
+URxvt*perl-lib:        /usr/lib/urxvt/perl/
+URxvt*perl-ext-common: default,matcher
+
+! resize font without plugin
+URxvt.keysym.C-0: command:\033]710;-*-tamzenforpowerline-medium-r-normal-*-13-*-*-*-*-*-*-*,-wuncon-siji-medium-*-*-*-10-*-*-*-*-*-*-*,xft:Knack Nerd Font:Regular:pixelsize=8:antialias=true:hinting=true\007
+URxvt.keysym.C-1: command:\033]710;-*-tamzenforpowerline-medium-r-normal-*-14-*-*-*-*-*-*-*,-wuncon-siji-medium-*-*-*-10-*-*-*-*-*-*-*,xft:Knack Nerd Font:Regular:pixelsize=8:antialias=true:hinting=true\007
+URxvt.keysym.C-2: command:\033]710;-*-tamzenforpowerline-medium-r-normal-*-15-*-*-*-*-*-*-*,-wuncon-siji-medium-*-*-*-10-*-*-*-*-*-*-*,xft:Knack Nerd Font:Regular:pixelsize=8:antialias=true:hinting=true\007
+URxvt.keysym.C-3: command:\033]710;-*-tamzenforpowerline-medium-r-normal-*-16-*-*-*-*-*-*-*,-wuncon-siji-medium-*-*-*-10-*-*-*-*-*-*-*,xft:Knack Nerd Font:Regular:pixelsize=8:antialias=true:hinting=true\007
+URxvt.keysym.C-4: command:\033]710;-*-tamzenforpowerline-medium-r-normal-*-20-*-*-*-*-*-*-*,-wuncon-siji-medium-*-*-*-17-*-*-*-*-*-*-*,xft:Knack Nerd Font:Regular:pixelsize=11:antialias=true:hinting=true\007
+
+!clickable links
+URxvt*url-launcher:   chromium
+URxvt*matcher.button: 1
+
+!scrollbar
+!URxvt*termName:         rxvt
+!URxvt*borderless: 1
+!URxvt*scrollBar:        false
+!URxvt*scrollBar_right:  true
+!URxvt*scrollColor:      #000000
+!URxvt*tintColor:                        #000000
+!URxvt*shading:                         0
+!URxvt*inheritPixmap:                false
+
+!misc
+Xcursor*size: 48
+

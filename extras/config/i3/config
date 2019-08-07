@@ -241,7 +241,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #
 ## monitors (4k)
 # 1 external monitor (4k)
-exec xrandr --output DP-4 --off --output HDMI-0 --primary --mode 3840x2160 --pos 0x0 --rotate normal --dpi 220
+exec xrandr --output DP-4 --off --output HDMI-0 --primary --mode 3840x2160 --pos 0x0 --rotate normal --dpi 180
 # 2 monitors enabled
 # exec xrandr --output DP-4 --mode 1920x1080 --pos 849x2160 --rotate normal --scale 1.5x1.5 --off --output HDMI-0 --primary --mode 3840x2160 --pos 0x0 --rotate normal
 #
