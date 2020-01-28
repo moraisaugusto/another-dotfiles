@@ -99,6 +99,11 @@ colorscheme solizared
 Vim Themes are based on Airline [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline). There are some Colorscheme installed too [Tomorrow](https://github.com/chriskempson/tomorrow-theme). 
 
 
+### Recommend tools ###
+
+Network (Wifi and Ethernet)
+* connman | connman-gtk (Aur)
+
 ### License ###
 
 Another Dotfiles is released under the [MIT license](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/LICENSE).
