@@ -158,7 +158,7 @@ for_window [class="^.*"] border pixel 1
 # Workspace assignment #
 assign [class="Google-chrome"] 1
 assign [class="Chromium"] 1
-assign [class="Firefox Developer Edition"] 1
+assign [class="firefoxdeveloperedition"] 1
 assign [class="URxvt"] 2
 assign [class="Spotify"] 3
 assign [class="lyricfier"] 3
@@ -178,7 +178,6 @@ assign [class="Franz"] 9
 for_window [class="Subdownloader"] floating enable
 for_window [class="KeePass2"] floating enable
 for_window [class="Transmission-gtk"] floating enable
-for_window [class="wicd"] floating enable
 for_window [class="Subl3"] floating enable
 for_window [class="Qalculate-gtk"] floating enable
 for_window [class="Kazam"] floating enable
@@ -241,7 +240,11 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #
 ## monitors (4k)
 # 1 external monitor (4k)
-exec xrandr --output DP-4 --off --output HDMI-0 --primary --mode 3840x2160 --pos 0x0 --rotate normal --dpi 180
+# exec xrandr --output DP-4 --off --output HDMI-0 --primary --mode 3840x2160 --pos 0x0 --rotate normal --dpi 180
+
+# 1 external monitor (2k)
+exec xrandr --output DP-4 --off --output HDMI-0 --primary --mode 2560x1440 --pos 0x0 --rotate normal --dpi 120
+
 # 2 monitors enabled
 # exec xrandr --output DP-4 --mode 1920x1080 --pos 849x2160 --rotate normal --scale 1.5x1.5 --off --output HDMI-0 --primary --mode 3840x2160 --pos 0x0 --rotate normal
 #
@@ -252,11 +255,12 @@ exec sleep 2 && feh --bg-fill ~/Google\ Drive/Augusto\ Morais/Wallpapers/mount.p
 exec xautolock  -time 15 -locker '~/.config/i3/i3lock-fancy-multimonitor/lock' --corners 0 0 --scrot -z &
 
 ## insync
-exec QT_AUTO_SCREEN_SCALE_FACTOR=1 insync start
+# exec QT_AUTO_SCREEN_SCALE_FACTOR=1 insync start
 #
 ## connect Wifi | its not necessary enable it here (polybar already does it)
-# exec wicd-gtk -n
-exec wicd-client --tray
+
+# dunst
+exec dunst
 #
 ## screenshot - 
 bindsym --release Control+Shift+Print exec imgur-screenshot
@@ -264,8 +268,8 @@ bindsym --release Shift+Print exec scrot -s -e 'mv $f ~/Pictures/$f'
 bindsym Print exec scrot -e 'mv $f ~/Pictures/$f'
 #
 ## insync & Dropbox
-#exec insync start
-#exec dropbox
+# exec  --no-startup-id sleep 10 & /usr/bin/insync start
+# exec dropbox
 #
 ## i3lock prevent for videos
 #exec ~/.dotfiles/scripts/bin/lightsOn.sh 300
@@ -275,9 +279,9 @@ bindsym Print exec scrot -e 'mv $f ~/Pictures/$f'
 ##
 ## Autostart
 ##
-exec --no-startup-id i3-msg 'workspace $tag1; exec chromium'
+exec --no-startup-id i3-msg 'workspace $tag1; exec firefox-developer-edition'
 exec --no-startup-id i3-msg 'workspace $tag2; exec urxvt'
-exec --no-startup-id i3-msg 'workspace $tag3; exec spotify --force-device-scale-factor=2.0'
+exec --no-startup-id i3-msg 'workspace $tag3; exec spotify --force-device-scale-factor=1.0'
 #exec --no-startup-id i3-msg 'workspace $tag3; exec lyricfier'
 exec --no-startup-id i3-msg 'workspace $tag4; exec nautilus'
 exec --no-startup-id i3-msg 'workspace $tag9; exec franz'
