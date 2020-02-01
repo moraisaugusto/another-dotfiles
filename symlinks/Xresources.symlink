@@ -18,14 +18,22 @@
 ! Themes
 !#include ".Xresources.d/schemes/dracula"
 
+
+! 2k Resolution
+*.dpi: 120
+Xft.dpi: 120
+rofi.dpi: 120
+Xcursor.size: 18
+
 ! 4k Resolution
-*.dpi: 180
-Xft.dpi: 180
-rofi.dpi: 180
-Xcursor.size: 48
-Xft.autohint: 0
-Xft.lcdfilter: lcddefault
-Xft.hintstyle: hintnone
-Xft.hinting: 1
-Xft.antialias: 1
-Xft.rgba: rgb
+!*.dpi: 180
+!Xft.dpi: 180
+!rofi.dpi: 180
+!Xcursor.size: 48
+
+!Xft.autohint: 0
+!Xft.lcdfilter: lcddefault
+!Xft.hintstyle: hintnone
+!Xft.hinting: 1
+!Xft.antialias: 1
+!Xft.rgba: rgb

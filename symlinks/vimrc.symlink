@@ -620,7 +620,8 @@ let g:livepreview_engine = 'pdflatex'
 
 " airline options
 let g:airline_powerline_fonts=1
-let g:airline_theme='skyfall'
+let g:airline_skip_empty_sections = 1
+let g:airline_theme='nord'
 
 " airline symbols - customized for unicode
 if !exists('g:airline_symbols')
@@ -628,46 +629,46 @@ if !exists('g:airline_symbols')
 endif
 
 " ale - show error
-"let g:airline#extensions#ale#enabled = 1
-"let g:ale_set_highlights = 0
+let g:airline#extensions#ale#enabled = 1
+let g:ale_set_highlights = 0
 noremap <leader>l :ALEToggle<CR>
 
 " unicode symbols
-"let g:airline_left_sep = '»'
-"let g:airline_left_sep = '▶'
-"let g:airline_right_sep = '«'
-"let g:airline_right_sep = '◀'
-"let g:airline_symbols.crypt = '🔒'
-"let g:airline_symbols.linenr = '␊'
-"let g:airline_symbols.linenr = '␤'
-"let g:airline_symbols.linenr = '¶'
-"let g:airline_symbols.maxlinenr = '☰'
-"let g:airline_symbols.maxlinenr = ''
-"let g:airline_symbols.branch = '⎇'
-"let g:airline_symbols.paste = 'ρ'
-"let g:airline_symbols.paste = 'Þ'
-"let g:airline_symbols.paste = '∥'
-"let g:airline_symbols.spell = 'Ꞩ'
-"let g:airline_symbols.notexists = '∄'
-"let g:airline_symbols.whitespace = 'Ξ'
+" let g:airline_left_sep = '»'
+" let g:airline_left_sep = '▶'
+" let g:airline_right_sep = '«'
+" let g:airline_right_sep = '◀'
+" let g:airline_symbols.crypt = '🔒'
+" let g:airline_symbols.linenr = '␊'
+" let g:airline_symbols.linenr = '␤'
+" let g:airline_symbols.linenr = '¶'
+" let g:airline_symbols.maxlinenr = '☰'
+" let g:airline_symbols.maxlinenr = ''
+" let g:airline_symbols.branch = '⎇'
+" let g:airline_symbols.paste = 'ρ'
+" let g:airline_symbols.paste = 'Þ'
+" let g:airline_symbols.paste = '∥'
+" let g:airline_symbols.spell = 'Ꞩ'
+" let g:airline_symbols.notexists = '∄'
+" let g:airline_symbols.whitespace = 'Ξ'
 "
 "" powerline symbols
-"let g:airline_left_sep = ''
-"let g:airline_left_alt_sep = ''
-"let g:airline_right_sep = ''
-"let g:airline_right_alt_sep = ''
-"let g:airline_symbols.branch = ''
-"let g:airline_symbols.readonly = ''
-"let g:airline_symbols.linenr = ''
-"let g:nord_termcolors=256
-"let g:nord_bold = 0
+" let g:airline_left_sep = ''
+" let g:airline_left_alt_sep = ''
+" let g:airline_right_sep = ''
+" let g:airline_right_alt_sep = ''
+" let g:airline_symbols.branch = ''
+" let g:airline_symbols.readonly = ''
+" let g:airline_symbols.linenr = ''
+" let g:nord_termcolors=256
+" let g:nord_bold = 0
 
 " GUI mode - Disabled
-"if (has("gui_running"))
-"    set background=light
-"else
-"    set background=dark
-"endif
+if (has("gui_running"))
+    set background=light
+else
+    set background=dark
+endif
 
 call ApplyLocalSettings(expand('.'))
 
@@ -684,6 +685,7 @@ let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 " Vim colorscheme
 "set background=dark
 " colorscheme jellybeans
+let g:nord_uniform_status_lines = 0
 colorscheme skyfall
 
 " Protect large files from sourcing and other overhead.

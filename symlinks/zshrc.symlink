@@ -139,7 +139,8 @@ unsetopt prompt_cr prompt_sp
 
 # setting browse
 if [ -n "$DISPLAY" ]; then
-    export BROWSER=chromium
+    # export BROWSER=chromium
+    export BROWSER=firefox-developer-edition
 else 
     export BROWSER=links
 fi
@@ -170,9 +171,9 @@ setxkbmap -layout us -variant intl
 
 
 ## asdf
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
-export PATH="$HOME/.asdf/shims:$PATH"
+# . $HOME/.asdf/asdf.sh
+# . $HOME/.asdf/completions/asdf.bash
+# export PATH="$HOME/.asdf/shims:$PATH"
 
 #
 # Load privite infos
@@ -182,3 +183,6 @@ fi
 
 # user bins
 export PATH="$HOME/.local/bin:$PATH"
+
+# rust
+export PATH="$HOME/.cargo/bin:$PATH"

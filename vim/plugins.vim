@@ -61,6 +61,8 @@ Plug 'kshenoy/vim-signature'
 " Colors schemes
 Plug 'morhetz/gruvbox'
 Plug 'rishikanthc/skyfall-vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 filetype plugin indent on

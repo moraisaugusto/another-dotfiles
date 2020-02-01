@@ -1,6 +1,6 @@
 ! font type
 !URxvt*font: -*-tamzenforpowerline-medium-r-normal-*-20-*-*-*-*-*-*-*,-*-siji-medium-r-normal-*-10-100-75-*-*-*-*-*,xft:Knack Nerd Font:Regular:pixelsize=8:antialias=true:hinting=true
-URxvt*font: -*-terminesspowerline-medium-r-normal-*-28-*-*-*-*-*-*-*,-*-siji-medium-r-normal-*-17-100-75-*-*-*-*-*,xft:Knack Nerd Font:Regular:pixelsize=28:antialias=true:hinting=true
+URxvt*font: -*-terminesspowerline-medium-r-normal-*-18-*-*-*-*-*-*-*,-*-siji-medium-r-normal-*-17-100-75-*-*-*-*-*,xft:Knack Nerd Font:Regular:pixelsize=18:antialias=true:hinting=true
 
 !urxvt settings
 URxvt.letterSpace:     0
@@ -42,5 +42,5 @@ URxvt*matcher.button: 1
 !URxvt*inheritPixmap:                false
 
 !misc
-Xcursor*size: 48
+Xcursor*size: 28
 
