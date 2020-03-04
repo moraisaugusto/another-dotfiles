@@ -18,7 +18,7 @@ ZSH_THEME="augusto-default"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -56,7 +56,7 @@ ZSH_TMUX_FIXTERM=true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages emoji-clock tmux tmuxinator nmap battery extract)
+plugins=(git colored-man-pages emoji-clock tmux tmuxinator nmap battery extract docker docker-compose)
 
 #
 # User configuration
@@ -186,3 +186,9 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # rust
 export PATH="$HOME/.cargo/bin:$PATH"
+
+PATH="/home/augusto/.perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/augusto/.perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/augusto/.perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/augusto/.perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/augusto/.perl5"; export PERL_MM_OPT;

@@ -13,7 +13,7 @@
 
 
 [global]
-    font = Tewi 8
+    font = Tewi 9
 
     # Allow a small subset of html markup:
     #   <b>bold</b>
@@ -164,7 +164,7 @@
     icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
     icon_position = off
-    max_icon_size = 40
+    max_icon_size = 64
 
 [frame]
     frame_width = 3
