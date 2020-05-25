@@ -70,7 +70,7 @@ gaps inner 10
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle
-bindsym XF86Tools exec spotify 
+bindsym XF86Tools exec spotify --force-device-scale-factor=1.6
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioStop exec playerctl stop
 bindsym XF86AudioNext exec playerctl next
@@ -159,6 +159,7 @@ for_window [class="^.*"] border pixel 1
 assign [class="Google-chrome"] 1
 assign [class="Chromium"] 1
 assign [class="firefoxdeveloperedition"] 1
+assign [class="firefox"] 1
 assign [class="URxvt"] 2
 assign [class="Spotify"] 3
 assign [class="lyricfier"] 3
@@ -243,10 +244,11 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # exec xrandr --output DP-4 --off --output HDMI-0 --primary --mode 3840x2160 --pos 0x0 --rotate normal --dpi 180
 
 # 1 external monitor (2k)
-exec xrandr --output DP-4 --off --output HDMI-0 --primary --mode 2560x1440 --pos 0x0 --rotate normal --dpi 120
+#exec xrandr --output DP-4 --off --output HDMI-0 --primary --mode 2560x1440 --pos 0x0 --rotate normal --dpi 120
 
 # 2 monitors enabled
-# exec xrandr --output DP-4 --mode 1920x1080 --pos 849x2160 --rotate normal --scale 1.5x1.5 --off --output HDMI-0 --primary --mode 3840x2160 --pos 0x0 --rotate normal
+exec xrandr --output HDMI-0 --primary --auto --scale 1x1 --output DP-4 --auto --scale 1.6x1.6 --right-of HDMI-0
+
 #
 ## Background
 exec sleep 2 && feh --bg-fill ~/Google\ Drive/Augusto\ Morais/Wallpapers/mount.png ~/Google\ Drive/Augusto\ Morais/Wallpapers/Energy_sunset.png
@@ -260,7 +262,7 @@ exec xautolock  -time 15 -locker '~/.config/i3/i3lock-fancy-multimonitor/lock' -
 ## connect Wifi | its not necessary enable it here (polybar already does it)
 
 # dunst
-exec dunst
+exec dunst &
 #
 ## screenshot - 
 bindsym --release Control+Shift+Print exec imgur-screenshot
@@ -279,7 +281,8 @@ bindsym Print exec scrot -e 'mv $f ~/Pictures/$f'
 ##
 ## Autostart
 ##
-exec --no-startup-id i3-msg 'workspace $tag1; exec firefox-developer-edition'
+# exec --no-startup-id i3-msg 'workspace $tag1; exec firefox-developer-edition'
+exec --no-startup-id i3-msg 'workspace $tag1; exec firefox'
 exec --no-startup-id i3-msg 'workspace $tag2; exec urxvt'
 exec --no-startup-id i3-msg 'workspace $tag3; exec spotify --force-device-scale-factor=1.0'
 #exec --no-startup-id i3-msg 'workspace $tag3; exec lyricfier'

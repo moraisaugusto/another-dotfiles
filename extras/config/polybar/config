@@ -42,7 +42,7 @@ screenchange-reload = true
 ;monitor = ${env:MONITOR:DP-4}
 monitor = ${env:MONITOR:HDMI-0}
 width = 100%
-height = 40
+height = 50
 offset-x = 0
 offset-y = 0
 
@@ -65,20 +65,20 @@ module-margin-left = 0
 module-margin-right = 3
 
 ;font-0 = Knack\ Nerd\ Font:pixelsize=16;1
-font-0 = Hack Nerd Font:pixelsize=16;1
-font-1 = Weather Icons:size=16;1
+font-0 = Hack Nerd Font:pixelsize=22;1
+font-1 = Weather Icons:size=22;1
 ;font-0 = hack:pixelsize=12;1
 ;font-1 = unifont:size=6:heavy:fontformat=truetype;-2
 ;font-2 = siji:pixelsize=10;0
 ;font-3 = FontAwesome:pixelsize=14;0
 
 modules-left =  i3
-modules-center = date
-modules-right =  backlight updates-arch-combined volume vpn-nordvpn-status openweathermap-simple temperature filesystem-home filesystem-slash wlan battery powermenu
+modules-center = date openweathermap-simple
+modules-right =  backlight updates-arch-combined volume vpn-nordvpn-status temperature filesystem-home filesystem-slash wlan battery powermenu
 
 tray-position = right
 tray-scale = 1.0
-tray-maxsize = 28
+tray-maxsize = 36
 tray-padding = 4
 pseudo-transparency = true
 ;tray-background = #0063ff
@@ -277,7 +277,7 @@ interval = 3.0
 label-connected = "%{A1:connman-gtk &:}%{A}"
 ;label-connected = "%{A1:connman-gtk &:}%{A}"
 ;label-connected = "%{A1:cmst &:}%{A}"
-label-disconnected = "%{A1:connman-gtk &:}%{A}"
+label-disconnected = "%{A1:cmst &:}%{A}"
 label-disconnected-foreground = #5b
 click-left = cmst
 

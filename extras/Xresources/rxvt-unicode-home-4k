@@ -4,7 +4,7 @@
 !URxvt*font: -*-tamzenforpowerline-*-*-*-*-32-*-*-*-*-*-*-*,-*-siji-medium-r-normal-*-28-100-75-*-*-*-*-*,xft:Hack Nerd Font:Regular:pixelsize=22:antialias=true:hinting=true
 !URxvt*font: -*-terminesspowerline-medium-r-normal-*-28-*-*-*-*-*-*-*,-*-siji-medium-r-normal-*-28-100-75-*-*-*-*-*,xft:Hack Nerd Font:Regular:pixelsize=22:antialias=true:hinting=true
 !URxvt*font: xft:Hack Nerd Font Mono:Regular:pixelsize=22:antialias=true:hinting=true
-URxvt*font: xft:Iosevka Custom:Regular:pixelsize=14:antialias=true:hinting=true,xft:Hack Nerd Font Mono:Regular:pixelsize=14:antialias=true:hinting=true
+URxvt*font: xft:Iosevka Custom:Regular:pixelsize=22:antialias=true:hinting=true,xft:Hack Nerd Font Mono:Regular:pixelsize=22:antialias=true:hinting=true
 
 !urxvt settings
 URxvt.letterSpace:     0
@@ -37,7 +37,7 @@ URxvt.keysym.C-Up:    resize-font:bigger
 !URxvt.keysym.C-4: command:\033]710;-*-tamzenforpowerline-medium-r-normal-*-20-*-*-*-*-*-*-*,-wuncon-siji-medium-*-*-*-17-*-*-*-*-*-*-*,xft:Knack Nerd Font:Regular:pixelsize=11:antialias=true:hinting=true\007
 
 !clickable links
-URxvt*url-launcher:   chromium
+URxvt*url-launcher:   firefox
 URxvt*matcher.button: 1
 
 !scrollbar
@@ -51,5 +51,5 @@ URxvt*matcher.button: 1
 !URxvt*inheritPixmap:                false
 
 !misc
-Xcursor*size: 48
+Xcursor*size: 84
 

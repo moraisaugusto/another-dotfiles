@@ -52,10 +52,10 @@ ZSH_TMUX_AUTOSTART_ONCE=true
 ZSH_TMUX_FIXTERM=true
 
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
+## Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+## Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+## Example format: plugins=(rails git textmate ruby lighthouse)
+## Add wisely, as too many plugins slow down shell startup.
 plugins=(git colored-man-pages emoji-clock tmux tmuxinator nmap battery extract docker docker-compose)
 
 #
@@ -76,9 +76,9 @@ export ANDROID_HOME
 export PATH
 
 # GUROBI
-GUROBI_HOME=/opt/gurobi801/linux64
-LD_LIBRARY_PATH=$GUROBI_HOME/lib
-PATH=$PATH:$GUROBI_HOME/bin
+# export GUROBI_HOME=/opt/gurobi810/linux64
+# LD_LIBRARY_PATH=$GUROBI_HOME/lib
+# PATH=$PATH:$GUROBI_HOME/bin
 
 # Cplex
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/ibm/ILOG/CPLEX_Studio1271/opl/bin/x86-64_linux
@@ -106,10 +106,10 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 export ARCHFLAGS="-arch x86_64"
 
 # tmux
-PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
+#PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
-# mpv
 alias mpv="mpv --hwdec=vaapi --vo=opengl"
+# mpv
 alias vi=nvim
 # alias vi=vim
 alias open=xdg-open
@@ -129,7 +129,7 @@ if [ $? -ne 0 ];then
     ls ~/.ssh/id_rsa* | awk '!/pub$/ {system("ssh-add "$0 " 2>/dev/null")} '
 fi
 trap 'ssh-agent -k; exit' 0
-
+# 
 # Tmuxinator Projects
 if [ -f ~/.zshAlias ]; then
     source ~/.zshAlias
@@ -139,8 +139,7 @@ unsetopt prompt_cr prompt_sp
 
 # setting browse
 if [ -n "$DISPLAY" ]; then
-    # export BROWSER=chromium
-    export BROWSER=firefox-developer-edition
+    export BROWSER=firefox
 else 
     export BROWSER=links
 fi
@@ -155,11 +154,11 @@ fi
 ## GCC error
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# ### Default Directoru
-# if [[ $PWD != $HOME ]]; then
-#     cd $HOME
-# fi
-#
+ ### Default Directoru
+ # if [[ $PWD != $HOME ]]; then
+ #     cd $HOME
+ # fi
+
 
 
 ## Setting Keyboard layout
@@ -167,13 +166,13 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # setxkbmap -layout us -variant intl
 # Notebook keyboard
 # setxkbmap -model thinkpad60 -layout br
-setxkbmap -layout us -variant intl
+#setxkbmap -layout us -variant intl
 
 
-## asdf
-# . $HOME/.asdf/asdf.sh
-# . $HOME/.asdf/completions/asdf.bash
-# export PATH="$HOME/.asdf/shims:$PATH"
+# asdf
+ . $HOME/.asdf/asdf.sh
+ . $HOME/.asdf/completions/asdf.bash
+ export PATH="$HOME/.asdf/shims:$PATH"
 
 #
 # Load privite infos
@@ -187,8 +186,16 @@ export PATH="$HOME/.local/bin:$PATH"
 # rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# cuda
+export PATH="/opt/cuda/bin:$PATH"
+
 PATH="/home/augusto/.perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/augusto/.perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/augusto/.perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/augusto/.perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/augusto/.perl5"; export PERL_MM_OPT;
+
+export PATH="/opt/schemacrawler/schemacrawler-16.5.2-distribution/_schemacrawler:$PATH"
+
+# direnv
+eval "$(direnv hook zsh)"
