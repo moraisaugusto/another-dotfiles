@@ -125,7 +125,7 @@ set-window-option -g mode-keys vi
 
 # copy and paste (tmux version 2.4)
 bind-key -T copy-mode-vi 'v' send -X begin-selection
-bind-key -T copy-mode-vi 'y' send -X copy-pipe-and-cancel "xsel -i -p -b"
+bind-key -T copy-mode-vi 'y' send -X copy-pipe-and-cancel "DISPLAY=:0 xsel -i -p -b"
 
 # copy and paste (tmux version 2.2)
 #bind-key -t vi-copy 'v' begin-selection

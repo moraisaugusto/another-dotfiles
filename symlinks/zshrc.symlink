@@ -135,6 +135,11 @@ if [ -f ~/.zshAlias ]; then
     source ~/.zshAlias
 fi
 
+# API Keys to be read
+if [ -f ~/.zshSecrets ]; then
+    source ~/.zshSecrets
+fi
+
 unsetopt prompt_cr prompt_sp
 
 # setting browse
@@ -197,5 +202,14 @@ PERL_MM_OPT="INSTALL_BASE=/home/augusto/.perl5"; export PERL_MM_OPT;
 
 export PATH="/opt/schemacrawler/schemacrawler-16.5.2-distribution/_schemacrawler:$PATH"
 
+# node bin
+export PATH="$PATH:$HOME/.node/node_modules/.bin"
+
 # direnv
 eval "$(direnv hook zsh)"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/opt/google/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/google/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/opt/google/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/google/google-cloud-sdk/completion.zsh.inc'; fi
