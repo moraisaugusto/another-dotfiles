@@ -2,7 +2,7 @@
 
 !URxvt.font: xft:Tamzen:style=Regular:size=14
 !URxvt*font: -*-tamzenforpowerline-*-*-*-*-32-*-*-*-*-*-*-*,-*-siji-medium-r-normal-*-28-100-75-*-*-*-*-*,xft:Hack Nerd Font:Regular:pixelsize=22:antialias=true:hinting=true
-!URxvt*font: -*-terminesspowerline-medium-r-normal-*-28-*-*-*-*-*-*-*,-*-siji-medium-r-normal-*-28-100-75-*-*-*-*-*,xft:Hack Nerd Font:Regular:pixelsize=22:antialias=true:hinting=true
+!URxvt*font: -*-terminesspowerline-medium-r-normal-*-24-*-*-*-*-*-*-*,-*-siji-medium-r-normal-*-17-100-75-*-*-*-*-*,xft:Hack Nerd Font:Regular:pixelsize=20:antialias=true:hinting=true
 !URxvt*font: xft:Hack Nerd Font Mono:Regular:pixelsize=22:antialias=true:hinting=true
 URxvt*font: xft:Iosevka Custom:Regular:pixelsize=22:antialias=true:hinting=true,xft:Hack Nerd Font Mono:Regular:pixelsize=22:antialias=true:hinting=true
 

@@ -247,7 +247,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #exec xrandr --output DP-4 --off --output HDMI-0 --primary --mode 2560x1440 --pos 0x0 --rotate normal --dpi 120
 
 # 2 monitors enabled
-exec xrandr --output DP-0 --primary --auto --scale 1x1 --output DP-4 --auto --scale 2x2 --right-of DP-0
+exec xrandr --output DP-5 --primary --auto --scale 1x1  --output DP-4 --auto --scale 2x2 --right-of DP-5
 
 #
 ## Background
@@ -287,5 +287,5 @@ exec --no-startup-id i3-msg 'workspace $tag2; exec urxvt'
 exec --no-startup-id i3-msg 'workspace $tag3; exec spotify --force-device-scale-factor=1.0'
 #exec --no-startup-id i3-msg 'workspace $tag3; exec lyricfier'
 exec --no-startup-id i3-msg 'workspace $tag4; exec nautilus'
-exec --no-startup-id i3-msg 'workspace $tag9; exec franz'
+exec --no-startup-id i3-msg 'workspace $tag9; exec firefox -new-window https://web.whatsapp.com/'
 #
