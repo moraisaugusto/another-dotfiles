@@ -164,7 +164,21 @@ prompt_hg() {
 
 # Dir: current working directory
 prompt_dir() {
-  prompt_segment blue black '%~'
+  local dir_level=`pwd | awk -F\/ '{print NF-1}'`
+  local current_level=`basename $(pwd)`
+  local current_dir=`pwd`
+
+  if [[ $current_dir == $HOME* ]]; then
+    if [[ $dir_level -eq 2 && `pwd` = $HOME ]]; then
+      prompt_segment blue black '~'
+    elif [[ $dir_level -eq 3 ]]; then
+      prompt_segment blue black "${current_level}"
+    elif [[ $dir_level -gt 3 ]]; then
+      prompt_segment blue black "../${current_level}"
+    fi
+  else
+   prompt_segment blue black '%~'
+  fi
 }
 
 # Virtualenv: current working virtualenv
@@ -195,7 +209,7 @@ build_prompt() {
   prompt_status
   prompt_virtualenv
   prompt_context
-#  prompt_dir
+  prompt_dir
   prompt_git
   prompt_hg
   prompt_end
