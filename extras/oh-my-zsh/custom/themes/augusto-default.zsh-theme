@@ -165,7 +165,7 @@ prompt_hg() {
 # Dir: current working directory
 prompt_dir() {
   local dir_level=`pwd | awk -F\/ '{print NF-1}'`
-  local current_level=`basename $(pwd)`
+  local current_level=`basename "$(pwd)"`
   local current_dir=`pwd`
 
   if [[ $current_dir == $HOME* ]]; then
