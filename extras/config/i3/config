@@ -67,9 +67,12 @@ gaps inner 10
 #
 # MULTIMEDIA
 #
+# to define default sink
+# pacmd list-sinks | grep -e 'name:' -e 'index:'
+# pacmd set-default-sink 2
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86Tools exec spotify --force-device-scale-factor=1.6
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioStop exec playerctl stop
@@ -164,7 +167,7 @@ assign [class="URxvt"] 2
 assign [class="Spotify"] 3
 assign [class="lyricfier"] 3
 assign [class="Nautilus"] 4
-assign [class="mpv"] 5
+#assign [class="mpv"] 5
 assign [class="VirtualBox"] 6
 assign [class="Transmission-gtk"] 0
 assign [class="Steam"] 8
@@ -183,6 +186,7 @@ for_window [class="Subl3"] floating enable
 for_window [class="Qalculate-gtk"] floating enable
 for_window [class="Kazam"] floating enable
 for_window [class="Gtk-recordMyDesktop"] floating enable
+for_window [class="mpv"] floating enable
 for_window [class="Spotify"] move to workspace 3
 
 #################################################################################################
@@ -247,11 +251,14 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #exec xrandr --output DP-4 --off --output HDMI-0 --primary --mode 2560x1440 --pos 0x0 --rotate normal --dpi 120
 
 # 2 monitors enabled
-exec xrandr --output DP-5 --primary --auto --scale 1x1  --output DP-4 --auto --scale 2x2 --right-of DP-5
+#exec xrandr --output DP-5 --primary --auto --scale 1x1  --output DP-0 --auto --scale 1x1 --left-of DP-5
+#exec xrandr --output DP-5 --primary --auto --scale 1x1  --output DP-0 --auto --scale 1x1 --left-of DP-5 --output DP-4 --off
+# home config
+exec xrandr --output DP-5 --primary --mode 3840x2160 --rate 120 --scale 1x1  --output DP-0 --mode 3840x2160 --rate 60 --scale 1x1 --left-of DP-5 --output DP-4 --off
 
 #
 ## Background
-exec sleep 2 && feh --bg-fill ~/Google\ Drive/Augusto\ Morais/Wallpapers/mount.png ~/Google\ Drive/Augusto\ Morais/Wallpapers/Energy_sunset.png
+exec sleep 2 && feh --bg-fill ~/Google\ Drive/Augusto\ Morais/Wallpapers/mount.png ~/Google\ Drive/Augusto\ Morais/Wallpapers/space-exploration-edited-amp-centered-forresolution-2560×1440.jpg
 #
 ## autolock i3
 exec xautolock  -time 15 -locker '~/.config/i3/i3lock-fancy-multimonitor/lock' --corners 0 0 --scrot -z &
@@ -275,6 +282,7 @@ bindsym Print exec scrot -e 'mv $f ~/Pictures/$f'
 #
 ## i3lock prevent for videos
 #exec ~/.dotfiles/scripts/bin/lightsOn.sh 300
+exec nextcloud
 #
 ## Startup Apps
 ##################################################################################################
