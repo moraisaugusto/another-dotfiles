@@ -119,7 +119,6 @@ alias wifi-menu="sudo wifi-menu"
 NO_AT_BRIDGE=1
 
 #alias fix-win-parts="sudo ntfsfix /dev/sda4 && sudo ntfsfix /dev/sda5"
-#alias npm="node --max-old-space-size=6144 /usr/local/bin/npm"
 
 # SSH Keys
 ps -u $(whoami) | grep ssh-agent &> /dev/null
@@ -136,8 +135,8 @@ if [ -f ~/.zshAlias ]; then
 fi
 
 # API Keys to be read
-if [ -f ~/.zshSecrets ]; then
-    source ~/.zshSecrets
+if [ -f ~/.secrets ]; then
+    source ~/.secrets
 fi
 
 unsetopt prompt_cr prompt_sp
@@ -203,7 +202,7 @@ PERL_MM_OPT="INSTALL_BASE=/home/augusto/.perl5"; export PERL_MM_OPT;
 export PATH="/opt/schemacrawler/schemacrawler-16.5.2-distribution/_schemacrawler:$PATH"
 
 # node bin
-export PATH="$PATH:$HOME/.node/node_modules/.bin"
+#export PATH="$PATH:$HOME/.node/node_modules/.bin"
 
 # direnv
 eval "$(direnv hook zsh)"

@@ -98,7 +98,7 @@ let g:snipMate.scope_aliases['html'] = 'html'
 "ActivateAddons vim-snippets snipmate
 if !exists('g:snips_author')
     let g:snips_author = 'Augusto Morais'
-    let g:snips_author_email = 'aflavio at gmail.com'
+    let g:snips_author_email = 'augusto at morais.io'
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -191,6 +191,7 @@ let g:ycm_key_list_previous_completion=[]
 " for debug
 let g:ycm_keep_logfiles = 1
 let g:ycm_log_level = 'debug'
+let g:pymode_rope_complete_on_dot = 0
 
 " color coded
 let g:color_coded_enabled = 1
@@ -279,7 +280,7 @@ nmap ;sp :set invspell spelllang=pt_br<cr>
 " toggle invisible characters
 set invlist
 set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
-highlight SpecialKey ctermbg=none " make the highlighting of tabs less annoying
+"highlight SpecialKey ctermbg=none " make the highlighting of tabs less annoying
 set showbreak=↪
 nmap <leader>l :set list!<cr>
 
@@ -334,11 +335,11 @@ let g:goyo_height = '45%'
 nmap <leader>w :Goyo <cr>
 "nmap <leader>w :setf textile<cr> :Goyo 50%x45%<cr>
 
-" format json 
+" format json
 map <leader>fj :%!jq '.' <CR>
 
 " enable javascript syntax
-map <leader>ejs :set ft=javascript<CR> 
+map <leader>ejs :set ft=javascript<CR>
 
 " Move lines - Meta keys
 nnoremap <M-j> :m .+1<CR>==
@@ -491,12 +492,12 @@ nnoremap <silent> <leader>4 :call HiInterestingWord(4)<cr>
 nnoremap <silent> <leader>5 :call HiInterestingWord(5)<cr>
 nnoremap <silent> <leader>6 :call HiInterestingWord(6)<cr>
 
-hi def InterestingWord1 guifg=#000000 ctermfg=16 guibg=#ffa724 ctermbg=214
-hi def InterestingWord2 guifg=#000000 ctermfg=16 guibg=#aeee00 ctermbg=154
-hi def InterestingWord3 guifg=#000000 ctermfg=16 guibg=#8cffba ctermbg=121
-hi def InterestingWord4 guifg=#000000 ctermfg=16 guibg=#b88853 ctermbg=137
-hi def InterestingWord5 guifg=#000000 ctermfg=16 guibg=#ff9eb8 ctermbg=211
-hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
+"hi def InterestingWord1 guifg=#000000 ctermfg=16 guibg=#ffa724 ctermbg=214
+"hi def InterestingWord2 guifg=#000000 ctermfg=16 guibg=#aeee00 ctermbg=154
+"hi def InterestingWord3 guifg=#000000 ctermfg=16 guibg=#8cffba ctermbg=121
+"hi def InterestingWord4 guifg=#000000 ctermfg=16 guibg=#b88853 ctermbg=137
+"hi def InterestingWord5 guifg=#000000 ctermfg=16 guibg=#ff9eb8 ctermbg=211
+"hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
 
 function! HtmlUnEscape()
   silent s/&lt;/</eg
@@ -559,6 +560,9 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 let g:jedi#completions_enabled = 1
 " let g:python_host_prog=$HOME"/.asdf/installs/python/2.7.15/bin/python"
 let g:python3_host_prog= $HOME.'/.asdf/shims/python'
+let g:loaded_python_provider = 1
+let g:loaded_ruby_provider = 0
+let g:loaded_node_provider = 0
 let did_python_setup = 1
 
 
@@ -579,15 +583,15 @@ nmap <leader>s :SyntasticToggleMode<cr>
 " toggle Limelight
 nmap <leader>f :Limelight!!<cr>
 
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_ctermfg = 240
+"let g:limelight_conceal_ctermfg = 'gray'
+"let g:limelight_conceal_ctermfg = 240
 
 " flake8 - PEP8
 let no_flake8_maps = 0
 autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
 let g:flake8_show_in_gutter=0  " show
 let g:flake8_show_in_file=0  " show
-let g:flake8_max_markers=50 
+let g:flake8_max_markers=50
 
 "tagbar
 nmap <F7> :TagbarToggle<CR>
@@ -597,12 +601,12 @@ nmap <F7> :TagbarToggle<CR>
 " let g:syntastic_typescript_tsc_args = '--module amd --target ES5 --noImplicitAny'
 " let g:syntastic_typescript_checkers = ['tslint']
 " let g:syntastic_javascript_checkers = ['jshint', 'jscs']
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
-let g:syntastic_enable_highlighting = 0
-let g:syntastic_echo_current_error = 0
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 1
+"let g:syntastic_enable_highlighting = 0
+"let g:syntastic_echo_current_error = 0
+"let g:syntastic_error_symbol='✗'
+"let g:syntastic_warning_symbol='⚠'
 
 
 " don't hide quotes in json files
@@ -619,18 +623,21 @@ let g:livepreview_engine = 'pdflatex'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " airline options
-let g:airline_powerline_fonts=1
-let g:airline_skip_empty_sections = 1
-let g:airline_theme='nord'
+let g:airline_powerline_fonts = 1
 
-" airline symbols - customized for unicode
 if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
+    let g:airline_symbols = {}
 endif
+"let g:airline_skip_empty_sections = 1
+let g:airline_theme='gruvbox_material'
+"
 
 " ale - show error
 let g:airline#extensions#ale#enabled = 1
 let g:ale_set_highlights = 0
+let g:ale_linters = {
+      \   'python': ['flake8', 'pylint']
+      \}
 noremap <leader>l :ALEToggle<CR>
 
 " unicode symbols
@@ -641,27 +648,31 @@ noremap <leader>l :ALEToggle<CR>
 " let g:airline_symbols.crypt = '🔒'
 " let g:airline_symbols.linenr = '␊'
 " let g:airline_symbols.linenr = '␤'
-" let g:airline_symbols.linenr = '¶'
-" let g:airline_symbols.maxlinenr = '☰'
-" let g:airline_symbols.maxlinenr = ''
-" let g:airline_symbols.branch = '⎇'
-" let g:airline_symbols.paste = 'ρ'
-" let g:airline_symbols.paste = 'Þ'
-" let g:airline_symbols.paste = '∥'
-" let g:airline_symbols.spell = 'Ꞩ'
-" let g:airline_symbols.notexists = '∄'
-" let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_symbols.linenr = '¶'
+"let g:airline_symbols.maxlinenr = '☰'
+"let g:airline_symbols.maxlinenr = ''
+"let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = '∄'
+let g:airline_symbols.whitespace = 'Ξ'
+
 "
 "" powerline symbols
-" let g:airline_left_sep = ''
-" let g:airline_left_alt_sep = ''
-" let g:airline_right_sep = ''
-" let g:airline_right_alt_sep = ''
-" let g:airline_symbols.branch = ''
-" let g:airline_symbols.readonly = ''
-" let g:airline_symbols.linenr = ''
-" let g:nord_termcolors=256
-" let g:nord_bold = 0
+let g:airline_powerline_fonts = 1
+"let g:airline_left_sep = ''
+"let g:airline_right_sep = ''
+"let g:airline_left_alt_sep = ''
+"let g:airline_right_alt_sep = ''
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+"let g:airline_symbols.branch = ''
+"let g:airline_symbols.readonly = ''
+"let g:airline_symbols.linenr = ''
 
 " GUI mode - Disabled
 if (has("gui_running"))
@@ -669,6 +680,19 @@ if (has("gui_running"))
 else
     set background=dark
 endif
+
+" format statements with math symbols - only for python
+"map <leader>fm :<C-U>set conceallevel ?  :<C-U>setlocal conceallevel=0 : :<C-U>setlocal conceallevel=1<CR>
+"setlocal conceallevel=1
+"function! RenderMathSymbols()
+"    if &conceallevel == 0
+"        setlocal conceallevel=1
+"    else
+"        setlocal conceallevel=0
+"    endif
+"endfunction
+"
+"map <leader>fm :call RenderMathSymbols()<CR>
 
 call ApplyLocalSettings(expand('.'))
 
@@ -682,11 +706,18 @@ let g:webdevicons_enabl = 0
 let g:WebDevIconsUnicodeDecorateFolderNodes = 0
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 
+" Truecolors
+set termguicolors
+
 " Vim colorscheme
 "set background=dark
-" colorscheme jellybeans
-let g:nord_uniform_status_lines = 0
-colorscheme skyfall
+"colorscheme jellybeans
+"colorscheme tokyonight
+"colorscheme spaceduck
+"let g:nord_uniform_status_lines = 0
+"colorscheme skyfall
+colorscheme gruvbox-material
+let g:gruvbox_material_enable_italic = 1
 
 " Protect large files from sourcing and other overhead.
 " Files become read only
