@@ -13,7 +13,6 @@ Plug 'tpope/vim-surround'
 Plug 'benmills/vimux'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Plug 'scrooloose/syntastic'
 Plug 'w0rp/ale' " replace syntastic
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -57,12 +56,18 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'nvie/vim-flake8', {'for': 'python'} "pep8 style checker
 Plug 'kshenoy/vim-signature'
+Plug 'sainnhe/artify.vim'
 "
 " Colors schemes
 Plug 'morhetz/gruvbox'
 Plug 'rishikanthc/skyfall-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'arcticicestudio/nord-vim'
+Plug 'sainnhe/gruvbox-material'
+Plug 'ghifarit53/tokyonight-vim'
+Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
+
+"Plug 'ehamberg/vim-cute-python' "math symbols for python
 
 call plug#end()
 filetype plugin indent on
