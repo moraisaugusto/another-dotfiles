@@ -31,7 +31,7 @@ fi
 
 # # Pushover notification
 if [ $notification == 1 ] ; then
-    source ${HOME}/.zshSecrets
+    source ${HOME}/.secrets
     curl -s \
     --form-string "token=$PUSHOVER_TOKEN" \
     --form-string "user=$PUSHOVER_USER" \
