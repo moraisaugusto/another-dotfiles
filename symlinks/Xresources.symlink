@@ -8,7 +8,7 @@
 #include ".Xresources.d/rxvt-unicode-home-4k"
 
 ! Themes
-#include ".Xresources.d/schemes/skyfall"
+#include ".Xresources.d/schemes/gruvbox_material"
 
 
 !### Work Configs
