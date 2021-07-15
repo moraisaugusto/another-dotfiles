@@ -1,5 +1,7 @@
 # tmux display things in 256 colors
-set -g default-terminal "xterm-256color"
+#set -g default-terminal "xterm-256color"
+#set-option -sa terminal-overrides ',screen-256color:RGB'
+set -g default-terminal "tmux-256color"
 
 set -g history-limit 20000
 
@@ -77,48 +79,7 @@ bind -r L resize-pane -R 2
 set -g mouse on
 
 
-######################
-## User Interface ####
-######################
-
-### COLOUR (Solarized dark)
-set -g default-terminal "screen-256color"
-# default statusbar colors
-
-# default window title colors
-set-window-option -g window-status-style fg=brightblue,bg=default
-#set-window-option -g window-status-attr dim
-
-# active window title colors
-set-window-option -g window-status-current-style fg=brightred,bg=default
-#set-window-option -g window-status-current-attr bright
-
-# pane border
-
-# message text
-
-# pane number display
-set-option -g display-panes-active-colour blue #blue
-set-option -g display-panes-colour brightred #orange
-
-# clock
-set-window-option -g clock-mode-colour green #green
-
-# bell
-set-window-option -g window-status-bell-style fg=black,bg=red #base02, red
-
-# tmux powerline
-set-option -g status on
-set-option -g status-interval 2
-set-option -g status-justify "centre"
-set-option -g status-left-length 60
-set-option -g status-right-length 90
-set-option -g status-left "#(~/.dotfiles/tmux-powerline/powerline.sh left)"
-set-option -g status-right "#(~/.dotfiles/tmux-powerline/powerline.sh right)"
-set-window-option -g window-status-current-format "#[fg=colour235, bg=colour27]-#[fg=colour255, bg=colour27] #I - #[fg=colour27, bg=colour235]-"
-bind C-[ run '~/.dotfiles/tmux-powerline/mute_powerline.sh left'      # Mute left statusbar.
-bind C-] run '~/.dotfiles/tmux-powerline/mute_powerline.sh right'     # Mute right statusbar.
-
+# User Interface
 
 # vi mode
 set-window-option -g mode-keys vi
@@ -131,78 +92,11 @@ bind-key -T copy-mode-vi 'y' send -X copy-pipe-and-cancel "DISPLAY=:0 xsel -i -p
 #bind-key -t vi-copy 'v' begin-selection
 #bind-key -t vi-copy 'y' copy-pipe "xsel -i -p -b"
 
-
-
-
-
-# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# title      Nord tmux                                    +
-# project    nord-tmux                                    +
-# version    0.2.0                                        +
-# repository https://github.com/arcticicestudio/nord-tmux +
-# author     Arctic Ice Studio                            +
-# email      development@arcticicestudio.com              +
-# copyright  Copyright (C) 2017                           +
-# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#+----------------+
-#+ Plugin Support +
-#+----------------+
-#+--- tmux-prefix-highlight ---+
-set -g @prefix_highlight_fg black
-set -g @prefix_highlight_bg brightcyan
-set -g @prefix_highlight_copy_mode_attr "fg=brightcyan,bg=black,bold"
-set -g @prefix_highlight_output_prefix "#[fg=brightcyan]#[bg=black]#[nobold]#[noitalics]#[nounderscore]#[bg=brightcyan]#[fg=black]"
-set -g @prefix_highlight_output_suffix ""
-
-#+---------+
-#+ Options +
-#+---------+
-set -g status-interval 1
-set -g status on
-
-#+--------+
-#+ Status +
-#+--------+
-#+--- Layout ---+
-set -g status-position bottom
-set -g status-justify left
-
-#+--- Colors ---+
-set -g status-style bg=black,fg=yellow,default,bg=black,fg=white,none
-
-#+--- Bars ---+
-set -g status-left "#[fg=black,bg=blue,bold] #S#[fg=blue,bg=black,nobold,noitalics,nounderscore]"
-set -g status-right "#{prefix_highlight}#[fg=brightblack,bg=black,nobold,noitalics,nounderscore]#[fg=white,bg=brightblack] %Y-%m-%d #[fg=white,bg=brightblack,nobold,noitalics,nounderscore]#[fg=white,bg=brightblack] %H:%M #[fg=cyan,bg=brightblack,nobold,noitalics,nounderscore]#[fg=black,bg=cyan,bold] #H "
-
-#set-option -g status-left "#(~/.dotfiles/tmux-powerline/powerline.sh left)"
-#set-option -g status-right "#(~/.dotfiles/tmux-powerline/powerline.sh right)"
-
-#+--- Windows ---+
-set -g window-status-format "#[fg=black,bg=brightblack,nobold,noitalics,nounderscore] #[fg=white,bg=brightblack]#I #[fg=white,bg=brightblack,nobold,noitalics,nounderscore] #[fg=white,bg=brightblack]#W #F #[fg=brightblack,bg=black,nobold,noitalics,nounderscore]"
-set -g window-status-current-format "#[fg=black,bg=cyan,nobold,noitalics,nounderscore] #[fg=black,bg=cyan]#I #[fg=black,bg=cyan,nobold,noitalics,nounderscore] #[fg=black,bg=cyan]#W #F #[fg=cyan,bg=black,nobold,noitalics,nounderscore]"
-set -g window-status-separator ""
-
-#+-------+
-#+ Panes +
-#+-------+
-set -g pane-border-style fg=black,bg=black,fg=black
-set -g pane-active-border-style fg=brightgreen,bg=black,fg=brightblack
-set -g display-panes-colour black
-set -g display-panes-active-colour brightblack
-
-#+------------+
-#+ Clock Mode +
-#+------------+
-setw -g clock-mode-colour cyan
-
-#+----------+
-#+ Messages +
-#+---------+
-set -g message-style bg=black,fg=brightred,fg=cyan,bg=brightblack
-set -g message-command-style fg=cyan,bg=brightblack
-
+# ssh keys in all panels
 # Remove SSH_AUTH_SOCK to disable auto-resetting of Tmux variable
 set -g update-environment "DISPLAY SSH_ASKPASS SSH_AGENT_PID \
                            SSH_CONNECTION WINDOWID XAUTHORITY"
 # Use a symlink to look up SSH authentication
 setenv -g SSH_AUTH_SOCK $HOME/.ssh/ssh_auth_sock
+
+source ${HOME}/.tmux-gruvbox-dark.conf

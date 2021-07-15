@@ -68,7 +68,7 @@ export PATH=$HOME/.bin:/usr/local/bin:$PATH:/opt/ibm/ILOG/CPLEX_Studio1271/cplex
 export MANPATH="/usr/local/man:$MANPATH"
 
 # jdk
-JAVA_HOME=/usr/lib/jvm/java-8-openjdk/jre/
+JAVA_HOME=/usr/lib/jvm/java-11-openjdk/jre/
 ANDROID_HOME=/usr/lib/android-sdk-linux
 PATH=$PATH:$HOME/bin:$JAVA_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$HOME/.config/i3/i3lock-fancy-multimonitor
 export JAVA_HOME
@@ -212,3 +212,10 @@ if [ -f '/opt/google/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/google/googl
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/opt/google/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/google/google-cloud-sdk/completion.zsh.inc'; fi
+
+# development imports
+#
+# API Keys to be read
+if [ -f ~/.pythonrc ]; then
+    source ~/.pythonrc
+fi

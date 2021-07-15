@@ -57,6 +57,7 @@ Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'nvie/vim-flake8', {'for': 'python'} "pep8 style checker
 Plug 'kshenoy/vim-signature'
 Plug 'sainnhe/artify.vim'
+Plug 'puremourning/vimspector'
 "
 " Colors schemes
 Plug 'morhetz/gruvbox'

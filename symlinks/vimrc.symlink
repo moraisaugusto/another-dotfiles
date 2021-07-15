@@ -92,6 +92,7 @@ set nofoldenable " don't fold by default
 set foldlevel=1
 
 "snipMate - snippets
+let g:snipMate = { 'snippet_version' : 1 }
 let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
 let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['html'] = 'html'
@@ -204,6 +205,11 @@ let g:syntastic_always_populate_loc_list = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 set tags+=./.ctags
 
+
+" Vimspector
+let g:vimspector_enable_mappings = 'HUMAN'
+"packadd! vimspector
+" packadd! vimspector
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins - Gutentags
