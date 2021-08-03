@@ -12,3 +12,6 @@
 
 [i3lock-fancy-multimonitor]
 	branch = master
+[submodule "extras/config/polybar/polypomo"]
+	path = extras/config/polybar/polypomo
+	url = git@github.com:unode/polypomo.git

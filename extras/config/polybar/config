@@ -67,12 +67,13 @@ module-margin-right = 3
 ;font-0 = Knack\ Nerd\ Font:pixelsize=16;1
 font-0 = Hack Nerd Font:pixelsize=22;1
 font-1 = Weather Icons:size=22;1
+font-2 = Noto Emoji:scale=6;1
 ;font-0 = hack:pixelsize=12;1
 ;font-1 = unifont:size=6:heavy:fontformat=truetype;-2
 ;font-2 = siji:pixelsize=10;0
 ;font-3 = FontAwesome:pixelsize=14;0
 
-modules-left =  i3
+modules-left =  i3 polypomo
 modules-center = date openweathermap-simple
 modules-right =  backlight updates-arch-combined volume vpn-nordvpn-status temperature filesystem-home filesystem-slash wlan battery powermenu
 
@@ -446,7 +447,7 @@ animation-discharging-framerate = 750
 [module/temperature]
 type = internal/temperature
 thermal-zone = 6
-hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input
+;hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input
 warn-temperature = 80
 
 format = <ramp> <label>
@@ -517,3 +518,14 @@ interval = 5
 type = custom/script
 exec = ~/.config/polybar/polybar-scripts/updates-arch-combined/updates-arch-combined.sh
 interval = 600
+
+[module/polypomo]
+type = custom/script
+exec = ~/.dotfiles/extras/config/polybar/polypomo/polypomo
+tail = true
+label = %output%
+click-left = ~/.dotfiles/extras/config/polybar/polypomo/polypomo toggle
+click-right = ~/.dotfiles/extras/config/polybar/polypomo/polypomo end
+click-middle = ~/.dotfiles/extras/config/polybar/polypomo/polypomo lock
+scroll-up = ~/.dotfiles/extras/config/polybar/polypomo/polypomo time +60
+scroll-down = ~/.dotfiles/extras/config/polybar/polypomo/polypomo time -60
