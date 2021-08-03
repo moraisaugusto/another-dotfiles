@@ -544,10 +544,10 @@ let g:ctrlp_map='<leader>t'
 "let g:ctrlp_working_path_mode = ''
 
 " CtrlP ignore patterns
-" let g:ctrlp_custom_ignore = {
-"             \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-"             \ 'file': '\v\.(exe|so|dll|o|aux|pyc)$',
-"             \ }
+let g:ctrlp_custom_ignore = {
+            \ 'dir':  '\v[\/](.\git|.\hg|.\svn|node_modules)$',
+            \ 'file': '\v\.(exe|so|dll|o|aux|pyc)$',
+            \ }
 
 "" only show files that are not ignored by git
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
