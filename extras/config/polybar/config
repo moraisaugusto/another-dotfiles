@@ -73,9 +73,9 @@ font-2 = Noto Emoji:scale=6;1
 ;font-2 = siji:pixelsize=10;0
 ;font-3 = FontAwesome:pixelsize=14;0
 
-modules-left =  i3 polypomo
+modules-left =  i3 pomodoro
 modules-center = date openweathermap-simple
-modules-right =  backlight updates-arch-combined volume vpn-nordvpn-status temperature filesystem-home filesystem-slash wlan battery powermenu
+modules-right =  backlight updates-arch-combined volume vpn-nordvpn-status temperature filesystem-home filesystem-slash battery eth wlan powermenu
 
 tray-position = right
 tray-scale = 1.0
@@ -292,13 +292,14 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = enp4s0
+interface = enp63s0
 interval = 3.0
 
 format-connected-underline = #55aa55
 format-connected-prefix = " "
 format-connected-foreground-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
+;label-connected = %local_ip%
+label-connected = " "
 
 format-disconnected-underline = ${self.format-connected-underline}
 label-disconnected = %ifname%
@@ -417,11 +418,11 @@ label-discharging = %percentage%%
 label-full =
 
 ; Only applies if <ramp-capacity> is used
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
+ramp-capacity-0 = " "
+ramp-capacity-1 = " "
+ramp-capacity-2 = " "
+ramp-capacity-3 = " "
+ramp-capacity-4 = " "
 
 ; Only applies if <bar-capacity> is used
 bar-capacity-width = 5
@@ -529,3 +530,11 @@ click-right = ~/.dotfiles/extras/config/polybar/polypomo/polypomo end
 click-middle = ~/.dotfiles/extras/config/polybar/polypomo/polypomo lock
 scroll-up = ~/.dotfiles/extras/config/polybar/polypomo/polypomo time +60
 scroll-down = ~/.dotfiles/extras/config/polybar/polypomo/polypomo time -60
+
+[module/pomodoro]
+type = custom/script
+click-left = i3-gnome-pomodoro toggle
+click-middle = gnome-pomodoro
+click-right = i3-gnome-pomodoro start_stop
+exec = i3-gnome-pomodoro status --always
+interval = 1

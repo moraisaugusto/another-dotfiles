@@ -1,6 +1,6 @@
 !### Common Configs
 #include ".Xresources.d/meta-keys-fixed-nvim"
-#include ".Xresources.d/rofi"
+!#include ".Xresources.d/rofi"
 
 
 !### Home Configs
@@ -8,6 +8,7 @@
 #include ".Xresources.d/rxvt-unicode-home-4k"
 
 ! Themes
+!#include ".Xresources.d/schemes/gruvbox_material"
 #include ".Xresources.d/schemes/gruvbox_material"
 
 

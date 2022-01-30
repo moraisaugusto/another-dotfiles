@@ -254,7 +254,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #exec xrandr --output DP-5 --primary --auto --scale 1x1  --output DP-0 --auto --scale 1x1 --left-of DP-5
 #exec xrandr --output DP-5 --primary --auto --scale 1x1  --output DP-0 --auto --scale 1x1 --left-of DP-5 --output DP-4 --off
 # home config
-exec xrandr --output DP-5 --primary --mode 3840x2160 --rate 120 --scale 1x1  --output DP-0 --mode 3840x2160 --rate 60 --scale 1x1 --left-of DP-5 --output DP-4 --off
+exec xrandr --output DP-5 --primary --mode 3840x2160 --rate 60 --scale 1x1  --output DP-0 --mode 3840x2160 --rate 60 --scale 1x1 --left-of DP-5 --output DP-4 --off
 
 #
 ## Background

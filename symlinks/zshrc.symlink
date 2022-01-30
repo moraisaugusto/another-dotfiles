@@ -219,3 +219,5 @@ if [ -f '/opt/google/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/google
 if [ -f ~/.pythonrc ]; then
     source ~/.pythonrc
 fi
+
+export PATH="$HOME/.poetry/bin:$PATH"
