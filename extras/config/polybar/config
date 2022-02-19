@@ -76,9 +76,9 @@ font-4 = Font Awesome 5 Brands: pixelsize=11
 ;font-2 = siji:pixelsize=10;0
 ;font-3 = FontAwesome:pixelsize=14;0
 
-modules-left =  i3 pomodoro
+modules-left =  i3 pomodoro vpn-nordvpn-status
 modules-center = date openweathermap-simple
-modules-right =  backlight updates-arch-combined vpn-nordvpn-status pulseaudio-control  temperature filesystem-home filesystem-slash battery eth wlan powermenu
+modules-right =  backlight updates-arch-combined  pulseaudio-control  temperature filesystem-home filesystem-slash battery eth wlan powermenu
 
 tray-position = right
 tray-scale = 1.0
@@ -351,7 +351,9 @@ label-foreground = ${colors.foreground}
 # You can copy-paste your options for each possible action, which is more
 # trouble-free but repetitive, or apply only the relevant ones (for example
 # --sink-blacklist is only needed for next-sink).
-exec = pulseaudio-control --icons-volume " , " --icon-muted " " --sink-nicknames-from "device.description" --sink-nickname "alsa_output.pci-0000_00_1f.3.analog-stereo: %{F#7a7a7a}蓼%{F-}" --sink-nickname "alsa_output.usb-Other_World_Computing_OWC_Thunderbolt_3_Audio_Device-00.iec958-stereo: %{F#7a7a7a}%{F-}" listen
+# list sinks: pactl list sinks short | cut -f2
+
+exec = pulseaudio-control --icons-volume " , " --icon-muted " " --sink-nicknames-from "device.description" --sink-nickname "alsa_output.pci-0000_00_1f.3.analog-stereo: %{F#7a7a7a}蓼%{F-}" --sink-nickname "alsa_output.usb-Other_World_Computing_OWC_Thunderbolt_3_Audio_Device-00.iec958-stereo: %{F#7a7a7a}%{F-}" --sink-nickname "alsa_output.pci-0000_01_00.1.hdmi-stereo: %{F#7a7a7a}%{F-}" listen
 click-right = exec pavucontrol &
 click-left = pulseaudio-control togmute
 click-middle = pulseaudio-control --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2" next-sink
