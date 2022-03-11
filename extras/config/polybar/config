@@ -78,7 +78,7 @@ font-4 = Font Awesome 5 Brands: pixelsize=11
 
 modules-left =  i3 pomodoro vpn-nordvpn-status
 modules-center = date openweathermap-simple
-modules-right =  backlight updates-arch-combined  pulseaudio-control  temperature filesystem-home filesystem-slash battery eth wlan powermenu
+modules-right =  backlight updates-arch-combined  pulseaudio-control  temperature filesystem-home filesystem-slash battery eth wlan monitors powermenu
 
 tray-position = right
 tray-scale = 1.0
@@ -339,6 +339,32 @@ format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #0a6cf5
 
 label = %date% - %time%
+
+[module/monitors]
+type = custom/menu
+label-open = 
+label-open-foreground = #7a7a7a
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 =  Laptop
+menu-0-0-exec = /home/augusto/.local/bin/monitors.sh -o 1-internal & polybar -r
+menu-0-1 =  Monitor
+menu-0-1-exec = /home/augusto/.local/bin/monitors.sh -o 1-external & polybar -r
+menu-0-2 =  2 Monitors
+menu-0-2-exec = /home/augusto/.local/bin/monitors.sh -o 2-externals & polybar -r
+
+
+;type = custom/script
+;tail = true
+;format-underline = ${colors.cyan}
+;label-padding = 0
+;label-foreground = ${colors.foreground}
+;
+;exec = echo " %{F#7a7a7a}  %{F-}"
+;click-right = exec pavucontrol &
 
 [module/pulseaudio-control]
 type = custom/script
