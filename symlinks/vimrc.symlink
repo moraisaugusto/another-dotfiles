@@ -203,7 +203,7 @@ nnoremap <F6> :YcmForceCompileAndDiagnostics<CR>
 ""Do not ask when starting vim
 let g:syntastic_always_populate_loc_list = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
-set tags+=./.ctags
+set tags=.ctags
 
 
 " Vimspector
@@ -541,7 +541,7 @@ nmap <silent> <leader>r :CtrlPBuffer<cr>
 nnoremap <leader>n :CtrlPTag<cr>
 let g:ctrlp_map='<leader>t'
 ""let g:ctrlp_dotfiles=1
-"let g:ctrlp_working_path_mode = ''
+let g:ctrlp_working_path_mode = 1
 
 " CtrlP ignore patterns
 let g:ctrlp_custom_ignore = {
@@ -550,7 +550,11 @@ let g:ctrlp_custom_ignore = {
             \ }
 
 "" only show files that are not ignored by git
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+"let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_user_command = [
+    \ '.git', 'cd %s && git ls-files . -co --exclude-standard',
+    \ 'find %s -type f'
+    \ ]
 "
 "" search the nearest ancestor that contains .git, .hg, .svn
 "let g:ctrlp_working_path_mode = 2
@@ -566,9 +570,10 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 let g:jedi#completions_enabled = 1
 " let g:python_host_prog=$HOME"/.asdf/installs/python/2.7.15/bin/python"
 let g:python3_host_prog= $HOME.'/.asdf/shims/python'
-let g:loaded_python_provider = 1
+let g:loaded_python_provider = 0
 let g:loaded_ruby_provider = 0
 let g:loaded_node_provider = 0
+let g:loaded_perl_provider = 0
 let did_python_setup = 1
 
 
