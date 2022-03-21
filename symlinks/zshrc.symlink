@@ -221,3 +221,12 @@ if [ -f ~/.pythonrc ]; then
 fi
 
 export PATH="$HOME/.poetry/bin:$PATH"
+
+
+show_virtual_env() {
+  if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
+    echo "($(basename $PWD))"
+  fi
+}
+export show_virtual_env
+PS1='$(show_virtual_env)'$PS1
