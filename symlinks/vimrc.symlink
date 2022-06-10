@@ -6,6 +6,8 @@ runtime! plugin/python_setup.vim
 
 " load plugins from vundle
 source ~/.vim/plugins.vim
+source ~/.config/nvim/plug-config/coc.vim
+
 
 set nocompatible " not compatible with vi
 set autoread " detect when a file is changed
@@ -92,15 +94,22 @@ set nofoldenable " don't fold by default
 set foldlevel=1
 
 "snipMate - snippets
-let g:snipMate = { 'snippet_version' : 1 }
-let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
-let g:snipMate.scope_aliases = {}
-let g:snipMate.scope_aliases['html'] = 'html'
-"ActivateAddons vim-snippets snipmate
-if !exists('g:snips_author')
-    let g:snips_author = 'Augusto Morais'
-    let g:snips_author_email = 'augusto at morais.io'
-endif
+"let g:snipMate = { 'snippet_version' : 1 }
+"let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
+"let g:snipMate.scope_aliases = {}
+"let g:snipMate.scope_aliases['html'] = 'html'
+""ActivateAddons vim-snippets snipmate
+"if !exists('g:snips_author')
+"    let g:snips_author = 'Augusto Morais'
+"    let g:snips_author_email = 'augusto at morais.io'
+"endif
+"
+
+"Ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"let g:UltiSnipsEditSplit="vertical"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => User Interface
@@ -238,7 +247,7 @@ let g:gutentags_ctags_extra_args = ['--fields=+l']
 " the plugins section
 
 " shortcut to open a lib in new tab
-nnoremap <silent><leader><C-]> <C-w><C-]><C-w>T
+"nnoremap <silent><leader><C-]> <C-w><C-]><C-w>T
 
 " Close the current buffer
 noremap <C-x> :q<cr>
@@ -521,7 +530,7 @@ nnoremap <silent> <leader>u :call HtmlUnEscape()<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " ack plugin
-nnoremap <Leader>a :Ack!<Space>
+"nnoremap <Leader>a :Ack!<Space>
 
 
 " close NERDTred after a file is opened
@@ -567,7 +576,7 @@ let g:ctrlp_user_command = [
 
 " jedi-vim plugin
 " let g:jedi#use_tabs_not_buffers = 1
-let g:jedi#completions_enabled = 1
+let g:jedi#completions_enabled = 0
 " let g:python_host_prog=$HOME"/.asdf/installs/python/2.7.15/bin/python"
 let g:python3_host_prog= $HOME.'/.asdf/shims/python'
 let g:loaded_python_provider = 0
@@ -645,10 +654,16 @@ let g:airline_theme='gruvbox_material'
 
 " ale - show error
 let g:airline#extensions#ale#enabled = 1
+let g:ale_enabled = 1
 let g:ale_set_highlights = 0
 let g:ale_linters = {
       \   'python': ['flake8', 'pylint']
       \}
+
+let g:ale_fixers = {
+      \   'python': ['black', 'isort', 'trim_whitespace']
+      \}
+let g:ale_fix_on_save = 1
 noremap <leader>l :ALEToggle<CR>
 
 " unicode symbols
@@ -716,6 +731,11 @@ let g:webdevicons_enable_nerdtree = 1
 let g:webdevicons_enabl = 0
 let g:WebDevIconsUnicodeDecorateFolderNodes = 0
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+
+
+"coc-cspell
+vmap <leader>a <Plug>(coc-codeaction-selected)
+nmap <leader>a <Plug>(coc-codeaction-selected)
 
 " Truecolors
 set termguicolors
