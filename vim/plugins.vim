@@ -4,10 +4,9 @@ filetype off
 " set rtp+=~/.vim/bundle/Vundle.vim/
 call plug#begin('~/.vim/plugged')
 
-Plug 'honza/vim-snippets'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons'
-Plug 'mileszs/ack.vim'
+"Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'benmills/vimux'
@@ -16,7 +15,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale' " replace syntastic
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
-Plug 'garbas/vim-snipmate'
+"Plug 'garbas/vim-snipmate'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tomtom/tlib_vim'
 Plug 'sotte/presenting.vim'
@@ -48,8 +47,8 @@ Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' }
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'timcharper/textile.vim', { 'for': 'textile' }
-Plug 'davidhalter/jedi-vim', { 'for': 'python'}
-Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
+"Plug 'davidhalter/jedi-vim', { 'for': 'python'}
+" Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
 Plug 'majutsushi/tagbar'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'ludovicchabant/vim-gutentags'
@@ -58,6 +57,10 @@ Plug 'nvie/vim-flake8', {'for': 'python'} "pep8 style checker
 Plug 'kshenoy/vim-signature'
 Plug 'sainnhe/artify.vim'
 Plug 'puremourning/vimspector'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'pappasam/coc-jedi'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 "
 " Colors schemes
 Plug 'morhetz/gruvbox'
