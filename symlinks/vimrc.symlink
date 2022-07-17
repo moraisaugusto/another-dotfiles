@@ -8,6 +8,9 @@ runtime! plugin/python_setup.vim
 source ~/.vim/plugins.vim
 source ~/.config/nvim/plug-config/coc.vim
 
+" source ~/.config/nvim/plug-config/gitsigns.vim
+"set statusline+=%{get(b:,'gitsigns_status','')}
+
 
 set nocompatible " not compatible with vi
 set autoread " detect when a file is changed

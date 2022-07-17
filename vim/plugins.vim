@@ -61,6 +61,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pappasam/coc-jedi'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+
+
+" Git plugins
+Plug 'lewis6991/gitsigns.nvim'
 "
 " Colors schemes
 Plug 'morhetz/gruvbox'
