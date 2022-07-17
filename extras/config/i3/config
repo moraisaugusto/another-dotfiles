@@ -163,6 +163,7 @@ assign [class="Google-chrome"] 1
 assign [class="Chromium"] 1
 assign [class="firefoxdeveloperedition"] 1
 assign [class="firefox"] 1
+assign [class="brave-browser"] 1
 assign [class="URxvt"] 2
 assign [class="Spotify"] 3
 assign [class="lyricfier"] 3
@@ -290,10 +291,10 @@ exec nextcloud
 ## Autostart
 ##
 # exec --no-startup-id i3-msg 'workspace $tag1; exec firefox-developer-edition'
-exec --no-startup-id i3-msg 'workspace $tag1; exec firefox'
+exec --no-startup-id i3-msg 'workspace $tag1; exec brave'
 exec --no-startup-id i3-msg 'workspace $tag2; exec urxvt'
 exec --no-startup-id i3-msg 'workspace $tag3; exec spotify --force-device-scale-factor=1.0'
 #exec --no-startup-id i3-msg 'workspace $tag3; exec lyricfier'
 exec --no-startup-id i3-msg 'workspace $tag4; exec nautilus'
-exec --no-startup-id i3-msg 'workspace $tag9; exec firefox -new-window https://web.whatsapp.com/'
+exec --no-startup-id i3-msg 'workspace $tag9; exec brave -new-window https://web.whatsapp.com/'
 #
