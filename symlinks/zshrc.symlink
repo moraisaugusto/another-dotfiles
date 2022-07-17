@@ -143,7 +143,7 @@ unsetopt prompt_cr prompt_sp
 
 # setting browse
 if [ -n "$DISPLAY" ]; then
-    export BROWSER=firefox
+    export BROWSER=brave
 else 
     export BROWSER=links
 fi
