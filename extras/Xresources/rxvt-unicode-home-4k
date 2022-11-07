@@ -6,7 +6,12 @@
 !URxvt*font: xft:Hack Nerd Font Mono:Regular:pixelsize=22:antialias=true:hinting=true
 !URxvt*font: xft:Iosevka Custom:Regular:pixelsize=22:antialias=true:hinting=true,xft:Hack Nerd Font Mono:Regular:pixelsize=22:antialias=true:hinting=true
 !URxvt*font: xft:Source Code Pro iCursive S12:Regular:pixelsize=24:antialias=true:hinting=true,xft:Hack Nerd Font Mono:Regular:pixelsize=22:antialias=true:hinting=true
-URxvt*font: xft:Source Code Pro iCursive S12:Regular:pixelsize=25:antialias=true:hinting=true,xft:Iosevka Custom:Regular:pixelsize=22:antialias=true:hinting=true
+
+!URxvt*font: xft:FiraCode Nerd Font:Regular:pixelsize=25:antialias=true:hinting=true,xft:SauceCodePro Nerd Font:Regular:pixelsize=22:antialias=true:hinting=true
+!URxvt*font: xft:SauceCodePro Nerd Font:Regular:pixelsize=25:antialias=true:hinting=true,xft:Source Code Pro iCursive S12:Regular:pixelsize=25:antialias=true:hinting=true,FiraCode Nerd Font:Regular:pixelsize=25:antialias=true:hinting=true,TerminessTTF Nerd Font:Regular:pixelsize=25:antialias=true:hinting=true
+URxvt*font: xft:SauceCodePro Nerd Font:Regular:pixelsize=25:antialias=true:hinting=true,xft:Source Code Pro iCursive S12:Regular:pixelsize=25:antialias=true:hinting=true,xft:FiraCode Nerd Font:Regular:pixelsize=25:antialias=true:hinting=true,xft:TerminessTTF Nerd Font:Regular:pixelsize=25:antialias=true:hinting=true
+!URxvt*font: xft:SauceCodePro Nerd Font:Regular:pixelsize=25:antialias=true:hinting=true,xft:Source Code Pro iCursive S12:Regular:pixelsize=25:antialias=true:hinting=true,FiraCode Nerd Font:Regular:pixelsize=25:antialias=true:hinting=true
+!URxvt*font: xft:Source Code Pro iCursive S12:Regular:pixelsize=25:antialias=true:hinting=true,xft:Iosevka Custom:Regular:pixelsize=22:antialias=true:hinting=true
 
 !urxvt settings
 URxvt.letterSpace:     0
