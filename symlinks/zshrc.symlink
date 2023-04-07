@@ -56,7 +56,7 @@ ZSH_TMUX_FIXTERM=true
 ## Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 ## Example format: plugins=(rails git textmate ruby lighthouse)
 ## Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages emoji-clock tmux tmuxinator nmap battery extract docker docker-compose poetry)
+plugins=(git colored-man-pages emoji-clock tmux tmuxinator nmap battery extract docker docker-compose poetry fzf)
 
 #
 # User configuration
@@ -90,8 +90,8 @@ export QUOTING_STYLE=literal ls
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+export LANG=en_US.utf-8
+export LC_ALL=en_US.utf-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -100,6 +100,7 @@ else
   export EDITOR='nvim'
 fi
 # GTK theme on QT
+export GTK_THEME=Arc:dark
 export QT_QPA_PLATFORMTHEME=qt5ct
 
 # Compilation flags
