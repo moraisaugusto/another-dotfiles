@@ -161,20 +161,19 @@ for_window [class="^.*"] border pixel 1
 # Workspace assignment #
 assign [class="Google-chrome"] 1
 assign [class="Chromium"] 1
-assign [class="firefoxdeveloperedition"] 1
-assign [class="firefox"] 1
-assign [class="brave-browser"] 1
+assign [class="Brave-browser"] 1
 assign [class="URxvt"] 2
 assign [class="Spotify"] 3
 assign [class="lyricfier"] 3
 assign [class="Nautilus"] 4
-#assign [class="mpv"] 5
 assign [class="VirtualBox"] 6
 assign [class="Transmission-gtk"] 0
 assign [class="Steam"] 8
 assign [class="Oplide"] 5
 assign [class="zsnes"] 8
 assign [class="Franz"] 9
+assign [class="firefox"] 9
+assign [class="firefoxdeveloperedition"] 9
 
 #################################################################################################
 #
@@ -193,7 +192,6 @@ for_window [class="Spotify"] move to workspace 3
 #################################################################################################
 #
 # Workspaces
-#
 #exec --no-startup-id "i3-msg 'workspace 3; append_layout /home/augusto/.i3/workspace-3.json'"
 
 #
@@ -246,7 +244,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #
 ## monitors (4k)
 # 1 external monitor (4k)
-# exec xrandr --output DP-4 --off --output HDMI-0 --primary --mode 3840x2160 --pos 0x0 --rotate normal --dpi 180
+exec xrandr --output DP-4 --off --output DP-5 --primary --mode 3840x2160 --pos 0x0 --rotate normal
 
 # 1 external monitor (2k)
 #exec xrandr --output DP-4 --off --output HDMI-0 --primary --mode 2560x1440 --pos 0x0 --rotate normal --dpi 120
@@ -255,7 +253,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #exec xrandr --output DP-5 --primary --auto --scale 1x1  --output DP-0 --auto --scale 1x1 --left-of DP-5
 #exec xrandr --output DP-5 --primary --auto --scale 1x1  --output DP-0 --auto --scale 1x1 --left-of DP-5 --output DP-4 --off
 # home config
-exec xrandr --output DP-5 --primary --mode 3840x2160 --rate 60 --scale 1x1  --output DP-0 --mode 3840x2160 --rate 60 --scale 1x1 --left-of DP-5 --output DP-4 --off
+#exec xrandr --output DP-5 --primary --mode 3840x2160 --rate 60 --scale 1x1  --output DP-0 --mode 3840x2160 --rate 60 --scale 1x1 --left-of DP-5 --output DP-4 --off
 
 #
 ## Background
@@ -263,11 +261,6 @@ exec sleep 2 && feh --bg-fill ~/Google\ Drive/Augusto\ Morais/Wallpapers/mount.p
 #
 ## autolock i3
 exec xautolock  -time 15 -locker '~/.config/i3/i3lock-fancy-multimonitor/lock' --corners 0 0 --scrot -z &
-
-## insync
-# exec QT_AUTO_SCREEN_SCALE_FACTOR=1 insync start
-#
-## connect Wifi | its not necessary enable it here (polybar already does it)
 
 # dunst
 exec dunst &
@@ -290,11 +283,8 @@ exec nextcloud
 ##
 ## Autostart
 ##
-# exec --no-startup-id i3-msg 'workspace $tag1; exec firefox-developer-edition'
 exec --no-startup-id i3-msg 'workspace $tag1; exec brave'
 exec --no-startup-id i3-msg 'workspace $tag2; exec urxvt'
 exec --no-startup-id i3-msg 'workspace $tag3; exec spotify --force-device-scale-factor=1.0'
-#exec --no-startup-id i3-msg 'workspace $tag3; exec lyricfier'
 exec --no-startup-id i3-msg 'workspace $tag4; exec nautilus'
-exec --no-startup-id i3-msg 'workspace $tag9; exec brave -new-window https://web.whatsapp.com/'
-#
+exec --no-startup-id i3-msg 'workspace $tag9; exec firefox'
