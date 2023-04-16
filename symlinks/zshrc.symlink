@@ -233,6 +233,7 @@ export show_virtual_env
 PS1='$(show_virtual_env)'$PS1
 
 # Pomodoro settings
+# timer app: https://github.com/caarlos0/timer
 POMODORO_BEFORE_LONG_BREAK=4
 alias work="timer 25m && notify-send -u low --icon  'Pomodoro' 'Work Timer is up! Take a Break 😊'"
 alias rest="timer 5m && notify-send -u low --icon  'Pomodoro' 'Break is over! Get back to work 😬'"
