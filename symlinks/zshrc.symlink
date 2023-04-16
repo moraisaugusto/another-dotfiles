@@ -231,3 +231,10 @@ show_virtual_env() {
 }
 export show_virtual_env
 PS1='$(show_virtual_env)'$PS1
+
+# Pomodoro settings
+POMODORO_BEFORE_LONG_BREAK=4
+alias work="timer 25m && notify-send -u low --icon  'Pomodoro' 'Work Timer is up! Take a Break 😊'"
+alias rest="timer 5m && notify-send -u low --icon  'Pomodoro' 'Break is over! Get back to work 😬'"
+alias long_rest="timer 15m && notify-send -u low --icon  'Pomodoro' 'Long Break is over! Get back to work 😬'"
+alias pomodoro='repeat $POMODORO_BEFORE_LONG_BREAK {work && rest} && long_rest'
