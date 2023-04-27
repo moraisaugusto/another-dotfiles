@@ -1,0 +1,5 @@
+[User]
+Session=i3
+XSession=i3
+Icon=/var/lib/AccountsService/icons/augusto.png
+SystemAccount=false
