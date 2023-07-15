@@ -73,7 +73,7 @@ gaps inner 10
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86Tools exec spotify --force-device-scale-factor=1.6
+bindsym XF86Tools exec spotify -force-device-scale-factor=1.4 %U
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioStop exec playerctl stop
 bindsym XF86AudioNext exec playerctl next
@@ -166,6 +166,7 @@ assign [class="URxvt"] 2
 assign [class="Spotify"] 3
 assign [class="lyricfier"] 3
 assign [class="Nautilus"] 4
+assign [class="Thunar"] 4
 assign [class="VirtualBox"] 6
 assign [class="Transmission-gtk"] 0
 assign [class="Steam"] 8
@@ -285,6 +286,6 @@ exec nextcloud
 ##
 exec --no-startup-id i3-msg 'workspace $tag1; exec brave'
 exec --no-startup-id i3-msg 'workspace $tag2; exec urxvt'
-exec --no-startup-id i3-msg 'workspace $tag3; exec spotify --force-device-scale-factor=1.0'
-exec --no-startup-id i3-msg 'workspace $tag4; exec nautilus'
-exec --no-startup-id i3-msg 'workspace $tag9; exec firefox'
+exec --no-startup-id i3-msg 'workspace $tag3; exec spotify --force-device-scale-factor=1.4'
+exec --no-startup-id i3-msg 'workspace $tag4; exec thunar'
+# exec --no-startup-id i3-msg 'workspace $tag9; exec firefox'
