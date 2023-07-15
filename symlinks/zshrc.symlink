@@ -56,7 +56,7 @@ ZSH_TMUX_FIXTERM=true
 ## Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 ## Example format: plugins=(rails git textmate ruby lighthouse)
 ## Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages emoji-clock tmux tmuxinator nmap battery extract docker docker-compose poetry fzf)
+plugins=(git colored-man-pages emoji-clock tmux tmuxinator nmap battery extract docker docker-compose poetry )
 
 #
 # User configuration
@@ -64,7 +64,7 @@ plugins=(git colored-man-pages emoji-clock tmux tmuxinator nmap battery extract 
 export IRACE_HOME=~/.R_libs/irace
 export R_LIBS=~/.R_libs
 
-export PATH=$HOME/.bin:/usr/local/bin:$PATH:/opt/ibm/ILOG/CPLEX_Studio1271/cplex/bin/x86-64_linux:/opt/ibm/ILOG/CPLEX_Studio1271/opl/oplide:/opt/ibm/ILOG/CPLEX_Studio1271/opl/bin/x86-64_linux:$IRACE_HOME/bin:/opt/mendeleydesktop-1.19.1-linux-x86_64/bin
+export PATH=$HOME/.bin:/usr/local/bin:$PATH
 export MANPATH="/usr/local/man:$MANPATH"
 
 # jdk
@@ -81,7 +81,10 @@ export PATH
 # PATH=$PATH:$GUROBI_HOME/bin
 
 # Cplex
-LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/ibm/ILOG/CPLEX_Studio1271/opl/bin/x86-64_linux
+
+# cuda
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/cuda/lib:/opt/cuda/targets/x86_64-linux/lib
+
 export LD_LIBRARY_PATH
 
 # literal ls command
@@ -171,13 +174,12 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # setxkbmap -layout us -variant intl
 # Notebook keyboard
 # setxkbmap -model thinkpad60 -layout br
-#setxkbmap -layout us -variant intl
+setxkbmap -layout us -variant intl
 
-
-# asdf
- . $HOME/.asdf/asdf.sh
- . $HOME/.asdf/completions/asdf.bash
- export PATH="$HOME/.asdf/shims:$PATH"
+## asdf
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+export PATH="$HOME/.asdf/shims:$PATH"
 
 #
 # Load privite infos
@@ -191,6 +193,9 @@ export PATH="$HOME/.local/bin:$PATH"
 # rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# go
+export PATH="$HOME/go/bin:$PATH"
+
 # cuda
 export PATH="/opt/cuda/bin:$PATH"
 
@@ -200,7 +205,7 @@ PERL_LOCAL_LIB_ROOT="/home/augusto/.perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LI
 PERL_MB_OPT="--install_base \"/home/augusto/.perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/augusto/.perl5"; export PERL_MM_OPT;
 
-export PATH="/opt/schemacrawler/schemacrawler-16.5.2-distribution/_schemacrawler:$PATH"
+# export PATH="/opt/schemacrawler/schemacrawler-16.5.2-distribution/_schemacrawler:$PATH"
 
 # node bin
 #export PATH="$PATH:$HOME/.node/node_modules/.bin"
