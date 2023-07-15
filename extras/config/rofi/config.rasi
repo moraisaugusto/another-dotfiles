@@ -157,5 +157,5 @@ configuration {
 /* } */
 
 
-@theme "/home/augusto/.local/share/rofi/themes/squared-nord.rasi"
+@theme "themes/squared-nord.rasi"
 

@@ -27,9 +27,9 @@
 !Xcursor.size: 18
 
 ! 4k Resolution
-*.dpi: 180
-Xft.dpi: 180
-rofi.dpi: 180
+*.dpi: 192
+Xft.dpi: 192
+rofi.dpi: 192
 Xcursor.size: 48
 
 !Xft.autohint: 0

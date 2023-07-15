@@ -99,4 +99,4 @@ set -g update-environment "DISPLAY SSH_ASKPASS SSH_AGENT_PID \
 # Use a symlink to look up SSH authentication
 setenv -g SSH_AUTH_SOCK $HOME/.ssh/ssh_auth_sock
 
-source ${HOME}/.tmux-gruvbox-dark.conf
+source ${HOME}/.dotfiles/extras/tmux/themes/tmux-gruvbox-dark.conf

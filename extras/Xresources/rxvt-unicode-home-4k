@@ -1,5 +1,4 @@
 ! font type
-
 URxvt*font: xft:FiraCode Nerd Font:Regular:pixelsize=25:antialias=true:hinting=true,xft:SauceCodePro Nerd Font:Regular:pixelsize=25:antialias=true:hinting=true,xft:Source Code Pro iCursive S12:Regular:pixelsize=25:antialias=true:hinting=true,xft:TerminessTTF Nerd Font:Regular:pixelsize=25:antialias=true:hinting=true,xft:Cousine Nerd Font Mono:Regular:pixelsize=25:antialias=true:hinting=true
 
 !urxvt settings
@@ -20,13 +19,10 @@ URxvt*iso14755:        false
 URxvt*perl-lib:        /usr/lib/urxvt/perl/
 URxvt*perl-ext-common: default,matcher,resize-font
 
-! resize font without plugin
-!URxvt.keysym.C-0: command:\033]710;xft:Iosevka Custom:Regular:pixelsize=24:antialias=true:hinting=true,xft:Hack Nerd Font Mono:Regular:pixelsize=24:antialias=true:hinting=true
-
 URxvt.keysym.C-Down:  resize-font:smaller
 URxvt.keysym.C-Up:    resize-font:bigger
-
 URxvt.keysym.C-0: command:\033]710;xft:FiraCode Nerd Font:Regular:pixelsize=25:antialias=true:hinting=true,xft:SauceCodePro Nerd Font:Regular:pixelsize=25:antialias=true:hinting=true,xft:Source Code Pro iCursive S12:Regular:pixelsize=25:antialias=true:hinting=true,xft:TerminessTTF Nerd Font:Regular:pixelsize=25:antialias=true:hinting=true,xft:Cousine Nerd Font Mono:Regular:pixelsize=25:antialias=true:hinting=true\007
+
 !clickable links
 URxvt*url-launcher:   $BROWSER
 URxvt*matcher.button: 1
