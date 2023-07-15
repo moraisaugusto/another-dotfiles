@@ -1,9 +1,9 @@
-if [ -f $HOME/.Xresources]; then
-  xrdb -merge ~/.Xresources
-fi
-
-# custom fonts
-xset +fp /home/augusto/.fonts/tewi
-xset +fp /home/augusto/.fonts/tamzen
-xset +fp /home/augusto/.fonts/siji
-xset fp rehash
+#if [ -f $HOME/.Xresources]; then
+#  xrdb -merge ~/.Xresources
+#fi
+#
+## custom fonts
+#xset +fp /home/augusto/.fonts/tewi
+#xset +fp /home/augusto/.fonts/tamzen
+#xset +fp /home/augusto/.fonts/siji
+#xset fp rehash
