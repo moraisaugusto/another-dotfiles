@@ -6,9 +6,16 @@
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
 
+## resolution
+xrandr --output DP-0 --off --output DP-0 --mode 3840x2160 --pos 0x0 --dpi 192 --rate 120.00 --rotate normal 
+
+
 ##
 # X
 ##
+export GTK_THEME=Arc:dark
+export GTK_MODULES=canberra-gtk-module
+export QT_QPA_PLATFORMTHEME="qt5ct"
 
 # custom fonts
 xset +fp /home/augusto/.fonts/tewi
@@ -19,9 +26,9 @@ xset +fp /home/augusto/.fonts/haxor
 xset fp rehash
 
 # HiDPI support - 4k
-export GDK_SCALE=2
-export GDK_DPI_SCALE=0.5
-export QT_AUTO_SCREEN_SCALE_FACTOR=1
+#export GDK_SCALE=2
+#export GDK_DPI_SCALE=0.5
+#export QT_AUTO_SCREEN_SCALE_FACTOR=1
 
 # HiDPI support - 2k
 # export GDK_SCALE=1
