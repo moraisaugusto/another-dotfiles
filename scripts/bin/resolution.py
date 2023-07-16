@@ -8,10 +8,11 @@ import os
 import sys
 
 def run(args):
-    configs = {'external':
-                           {'output': 'HDMI1', 'resolution': '3840x2160', 'off_output': 'eDP1'},
-               'laptop':
-                           {'output': 'eDP1', 'resolution': '1366x768', 'off_output': 'HDMI1'}
+    configs = {
+               'primary':
+                   {'output': 'DP-0', 'resolution': '3840x2160', 'off_output': 'DP-2'},
+               'secondary':
+                   {'output': 'DP-2', 'resolution': '3840x2160', 'off_output': 'DP-0'},
               }
 
     if args.monitors == str(1) and \
@@ -30,14 +31,14 @@ def run(args):
         apps(args.output)
 
     if args.monitors == str(2):
-        cmd = "xrandr --output {} --primary --mode 3840x2160 --scale 1x1 --output {} --mode 1366x768 --pos 3840x0 --scale 1.5x1.5".format(m_external, m_internal)
+        cmd = "xrandr --output {} --primary --mode 3840x2160 --scale 1x1 --output {} --mode 1366x768 --pos 3840x0 --scale 1x1".format(m_secondary, m_primary)
         os.system(cmd)
-        apps('external')
+        apps('secondary')
 
 
 def apps(monitor):
     filename = str(Path.home()) + '/.config/polybar/config'
-    m_type = 'HDMI1' if monitor == 'external' else 'eDP1'
+    m_type = 'HDMI1' if monitor == 'secondary' else 'eDP1'
 
     # cmd = "sed -i 's/.*MONITOR.*/monitor \= ${end:MONITOR:}/g' {}".format( filename)
     cmd = "sed -i 's/.*MONITOR.*/monitor = ${{env:MONITOR:{}}}/g' {}".format(m_type, filename)
@@ -49,7 +50,7 @@ def apps(monitor):
 def main():
     parser=argparse.ArgumentParser(description="enable or disable monitor")
     parser.add_argument("-m",help="1 or 2" ,dest="monitors", type=str, required=True)
-    parser.add_argument("-o",help="laptop or external" ,dest="output", type=str, required=False)
+    parser.add_argument("-o",help="primary or secondary" ,dest="output", type=str, required=False)
     parser.set_defaults(func=run)
     args=parser.parse_args()
     args.func(args)
