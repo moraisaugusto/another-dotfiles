@@ -231,7 +231,7 @@ export PATH="$HOME/.poetry/bin:$PATH"
 
 show_virtual_env() {
   if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
-    echo "($(basename $PWD))"
+    echo "%{%K{yellow}%F{black}%} ﲵ "
   fi
 }
 export show_virtual_env
