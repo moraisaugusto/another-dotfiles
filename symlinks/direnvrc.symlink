@@ -1,0 +1,36 @@
+# Function: custom_anaconda
+# Description: This function creates a custom Project Layout for conda
+# example of .envrc file
+#   export VIRTUAL_ENV=.condaenv
+#   layout custom_anaconda python=3.8.13
+#
+# Parameters:
+#   $1 - python version. e.g. python=3.8.13 (optional)
+#   if not used, the default version will be used
+# Returns: None
+layout_custom_anaconda() {
+  
+  # hook for conda environment
+  eval "$(conda shell.zsh hook)" 
+  local python_version="python=3.9.0"
+
+  # Overwrites python version if it is passed as argument
+  if [ $# -eq 1 ]; then
+    local python_version="$1"
+  fi
+
+  if [ -d "${VIRTUAL_ENV}" ]; then
+    # if environment already exists then activate it
+    PS1=asda
+    export $PS1
+    conda activate ./${VIRTUAL_ENV}
+  elif (grep -q name: environment.yml); then
+    # Detect environment exists from `environment.yml` file in `.envrc` directory
+    conda activate `grep name: environment.yml | sed -e 's/name: //' | cut -d "'" -f 2 | cut -d '"' -f 2`
+  else
+    # if environment doesnt exists then create it
+    conda create -y -p .condaenv ${python_version}
+    conda activate ./${VIRTUAL_ENV}
+    (>&2 echo Creating a project environment);
+  fi;
+}
