@@ -245,7 +245,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #
 ## monitors (4k)
 # 1 external monitor (4k)
-exec xrandr --output DP-4 --off --output DP-5 --primary --mode 3840x2160 --pos 0x0 --rotate normal
+#exec xrandr --output DP-0 --off --output DP-5 --primary --mode 3840x2160 --pos 0x0 --rotate normal
 
 # 1 external monitor (2k)
 #exec xrandr --output DP-4 --off --output HDMI-0 --primary --mode 2560x1440 --pos 0x0 --rotate normal --dpi 120
@@ -258,7 +258,7 @@ exec xrandr --output DP-4 --off --output DP-5 --primary --mode 3840x2160 --pos 0
 
 #
 ## Background
-exec sleep 2 && feh --bg-fill ~/Google\ Drive/Augusto\ Morais/Wallpapers/mount.png ~/Google\ Drive/Augusto\ Morais/Wallpapers/space-exploration-edited-amp-centered-forresolution-2560×1440.jpg
+exec sleep 2 && feh --bg-fill ~/GoogleDrive/Augusto\ Morais/Wallpapers/mount.png --output DP-0 --bg-fill ~/GoogleDrive/Augusto\ Morais/Wallpapers/space-exploration-edited-amp-centered-forresolution-2560×1440.jpg --output DP-1
 #
 ## autolock i3
 exec xautolock  -time 15 -locker '~/.config/i3/i3lock-fancy-multimonitor/lock' --corners 0 0 --scrot -z &
