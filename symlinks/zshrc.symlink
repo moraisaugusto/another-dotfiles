@@ -240,7 +240,13 @@ PS1='$(show_virtual_env)'$PS1
 # Pomodoro settings
 # timer app: https://github.com/caarlos0/timer
 POMODORO_BEFORE_LONG_BREAK=4
-alias work="timer 25m && notify-send -u low --icon  'Pomodoro' 'Work Timer is up! Take a Break 😊'"
-alias rest="timer 5m && notify-send -u low --icon  'Pomodoro' 'Break is over! Get back to work 😬'"
-alias long_rest="timer 15m && notify-send -u low --icon  'Pomodoro' 'Long Break is over! Get back to work 😬'"
+alias pause_sound="mpv $HOME/.dotfiles/extras/sounds/pause.mp3 > /dev/null 2>&1"
+alias work="timer 25m && pause_sound && notify-send -u low --icon  'Pomodoro' 'Work Timer is up! Take a Break 😊'"
+alias rest="timer 5m && pause_sound && notify-send -u low --icon  'Pomodoro' 'Break is over! Get back to work 😬'"
+alias long_rest="timer 15m && pause_sound && notify-send -u low --icon  'Pomodoro' 'Long Break is over! Get back to work 😬'"
 alias pomodoro='repeat $POMODORO_BEFORE_LONG_BREAK {work && rest} && long_rest'
+
+start_work() {
+  repeat $1 {work; rest} && rest
+}
+#alias morning_work="repeat 4 {work; rest} && rest"
