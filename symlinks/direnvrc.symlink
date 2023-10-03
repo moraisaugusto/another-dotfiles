@@ -1,8 +1,11 @@
 # Function: custom_anaconda
 # Description: This function creates a custom Project Layout for conda
+#
+# For Conda environment
 # example of .envrc file
 #   export VIRTUAL_ENV=.condaenv
 #   layout custom_anaconda python=3.8.13
+#
 #
 # Parameters:
 #   $1 - python version. e.g. python=3.8.13 (optional)
@@ -21,8 +24,6 @@ layout_custom_anaconda() {
 
   if [ -d "${VIRTUAL_ENV}" ]; then
     # if environment already exists then activate it
-    PS1=asda
-    export $PS1
     conda activate ./${VIRTUAL_ENV}
   elif (grep -q name: environment.yml); then
     # Detect environment exists from `environment.yml` file in `.envrc` directory
@@ -33,4 +34,42 @@ layout_custom_anaconda() {
     conda activate ./${VIRTUAL_ENV}
     (>&2 echo Creating a project environment);
   fi;
+}
+
+# Function: python-venv
+# Description: This function creates a custom virtual environment Layout for python
+#
+# For venv environment
+#   export VIRTUAL_ENV=.env
+#   layout python-venv python3
+#
+#
+# Parameters:
+#   $1 - python version. e.g. python3 (optional)
+#   if not used, the default version will be used
+# Returns: None
+
+layout_python-venv() {
+    local python=${1:-python3}
+    [[ $# -gt 0 ]] && shift
+    unset PYTHONHOME
+    if [[ -n $VIRTUAL_ENV ]]; then
+        VIRTUAL_ENV=$(realpath "${VIRTUAL_ENV}")
+    else
+        local python_version
+        python_version=$("$python" -c "import platform; print(platform.python_version())")
+        if [[ -z $python_version ]]; then
+            log_error "Could not detect Python version"
+            return 1
+        fi
+        VIRTUAL_ENV=$PWD/.direnv/python-venv-$python_version
+    fi
+    export VIRTUAL_ENV
+    if [[ ! -d $VIRTUAL_ENV ]]; then
+        log_status "no venv found; creating $VIRTUAL_ENV"
+        "$python" -m venv "$VIRTUAL_ENV"
+    fi
+
+    PATH="${VIRTUAL_ENV}/bin:${PATH}"
+    export PATH
 }
