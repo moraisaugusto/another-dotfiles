@@ -6,6 +6,7 @@ runtime! plugin/python_setup.vim
 
 " load plugins from vundle
 source ~/.vim/plugins.vim
+source ~/.vim/plug-config/coc.vim
 
 set nocompatible " not compatible with vi
 set autoread " detect when a file is changed
@@ -184,7 +185,8 @@ set directory=~/.tmp,~/tmp,/var/tmp,/tmp
 map <F8> : !gcc -lstdc++ -lm % && ./a.out <CR>
 
 let g:loaded_youcompleteme = 1
-let g:ycm_server_python_interpreter = $HOME"/.asdf/shims/python"
+"let g:ycm_server_python_interpreter = $HOME"/.asdf/shims/python"
+let g:ycm_server_python_interpreter = $HOME.'/miniconda/bin/python'
 let g:ycm_global_ycm_extra_conf = $HOME"/.vim/.ycm_extra_conf.py"
 let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
@@ -203,7 +205,7 @@ nnoremap <F6> :YcmForceCompileAndDiagnostics<CR>
 ""Do not ask when starting vim
 let g:syntastic_always_populate_loc_list = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
-set tags+=./.ctags
+set tags=.ctags
 
 
 " Vimspector
@@ -541,16 +543,20 @@ nmap <silent> <leader>r :CtrlPBuffer<cr>
 nnoremap <leader>n :CtrlPTag<cr>
 let g:ctrlp_map='<leader>t'
 ""let g:ctrlp_dotfiles=1
-"let g:ctrlp_working_path_mode = ''
+let g:ctrlp_working_path_mode = 1 
 
 " CtrlP ignore patterns
 let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\v[\/](.\git|.\hg|.\svn|node_modules)$',
+            \ 'dir':  '\v[\/](.\git|.\hg|.\svn|node_modules|env|.env)$',
             \ 'file': '\v\.(exe|so|dll|o|aux|pyc)$',
             \ }
 
 "" only show files that are not ignored by git
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+" let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_user_command = [
+    \ '.git/', 'cd %s && git ls-files . -co --exclude-standard',
+    \ 'find %s -type -f'
+    \ ]
 "
 "" search the nearest ancestor that contains .git, .hg, .svn
 "let g:ctrlp_working_path_mode = 2
@@ -563,10 +569,13 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 
 " jedi-vim plugin
 " let g:jedi#use_tabs_not_buffers = 1
-let g:jedi#completions_enabled = 1
+"let g:jedi#completions_enabled = 1
 " let g:python_host_prog=$HOME"/.asdf/installs/python/2.7.15/bin/python"
-let g:python3_host_prog= $HOME.'/.asdf/shims/python'
-let g:loaded_python_provider = 1
+"let g:python3_host_prog= $HOME.'/.asdf/shims/python'
+let g:python3_host_prog= $HOME.'/miniconda/bin/python' 
+
+" disable python 2 support
+let g:loaded_python_provider = 0
 let g:loaded_ruby_provider = 0
 let g:loaded_node_provider = 0
 let did_python_setup = 1
@@ -640,11 +649,15 @@ let g:airline_theme='gruvbox_material'
 
 " ale - show error
 let g:airline#extensions#ale#enabled = 1
+let g:ale_enabled = 1
 let g:ale_set_highlights = 0
 let g:ale_linters = {
       \   'python': ['flake8', 'pylint']
       \}
 noremap <leader>l :ALEToggle<CR>
+" let g:ale_fixers = {'python': ['black', 'isort', 'trim_whitespace']}
+let g:ale_fixers = {'python': ['black', 'trim_whitespace']}
+let g:ale_fix_on_save = 0
 
 " unicode symbols
 " let g:airline_left_sep = '»'
@@ -688,17 +701,19 @@ else
 endif
 
 " format statements with math symbols - only for python
-"map <leader>fm :<C-U>set conceallevel ?  :<C-U>setlocal conceallevel=0 : :<C-U>setlocal conceallevel=1<CR>
-"setlocal conceallevel=1
-"function! RenderMathSymbols()
-"    if &conceallevel == 0
-"        setlocal conceallevel=1
-"    else
-"        setlocal conceallevel=0
-"    endif
-"endfunction
+map <leader>fm :<C-U>set conceallevel ?  :<C-U>setlocal conceallevel=1 : :<C-U>setlocal conceallevel=0<CR>
+set conceallevel=0
+function! RenderMathSymbols()
+    if &conceallevel == 1
+        setlocal conceallevel=0
+        echo "ConcealLevel off"
+    else
+        setlocal conceallevel=1
+        echo "ConcealLevel on"
+    endif
+endfunction
 "
-"map <leader>fm :call RenderMathSymbols()<CR>
+map <leader>fm :call RenderMathSymbols()<CR>
 
 call ApplyLocalSettings(expand('.'))
 

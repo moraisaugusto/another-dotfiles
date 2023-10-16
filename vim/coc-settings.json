@@ -1,0 +1,18 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "javascript", "yaml", "python"],
+  "python.jediEnabled": true,
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+
+  "coc.preferences.jumpCommand": "tabe",
+  "diagnostic.messageTarget": "float", 
+  "suggest.enablePreview": true,
+  "snippets.ultisnips.directories":
+  [
+    "UltiSnips",
+    "$HOME/nvim/plugged/vim-snippets/UltiSnips/"
+  ],
+
+  "pyright.enable": true,
+
+}

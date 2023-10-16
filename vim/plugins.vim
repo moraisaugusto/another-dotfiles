@@ -48,7 +48,7 @@ Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' }
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'timcharper/textile.vim', { 'for': 'textile' }
-Plug 'davidhalter/jedi-vim', { 'for': 'python'}
+"Plug 'davidhalter/jedi-vim', { 'for': 'python'}
 Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
 Plug 'majutsushi/tagbar'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
@@ -58,6 +58,12 @@ Plug 'nvie/vim-flake8', {'for': 'python'} "pep8 style checker
 Plug 'kshenoy/vim-signature'
 Plug 'sainnhe/artify.vim'
 Plug 'puremourning/vimspector'
+Plug 'craigmac/vim-mermaid'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release' }
+Plug 'pappasam/coc-jedi'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 "
 " Colors schemes
 Plug 'morhetz/gruvbox'
@@ -68,7 +74,7 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
 
-"Plug 'ehamberg/vim-cute-python' "math symbols for python
+Plug 'ehamberg/vim-cute-python' "math symbols for python
 
 call plug#end()
 filetype plugin indent on
