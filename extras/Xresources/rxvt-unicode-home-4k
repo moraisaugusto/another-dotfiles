@@ -1,6 +1,12 @@
 ! font type
 URxvt*font: xft:IosevkaTerm Nerd Font Mono:Regular:pixelsize=30:antialias=true:hinting=true,xft:FiraCode Nerd Font:Regular:pixelsize=25:antialias=true:hinting=true,xft:SauceCodePro Nerd Font:Regular:pixelsize=25:antialias=true:hinting=true,xft:Source Code Pro iCursive S12:Regular:pixelsize=25:antialias=true:hinting=true,xft:TerminessTTF Nerd Font:Regular:pixelsize=25:antialias=true:hinting=true,xft:Cousine Nerd Font Mono:Regular:pixelsize=25:antialias=true:hinting=true
 
+URxvt*boldFont: xft:IosevkaTerm Nerd Font Mono:Bold:pixelsize=30:antialias=true:hinting=true,xft:FiraCode Nerd Font:Bold:pixelsize=25:antialias=true:hinting=true,xft:SauceCodePro Nerd Font:Bold:pixelsize=25:antialias=true:hinting=true,xft:Source Code Pro iCursive S12:Bold:pixelsize=25:antialias=true:hinting=true,xft:TerminessTTF Nerd Font:Bold:pixelsize=25:antialias=true:hinting=true,xft:Cousine Nerd Font Mono:Bold:pixelsize=25:antialias=true:hinting=true
+
+URxvt*italicFont: xft:IosevkaTerm Nerd Font Mono:Italic:pixelsize=30:antialias=true:hinting=true,xft:FiraCode Nerd Font:Italic:pixelsize=25:antialias=true:hinting=true,xft:SauceCodePro Nerd Font:Italic:pixelsize=25:antialias=true:hinting=true,xft:Source Code Pro iCursive S12:Italic:pixelsize=25:antialias=true:hinting=true,xft:TerminessTTF Nerd Font:Italic:pixelsize=25:antialias=true:hinting=true,xft:Cousine Nerd Font Mono:Italic:pixelsize=25:antialias=true:hinting=true
+
+URxvt*boldItalicFont: xft:IosevkaTerm Nerd Font Mono:Bold Italic:pixelsize=30:antialias=true:hinting=true,xft:FiraCode Nerd Font:Bold Italic:pixelsize=25:antialias=true:hinting=true,xft:SauceCodePro Nerd Font:Bold Italic:pixelsize=25:antialias=true:hinting=true,xft:Source Code Pro iCursive S12:Bold Italic:pixelsize=25:antialias=true:hinting=true,xft:TerminessTTF Nerd Font:Bold Italic:pixelsize=25:antialias=true:hinting=true,xft:Cousine Nerd Font Mono:Bold Italic:pixelsize=25:antialias=true:hinting=true
+
 !urxvt settings
 URxvt.letterSpace:     0
 URxvt.dynamicColors:   on
