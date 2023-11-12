@@ -1,5 +1,4 @@
-# UTF-8 (Unicode) compose sequences
+include "/usr/share/X11/locale/en_US.UTF-8/Compose"
 
- # Overrides C acute with Ccedilla:
- <dead_acute> <C> : "Ç" "Ccedilla"
- <dead_acute> <c> : "ç" "ccedilla"
+<dead_acute> <C>    : "Ç" Ccedilla # LATIN CAPITAL LETTER C WITH CEDILLA
+<dead_acute> <c>    : "ç" ccedilla # LATIN SMALL LETTER C WITH CEDILLA

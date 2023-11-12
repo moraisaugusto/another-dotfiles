@@ -41,7 +41,7 @@ layout_custom_anaconda() {
 #
 # For venv environment
 #   export VIRTUAL_ENV=.env
-#   layout python-venv python3
+#   layout python-venv python3.11
 #
 #
 # Parameters:
