@@ -54,7 +54,7 @@ case "$1" in
         ;;
     --selected-area)
         show_notification "Starting record on selected area"
-        selected_area=$(slop -f "%x %y %w %h %g %i") || exit 1
+        selected_area=$(slop -o -f "%x %y %w %h %g %i") || exit 1
         read -r X Y W H G ID <<< $selected_area
         ffmpeg -s "$W"x"$H" -framerate 25 -f x11grab -i :0.0+$X,$Y $audio_options "$output_filename"
         ;;
