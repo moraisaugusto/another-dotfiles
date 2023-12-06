@@ -52,6 +52,12 @@ case "$1" in
         show_notification "Starting record on both monitors - DP-0 and DP-2"
         ffmpeg -video_size $(xdpyinfo | grep dimensions | awk '{print $2}') -framerate 25 -f x11grab -i :0.0 $audio_options "$output_filename"
         ;;
+    --selected-area)
+        show_notification "Starting record on selected area"
+        selected_area=$(slop -f "%x %y %w %h %g %i") || exit 1
+        read -r X Y W H G ID <<< $selected_area
+        ffmpeg -s "$W"x"$H" -framerate 25 -f x11grab -i :0.0+$X,$Y $audio_options "$output_filename"
+        ;;
     *)
         echo "Invalid option: $1"
         echo "Usage: $0 {--main-monitor|--second-monitor|--both-monitors}"
