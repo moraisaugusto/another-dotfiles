@@ -1,27 +1,44 @@
 #!/bin/bash
+#
+# screen_record.sh - A simple script to record the screen using ffmpeg
+# Author: Augusto Morais
+#
+# Usage:
+#   screen_record.sh {--main-monitor|--second-monitor|--both-monitors} [--no-audio] <output_filename>
+#
+# Options:
+#   --main-monitor    Record on the main monitor
+#   --second-monitor  Record on the second monitor
+#   --both-monitors   Record on both monitors
+#   --no-audio        Exclude audio from the recording
+#
+# Example Usage:
+#   ./screen_record.sh --main-monitor --no-audio output_main.mp4
+#   ./screen_record.sh --second-monitor output_second.mp4
+#   ./screen_record.sh --both-monitors --no-audio output_both.mp4
+
+# Function to show a desktop notification
 function show_notification {
     notify-send "Screen Recording" "$1"
 }
 
+# Check the number of command-line arguments
 if [ "$#" -lt 2 ] || [ "$#" -gt 3 ]; then
     echo "Usage: $0 {--main-monitor|--second-monitor|--both-monitors} [--no-audio] <output_filename>"
     exit 1
 fi
 
-audio_options=" "
-
+# Extract command-line arguments
 if [ "$#" -eq 3 ] && [ "$2" == "--no-audio" ]; then
     output_filename=$3
+    audio_options=""
+# Check for the --no-audio option
 else
     output_filename=$2
     audio_options="-f pulse -ac 2 -i default"
 fi
 
-echo "params: $#"
-echo "param 3: $3"
-echo "output: $output_filename"
-echo "options: $audio_options"
-
+# Select the appropriate screen recording command based on the chosen option
 case "$1" in
     --main-monitor)
         show_notification "Starting record on the main monitor - DP-0"
