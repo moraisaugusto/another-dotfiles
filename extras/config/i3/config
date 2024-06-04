@@ -258,7 +258,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 #
 ## Background
-exec sleep 2 && feh --bg-fill ~/GoogleDrive/Augusto\ Morais/Wallpapers/mount.png --output DP-0 --bg-fill ~/GoogleDrive/Augusto\ Morais/Wallpapers/space-exploration-edited-amp-centered-forresolution-2560×1440.jpg --output DP-1
+exec sleep 2 && feh --bg-fill ~/GoogleDrive/Augusto\ Morais/Wallpapers/mount.png --output DP-0 --bg-fill ~/GoogleDrive/Augusto\ Morais/Wallpapers/space-exploration-edited-amp-centered-forresolution-2560×1440.jpg --output DP-2
 #
 ## autolock i3
 exec xautolock  -time 15 -locker '~/.config/i3/i3lock-fancy-multimonitor/lock' --corners 0 0 --scrot -z &
