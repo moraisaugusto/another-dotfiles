@@ -78,6 +78,8 @@ bind -r L resize-pane -R 2
 # enable mouse support for switching panes/windows
 set -g mouse on
 
+# set focus event
+set-option -g focus-events on
 
 # User Interface
 

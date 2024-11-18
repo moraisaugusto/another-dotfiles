@@ -284,9 +284,12 @@ exec nextcloud
 ##
 ## Autostart
 ##
-exec --no-startup-id picom --config ~/.config/picom/picom.conf -b
 exec --no-startup-id i3-msg 'workspace $tag1; exec brave'
 exec --no-startup-id i3-msg 'workspace $tag2; exec urxvt'
 exec --no-startup-id i3-msg 'workspace $tag3; exec spotify --force-device-scale-factor=1.4'
 exec --no-startup-id i3-msg 'workspace $tag4; exec thunar'
 # exec --no-startup-id i3-msg 'workspace $tag9; exec firefox'
+
+exec_always --no-startup-id picom --config ~/.config/picom/picom.conf -b
+
+#exec_always --no-startup-id xss-lock --transfer-sleep-lock killall picom; sleep 2; picom --config ~/.config/picom/picom.conf -b
