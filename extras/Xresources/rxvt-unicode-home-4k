@@ -8,41 +8,42 @@ URxvt*italicFont: xft:IosevkaTerm Nerd Font Mono:Italic:pixelsize=30:antialias=t
 URxvt*boldItalicFont: xft:IosevkaTerm Nerd Font Mono:Bold Italic:pixelsize=30:antialias=true:hinting=true,xft:FiraCode Nerd Font:Bold Italic:pixelsize=25:antialias=true:hinting=true,xft:SauceCodePro Nerd Font:Bold Italic:pixelsize=25:antialias=true:hinting=true,xft:Source Code Pro iCursive S12:Bold Italic:pixelsize=25:antialias=true:hinting=true,xft:TerminessTTF Nerd Font:Bold Italic:pixelsize=25:antialias=true:hinting=true,xft:Cousine Nerd Font Mono:Bold Italic:pixelsize=25:antialias=true:hinting=true
 
 !urxvt settings
-URxvt.letterSpace:     0
-URxvt.dynamicColors:   on
-URxvt.internalBorder:  10
-URxvt.lineSpace:       0
-URxvt.scrollBar:       false
-URxvt.geometry:        96x24
-URxvt.saveLines:       5000
-URxvt.cursorUnderline: false
-URxvt.cursorBlink:     true
-URxvt.allow_bold:      true
-URxvt.transparent:     false
-URxvt*iso14755:        false
+URxvt.letterSpace:       0
+URxvt.dynamicColors:     on
+URxvt.internalBorder:    10
+URxvt.lineSpace:         0
+URxvt.scrollBar:         false
+URxvt.geometry:          96x24
+URxvt.saveLines:         5000
+URxvt.cursorUnderline:   false
+URxvt.cursorBlink:       true
+URxvt.allow_bold:        true
+URxvt.transparent:       false
+URxvt*iso14755:          false
 
 ! perl extentions
-URxvt*perl-lib:        /usr/lib/urxvt/perl/
-URxvt*perl-ext-common: default,matcher,resize-font
+URxvt*perl-lib:          /usr/lib/urxvt/perl/
+URxvt*perl-ext-common:   default,matcher,resize-font
 
-URxvt.keysym.C-Down:  resize-font:smaller
-URxvt.keysym.C-Up:    resize-font:bigger
-URxvt.keysym.C-0: command:\033]710;xft:IosevkaTerm Nerd Font Mono:Regular:pixelsize=30:antialias=true:hinting=true,xft:FiraCode Nerd Font:Regular:pixelsize=25:antialias=true:hinting=true,xft:SauceCodePro Nerd Font:Regular:pixelsize=25:antialias=true:hinting=true,xft:Source Code Pro iCursive S12:Regular:pixelsize=25:antialias=true:hinting=true,xft:TerminessTTF Nerd Font:Regular:pixelsize=25:antialias=true:hinting=true,xft:Cousine Nerd Font Mono:Regular:pixelsize=25:antialias=true:hinting=true\007
+URxvt.keysym.C-Down:     resize-font:smaller
+URxvt.keysym.C-Up:       resize-font:bigger
+URxvt.keysym.C-0:        font-size:reset
+URxvt.keysym.C-slash:    font-size:show
 
 !clickable links
-URxvt*url-launcher:   $BROWSER
-URxvt*matcher.button: 1
+URxvt*url-launcher:      $BROWSER
+URxvt*matcher.button:    1
 
 !scrollbar
 !URxvt*termName:         rxvt
-!URxvt*borderless: 1
+!URxvt*borderless:       1
 !URxvt*scrollBar:        false
 !URxvt*scrollBar_right:  true
 !URxvt*scrollColor:      #000000
-!URxvt*tintColor:                        #000000
-!URxvt*shading:                         0
-!URxvt*inheritPixmap:                false
+!URxvt*tintColor:        #000000
+!URxvt*shading:          0
+!URxvt*inheritPixmap:    false
 
 !misc
-Xcursor*size: 84
+Xcursor*size:            84
 
