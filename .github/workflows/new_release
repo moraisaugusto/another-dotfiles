@@ -1,0 +1,13 @@
+name: Manual Trigger
+
+on:
+  workflow_dispatch:
+    inputs:
+      new_release:
+        description: 'Create a new release'
+        required: true
+        default: 'no'
+        type: choice
+        options:
+        - no
+        - yes
