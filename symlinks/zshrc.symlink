@@ -175,9 +175,8 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 setxkbmap -layout us -variant intl
 
 ## asdf
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
-export PATH="$HOME/.asdf/shims:$PATH"
+export ASDF_DATA_DIR="$HOME/.asdf"
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
 
 #
 # Load privite infos
@@ -188,12 +187,8 @@ fi
 # user bins
 export PATH="$HOME/.local/bin:$PATH"
 
-# rust
-export PATH="$HOME/.asdf/installs/rust/1.83.0/bin:$PATH"
-export PATH="$HOME/.cargo/bin/:$PATH"
-
 # go
-export PATH="$HOME/go/bin:$PATH"
+#export PATH="$HOME/go/bin:$PATH"
 
 # cuda
 export PATH="/opt/cuda/bin:$PATH"
