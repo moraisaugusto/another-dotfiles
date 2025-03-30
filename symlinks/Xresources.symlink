@@ -2,23 +2,29 @@
 #include ".Xresources.d/meta-keys-fixed-nvim"
 !#include ".Xresources.d/rofi"
 
-
+!
 !### Home Configs
+!
 ! styles
 #include ".Xresources.d/rxvt-unicode-home-4k"
 
 ! Themes
-!#include ".Xresources.d/schemes/gruvbox_material"
-#include ".Xresources.d/schemes/gruvbox_material"
+#include ".Xresources.d/schemes/gruvbox_material_dark"
 
+! 4k Resolution
+*.dpi: 192
+Xft.dpi: 192
+rofi.dpi: 192
+Xcursor.size: 48
 
+!
 !### Work Configs
+!
 ! styles
 !#include ".Xresources.d/rxvt-unicode-work"
 
 ! Themes
 !#include ".Xresources.d/schemes/dracula"
-
 
 ! 2k Resolution
 !*.dpi: 120
@@ -26,11 +32,6 @@
 !rofi.dpi: 120
 !Xcursor.size: 18
 
-! 4k Resolution
-*.dpi: 192
-Xft.dpi: 192
-rofi.dpi: 192
-Xcursor.size: 48
 
 !Xft.autohint: 0
 !Xft.lcdfilter: lcddefault
