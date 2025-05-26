@@ -84,6 +84,10 @@ prompt_context() {
   fi
 }
 
+division() {
+  prompt_segment black default 
+}
+
 # Git: branch/detached head, dirty status
 prompt_git() {
 
@@ -208,7 +212,6 @@ build_prompt() {
   RETVAL=$?
   prompt_status
   prompt_virtualenv
-  prompt_context
   prompt_dir
   prompt_git
   prompt_hg
