@@ -14,7 +14,7 @@ URxvt.internalBorder:    10
 URxvt.lineSpace:         0
 URxvt.scrollBar:         false
 URxvt.geometry:          96x24
-URxvt.saveLines:         5000
+URxvt.saveLines:         10000
 URxvt.cursorUnderline:   false
 URxvt.cursorBlink:       true
 URxvt.allow_bold:        true
@@ -29,6 +29,8 @@ URxvt.keysym.C-Down:     resize-font:smaller
 URxvt.keysym.C-Up:       resize-font:bigger
 URxvt.keysym.C-0:        font-size:reset
 URxvt.keysym.C-slash:    font-size:show
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 
 !clickable links
 URxvt*url-launcher:      $BROWSER
