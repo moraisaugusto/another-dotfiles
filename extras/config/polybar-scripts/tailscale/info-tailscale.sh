@@ -2,6 +2,7 @@
 
 ICON_ACTIVE="󱗼"
 ICON_INACTIVE="󰇘"
+ICON_LOGOUT="󰍃"
 
 status=$(curl --silent --fail --unix-socket /var/run/tailscale/tailscaled.sock http://local-tailscaled.sock/localapi/v0/status)
 
@@ -13,6 +14,9 @@ fi
 # check if it's stopped (down)
 if [ "$(echo ${status} | jq --raw-output .BackendState)" = "Stopped" ]; then
     echo "%{F#c4c10c}${ICON_INACTIVE} Tailscale%{F-}"
+    exit 0
+elif [ "$(echo ${status} | jq --raw-output .BackendState)" = "NeedsLogin" ]; then
+    echo "%{F#c4c10c}${ICON_LOGOUT} Tailscale, please login%{F-}"
     exit 0
 fi
 
