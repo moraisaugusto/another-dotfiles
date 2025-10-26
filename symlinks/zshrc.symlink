@@ -81,7 +81,7 @@ export PATH
 # Cplex
 
 # cuda
-LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/cuda/lib:/opt/cuda/targets/x86_64-linux/lib
+#LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/cuda/lib:/opt/cuda/targets/x86_64-linux/lib
 
 export LD_LIBRARY_PATH
 
@@ -175,8 +175,11 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 setxkbmap -layout us -variant intl
 
 ## asdf
-export ASDF_DATA_DIR="$HOME/.asdf"
-export PATH="$ASDF_DATA_DIR/shims:$PATH"
+#export ASDF_DATA_DIR="$HOME/.asdf"
+#export PATH="$ASDF_DATA_DIR/shims:$PATH"
+
+## mise
+eval "$(/usr/bin/mise activate zsh)"
 
 #
 # Load privite infos
@@ -191,7 +194,7 @@ export PATH="$HOME/.local/bin:$PATH"
 #export PATH="$HOME/go/bin:$PATH"
 
 # cuda
-export PATH="/opt/cuda/bin:$PATH"
+#export PATH="/opt/cuda/bin:$PATH"
 
 PATH="/home/augusto/.perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/augusto/.perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
@@ -205,7 +208,7 @@ PERL_MM_OPT="INSTALL_BASE=/home/augusto/.perl5"; export PERL_MM_OPT;
 #export PATH="$PATH:$HOME/.node/node_modules/.bin"
 
 # direnv
-eval "$(direnv hook zsh)"
+#eval "$(direnv hook zsh)"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/opt/google/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/google/google-cloud-sdk/path.zsh.inc'; fi
@@ -245,3 +248,7 @@ start_work() {
   repeat $1 {work; rest} && rest
 }
 #alias morning_work="repeat 4 {work; rest} && rest"
+
+# Enables or disables handling of pasted text to prevent it from executing or auto-indenting.
+#zle_highlight=('paste:none')
+unset zle_bracketed_paste

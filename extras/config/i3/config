@@ -164,6 +164,7 @@ assign [class="Chromium"] 1
 assign [class="Brave-browser"] 1
 assign [class="URxvt"] 2
 assign [class="Spotify"] 3
+assign [class="tidal-hifi"] 3
 assign [class="lyricfier"] 3
 assign [class="Nautilus"] 4
 assign [class="Thunar"] 4
@@ -189,6 +190,7 @@ for_window [class="Kazam"] floating enable
 for_window [class="Gtk-recordMyDesktop"] floating enable
 for_window [class="mpv"] floating enable
 for_window [class="Spotify"] move to workspace 3
+for_window [class="tidal-hifi"] move to workspace 3
 
 #################################################################################################
 #
@@ -286,7 +288,8 @@ exec nextcloud
 ##
 exec --no-startup-id i3-msg 'workspace $tag1; exec brave'
 exec --no-startup-id i3-msg 'workspace $tag2; exec urxvt'
-exec --no-startup-id i3-msg 'workspace $tag3; exec spotify --force-device-scale-factor=1.4'
+#exec --no-startup-id i3-msg 'workspace $tag3; exec spotify --force-device-scale-factor=1.4'
+exec --no-startup-id i3-msg 'workspace $tag3; exec tidal-hifi'
 exec --no-startup-id i3-msg 'workspace $tag4; exec thunar'
 # exec --no-startup-id i3-msg 'workspace $tag9; exec firefox'
 
