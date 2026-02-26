@@ -7,7 +7,8 @@
 
 
 ## resolution
-xrandr --output DP-0 --off --output DP-0 --mode 3840x2160 --pos 0x0 --dpi 192 --rate 120.00 --rotate normal 
+#xrandr --output DP-0 --off --output DP-0 --mode 3840x2160 --pos 0x0 --dpi 192 --rate 120.00 --rotate normal 
+xrandr --output DP-4 --primary --mode 3840x2160 --rate 120 --pos 0x0 --rotate normal --output DP-2 --off
 
 
 ##
