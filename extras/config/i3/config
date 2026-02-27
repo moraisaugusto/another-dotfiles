@@ -163,6 +163,7 @@ assign [class="Google-chrome"] 1
 assign [class="Chromium"] 1
 assign [class="Brave-browser"] 1
 assign [class="URxvt"] 2
+assign [class="com.mitchellh.ghostty"] 2
 assign [class="Spotify"] 3
 assign [class="tidal-hifi"] 3
 assign [class="lyricfier"] 3
@@ -287,7 +288,7 @@ exec nextcloud
 ## Autostart
 ##
 exec --no-startup-id i3-msg 'workspace $tag1; exec brave'
-exec --no-startup-id i3-msg 'workspace $tag2; exec urxvt'
+exec --no-startup-id i3-msg 'workspace $tag2; exec ghostty'
 #exec --no-startup-id i3-msg 'workspace $tag3; exec spotify --force-device-scale-factor=1.4'
 exec --no-startup-id i3-msg 'workspace $tag3; exec tidal-hifi'
 exec --no-startup-id i3-msg 'workspace $tag4; exec thunar'
