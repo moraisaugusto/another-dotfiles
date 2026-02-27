@@ -2,8 +2,8 @@
 declare -A outputs
 
 # Add key-value pairs to the dictionary
-outputs["Audioengine_HD4"]="蓼"
-outputs["World_Computing_OWC"]=""
+outputs["Audioengine_HD4"]="󰓃"
+outputs["World_Computing_OWC"]="󰟁"
 
 getDefaultSink() {
     defaultSink=$(pactl info | awk -F : '/Default Sink:/{print $2}')
