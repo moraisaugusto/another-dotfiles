@@ -1,4 +1,3 @@
-# vim:ft=zsh ts=2 sw=2 sts=2
 #
 # Augusto Theme - based on agnoster's Theme - https://gist.github.com/3712874
 # A Powerline-inspired theme for ZSH
@@ -80,7 +79,7 @@ prompt_end() {
 # Context: user@hostname (who am I and where am I)
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER@%m"
+    prompt_segment black default "%(!.%{%F{yellow}%}.)@$USER"
   fi
 }
 
@@ -188,8 +187,11 @@ prompt_dir() {
 # Virtualenv: current working virtualenv
 prompt_virtualenv() {
   local virtualenv_path="$VIRTUAL_ENV"
-  if [[ -n $virtualenv_path && -n $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
-    prompt_segment blue black "(`basename $virtualenv_path`)"
+  if [[ -n $virtualenv_path ]]; then
+    prompt_segment yellow black "(`basename $virtualenv_path`)" 
+  fi
+  if [[ $VIRTUAL_ENV == "" ]]; then
+    prompt_segment yellow black "base" 
   fi
 }
 
