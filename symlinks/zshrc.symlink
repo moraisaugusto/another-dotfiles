@@ -110,17 +110,8 @@ export ARCHFLAGS="-arch x86_64"
 # tmux
 #PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
-alias mpv="mpv --hwdec=vaapi --vo=opengl"
-# mpv
-alias vi=nvim
-# alias vi=vim
-alias open=xdg-open
-alias wifi-menu="sudo wifi-menu"
-
 # zathura
 NO_AT_BRIDGE=1
-
-#alias fix-win-parts="sudo ntfsfix /dev/sda4 && sudo ntfsfix /dev/sda5"
 
 # SSH Keys
 ps -u $(whoami) | grep ssh-agent &> /dev/null
@@ -235,20 +226,7 @@ show_virtual_env() {
 export show_virtual_env
 PS1='$(show_virtual_env)'$PS1
 
-# Pomodoro settings
-# timer app: https://github.com/caarlos0/timer
-POMODORO_BEFORE_LONG_BREAK=4
-alias pause_sound="mpv $HOME/.dotfiles/extras/sounds/pause.mp3 > /dev/null 2>&1"
-alias work="timer 25m && pause_sound && notify-send -u low --icon  'Pomodoro' 'Work Timer is up! Take a Break 😊'"
-alias rest="timer 5m && pause_sound && notify-send -u low --icon  'Pomodoro' 'Break is over! Get back to work 😬'"
-alias long_rest="timer 15m && pause_sound && notify-send -u low --icon  'Pomodoro' 'Long Break is over! Get back to work 😬'"
-alias pomodoro='repeat $POMODORO_BEFORE_LONG_BREAK {work && rest} && long_rest'
-
-start_work() {
-  repeat $1 {work; rest} && rest
-}
-#alias morning_work="repeat 4 {work; rest} && rest"
-
 # Enables or disables handling of pasted text to prevent it from executing or auto-indenting.
 #zle_highlight=('paste:none')
 unset zle_bracketed_paste
+export PATH="$HOME/.npm-global/bin:$PATH"
