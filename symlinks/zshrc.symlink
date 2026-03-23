@@ -56,7 +56,7 @@ ZSH_TMUX_FIXTERM=true
 ## Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 ## Example format: plugins=(rails git textmate ruby lighthouse)
 ## Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages emoji-clock tmux tmuxinator nmap battery extract docker docker-compose poetry )
+plugins=(git colored-man-pages emoji-clock tmux tmuxinator nmap battery extract docker docker-compose )
 
 #
 # User configuration
@@ -71,12 +71,16 @@ export MANPATH="/usr/local/man:$MANPATH"
 JAVA_HOME=/usr/lib/jvm/java-21-openjdk/
 PATH=$PATH:$HOME/bin:$JAVA_HOME/bin:$HOME/.config/i3/i3lock-fancy-multimonitor
 export JAVA_HOME
-export PATH
+
+# rubi
+PATH=$PATH:$HOME/.local/share/gem/ruby/3.4.0/bin
 
 # GUROBI
 # export GUROBI_HOME=/opt/gurobi810/linux64
 # LD_LIBRARY_PATH=$GUROBI_HOME/lib
 # PATH=$PATH:$GUROBI_HOME/bin
+
+
 
 # Cplex
 
@@ -214,8 +218,6 @@ if [ -f ~/.pythonrc ]; then
     source ~/.pythonrc
 fi
 
-export PATH="$HOME/.poetry/bin:$PATH"
-
 
 show_virtual_env() {
   if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
@@ -229,4 +231,6 @@ PS1='$(show_virtual_env)'$PS1
 # Enables or disables handling of pasted text to prevent it from executing or auto-indenting.
 #zle_highlight=('paste:none')
 unset zle_bracketed_paste
-export PATH="$HOME/.npm-global/bin:$PATH"
+PATH="$HOME/.npm-global/bin:$PATH"
+
+export PATH
