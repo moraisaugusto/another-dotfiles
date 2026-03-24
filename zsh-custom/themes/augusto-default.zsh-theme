@@ -1,0 +1,1 @@
+/home/augusto/.dotfiles/extras/oh-my-zsh/custom/themes/augusto-default.zsh-theme
