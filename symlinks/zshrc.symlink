@@ -29,8 +29,22 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # HIST_STAMPS="mm/dd/yyyy"
 
-# Would you like to use another custom folder than $ZSH/custom?
-ZSH_CUSTOM=$HOME/.dotfiles/zsh-custom
+# ==============================================================================
+# 2. TMUX CONFIGURATION
+# ==============================================================================
+ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_AUTOCONNECT=true
+ZSH_TMUX_AUTOSTART_ONCE=true
+ZSH_TMUX_FIXTERM=true
+
+# tmux
+#PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
+
+# ==============================================================================
+# 3. OH-MY-ZSH EXTRA CONFIGURATION
+# ==============================================================================
+# Custom ZSH folder
+ZSH_CUSTOM=$HOME/.dotfiles/zsh-custom/themes
 
 # Plugins
 plugins=(git colored-man-pages emoji-clock tmux tmuxinator nmap battery extract docker docker-compose )
@@ -38,7 +52,7 @@ plugins=(git colored-man-pages emoji-clock tmux tmuxinator nmap battery extract 
 source $ZSH/oh-my-zsh.sh
 
 # ==============================================================================
-# 2. SYSTEM & HARDWARE (RTX 4090)
+# 4. SYSTEM & HARDWARE (RTX 4090)
 # ==============================================================================
 # Enables VA-API hardware video acceleration for NVIDIA GPUs - Brave browser
 export LIBVA_DRIVER_NAME=nvidia
@@ -68,18 +82,7 @@ unsetopt prompt_cr prompt_sp
 setxkbmap -layout us -variant intl
 
 # ==============================================================================
-# 3. TMUX CONFIGURATION
-# ==============================================================================
-ZSH_TMUX_AUTOSTART=true
-ZSH_TMUX_AUTOCONNECT=true
-ZSH_TMUX_AUTOSTART_ONCE=true
-ZSH_TMUX_FIXTERM=true
-
-# tmux
-#PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
-
-# ==============================================================================
-# 4. PATH & ENVIRONMENT EXPORTS
+# 5. PATH & ENVIRONMENT EXPORTS
 # ==============================================================================
 export IRACE_HOME=~/.R_libs/irace
 export R_LIBS=~/.R_libs
@@ -127,7 +130,7 @@ export LD_LIBRARY_PATH
 #export PATH="$PATH:$HOME/.node/node_modules/.bin"
 
 # ==============================================================================
-# 5. EXTERNAL SOURCES & SCRIPTS
+# 6. EXTERNAL SOURCES & SCRIPTS
 # ==============================================================================
 # Mise
 eval "$(/usr/bin/mise activate zsh)"
@@ -166,7 +169,7 @@ if [ -f '/opt/google/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/google
 #eval "$(direnv hook zsh)"
 
 # ==============================================================================
-# 6. CUSTOM FUNCTIONS & PROMPT
+# 7. CUSTOM FUNCTIONS & PROMPT
 # ==============================================================================
 show_virtual_env() {
   if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
