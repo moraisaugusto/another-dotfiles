@@ -11,7 +11,9 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-set $CONFIG /home/augusto/.config/i3
+set $CONFIG $HOME/.config/i3
+set $WALLPAPER_FOLDER $HOME/GoogleDrive/wallpapers
+set $PICTURES_FOLDER $HOME/Pictures
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -52,9 +54,6 @@ set $tag8 "8;"
 set $tag9 "9;"
 set $tag10 "10;"
 
-# exec startup apps
-#exec --no-startup-id i3-msg 'workspace $tag1; exec google-chrome-stable'
-
 #i3-gaps
 new_window 1pixel
 smart_borders on
@@ -67,13 +66,9 @@ gaps inner 10
 #
 # MULTIMEDIA
 #
-# to define default sink
-# pacmd list-sinks | grep -e 'name:' -e 'index:'
-# pacmd set-default-sink 2
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-# bindsym XF86Tools exec spotify --disable-gpu -force-device-scale-factor=1.4 %U
 bindsym XF86Tools exec tidal
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioStop exec playerctl stop
@@ -196,8 +191,6 @@ for_window [class="tidal-hifi"] move to workspace 3
 
 #################################################################################################
 #
-# Workspaces
-#exec --no-startup-id "i3-msg 'workspace 3; append_layout /home/augusto/.i3/workspace-3.json'"
 
 #
 ## reload the configuration file
@@ -262,7 +255,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 #
 ## Background
-exec sleep 2 && feh --bg-fill ~/GoogleDrive/Augusto\ Morais/Wallpapers/mount.png --output DP-0 --bg-fill ~/GoogleDrive/Augusto\ Morais/Wallpapers/space-exploration-edited-amp-centered-forresolution-2560×1440.jpg --output DP-2
+exec sleep 2 && feh --bg-fill $WALLPAPER_FOLDER/mount.png --output DP-2 --bg-fill $WALLPAPER_FOLDER/space-exploration.jpg --output DP-4
 #
 ## autolock i3
 exec xautolock  -time 15 -locker '~/.config/i3/i3lock-fancy-multimonitor/lock' --corners 0 0 --scrot -z &
@@ -272,16 +265,13 @@ exec dunst &
 #
 ## screenshot - 
 bindsym --release Control+Shift+Print exec imgur-screenshot
-bindsym --release Shift+Print exec scrot -s -e 'mv $f ~/Pictures/$f'
-bindsym Print exec scrot -e 'mv $f ~/Pictures/$f'
+bindsym --release Shift+Print exec scrot -s -e  'mv $f \$PICTURES_FOLDER'
+bindsym Print exec scrot -e 'mv $f \$PICTURES_FOLDER/$f'
 #
-## insync & Dropbox
-# exec  --no-startup-id sleep 10 & /usr/bin/insync start
-# exec dropbox
 #
 ## i3lock prevent for videos
 #exec ~/.dotfiles/scripts/bin/lightsOn.sh 300
-exec nextcloud
+
 #
 ## Startup Apps
 ##################################################################################################
@@ -290,11 +280,9 @@ exec nextcloud
 ##
 exec --no-startup-id i3-msg 'workspace $tag1; exec brave'
 exec --no-startup-id i3-msg 'workspace $tag2; exec ghostty'
-#exec --no-startup-id i3-msg 'workspace $tag3; exec spotify --force-device-scale-factor=1.4'
 exec --no-startup-id i3-msg 'workspace $tag3; exec tidal-hifi'
 exec --no-startup-id i3-msg 'workspace $tag4; exec thunar'
-# exec --no-startup-id i3-msg 'workspace $tag9; exec firefox'
-
-exec_always --no-startup-id picom --config ~/.config/picom/picom.conf -b
+exec_always --no-startup-id picom --config $HOME/.config/picom/picom.conf -b
+exec nextcloud
 
 #exec_always --no-startup-id xss-lock --transfer-sleep-lock killall picom; sleep 2; picom --config ~/.config/picom/picom.conf -b
