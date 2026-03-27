@@ -9,17 +9,6 @@ A curated collection of ZSH and Vim configurations optimized for a lightweight *
 
 ---
 
-## 📸 Preview
-
-*Arch Linux · i3wm · Polybar · Vim*
-
-| Desktop Overview | Terminal & Vim |
-| :---: | :---: |
-| ![Desktop](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/screenX.png) | ![Vim](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/screen2.png) |
-| ![i3 Layout](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/screen1.png) | ![Terminal](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/screen4.png) |
-
----
-
 ## ✨ Features
 
 - **ZSH** — custom aliases, functions, and a clean prompt
