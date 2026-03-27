@@ -1,218 +1,78 @@
-# Another Dotfiles
+# ⚡ Another Dotfiles
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Platform](https://img.shields.io/badge/platform-linux-lightgrey)](https://www.kernel.org/)
+[![Shell](https://img.shields.io/badge/shell-zsh-89e051)](https://www.zsh.org/)
+[![Editor](https://img.shields.io/badge/editor-vim-019733)](https://www.vim.org/)
 
-__Another dotfiles__ is a collection of ZSH and VIM configurations based on [robbyrussell/oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) and Personal settings.
+A curated collection of ZSH and Vim configurations optimized for a lightweight **Arch + i3** workflow. Heavily inspired by [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh), originally built for GNOME and evolved into a minimal, keyboard-driven setup.
 
-### Preview (Arch, i3, vim...)
+---
 
-![screen 1](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/screenX.png)
-![screen 2](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/screen2.png)
-![screen 1](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/screen1.png)
-![screen 4](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/screen4.png)
+## 📸 Preview
 
+*Arch Linux · i3wm · Polybar · Vim*
 
-### Prerequisites
+| Desktop Overview | Terminal & Vim |
+| :---: | :---: |
+| ![Desktop](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/screenX.png) | ![Vim](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/screen2.png) |
+| ![i3 Layout](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/screen1.png) | ![Terminal](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/imgs/screen4.png) |
 
-* Linux (tested on Debian and Arch)
-* [Zsh](http://www.zsh.org)
-* `wget`
-* `git`
-* `vim`
-* `xsel` # for copy/paste tmux/X11
+---
 
+## ✨ Features
 
-### Fonts ###
+- **ZSH** — custom aliases, functions, and a clean prompt
+- **Vim** — opinionated config with plugins for productivity
+- **i3wm** — tiling window manager keybinds and layout
+- **Polybar** — status bar with modular blocks
+- **One-line installer** — get up and running in seconds
 
-* Gnome
-    https://github.com/powerline/fonts
-    * Interface: Meslo LG L for Powerline RegularForPowerline - 10
-    * Window Titles: Meslo LG L DZ for Powerline Bold - 11
-    * Documents: Sans Regular - 11 (default)
-    * Monospace: Monospace Regular - 11 (default)
-    * Terminal (guake): Source Code Pro for Powerline - 10 
-    * Guake (color scheme): Frontend Delight
+---
 
+## 🚀 Quick Start
 
-### Gnome (I don't use gnome anymore) ###
+> [!WARNING]
+> The install script will **overwrite** existing configs for `.zshrc`, `.vimrc`, and related dotfiles. Back up your current setup before proceeding.
 
-* GTK theme configuration
-
-#### Dump Gnome current confs ####
-$ gconftool-2 --dump / > gconf_dump.xml
-$ gconftool-2 --unload clean-settings.xml
-
-#### Load Gnome confs ####
-$ gconftool-2 --load gconf_dump.xml
-
-* Tweaks
-    * Global Dark Theme: On
-    * Icons: Numix-Circle
-    * Theme: Adwaita (default)
-
-### Installation ###
-
-Download the following install file and run it. 
-
+**Option 1 — wget (recommended):**
 ```shell
 bash -c "$(wget https://raw.githubusercontent.com/aflavio/another-dotfiles/master/install.sh -O -)"
 ```
- When the installation finish, do:
- 
- ```shell
-source .zshrc
-```
- 
-#### Init.d Scripts ###
-Added a script that restart (unload/load) ethernet drive. It's usefull for r8169 ethernet drive when the system is resumed from suspended state.
 
-#### Enabling Plugins ###
-
-The install file automatically download and install all vim Plugins. Normally, you don't need run the command: vim +Pluginstall +qall. But, if it's fails, run again. 
-
-### Themes ###
-
-Default themes are: agnoster for ZSH and solarized dark for vim. 
-
-#### Selecting a Theme ####
-
-ZSH
-
-Edit the .zshrc and change the line:
-
+**Option 2 — curl:**
 ```shell
-ZSH_THEME="agnoster"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/aflavio/another-dotfiles/master/install.sh)"
 ```
 
-VIM
+---
 
-Edit the .vimrc and change the line:
+## 🛠️ What Gets Installed
 
-```shell
-let g:airline_theme='solarized' # Check the others themes
-colorscheme solizared 
-```
+| Component | Target Path | Description |
+| --- | --- | --- |
+| `.zshrc` | `~/.zshrc` | ZSH config with aliases & prompt |
+| `.vimrc` | `~/.vimrc` | Vim config with plugins |
+| `i3/config` | `~/.config/i3/config` | i3wm keybinds & layout |
+| `polybar/` | `~/.config/polybar/` | Polybar theme & modules |
 
-Vim Themes are based on Airline [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline). There are some Colorscheme installed too [Tomorrow](https://github.com/chriskempson/tomorrow-theme). 
+---
 
-### Components ###
+## 📋 Requirements
 
-#### i3 Window Manager ####
+- Arch Linux (or any systemd-based distro)
+- `zsh`, `vim`, `i3`, `polybar`
+- `wget` or `curl`
+- `git`
 
-This dotfiles repository includes configuration for the i3 window manager. The configuration includes:
+---
 
-* Custom keybindings for window management
-* Workspace configuration with icons
-* Default applications for different workspaces
-* Custom status bar integration
+## 🤝 Contributing
 
-[i3 GitHub Repository](https://github.com/i3/i3)
+Issues and PRs are welcome. If you have a clean config improvement or a new module, feel free to open a pull request.
 
-#### Picom Compositor ####
+---
 
-Picom is configured as the compositor for the desktop environment. The configuration includes:
+## 📄 License
 
-* Transparency effects
-* Shadows
-* Animations
-* Performance optimizations
-
-[Picom GitHub Repository](https://github.com/yshui/picom)
-
-#### Polybar ####
-
-Polybar is configured as the status bar for i3. The configuration includes:
-
-* System information display (CPU, memory, temperature)
-* Network status
-* Volume control
-* Battery status
-* Date and time
-* Workspace indicators
-
-[Polybar GitHub Repository](https://github.com/polybar/polybar)
-
-#### Rofi ####
-
-Rofi is configured as the application launcher. The configuration includes:
-
-* Custom themes and appearance
-* Application launcher
-* Window switcher
-* Run dialog
-
-[Rofi GitHub Repository](https://github.com/davatorium/rofi)
-
-#### Dunst ####
-
-Dunst is configured as the notification daemon. The configuration includes:
-
-* Notification appearance and positioning
-* Timeout settings
-* Behavior customization
-
-[Dunst GitHub Repository](https://github.com/dunst-project/dunst)
-
-#### Tmux ####
-
-Tmux is configured with:
-
-* Custom keybindings
-* Status bar configuration
-* Session management
-* Copy/paste enhancements
-
-[Tmux GitHub Repository](https://github.com/tmux/tmux)
-
-#### Direnv ####
-
-Direnv is configured to automatically load environment variables based on the current directory. The configuration includes:
-
-* Automatic environment loading
-* Project-specific settings
-
-[Direnv GitHub Repository](https://github.com/direnv/direnv)
-
-#### Zsh Custom Themes ####
-
-Custom zsh themes are included in the zsh-custom directory. The configuration includes:
-
-* Custom prompt styling
-* Theme customization
-* Environment integration
-
-#### Vim Configuration ####
-
-The vim configuration includes:
-
-* Plugin management with vim-plug
-* Custom keybindings
-* Syntax highlighting
-* Performance optimizations
-* Theme customization
-
-#### System Configuration ####
-
-System configuration includes:
-
-* Keyboard layout settings
-* Environment variables
-* Path configurations
-* Hardware-specific settings
-
-[Nautilus GitHub Repository](https://github.com/GNOME/nautilus)
-
-```
-colorscheme solizared 
-```
-
-Vim Themes are based on Airline [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline). There are some Colorscheme installed too [Tomorrow](https://github.com/chriskempson/tomorrow-theme). 
-
-
-### Recommend tools ###
-
-Network (Wifi and Ethernet)
-* connman | connman-gtk (Aur)
-
-### License ###
-
-Another Dotfiles is released under the [MIT license](https://raw.githubusercontent.com/aflavio/another-dotfiles/master/LICENSE).
+[MIT](https://opensource.org/licenses/MIT) © [aflavio](https://github.com/aflavio)
