@@ -69,10 +69,6 @@ Added a script that restart (unload/load) ethernet drive. It's usefull for r8169
 
 The install file automatically download and install all vim Plugins. Normally, you don't need run the command: vim +Pluginstall +qall. But, if it's fails, run again. 
 
-```shell
-vim +PlugInstall +qall
-```
-
 ### Themes ###
 
 Default themes are: agnoster for ZSH and solarized dark for vim. 
@@ -93,6 +89,119 @@ Edit the .vimrc and change the line:
 
 ```shell
 let g:airline_theme='solarized' # Check the others themes
+colorscheme solizared 
+```
+
+Vim Themes are based on Airline [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline). There are some Colorscheme installed too [Tomorrow](https://github.com/chriskempson/tomorrow-theme). 
+
+### Components ###
+
+#### i3 Window Manager ####
+
+This dotfiles repository includes configuration for the i3 window manager. The configuration includes:
+
+* Custom keybindings for window management
+* Workspace configuration with icons
+* Default applications for different workspaces
+* Custom status bar integration
+
+[i3 GitHub Repository](https://github.com/i3/i3)
+
+#### Picom Compositor ####
+
+Picom is configured as the compositor for the desktop environment. The configuration includes:
+
+* Transparency effects
+* Shadows
+* Animations
+* Performance optimizations
+
+[Picom GitHub Repository](https://github.com/yshui/picom)
+
+#### Polybar ####
+
+Polybar is configured as the status bar for i3. The configuration includes:
+
+* System information display (CPU, memory, temperature)
+* Network status
+* Volume control
+* Battery status
+* Date and time
+* Workspace indicators
+
+[Polybar GitHub Repository](https://github.com/polybar/polybar)
+
+#### Rofi ####
+
+Rofi is configured as the application launcher. The configuration includes:
+
+* Custom themes and appearance
+* Application launcher
+* Window switcher
+* Run dialog
+
+[Rofi GitHub Repository](https://github.com/davatorium/rofi)
+
+#### Dunst ####
+
+Dunst is configured as the notification daemon. The configuration includes:
+
+* Notification appearance and positioning
+* Timeout settings
+* Behavior customization
+
+[Dunst GitHub Repository](https://github.com/dunst-project/dunst)
+
+#### Tmux ####
+
+Tmux is configured with:
+
+* Custom keybindings
+* Status bar configuration
+* Session management
+* Copy/paste enhancements
+
+[Tmux GitHub Repository](https://github.com/tmux/tmux)
+
+#### Direnv ####
+
+Direnv is configured to automatically load environment variables based on the current directory. The configuration includes:
+
+* Automatic environment loading
+* Project-specific settings
+
+[Direnv GitHub Repository](https://github.com/direnv/direnv)
+
+#### Zsh Custom Themes ####
+
+Custom zsh themes are included in the zsh-custom directory. The configuration includes:
+
+* Custom prompt styling
+* Theme customization
+* Environment integration
+
+#### Vim Configuration ####
+
+The vim configuration includes:
+
+* Plugin management with vim-plug
+* Custom keybindings
+* Syntax highlighting
+* Performance optimizations
+* Theme customization
+
+#### System Configuration ####
+
+System configuration includes:
+
+* Keyboard layout settings
+* Environment variables
+* Path configurations
+* Hardware-specific settings
+
+[Nautilus GitHub Repository](https://github.com/GNOME/nautilus)
+
+```
 colorscheme solizared 
 ```
 
