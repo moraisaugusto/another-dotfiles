@@ -197,3 +197,6 @@ unset zle_bracketed_paste
 # if [[ $PWD != $HOME ]]; then
 #     cd $HOME
 # fi
+
+# zoxide
+eval "$(zoxide init zsh)"
