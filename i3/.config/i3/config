@@ -11,8 +11,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-set $CONFIG $HOME/.config/i3
-set $WALLPAPER_FOLDER $HOME/GoogleDrive/wallpapers
+set $CONFIG_PATH $HOME/.config/i3
 set $PICTURES_FOLDER $HOME/Pictures
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -255,7 +254,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 #
 ## Background
-exec sleep 2 && feh --bg-fill $WALLPAPER_FOLDER/mount.png --output DP-2 --bg-fill $WALLPAPER_FOLDER/space-exploration.jpg --output DP-4
+exec_always --no-startup-id sleep 2 && $CONFIG_PATH/display_manager.sh both
 #
 ## autolock i3
 exec xautolock  -time 15 -locker '~/.config/i3/i3lock-fancy-multimonitor/lock' --corners 0 0 --scrot -z &
