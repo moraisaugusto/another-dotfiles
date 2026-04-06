@@ -122,8 +122,6 @@ sudo pacman -S i3 i3-gaps polybar rofi zsh vim dunst picom \
 - `Ctrl+Alt` - Switch modes
 
 
-## Complete Documentation
-
 ### tmux Advanced Use
 **Navigate to previous/next window:**
 ```bash
@@ -140,7 +138,6 @@ Ctrl+a+; or Ctrl+a+'
 Ctrl+a+[ Enter, then select text, Enter to copy
 Ctrl+a+ = Paste from clipboard
 ```
-
 
 ## Directory Structure
 
