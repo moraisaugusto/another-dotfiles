@@ -1,0 +1,1 @@
+../../../../bin/display_manager.sh
