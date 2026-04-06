@@ -8,17 +8,20 @@ TARGET = $(HOME)
 # List of all packages inside my-configs
 PACKAGES = config direnv dunst i3 mpv nautilus picom polybar rofi tmux tmux-powerline zathura
 
+# Set default target to help (prevents accidental installation)
+.DEFAULT_GOAL := help
+
 .PHONY: all shell configs delete help $(PACKAGES)
 
-# Default: Install everything
-all: shell help
+## Install everything (shell-basics and all app configs)
+install-all: shell configs 
 
 # Install the root-level shell-basics
 shell:
 	$(STOW) $(STOW_FLAGS) shell-basics
 
 # Install all packages from my-configs
-configs: $(PACKAGES)
+configs: shell $(PACKAGES)
 
 # Rule for individual packages in my-configs
 $(PACKAGES):
