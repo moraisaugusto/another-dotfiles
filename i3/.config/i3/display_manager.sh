@@ -1,1 +1,0 @@
-/home/augusto/.dotfiles/scripts/Xorg/display_manager.sh
