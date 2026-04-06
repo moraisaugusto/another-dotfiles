@@ -76,8 +76,12 @@ make delete
 ```bash
 cd ~/.dotfiles
 git submodule update --init --recursive
-stow .
-source zsh
+stow --dotfiles -v shell-basics
+```
+
+Apply individual configurations
+```bash
+stow --dotfiles -vv -d my-configs -t ~ i3
 ```
 
 
