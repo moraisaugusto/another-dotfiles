@@ -1,5 +1,6 @@
 # ⚡ Another Dotfiles
 
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Platform](https://img.shields.io/badge/platform-linux-lightgrey)](https://www.kernel.org/)
 [![Shell](https://img.shields.io/badge/shell-zsh-89e051)](https://www.zsh.org/)
@@ -11,8 +12,8 @@
 
 A curated collection of dotfiles optimized for a lightweight **Arch + i3wm** workflow. Keyboard-driven productivity configurations for i3 window manager, tmux terminal multiplexer, polybar status bar, rofi launcher, and more.
 
-![Terminal Installation](imgs/terminal-installation.png)
-![Terminal Installation](imgs/terminal-1.png)
+![Terminal Installation](imgs/terminal-installation.png){width=200px}
+![Terminal Preview](imgs/terminal-1.png)
 
 
 ## Features
