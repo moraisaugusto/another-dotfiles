@@ -12,8 +12,12 @@
 
 A curated collection of dotfiles optimized for a lightweight **Arch + i3wm** workflow. Keyboard-driven productivity configurations for i3 window manager, tmux terminal multiplexer, polybar status bar, rofi launcher, and more.
 
-![Terminal Installation](imgs/terminal-installation.png){width=200px}
-![Terminal Preview](imgs/terminal-1.png)
+![Terminal Installation](imgs/terminal-installation.png){width=40%}
+<p align="center">
+<img src="imgs/terminal-installation.png" width=200px alt="Terminal installation">
+<img src="imgs/terminal-1.png" alt="Terminal preview">
+
+</p>
 
 
 ## Features
