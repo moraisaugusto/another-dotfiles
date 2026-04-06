@@ -11,6 +11,10 @@
 
 A curated collection of dotfiles optimized for a lightweight **Arch + i3wm** workflow. Keyboard-driven productivity configurations for i3 window manager, tmux terminal multiplexer, polybar status bar, rofi launcher, and more.
 
+![Terminal Installation](imgs/terminal-installation.png)
+![Terminal Installation](imgs/terminal-1.png)
+
+
 ## Features
 
 ### Core Components
@@ -22,41 +26,57 @@ A curated collection of dotfiles optimized for a lightweight **Arch + i3wm** wor
 
 ## Installation
 
-### Method 1: Using stow (Recommended)
+Choose your preferred installation method:
+
+## Quick Install
+
+To install all configurations and shell basics in one go, run:
 
 ```bash
-cd ~/
-git clone https://github.com/moraisaugusto/another-dotfiles.git dotfiles
-cd dotfiles
+curl -sSL https://raw.githubusercontent.com/moraisaugusto/another-dotfiles/main/install.sh | bash -s -- install-all
+```
+
+### Option 1: Using Make (Recommended for simple setups)
+```bash
+cd ~/.dotfiles
+make all
+```
+This installs all configurations in one command.
+
+### Option 2: Using Make for specific components
+```bash
+cd ~/.dotfiles
+
+# Install everything
+make all
+
+# Install specific components
+make shell
+make configs    # All applications
+make i3         # i3 window manager
+make tmux       # tmux terminal
+make polybar    # polybar status bar
+make rofi       # rofi launcher
+
+# Remove all configurations
+make delete
+```
+
+### Option 3: Using Stow (Recommended for advanced users)
+```bash
+cd ~/.dotfiles
 git submodule update --init --recursive
 stow .
 source zsh
 ```
 
-### Method 2: Manual
-
-```bash
-cd ~ && git clone https://github.com/moraisaugusto/another-dotfiles.git dotfiles
-cd dotfiles
-git submodule update --init --recursive
-# Create symlinks to appropriate files
-```
-
-### Method 3: Install Script
-
-```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/moraisaugusto/another-dotfiles/master/install.sh)"
-```
-
-> ⚠️ **Note:** Install scripts replace existing configs - backup before running.
 
 ## Requirements
 
 ### System
-- Arch Linux or systemd-based distribution
+- Linux or systemd-based distribution
 - i3 (4+), ZSH (5+), polybar, rofi
 - Terminal emulator (URXVT, Termite, Ghostty)
-- Clipboard tools (xsel/xclip)
 
 ### Essential Packages (Arch)
 
@@ -66,11 +86,6 @@ sudo pacman -S i3 i3-gaps polybar rofi zsh vim dunst picom \
   networkmanager pulseaudio pamixer brightnessctl
 ```
 
-**Recommended:**
-```bash
-sudo pacman -S alacritty urxvt pulseaudio-pulse playerctl mpv audacious \
-  fff exa bat delta ripgrep fd-find tealdeer jq wget curl aria2
-```
 
 ## Quick Start Keybindings
 
@@ -121,50 +136,31 @@ Ctrl+a+ = Paste from clipboard
 ## Directory Structure
 
 ```
-~/.dotfiles/
-├── i3/.config/i3/config          # i3 window manager
-├── tmux/.config/tmux/            # tmux configurations
-├── polybar/.config/polybar/      # Status bar
-├── rofi/.config/rofi/config.rasi # Launcher
-├── zsh/.zshrc                    # Shell configuration
-├── vim/.vimrc                    # Editor configuration
-├── extras/                       # Additional modules and themes
-│   ├── zsh/custom/ themes/        # ZSH themes
-│   ├── zsh/custom/plugins/       # ZSH plugins
-│   ├── polybar-scripts/          # Custom polybar modules
-│   └── i3/                       # i3 extras
-└── install.sh                    # Automated installer
+~/.another-dotfiles/
+├── my-configs
+│   ├── config
+│   ├── direnv
+│   ├── dunst
+│   ├── i3
+│   ├── mpv
+│   ├── nautilus
+│   ├── picom
+│   ├── polybar
+│   ├── rofi
+│   ├── tmux
+│   ├── tmuxinator
+│   ├── tmux-powerline
+│   └── zathura
+└─── shell-basics
+    ├── dot-conkyrc
+    ├── dot-XCompose
+    ├── dot-xprofile
+    ├── dot-Xresources
+    ├── dot-xsessionrc
+    ├── dot-zshAlias
+    └── dot-zshrc
 ```
 
-## Maintenance
-
-### Updating Dotfiles
-```bash
-cd ~/.dotfiles
-git pull
-git submodule update --remote
-```
-
-### Removing Dotfiles
-```bash
-cd ~/.dotfiles
-stow -D .  # Remove all
-# or
-stow -D i3 tmux polybar rofi  # Remove specific
-```
-
-### Backup Configuration
-```bash
-cp -r ~/.config/i3 ~/.config/backups/i3
-cp -r ~/.config/polybar ~/.config/backups/polybar
-```
-
-## Troubleshooting
-
-### i3 Issues
-- **Blank screen:** `i3 --dry-run` to check config
-- **Background missing:** Check wallpaper paths and permissions
-- **Apps failing to launch:** Validate window classes with `i3-msg -t get_tree`
 
 ---
 
@@ -173,10 +169,3 @@ cp -r ~/.config/polybar ~/.config/backups/polybar
 MIT License - see LICENSE file for details.
 
 ---
-
-## Resources
-
-- [i3wm Documentation](https://i3wm.org/docs/)
-- [tmux Manual](https://man.archlinux.org/man/tmux.1.en)
-- [polybar Wiki](https://github.com/polybar/polybar/wiki)
-- [rofi Repository](https://github.com/davedavenport/rofi)
