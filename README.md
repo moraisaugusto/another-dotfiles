@@ -20,6 +20,7 @@ A curated collection of dotfiles optimized for a lightweight **Arch + i3wm** wor
 ## Preview 
 <p align="center">
     <img src="imgs/terminal-1.png" alt="Terminal preview">
+    <img src="imgs/terminal-2.png" alt="Terminal preview">
 </p>
 
 ## Features
