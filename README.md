@@ -11,6 +11,17 @@
 
 A curated collection of dotfiles for a lightweight **Arch Linux + i3-gaps** workflow. Keyboard-driven productivity configurations for i3 window manager, tmux terminal multiplexer, polybar status bar, rofi launcher, and more.
 
+<p align="center">
+    <img src="imgs/terminal-installation.png" width=400px alt="Terminal installation">
+</p>
+
+
+## Preview 
+<p align="center">
+    <img src="imgs/terminal-1.png" alt="Terminal preview">
+    <img src="imgs/terminal-2.png" alt="Terminal preview">
+</p>
+
 ## Features
 
 ### Core Components
