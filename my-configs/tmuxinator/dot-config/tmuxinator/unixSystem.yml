@@ -38,10 +38,10 @@ windows:
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
-        - clear && lua ~/.dotfiles/fun/scripts/2spooky.lua
+        - clear && lua ~/.dotfiles/bin/fun/2spooky.lua
         - clear && neofetch
-        - clear && ~/.dotfiles/fun/scripts/bofhexcuses.sh -l ~/.dotfiles/fun/scripts/Excuses.txt -g
-        - cd ~/.dotfiles/fun/scripts && vim rain
-        - clear && ~/.dotfiles/fun/scripts/pacman-colors
+        - clear && ~/.dotfiles/bin/fun/bofhexcuses.sh -l ~/.dotfiles/bin/fun/Excuses.txt -g
+        - cd ~/.dotfiles/bin/fun/ && vim rain
+        - clear && ~/.dotfiles/bin/fun/scripts/pacman-colors
           #- ~/.dotfiles/fun/scripts/bofhexcuses.sh -l ~/.dotfiles/fun/scripts/Excuses.txt -g
           #- clear && ~/.dotfiles/fun/scripts/dna

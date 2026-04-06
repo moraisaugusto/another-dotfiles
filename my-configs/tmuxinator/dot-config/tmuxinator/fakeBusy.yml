@@ -39,7 +39,7 @@ windows:
       # synchronize: after
       panes:
         - clear && neofetch
-        - sudo tail -f /var/log/Xorg.0.log
-        - clear && ~/.dotfiles/fun/scripts/bofhexcuses.sh -l ~/.dotfiles/fun/scripts/Excuses.txt -g
-        - cd ~/.dotfiles/ && vim install.sh
-        - ~/.dotfiles/scripts/server/heathServer.sh
+        - ls -l
+        - clear && ~/.dotfiles/bin/fun/bofhexcuses.sh -l ~/.dotfiles/bin/fun/Excuses.txt -g
+        - ls -l  
+        - ~/.dotfiles/bin/heathServer.sh
