@@ -1,3 +1,4 @@
+# zmodload zsh/zprof
 # ==============================================================================
 # 1. OH-MY-ZSH CORE CONFIGURATION
 # ==============================================================================
@@ -48,8 +49,8 @@ ZSH_CUSTOM=$HOME/.dotfiles/zsh-custom/themes
 plugins=(git colored-man-pages emoji-clock tmux tmuxinator nmap battery extract docker docker-compose )
 
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.dotfiles/oh-my-zsh
-source $ZSH/oh-my-zsh.sh
+#export ZSH=$HOME/.dotfiles/oh-my-zsh
+#source $ZSH/oh-my-zsh.sh
 
 # ==============================================================================
 # 4. SYSTEM & HARDWARE (RTX 4090)
@@ -203,3 +204,4 @@ eval "$(zoxide init zsh)"
 
 # Enable each plugin
 for config  (~/.config/zsh/*.zsh) source $config
+# zprof
