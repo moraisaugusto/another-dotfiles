@@ -1,0 +1,305 @@
+# editor completions
+"$schema" = "https://starship.rs/config-schema.json"
+
+# append newlines to command outputs
+add_newline = true
+
+# custom format
+format = """
+$shlvl\
+$singularity\
+$kubernetes\
+$directory\
+[](fg:blue bg:yellow)\
+$vcsh\
+$fossil_branch\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$git_metrics\
+[](fg:yellow bg:grey)\
+$hg_branch\
+$pijul_channel\
+$docker_context\
+$package\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$fennel\
+$golang\
+$guix_shell\
+$haskell\
+$haxe\
+$helm\
+$java\
+$julia\
+$kotlin\
+$gradle\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$opa\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$swift\
+$terraform\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$nix_shell\
+$conda\
+$spack\
+$memory_usage\
+$env_var\
+$crystal\
+$custom\
+$sudo\
+$cmd_duration\
+$line_break\
+$jobs\
+$status\
+$character"""
+
+# prompt chars
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold bright-red)"
+vimcmd_symbol = "[❮](bold green)"
+vimcmd_replace_one_symbol = "[❮](bold yellow)"
+vimcmd_replace_symbol = "[❮](bold yellow)"
+vimcmd_visual_symbol = "[❮](bold cyan)"
+
+[directory]
+style = "fg:black bg:blue"
+truncate_to_repo = true
+truncation_length = 1
+truncation_symbol = "../"
+read_only = '  '
+read_only_style = 'bright-red'
+format = '[$path]($style)[$read_only]($read_only_style)'
+
+[git_branch]
+style = "fg:black bg:yellow"
+symbol = "[ 󰊢 ](fg:black bg:yellow)"
+format = '[$symbol$branch(:$remote_branch) ]($style)'
+
+[git_commit]
+only_detached = true
+tag_symbol = "/"
+tag_disabled = false
+format = "[「󰊢 $hash$tag ](black)"
+
+[git_status]
+ahead = "⇡${count}"
+behind = "⇣${count}"
+conflicted = '$count'
+deleted = " "
+diverged = '↑$ahead_count↓$behind_count'
+modified = "󱇬 "
+renamed = " "
+staged = "󰝒 "
+stashed = "󰬲 "
+untracked = " "
+format = "[$all_status$ahead_behind](fg:black bg:yellow)"
+
+[git_metrics]
+disabled = false
+format = '(yellow)'
+
+[cmd_duration]
+format = ' took [$duration](white) '
+
+[docker_context]
+symbol = '󰡨'
+format = '[ $symbol $version ](bright-black)'
+
+[package]
+symbol = '󰏗'
+format = '[ $symbol $version ](bright-black)'
+
+[c]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[cmake]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[cobol]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[dart]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[deno]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[dotnet]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[elixir]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[elm]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[erlang]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[fennel]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[golang]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[guix_shell]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[haskell]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[haxe]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[helm]
+symbol = '󰠳'
+format = '[ $symbol $version ](bright-black)'
+
+[java]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[julia]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[kotlin]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[gradle]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[lua]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[nim]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[nodejs]
+symbol = '󰎙'
+format = '[ $symbol $version ](bright-black)'
+
+[ocaml]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[opa]
+symbol = '󱡓'
+format = '[ $symbol $version ](bright-black)'
+
+[perl]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[php]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[purescript]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[python]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[rlang]
+symbol = '󰟔'
+format = '[ $symbol $version ](bright-black)'
+
+[red]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[ruby]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[rust]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[scala]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[swift]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[terraform]
+symbol = '󱁢'
+format = '[ $symbol $version ](bright-black)'
+
+[vlang]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[vagrant]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[zig]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[nix_shell]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[conda]
+symbol = '󱔎'
+format = '[ $symbol $version ](bright-black)'
+
+[spack]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
+
+[crystal]
+symbol = ''
+format = '[ $symbol $version ](bright-black)'
