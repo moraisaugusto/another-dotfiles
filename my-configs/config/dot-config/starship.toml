@@ -18,66 +18,46 @@ $git_commit\
 $git_state\
 $git_status\
 $git_metrics\
-[](fg:yellow bg:grey)\
+[](fg:yellow bg:green)\
 $hg_branch\
 $pijul_channel\
 $docker_context\
-$package\
 $c\
 $cmake\
-$cobol\
-$daml\
-$dart\
-$deno\
-$dotnet\
 $elixir\
 $elm\
 $erlang\
-$fennel\
 $golang\
 $guix_shell\
 $haskell\
-$haxe\
 $helm\
 $java\
-$julia\
-$kotlin\
-$gradle\
 $lua\
-$nim\
 $nodejs\
 $ocaml\
-$opa\
 $perl\
 $php\
-$pulumi\
-$purescript\
 $python\
-$raku\
-$rlang\
-$red\
 $ruby\
 $rust\
 $scala\
 $swift\
 $terraform\
-$vlang\
-$vagrant\
 $zig\
 $buf\
 $nix_shell\
-$conda\
-$spack\
 $memory_usage\
 $env_var\
 $crystal\
 $custom\
 $sudo\
 $cmd_duration\
+[](fg:green)\
 $line_break\
 $jobs\
 $status\
-$character"""
+$character
+"""
 
 # prompt chars
 [character]
@@ -144,22 +124,6 @@ format = '[ $symbol $version ](bright-black)'
 symbol = ''
 format = '[ $symbol $version ](bright-black)'
 
-[cobol]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
-[dart]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
-[deno]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
-[dotnet]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
 [elixir]
 symbol = ''
 format = '[ $symbol $version ](bright-black)'
@@ -170,10 +134,6 @@ format = '[ $symbol $version ](bright-black)'
 
 [erlang]
 symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
-[fennel]
-symbol = ''
 format = '[ $symbol $version ](bright-black)'
 
 [golang]
@@ -188,36 +148,12 @@ format = '[ $symbol $version ](bright-black)'
 symbol = ''
 format = '[ $symbol $version ](bright-black)'
 
-[haxe]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
 [helm]
 symbol = '󰠳'
 format = '[ $symbol $version ](bright-black)'
 
-[java]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
-[julia]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
-[kotlin]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
-[gradle]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
 [lua]
 symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
-[nim]
-symbol = ''
 format = '[ $symbol $version ](bright-black)'
 
 [nodejs]
@@ -228,10 +164,6 @@ format = '[ $symbol $version ](bright-black)'
 symbol = ''
 format = '[ $symbol $version ](bright-black)'
 
-[opa]
-symbol = '󱡓'
-format = '[ $symbol $version ](bright-black)'
-
 [perl]
 symbol = ''
 format = '[ $symbol $version ](bright-black)'
@@ -240,21 +172,10 @@ format = '[ $symbol $version ](bright-black)'
 symbol = ''
 format = '[ $symbol $version ](bright-black)'
 
-[purescript]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
 [python]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
-[rlang]
-symbol = '󰟔'
-format = '[ $symbol $version ](bright-black)'
-
-[red]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
+style = "fg:black bg:green"
+symbol = "[ ](fg:black bg:green)"
+format = '[$symbol$branch(\($virtualenv\) )]($style)'
 
 [ruby]
 symbol = ''
@@ -268,20 +189,8 @@ format = '[ $symbol $version ](bright-black)'
 symbol = ''
 format = '[ $symbol $version ](bright-black)'
 
-[swift]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
 [terraform]
 symbol = '󱁢'
-format = '[ $symbol $version ](bright-black)'
-
-[vlang]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
-[vagrant]
-symbol = ''
 format = '[ $symbol $version ](bright-black)'
 
 [zig]
@@ -296,10 +205,3 @@ format = '[ $symbol $version ](bright-black)'
 symbol = '󱔎'
 format = '[ $symbol $version ](bright-black)'
 
-[spack]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
-[crystal]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
