@@ -1,207 +1,265 @@
 # editor completions
 "$schema" = "https://starship.rs/config-schema.json"
 
-# append newlines to command outputs
-add_newline = true
 
-# custom format
-format = """
-$shlvl\
-$singularity\
-$kubernetes\
-$directory\
-[](fg:blue bg:yellow)\
-$vcsh\
-$fossil_branch\
-$git_branch\
-$git_commit\
-$git_state\
-$git_status\
-$git_metrics\
-[](fg:yellow bg:green)\
-$hg_branch\
-$pijul_channel\
-$docker_context\
-$c\
-$cmake\
-$elixir\
-$elm\
-$erlang\
-$golang\
-$guix_shell\
-$haskell\
-$helm\
-$java\
-$lua\
-$nodejs\
-$ocaml\
-$perl\
-$php\
-$python\
-$ruby\
-$rust\
-$scala\
-$swift\
-$terraform\
-$zig\
-$buf\
-$nix_shell\
-$memory_usage\
-$env_var\
-$crystal\
-$custom\
-$sudo\
-$cmd_duration\
-[](fg:green)\
-$line_break\
-$jobs\
-$status\
-$character
-"""
+# Prompt order
+format = '${custom.dir_logic}$git_branch$python$character'
 
-# prompt chars
-[character]
-success_symbol = "[❯](bold green)"
-error_symbol = "[❯](bold bright-red)"
-vimcmd_symbol = "[❮](bold green)"
-vimcmd_replace_one_symbol = "[❮](bold yellow)"
-vimcmd_replace_symbol = "[❮](bold yellow)"
-vimcmd_visual_symbol = "[❮](bold cyan)"
-
+# ── DIRECTORY (always visible) ──
 [directory]
-style = "fg:black bg:blue"
-truncate_to_repo = true
-truncation_length = 1
-truncation_symbol = "../"
-read_only = '  '
-read_only_style = 'bright-red'
-format = '[$path]($style)[$read_only]($read_only_style)'
+format = '[ $path]($style)[](bg:grey fg:blue)'
+style = 'bg:blue fg:black bold'
+truncation_length = 3
+truncation_symbol = '…/'
 
+# ── GIT (only shows $branch content) ──
 [git_branch]
-style = "fg:black bg:yellow"
-symbol = "[ 󰊢 ](fg:black bg:yellow)"
-format = '[$symbol$branch(:$remote_branch) ]($style)'
-
-[git_commit]
-only_detached = true
-tag_symbol = "/"
-tag_disabled = false
-format = "[「󰊢 $hash$tag ](black)"
+# Conditional ONLY on $branch (empty when not in git repo)
+format = '[]( fg:yellow )([ $branch $git_status]($style)[](fg:yellow ))'
+style = 'bg:yellow fg:black bold'
+symbol = ''  # Move symbol into format if needed, or keep empty
 
 [git_status]
-ahead = "⇡${count}"
-behind = "⇣${count}"
-conflicted = '$count'
-deleted = " "
-diverged = '↑$ahead_count↓$behind_count'
-modified = "󱇬 "
-renamed = " "
-staged = "󰝒 "
-stashed = "󰬲 "
-untracked = " "
-format = "[$all_status$ahead_behind](fg:black bg:yellow)"
+format = '($all_status$ahead_behind)'  # No wrapper, inherits git_branch style
 
-[git_metrics]
-disabled = false
-format = '(yellow)'
-
-[cmd_duration]
-format = ' took [$duration](white) '
-
-[docker_context]
-symbol = '󰡨'
-format = '[ $symbol $version ](bright-black)'
-
-[package]
-symbol = '󰏗'
-format = '[ $symbol $version ](bright-black)'
-
-[c]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
-[cmake]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
-[elixir]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
-[elm]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
-[erlang]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
-[golang]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
-[guix_shell]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
-[haskell]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
-[helm]
-symbol = '󰠳'
-format = '[ $symbol $version ](bright-black)'
-
-[lua]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
-[nodejs]
-symbol = '󰎙'
-format = '[ $symbol $version ](bright-black)'
-
-[ocaml]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
-[perl]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
-[php]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
-
+# ── PYTHON (only shows when $virtualenv exists) ──
 [python]
-style = "fg:black bg:green"
-symbol = "[ ](fg:black bg:green)"
-format = '[$symbol$branch(\($virtualenv\) )]($style)'
+# Conditional ONLY on $virtualenv (empty when no venv)
+format = '[](fg:green)([($virtualenv )$symbol$version]($style)[]( fg:green))'
+style = 'bg:green fg:black bold'
+symbol = ' '
+detect_extensions = ['py']
+detect_files = ['requirements.txt', 'pyproject.toml']
 
-[ruby]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
+# ── CHARACTER ──
+[character]
+success_symbol = '[](bold green)'
+error_symbol = '[](bold red)'
 
-[rust]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
+[custom.dir_logic]
+command = '''
+DEPTH=$(pwd | tr -cd '/' | wc -c)
 
-[scala]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
+# 2. Define the Truncated path using Starship's logic
+# We temporarily 'unset' the format override to get the text
 
-[terraform]
-symbol = '󱁢'
-format = '[ $symbol $version ](bright-black)'
+# 2. Strip the leading space that Starship module adds by default
+RAW=$(STARSHIP_CONFIG=/dev/null starship module directory --path .)
+TRUNC_PATH=$(echo "$RAW" | sed 's/\x1b\[[0-9;]*m//g' | xargs)
 
-[zig]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
+if [ "$DEPTH" -le 3 ]; then
+    # FORMAT 1: No Truncation (e.g., Blue background, simple arrow)
+    echo -e "\033[44;30;1m $(pwd | sed "s|^$HOME|~|")\033[0m\033[34m\033[0m"
+else
+    # FORMAT 2: Truncated (e.g., Different colors or extra symbols)
+    echo -e "\033[44;30;1m $TRUNC_PATH \033[0m\033[34m\033[0m"
+    
+fi
+'''
+shell = ["sh"]
+when = "true"
+format = "$output"
 
-[nix_shell]
-symbol = ''
-format = '[ $symbol $version ](bright-black)'
 
-[conda]
-symbol = '󱔎'
-format = '[ $symbol $version ](bright-black)'
-
+# # append newlines to command outputs
+# add_newline = true
+#
+# # custom format
+# format = """
+# ${custom.dir_logic}\
+# $shlvl\
+# $singularity\
+# $kubernetes\
+# $directory\
+# $vcsh\
+# $fossil_branch\
+# $git_branch\
+# $git_commit\
+# $git_state\
+# $git_status\
+# $git_metrics\
+# $hg_branch\
+# $pijul_channel\
+# $docker_context\
+# $c\
+# $cmake\
+# $elixir\
+# $elm\
+# $erlang\
+# $golang\
+# $guix_shell\
+# $haskell\
+# $helm\
+# $java\
+# $lua\
+# $nodejs\
+# $ocaml\
+# $perl\
+# $php\
+# $python\
+# $ruby\
+# $rust\
+# $scala\
+# $swift\
+# $terraform\
+# $zig\
+# $buf\
+# $nix_shell\
+# $memory_usage\
+# $env_var\
+# $crystal\
+# $custom\
+# $sudo\
+# $cmd_duration\
+# $line_break\
+# $jobs\
+# $status\
+# $character
+# """
+#
+# # prompt chars
+# [character]
+# success_symbol = "[❯](bold green)"
+# error_symbol = "[❯](bold bright-red)"
+# vimcmd_symbol = "[❮](bold green)"
+# vimcmd_replace_one_symbol = "[❮](bold yellow)"
+# vimcmd_replace_symbol = "[❮](bold yellow)"
+# vimcmd_visual_symbol = "[❮](bold cyan)"
+#
+# [directory]
+# style = "fg:black bg:blue"
+# truncate_to_repo = true
+# truncation_length = 1
+# truncation_symbol = "../"
+# read_only = '  '
+# read_only_style = 'bright-red'
+# format = '[$path]($style)[$read_only]($read_only_style)'
+#
+# [git_branch]
+# style = "fg:black bg:yellow"
+# symbol = "[ 󰊢 ](fg:black bg:yellow)"
+# format = '[$symbol$branch(:$remote_branch) ]($style)'
+#
+# [git_commit]
+# only_detached = true
+# tag_symbol = "/"
+# tag_disabled = false
+# format = "[「󰊢 $hash$tag ](black)"
+#
+# [git_status]
+# ahead = "⇡${count}"
+# behind = "⇣${count}"
+# conflicted = '$count'
+# deleted = " "
+# diverged = '↑$ahead_count↓$behind_count'
+# modified = "󱇬 "
+# renamed = " "
+# staged = "󰝒 "
+# stashed = "󰬲 "
+# untracked = " "
+# format = "[$all_status$ahead_behind](fg:black bg:yellow)"
+#
+# [git_metrics]
+# disabled = false
+# format = '(yellow)'
+#
+# [cmd_duration]
+# format = ' took [$duration](white) '
+#
+# [docker_context]
+# symbol = '󰡨'
+# format = '[ $symbol $version ](bright-black)'
+#
+# [package]
+# symbol = '󰏗'
+# format = '[ $symbol $version ](bright-black)'
+#
+# [c]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [cmake]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [elixir]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [elm]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [erlang]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [golang]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [guix_shell]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [haskell]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [helm]
+# symbol = '󰠳'
+# format = '[ $symbol $version ](bright-black)'
+#
+# [lua]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [nodejs]
+# symbol = '󰎙'
+# format = '[ $symbol $version ](bright-black)'
+#
+# [ocaml]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [perl]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [php]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [python]
+# style = "fg:black bg:green"
+# symbol = "[ ](fg:black bg:green)"
+# format = '[ $symbol$branch$virtualenv ]($style)'
+#
+# [ruby]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [rust]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [scala]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [terraform]
+# symbol = '󱁢'
+# format = '[ $symbol $version ](bright-black)'
+#
+# [zig]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [nix_shell]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [conda]
+# symbol = '󱔎'
+# format = '[ $symbol $version ](bright-black)'
+#
