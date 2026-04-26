@@ -47,7 +47,8 @@ DEPTH=$(pwd | tr -cd '/' | wc -c)
 RAW=$(STARSHIP_CONFIG=/dev/null starship module directory --path .)
 TRUNC_PATH=$(echo "$RAW" | sed 's/\x1b\[[0-9;]*m//g' | xargs)
 
-if [ "$DEPTH" -le 3 ]; then
+
+if [ "$DEPTH" -le 2 ]; then
     # FORMAT 1: No Truncation (e.g., Blue background, simple arrow)
     echo -e "\033[44;30;1m $(pwd | sed "s|^$HOME|~|")\033[0m\033[34m\033[0m"
 else
