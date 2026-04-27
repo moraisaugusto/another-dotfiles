@@ -1,3 +1,4 @@
+# zmodload zsh/zprof
 # ==============================================================================
 # 1. SYSTEM & HARDWARE (RTX 4090)
 # ==============================================================================
@@ -126,3 +127,4 @@ unset zle_bracketed_paste
 
 # Source all modular zsh configs from directory
 for config (~/.config/zsh/*.zsh) source $config
+# zprof

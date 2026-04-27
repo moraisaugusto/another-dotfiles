@@ -38,3 +38,11 @@ zmodload zsh/complist
 bindkey -M menuselect '^[[Z' reverse-menu-complete
 # Press Escape to exit the completion menu
 bindkey -M menuselect '^[' send-break
+
+# 1. Use 'terminfo' to find the correct sequence for your terminal
+# This covers most modern terminals (iTerm2, Alacritty, Kitty, Kitty, etc.)
+bindkey "${terminfo[kdch1]}" delete-char
+
+# 2. Fallback for terminals where terminfo might be missing
+# This explicitly binds the common sequence for the Delete key
+bindkey "^[[3~" delete-char
