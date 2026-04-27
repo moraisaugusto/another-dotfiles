@@ -14,8 +14,8 @@ MOVE_LEFT="\033[1D"
 
 # --- 2. Data Acquisition ---
 # Capture module output; --path . ensures accuracy within scripts
-GIT_OUT=$(starship module custom.git_status --path .)
-PY_OUT=$(starship module python --path .)
+GIT_OUT=$(starship module custom.git_status)
+PY_OUT=$(starship module python)
 GIT_STATUS=$(git status --porcelain 2>/dev/null)
 
 # --- 3. Logic: Priority Selection ---
