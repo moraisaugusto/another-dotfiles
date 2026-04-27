@@ -31,11 +31,3 @@ zstyle ':completion:*' list-colors 'di=01;38;5;208'
 # Custom behavior for specific commands
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,cmd'
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-
-#█▓▒░ 6. Keybindings
-# Standard Shift+Tab (Backtab)
-bindkey '^[[Z' reverse-menu-complete
-
-# Shift+Tab specifically while the selection menu is open
-zmodload zsh/complist
-bindkey -M menuselect '^[[Z' reverse-menu-complete
