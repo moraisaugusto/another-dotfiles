@@ -9,6 +9,7 @@ $git_state\
 ${custom.git_status}\
 $git_metrics\
 $python\
+${custom.dir_logic_ending}\
 $character
 """
 
@@ -37,6 +38,12 @@ detect_files = ['requirements.txt', 'pyproject.toml']
 [character]
 success_symbol = '[](bold green)'
 error_symbol = '[](bold red)'
+
+[custom.dir_logic_ending]
+command = "~/.config/starship/scripts/custom_dir_logic_ending.sh"
+shell = ["sh"]
+when = "true"
+format = "$output"
 
 [custom.dir_logic]
 command = "~/.config/starship/scripts/custom_dir_logic.sh"
