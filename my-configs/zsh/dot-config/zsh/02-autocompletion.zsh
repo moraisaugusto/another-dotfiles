@@ -1,11 +1,30 @@
 #█▓▒░ 1. Autocompletion System Setup
-# Setup fpath and initialize completion systems
-loc=${ZDOTDIR:-"$HOME/.config/zsh"}
-fpath=($loc/completion $fpath)
+ZCOMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-$ZSH_VERSION"
 
-autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
-autoload bashcompinit && bashcompinit
+# Ensure directory exists
+[[ -d "${ZCOMPDUMP:h}" ]] || mkdir -p "${ZCOMPDUMP:h}"
 
+autoload -Uz compinit
+
+if [[ -s "$ZCOMPDUMP" ]]; then
+  # -C: Skip security check
+  # -n: Do not rewrite the dump file
+  compinit -C -n -d "$ZCOMPDUMP"
+else
+  compinit -d "$ZCOMPDUMP"
+fi
+
+# █▓▒░ THE LOCK: Disable further compinit/compdef calls
+# This stops any other script from triggering the 719 calls
+compinit() { return 0 }
+compdef() { return 0 }
+
+# Compile in background for speed
+if [[ "$ZCOMPDUMP" -nt "$ZCOMPDUMP.zwc" ]]; then
+  zcompile "$ZCOMPDUMP"
+fi
+
+autoload -Uz bashcompinit && bashcompinit
 #█▓▒░ 2. Completion Behavior & Matching
 # Define how completions are generated and matched
 zstyle ':completion:*' completer _expand _complete _correct _approximate

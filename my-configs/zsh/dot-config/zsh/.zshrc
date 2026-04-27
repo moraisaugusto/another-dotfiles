@@ -1,207 +1,113 @@
-# zmodload zsh/zprof
 # ==============================================================================
-# 1. OH-MY-ZSH CORE CONFIGURATION
+# 1. SYSTEM & HARDWARE (RTX 4090)
 # ==============================================================================
 
-# Set name of the theme to load.
-ZSH_THEME="augusto-default"
-
-# Performance & Behavior
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-# Uncomment the following line to use hyphen-insensitive completion.
-# HYPHEN_INSENSITIVE="true"
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-# Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=13
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-# Uncomment the following line to disable auto-setting terminal title.
-DISABLE_AUTO_TITLE="true"
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-# Uncomment the following line to display red dots whilst waiting for completion.
-#COMPLETION_WAITING_DOTS="true"
-# Uncomment the following line if you want to disable marking untracked files
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# ==============================================================================
-# 2. TMUX CONFIGURATION
-# ==============================================================================
-ZSH_TMUX_AUTOSTART=true
-ZSH_TMUX_AUTOCONNECT=true
-ZSH_TMUX_AUTOSTART_ONCE=true
-ZSH_TMUX_FIXTERM=true
-
-# tmux
-#PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
-
-# ==============================================================================
-# 3. OH-MY-ZSH EXTRA CONFIGURATION
-# ==============================================================================
-# Custom ZSH folder
-ZSH_CUSTOM=$HOME/.dotfiles/zsh-custom/themes
-
-# Plugins
-plugins=(git colored-man-pages emoji-clock tmux tmuxinator nmap battery extract docker docker-compose )
-
-# Path to your oh-my-zsh installation.
-#export ZSH=$HOME/.dotfiles/oh-my-zsh
-#source $ZSH/oh-my-zsh.sh
-
-# ==============================================================================
-# 4. SYSTEM & HARDWARE (RTX 4090)
-# ==============================================================================
-# Enables VA-API hardware video acceleration for NVIDIA GPUs - Brave browser
+# Hardware Acceleration (NVIDIA VA-API for Brave/Browsers)
 export LIBVA_DRIVER_NAME=nvidia
 
 # Locale & Language
 export LANG=en_US.utf-8
 export LC_ALL=en_US.utf-8
 
-# Preferred editor for local and remote sessions
+# Preferred editor (Fall back to vim on SSH, nvim locally)
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
   export EDITOR='nvim'
 fi
 
-# Themes and UI
+# Themes & UI Interface Settings
 export GTK_THEME=Arc:dark
 export QT_QPA_PLATFORMTHEME=qt5ct
-NO_AT_BRIDGE=1 # zathura
-unsetopt prompt_cr prompt_sp
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+export NO_AT_BRIDGE=1 # fix for zathura
 
-## Setting Keyboard layout
-# setxkbmap -model abnt2 -layout br -variant abnt2
-# setxkbmap -layout us -variant intl
-# Notebook keyboard
-# setxkbmap -model thinkpad60 -layout br
+# Keyboard & Display
 setxkbmap -layout us -variant intl
 
+if [[ -n "$DISPLAY" ]]; then
+    export BROWSER=brave
+else 
+    export BROWSER=links
+fi
+
 # ==============================================================================
-# 5. PATH & ENVIRONMENT EXPORTS
+# 2. PATH & ENVIRONMENT EXPORTS
 # ==============================================================================
+
+# R & Data Science
 export IRACE_HOME=~/.R_libs/irace
 export R_LIBS=~/.R_libs
+
+# Base System Paths
 export PATH=$HOME/.bin:/usr/local/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
 export ARCHFLAGS="-arch x86_64"
-export QUOTING_STYLE=literal ls
-
-# User bins
-export PATH="$HOME/.local/bin:$PATH"
-
-# JDK
-JAVA_HOME=/usr/lib/jvm/java-21-openjdk/
-PATH=$PATH:$HOME/bin:$JAVA_HOME/bin:$HOME/.config/i3/i3lock-fancy-multimonitor
-export JAVA_HOME
-
-# Ruby
-PATH=$PATH:$HOME/.local/share/gem/ruby/3.4.0/bin
-
-# Perl
-PATH="/home/augusto/.perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/augusto/.perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/augusto/.perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/augusto/.perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/augusto/.perl5"; export PERL_MM_OPT;
-
-# Node
-PATH="$HOME/.npm-global/bin:$PATH"
-
-export PATH
-
-# CUDA / Libraries
-# export GUROBI_HOME=/opt/gurobi810/linux64
-# LD_LIBRARY_PATH=$GUROBI_HOME/lib
-# PATH=$PATH:$GUROBI_HOME/bin
-# LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/cuda/lib:/opt/cuda/targets/x86_64-linux/lib
+export QUOTING_STYLE=literal # for ls behavior
 export LD_LIBRARY_PATH
 
-# Other commented paths
-#export ASDF_DATA_DIR="$HOME/.asdf"
-#export PATH="$ASDF_DATA_DIR/shims:$PATH"
-#export PATH="$HOME/go/bin:$PATH"
-#export PATH="/opt/cuda/bin:$PATH"
-#export PATH="/opt/schemacrawler/schemacrawler-16.5.2-distribution/_schemacrawler:$PATH"
-#export PATH="$PATH:$HOME/.node/node_modules/.bin"
+# Java (JDK 21)
+export JAVA_HOME=/usr/lib/jvm/java-21-openjdk/
+export PATH=$PATH:$HOME/bin:$JAVA_HOME/bin:$HOME/.config/i3/i3lock-fancy-multimonitor
+
+# Ruby (Gems)
+export PATH=$PATH:$HOME/.local/share/gem/ruby/3.4.0/bin
+
+# Node (Global NPM)
+export PATH="$HOME/.npm-global/bin:$PATH"
+
 
 # ==============================================================================
-# 6. EXTERNAL SOURCES & SCRIPTS
+# 3. EXTERNAL SOURCES & TOOLING
 # ==============================================================================
-# Mise
-eval "$(/usr/bin/mise activate zsh)"
 
-# SSH Keys
+# Version Manager (Mise)
+eval "$(mise activate zsh)"
+
+# Smart Jump (Zoxide)
+eval "$(zoxide init zsh)"
+
+# TMUX Configuration
+export ZSH_TMUX_AUTOSTART=true
+export ZSH_TMUX_AUTOCONNECT=true
+export ZSH_TMUX_AUTOSTART_ONCE=true
+export ZSH_TMUX_FIXTERM=true
+
+# SSH Agent Logic (Starts agent and adds keys if not running)
 ps -u $(whoami) | grep ssh-agent &> /dev/null
-if [ $? -ne 0 ];then
+if [ $? -ne 0 ]; then
     eval "$(ssh-agent -s)" >&/dev/null
     source $HOME/.dotfiles/bin/sshrc.sh
     ls ~/.ssh/id_rsa* | awk '!/pub$/ {system("ssh-add "$0 " 2>/dev/null")} '
 fi
 trap 'ssh-agent -k; exit' 0
 
-# Config files
-if [ -f ~/.zshAlias ]; then
-    source ~/.zshAlias
+# ==============================================================================
+# 4. CONFIGURATION FILES & SDKS
+# ==============================================================================
+
+# Source specific configuration files if they exist
+[[ -f ~/.zshAlias ]] && source ~/.zshAlias
+[[ -f ~/.secrets ]]  && source ~/.secrets
+[[ -f ~/.pass ]]     && source ~/.pass
+[[ -f ~/.pythonrc ]] && source ~/.pythonrc
+
+# Google Cloud SDK (Path and Completion)
+if [ -f '/opt/google/google-cloud-sdk/path.zsh.inc' ]; then 
+    . '/opt/google/google-cloud-sdk/path.zsh.inc'
 fi
-
-if [ -f ~/.secrets ]; then
-    source ~/.secrets
+if [ -f '/opt/google/google-cloud-sdk/completion.zsh.inc' ]; then 
+    . '/opt/google/google-cloud-sdk/completion.zsh.inc'
 fi
-
-if [ -f ~/.pass ]; then
-    source ~/.pass
-fi
-
-if [ -f ~/.pythonrc ]; then
-    source ~/.pythonrc
-fi
-
-# Google Cloud SDK
-if [ -f '/opt/google/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/google/google-cloud-sdk/path.zsh.inc'; fi
-if [ -f '/opt/google/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/google/google-cloud-sdk/completion.zsh.inc'; fi
-
-# Direnv
-#eval "$(direnv hook zsh)"
 
 # ==============================================================================
-# 7. CUSTOM FUNCTIONS & PROMPT
+# 5. ZSH SHELL BEHAVIOR & PLUGINS
 # ==============================================================================
-show_virtual_env() {
-  if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
-    echo "%{%K{yellow}%F{black}%}  "
-  fi
-}
-export show_virtual_env
-PS1='$(show_virtual_env)'$PS1
 
-# browser setting
-if [ -n "$DISPLAY" ]; then
-    export BROWSER=brave
-else 
-    export BROWSER=links
-fi
-
-## GCC error
-export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# Paste handling
-#zle_highlight=('paste:none')
+# Prompt and Input behavior
+unsetopt prompt_cr prompt_sp
 unset zle_bracketed_paste
 
-### Default Directory
-# if [[ $PWD != $HOME ]]; then
-#     cd $HOME
-# fi
-
-# zoxide
-eval "$(zoxide init zsh)"
-
-# Enable each plugin
-for config  (~/.config/zsh/*.zsh) source $config
-# zprof
+# Source all modular zsh configs from directory
+for config (~/.config/zsh/*.zsh) source $config
