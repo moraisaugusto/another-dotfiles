@@ -6,6 +6,7 @@ SYMBOL_MAIN=""
 COLOR_YELLOW=215
 COLOR_BLUE=4
 COLOR_GREEN=2
+COLOR_GREEN_DARK=71
 COLOR_BLACK=30
 
 RESET="\033[0m"
@@ -15,14 +16,23 @@ MOVE_LEFT="\033[1D"
 # Capture module output; --path . ensures accuracy within scripts
 GIT_OUT=$(starship module custom.git_status --path .)
 PY_OUT=$(starship module python --path .)
+GIT_STATUS=$(git status --porcelain 2>/dev/null)
 
 # --- 3. Logic: Priority Selection ---
 if [[ -n "$GIT_OUT" && -n "$PY_OUT" ]]; then
     # Git Repo + Python Environment
-    CURRENT_BG=$COLOR_GREEN
+    if [[ -n "$GIT_STATUS" ]]; then
+      CURRENT_BG=$COLOR_GREEN_DARK
+    else
+      CURRENT_BG=$COLOR_GREEN
+    fi
 elif [[ -n "$GIT_OUT" ]]; then
+    if [[ -n "$GIT_STATUS" ]]; then
+      CURRENT_BG=$COLOR_YELLOW
+    else
+      CURRENT_BG=$COLOR_GREEN_DARK
+    fi
     # Git Repo only
-    CURRENT_BG=$COLOR_YELLOW
 else
     # Default (Blue)
     CURRENT_BG=$COLOR_BLUE
