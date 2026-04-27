@@ -1,3 +1,6 @@
+# Remove ESC key delay for snappier menu exiting and mode switching
+export KEYTIMEOUT=1
+
 # Use Emacs mode to fix line navigation (prevents defaulting to Vi mode)
 bindkey -e
 
@@ -20,3 +23,18 @@ bindkey '^[[B' down-line-or-beginning-search
 # Keybindings for Vi-mode (if you use it) or specific terminal emulators
 bindkey -M emacs '^[[A' up-line-or-beginning-search
 bindkey -M emacs '^[[B' down-line-or-beginning-search
+
+# Allow Ctrl+Left and Ctrl+Right to jump words
+bindkey '^[[1;5D' backward-word
+bindkey '^[[1;5C' forward-word
+
+
+#█▓▒░ 6. Keybindings
+# Standard Shift+Tab (Backtab)
+bindkey '^[[Z' reverse-menu-complete
+
+# Shift+Tab specifically while the selection menu is open
+zmodload zsh/complist
+bindkey -M menuselect '^[[Z' reverse-menu-complete
+# Press Escape to exit the completion menu
+bindkey -M menuselect '^[' send-break

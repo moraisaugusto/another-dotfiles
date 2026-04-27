@@ -1,9 +1,16 @@
 # editor completions
 "$schema" = "https://starship.rs/config-schema.json"
 
-
 # Prompt order
-format = '${custom.dir_logic}$git_branch$python$character'
+format = """
+${custom.dir_logic}\
+$git_commit\
+$git_state\
+${custom.git_status}\
+$git_metrics\
+$python\
+$character
+"""
 
 # ── DIRECTORY (always visible) ──
 [directory]
@@ -14,17 +21,12 @@ truncation_symbol = '…/'
 
 # ── GIT (only shows $branch content) ──
 [git_branch]
-# Conditional ONLY on $branch (empty when not in git repo)
 format = '[]( fg:yellow )([ $branch $git_status]($style)[](fg:yellow ))'
 style = 'bg:yellow fg:black bold'
 symbol = ''  # Move symbol into format if needed, or keep empty
 
-[git_status]
-format = '($all_status$ahead_behind)'  # No wrapper, inherits git_branch style
-
 # ── PYTHON (only shows when $virtualenv exists) ──
 [python]
-# Conditional ONLY on $virtualenv (empty when no venv)
 format = '[](fg:green)([($virtualenv )$symbol$version]($style)[]( fg:green))'
 style = 'bg:green fg:black bold'
 symbol = ' '
@@ -37,29 +39,34 @@ success_symbol = '[](bold green)'
 error_symbol = '[](bold red)'
 
 [custom.dir_logic]
-command = '''
-DEPTH=$(pwd | tr -cd '/' | wc -c)
-
-# 2. Define the Truncated path using Starship's logic
-# We temporarily 'unset' the format override to get the text
-
-# 2. Strip the leading space that Starship module adds by default
-RAW=$(STARSHIP_CONFIG=/dev/null starship module directory --path .)
-TRUNC_PATH=$(echo "$RAW" | sed 's/\x1b\[[0-9;]*m//g' | xargs)
-
-
-if [ "$DEPTH" -le 2 ]; then
-    # FORMAT 1: No Truncation (e.g., Blue background, simple arrow)
-    echo -e "\033[44;30;1m $(pwd | sed "s|^$HOME|~|")\033[0m\033[34m\033[0m"
-else
-    # FORMAT 2: Truncated (e.g., Different colors or extra symbols)
-    echo -e "\033[44;30;1m $TRUNC_PATH \033[0m\033[34m\033[0m"
-    
-fi
-'''
+command = "~/.config/starship/scripts/custom_dir_logic.sh"
 shell = ["sh"]
 when = "true"
 format = "$output"
+
+[git_commit]
+only_detached = true
+tag_symbol = "/"
+tag_disabled = false
+format = "[「󰊢 $hash$tag ](black)"
+
+[custom.git_status]
+command = "~/.config/starship/scripts/custom_git_status.sh"
+shell = ["zsh"]
+when = "true"
+format = "$output"
+
+[git_status]
+ahead = "⇡${count}"
+behind = "⇣${count}"
+conflicted = '$count'
+deleted = " "
+diverged = '↑$ahead_count↓$behind_count'
+modified = "󱇬 "
+renamed = " "
+staged = "󰝒 "
+stashed = "󰬲 "
+untracked = " "
 
 
 # # append newlines to command outputs
@@ -140,7 +147,7 @@ format = "$output"
 # style = "fg:black bg:yellow"
 # symbol = "[ 󰊢 ](fg:black bg:yellow)"
 # format = '[$symbol$branch(:$remote_branch) ]($style)'
-#
+# #
 # [git_commit]
 # only_detached = true
 # tag_symbol = "/"
