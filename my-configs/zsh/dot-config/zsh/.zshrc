@@ -74,6 +74,21 @@ export ZSH_TMUX_AUTOCONNECT=true
 export ZSH_TMUX_AUTOSTART_ONCE=true
 export ZSH_TMUX_FIXTERM=true
 
+# ==============================================================================
+# TMUX AUTOSTART (Optimized)
+# ==============================================================================
+if [[ -z "$TMUX" && -n "$DISPLAY" ]]; then
+    # 1. Fix terminal if requested
+    [[ "$ZSH_TMUX_FIXTERM" == "true" ]] && export TERM="screen-256color"
+
+    # 2. Autoconnect or Start New
+    if tmux has-session 2>/dev/null; then
+        exec tmux attach-session
+    else
+        exec tmux new-session
+    fi
+fi
+
 # SSH Agent Logic (Starts agent and adds keys if not running)
 ps -u $(whoami) | grep ssh-agent &> /dev/null
 if [ $? -ne 0 ]; then
