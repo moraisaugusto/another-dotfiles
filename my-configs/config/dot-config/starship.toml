@@ -1,6 +1,8 @@
 # editor completions
 "$schema" = "https://starship.rs/config-schema.json"
 
+command_timeout = 500  # 0.5 secs
+
 # Prompt order
 format = """
 ${custom.dir_logic}\
@@ -59,7 +61,7 @@ format = "[「󰊢 $hash$tag ](black)"
 
 [custom.git_status]
 command = "~/.config/starship/scripts/custom_git_status.sh"
-shell = ["zsh"]
+shell = ["sh"]
 when = "true"
 format = "$output"
 
