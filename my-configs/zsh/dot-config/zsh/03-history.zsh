@@ -2,7 +2,8 @@
 HISTSIZE=130000
 SAVEHIST=100000
 #HIST_STAMPS=yyyy/mm/dd
-export HISTFILE="$XDG_STATE_HOME"/zsh/history
+: "${XDG_STATE_HOME:=$HOME/.local/state}"
+export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export LESSHISTFILE=-
 
 #█▓▒░ options

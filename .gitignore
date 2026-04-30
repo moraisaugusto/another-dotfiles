@@ -7,3 +7,4 @@ symlinks/zshAlias.symlink
 .uuid
 .ctags
 ctags
+.zcompdump*

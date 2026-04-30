@@ -1,0 +1,282 @@
+# editor completions
+"$schema" = "https://starship.rs/config-schema.json"
+
+command_timeout = 500  # 0.5 secs
+
+# Prompt order
+format = """
+${custom.dir_logic}\
+$git_commit\
+$git_state\
+${custom.git_status}\
+$git_metrics\
+$python\
+${custom.dir_logic_ending}\
+$character
+"""
+
+# ── DIRECTORY (always visible) ──
+[directory]
+format = '[ $path]($style)[](bg:grey fg:blue)'
+style = 'bg:blue fg:black bold'
+truncation_length = 3
+truncation_symbol = '…/'
+
+# ── GIT (only shows $branch content) ──
+[git_branch]
+format = '[]( fg:yellow )([ $branch $git_status]($style)[](fg:yellow ))'
+style = 'bg:yellow fg:black bold'
+symbol = ''  # Move symbol into format if needed, or keep empty
+
+# ── PYTHON (only shows when $virtualenv exists) ──
+[python]
+format = '[](fg:green)([($virtualenv )$symbol$version]($style)[]( fg:green))'
+style = 'bg:green fg:black bold'
+symbol = ' '
+detect_extensions = ['py']
+detect_files = ['requirements.txt', 'pyproject.toml']
+
+# ── CHARACTER ──
+[character]
+success_symbol = '[](bold green)'
+error_symbol = '[](bold red)'
+
+[custom.dir_logic_ending]
+command = "~/.config/starship/scripts/custom_dir_logic_ending.sh"
+shell = ["sh"]
+when = "true"
+format = "$output"
+
+[custom.dir_logic]
+command = "~/.config/starship/scripts/custom_dir_logic.sh"
+shell = ["sh"]
+when = "true"
+format = "$output"
+
+[git_commit]
+only_detached = true
+tag_symbol = "/"
+tag_disabled = false
+format = "[「󰊢 $hash$tag ](black)"
+
+[custom.git_status]
+command = "~/.config/starship/scripts/custom_git_status.sh"
+shell = ["sh"]
+when = "true"
+format = "$output"
+
+[git_status]
+ahead = "⇡${count}"
+behind = "⇣${count}"
+conflicted = '$count'
+deleted = " "
+diverged = '↑$ahead_count↓$behind_count'
+modified = "󱇬 "
+renamed = " "
+staged = "󰝒 "
+stashed = "󰬲 "
+untracked = " "
+
+
+# # append newlines to command outputs
+# add_newline = true
+#
+# # custom format
+# format = """
+# ${custom.dir_logic}\
+# $shlvl\
+# $singularity\
+# $kubernetes\
+# $directory\
+# $vcsh\
+# $fossil_branch\
+# $git_branch\
+# $git_commit\
+# $git_state\
+# $git_status\
+# $git_metrics\
+# $hg_branch\
+# $pijul_channel\
+# $docker_context\
+# $c\
+# $cmake\
+# $elixir\
+# $elm\
+# $erlang\
+# $golang\
+# $guix_shell\
+# $haskell\
+# $helm\
+# $java\
+# $lua\
+# $nodejs\
+# $ocaml\
+# $perl\
+# $php\
+# $python\
+# $ruby\
+# $rust\
+# $scala\
+# $swift\
+# $terraform\
+# $zig\
+# $buf\
+# $nix_shell\
+# $memory_usage\
+# $env_var\
+# $crystal\
+# $custom\
+# $sudo\
+# $cmd_duration\
+# $line_break\
+# $jobs\
+# $status\
+# $character
+# """
+#
+# # prompt chars
+# [character]
+# success_symbol = "[❯](bold green)"
+# error_symbol = "[❯](bold bright-red)"
+# vimcmd_symbol = "[❮](bold green)"
+# vimcmd_replace_one_symbol = "[❮](bold yellow)"
+# vimcmd_replace_symbol = "[❮](bold yellow)"
+# vimcmd_visual_symbol = "[❮](bold cyan)"
+#
+# [directory]
+# style = "fg:black bg:blue"
+# truncate_to_repo = true
+# truncation_length = 1
+# truncation_symbol = "../"
+# read_only = '  '
+# read_only_style = 'bright-red'
+# format = '[$path]($style)[$read_only]($read_only_style)'
+#
+# [git_branch]
+# style = "fg:black bg:yellow"
+# symbol = "[ 󰊢 ](fg:black bg:yellow)"
+# format = '[$symbol$branch(:$remote_branch) ]($style)'
+# #
+# [git_commit]
+# only_detached = true
+# tag_symbol = "/"
+# tag_disabled = false
+# format = "[「󰊢 $hash$tag ](black)"
+#
+# [git_status]
+# ahead = "⇡${count}"
+# behind = "⇣${count}"
+# conflicted = '$count'
+# deleted = " "
+# diverged = '↑$ahead_count↓$behind_count'
+# modified = "󱇬 "
+# renamed = " "
+# staged = "󰝒 "
+# stashed = "󰬲 "
+# untracked = " "
+# format = "[$all_status$ahead_behind](fg:black bg:yellow)"
+#
+# [git_metrics]
+# disabled = false
+# format = '(yellow)'
+#
+# [cmd_duration]
+# format = ' took [$duration](white) '
+#
+# [docker_context]
+# symbol = '󰡨'
+# format = '[ $symbol $version ](bright-black)'
+#
+# [package]
+# symbol = '󰏗'
+# format = '[ $symbol $version ](bright-black)'
+#
+# [c]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [cmake]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [elixir]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [elm]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [erlang]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [golang]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [guix_shell]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [haskell]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [helm]
+# symbol = '󰠳'
+# format = '[ $symbol $version ](bright-black)'
+#
+# [lua]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [nodejs]
+# symbol = '󰎙'
+# format = '[ $symbol $version ](bright-black)'
+#
+# [ocaml]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [perl]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [php]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [python]
+# style = "fg:black bg:green"
+# symbol = "[ ](fg:black bg:green)"
+# format = '[ $symbol$branch$virtualenv ]($style)'
+#
+# [ruby]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [rust]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [scala]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [terraform]
+# symbol = '󱁢'
+# format = '[ $symbol $version ](bright-black)'
+#
+# [zig]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [nix_shell]
+# symbol = ''
+# format = '[ $symbol $version ](bright-black)'
+#
+# [conda]
+# symbol = '󱔎'
+# format = '[ $symbol $version ](bright-black)'
+#

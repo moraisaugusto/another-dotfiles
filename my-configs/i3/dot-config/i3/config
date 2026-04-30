@@ -240,6 +240,7 @@ bindsym $mod+d exec rofi -show drun
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #
 ## monitors (4k)
+exec_always --no-startup-id xrandr --dpi 192
 # 1 external monitor (4k)
 #exec xrandr --output DP-0 --off --output DP-5 --primary --mode 3840x2160 --pos 0x0 --rotate normal
 
@@ -278,8 +279,8 @@ bindsym Print exec scrot -e 'mv $f \$PICTURES_FOLDER/$f'
 ## Autostart
 ##
 exec --no-startup-id i3-msg 'workspace $tag1; exec brave'
-exec --no-startup-id i3-msg 'workspace $tag2; exec ghostty'
-exec --no-startup-id i3-msg 'workspace $tag3; exec tidal-hifi'
+exec --no-startup-id i3-msg 'workspace $tag2; exec GDK_SCALE=1 ghostty'
+exec --no-startup-id i3-msg 'workspace $tag3; exec tidal-hifi --force-device-scale-factor=1.8'
 exec --no-startup-id i3-msg 'workspace $tag4; exec thunar'
 exec_always --no-startup-id picom --config $HOME/.config/picom/picom.conf -b
 exec nextcloud
