@@ -22,7 +22,7 @@ GIT_STATUS=$(git status --porcelain 2>/dev/null)
 if [[ -n "$GIT_OUT" && -n "$PY_OUT" ]]; then
     # Git Repo + Python Environment
     if [[ -n "$GIT_STATUS" ]]; then
-      CURRENT_BG=$COLOR_GREEN_DARK
+      CURRENT_BG=$COLOR_GREEN
     else
       CURRENT_BG=$COLOR_GREEN
     fi
