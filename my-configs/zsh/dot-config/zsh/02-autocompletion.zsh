@@ -1,5 +1,11 @@
 #█▓▒░ 1. Autocompletion System Setup
 ZCOMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-$ZSH_VERSION"
+LOC="${ZDOTDIR:-$HOME/.config/zsh}"
+
+# CRITICAL: Add the custom directory to fpath BEFORE calling compinit
+if [[ -d "$LOC/completion" ]]; then
+    fpath=("$LOC/completion" $fpath)
+fi
 
 # Ensure directory exists
 [[ -d "${ZCOMPDUMP:h}" ]] || mkdir -p "${ZCOMPDUMP:h}"

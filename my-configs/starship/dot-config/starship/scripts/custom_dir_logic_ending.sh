@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # --- 1. Configuration ---
-SYMBOL_MAIN=""
+SYMBOL_MAIN=""
 
 COLOR_YELLOW=215
 COLOR_BLUE=4
@@ -49,4 +49,4 @@ ARROW_SEQ="\033[38;5;${CURRENT_BG}m"
 # ${BG_SEQ}    - Prints the colored background + space
 # ${RESET}     - Clears the BG before the arrow starts
 # ${ARROW_SEQ} - Colors the arrow to match the previous BG
-printf "%b" "${MOVE_LEFT}${BG_SEQ}${RESET}${ARROW_SEQ}${SYMBOL_MAIN}${RESET}"
+echo -ne "${BG_SEQ}${RESET}${ARROW_SEQ}${SYMBOL_MAIN}${RESET}"
