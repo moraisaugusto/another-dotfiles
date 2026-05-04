@@ -24,13 +24,13 @@ truncation_symbol = '…/'
 
 # ── GIT (only shows $branch content) ──
 [git_branch]
-format = '[]( fg:yellow )([ $branch $git_status]($style)[](fg:yellow ))'
+format = '[]( fg:yellow )([ $branch $git_status]($style)[](fg:yellow ))'
 style = 'bg:yellow fg:black bold'
 symbol = ''  # Move symbol into format if needed, or keep empty
 
 # ── PYTHON (only shows when $virtualenv exists) ──
 [python]
-format = '[](fg:green)([($virtualenv )$symbol$version]($style)[]( fg:green))'
+format = '[](fg:green)([($virtualenv )$symbol$version]($style)[]( fg:green))'
 style = 'bg:green fg:black bold'
 symbol = ' '
 detect_extensions = ['py']

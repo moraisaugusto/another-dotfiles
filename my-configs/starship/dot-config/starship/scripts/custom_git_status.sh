@@ -47,9 +47,14 @@ BEHIND=$(git rev-list --count HEAD..@{u} 2>/dev/null || echo 0)
 # Trimming whitespace from output
 CLEAN_OUTPUT=$(echo "$OUTPUT" | xargs)
 
-if [[ -n "$CLEAN_OUTPUT" ]]; then
+PY_OUT=$(starship module python)
+
+if [[ -n "$PY_OUT" ]]; then
+    printf "\033[38;5;${BG}m\033[48;5;${BG};38;5;${FG};1m %s \033[0m\033[38;5;${BG}m\033[0m" "$CLEAN_OUTPUT"
+
+elif [[ -n "$CLEAN_OUTPUT" ]]; then
     # \033[38;5;${BG}m      -> The slanted left edge (FG color matches BG of middle)
     # \033[48;5;${BG}...     -> The middle block (Actual BG color)
     # \033[38;5;${BG}m      -> The slanted right edge (FG color matches BG of middle)
-    printf "\033[38;5;${BG}m\033[48;5;${BG};38;5;${FG};1m %s \033[0m\033[38;5;${BG}m\033[0m" "$CLEAN_OUTPUT"
+    printf "\033[38;5;${BG}m\033[48;5;${BG};38;5;${FG};1m %s \033[0m\033[38;5;${BG}m\033[0m" "$CLEAN_OUTPUT"
 fi

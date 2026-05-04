@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # --- 1. Configuration ---
-SYMBOL_MAIN=""
+SYMBOL_MAIN=""
 
 COLOR_YELLOW=215
 COLOR_BLUE=4
@@ -29,8 +29,10 @@ if [[ -n "$GIT_OUT" && -n "$PY_OUT" ]]; then
 elif [[ -n "$GIT_OUT" ]]; then
     if [[ -n "$GIT_STATUS" ]]; then
       CURRENT_BG=$COLOR_YELLOW
+      SYMBOL_MAIN=""
     else
       CURRENT_BG=$COLOR_GREEN_DARK
+
     fi
     # Git Repo only
 else

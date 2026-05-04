@@ -12,7 +12,7 @@ DEPTH=$(echo "$FULL_PATH" | tr -cd '/' | wc -c)
 if [[ "$FULL_PATH" == "$HOME" ]]; then
     # Case: Exactly Home
     DISPLAY_PATH="~/"
-    SYMBOL=""
+    SYMBOL=""
 elif [[ "$FULL_PATH" == "$HOME/"* ]] && [ "$DEPTH" -ge "$TRUNCATE_LEVEL" ]; then
     # Case: Inside Home and Deep enough to truncate
     # Shows ~/../current_folder
