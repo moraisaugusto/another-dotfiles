@@ -37,6 +37,7 @@ elif [[ -n "$GIT_OUT" ]]; then
 else
     # Default (Blue)
     CURRENT_BG=$COLOR_BLUE
+    SYMBOL_MAIN=""
 fi
 
 # --- 4. Sequence Building ---

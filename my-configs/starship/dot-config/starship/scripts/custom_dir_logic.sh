@@ -2,6 +2,9 @@
 
 # 1. Configuration
 TRUNCATE_LEVEL=4  # Depth at which we start showing ~/../folder
+GIT_OUT=$(starship module custom.git_status)
+PY_OUT=$(starship module python)
+
 
 # 2. Get current path and count depth
 # We use realpath to ensure we have the absolute path
@@ -12,23 +15,35 @@ DEPTH=$(echo "$FULL_PATH" | tr -cd '/' | wc -c)
 if [[ "$FULL_PATH" == "$HOME" ]]; then
     # Case: Exactly Home
     DISPLAY_PATH="~/"
-    SYMBOL=""
+    SYMBOL=""
 elif [[ "$FULL_PATH" == "$HOME/"* ]] && [ "$DEPTH" -ge "$TRUNCATE_LEVEL" ]; then
     # Case: Inside Home and Deep enough to truncate
     # Shows ~/../current_folder
     DISPLAY_PATH="~/../$(basename "$FULL_PATH")"
-    SYMBOL=""
+    if [[ -n "$GIT_OUT" || -n "$PY_OUT" ]]; then
+      SYMBOL=""
+    else
+      SYMBOL=""
+    fi
 else
     # Case: Shallow path or outside Home
     # Replaces /home/user with ~
     DISPLAY_PATH=$(echo "$FULL_PATH" | sed "s|^$HOME|~|")
     
     # Decide symbol based on depth
-    if [ "$DEPTH" -le 2 ]; then
-        SYMBOL=""
-    else
-        SYMBOL=""
-    fi
+      if [ "$DEPTH" -le 2 ]; then
+        if [[ -n "$GIT_OUT" && -n "$PY_OUT" ]]; then
+          SYMBOL=""
+        else
+          SYMBOL=""
+        fi
+      else
+        if [[ -n "$GIT_OUT" || -n "$PY_OUT" ]]; then
+          SYMBOL=""
+        else
+          SYMBOL=""
+        fi
+      fi
 fi
 
 # 4. Final Output
