@@ -27,13 +27,11 @@ if [[ -n "$GIT_OUT" && -n "$PY_OUT" ]]; then
       CURRENT_BG=$COLOR_GREEN
     fi
 elif [[ -n "$GIT_OUT" ]]; then
+    SYMBOL_MAIN=""
     if [[ -n "$GIT_STATUS" ]]; then
       CURRENT_BG=$COLOR_YELLOW
-      SYMBOL_MAIN=""
     else
       CURRENT_BG=$COLOR_GREEN_DARK
-      SYMBOL_MAIN=""
-
     fi
     # Git Repo only
 else
