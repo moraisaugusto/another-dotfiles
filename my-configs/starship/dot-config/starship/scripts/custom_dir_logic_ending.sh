@@ -32,6 +32,7 @@ elif [[ -n "$GIT_OUT" ]]; then
       SYMBOL_MAIN=""
     else
       CURRENT_BG=$COLOR_GREEN_DARK
+      SYMBOL_MAIN=""
 
     fi
     # Git Repo only
