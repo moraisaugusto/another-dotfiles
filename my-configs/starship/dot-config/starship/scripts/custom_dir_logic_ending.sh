@@ -34,6 +34,8 @@ elif [[ -n "$GIT_OUT" ]]; then
       CURRENT_BG=$COLOR_GREEN_DARK
     fi
     # Git Repo only
+elif [[ -n "$PY_OUT" ]]; then
+      CURRENT_BG=$COLOR_GREEN
 else
     # Default (Blue)
     CURRENT_BG=$COLOR_BLUE

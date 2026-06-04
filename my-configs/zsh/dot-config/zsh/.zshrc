@@ -69,6 +69,9 @@ eval "$(mise activate zsh)"
 # Smart Jump (Zoxide)
 eval "$(zoxide init zsh)"
 
+# Direnv
+eval "$(direnv hook zsh)"
+
 # TMUX Configuration
 export ZSH_TMUX_AUTOSTART=true
 export ZSH_TMUX_AUTOCONNECT=true

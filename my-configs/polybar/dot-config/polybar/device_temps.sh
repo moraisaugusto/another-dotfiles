@@ -7,7 +7,23 @@ declare -A ICONS=( [cpu]="" [gpu]="󰢮" [aio]="󱪀" )
 COLORS=("#777" "#fabd2f" "#fb4934") # 0=low, 1=mid, 2=high
 
 # --- Safe Data Fetchers ---
-get_cpu() { awk '{printf "%.0f", $1/1000}' /sys/devices/platform/coretemp.0/hwmon/hwmon6/temp1_input 2>/dev/null || echo "-1"; }
+get_cpu() {
+    local hwmon_dir=""
+    
+    # Find the hwmon directory matching common CPU sensor names
+    for name_file in /sys/class/hwmon/hwmon*/name; do
+        if grep -qiE 'coretemp|k10temp|pkg-temp|intel_pstate' "$name_file" 2>/dev/null; then
+            hwmon_dir=$(dirname "$name_file")
+            break
+        fi
+    done
+
+    if [[ -f "$hwmon_dir/temp1_input" ]]; then
+        awk '{printf "%.0f", $1/1000}' "$hwmon_dir/temp1_input" 2>/dev/null || echo "-1"
+    else
+        echo "-1"
+    fi
+}
 get_gpu() { timeout 2 nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits 2>/dev/null | head -1 || echo "-1"; }
 get_aio() { timeout 2 liquidctl status 2>/dev/null | grep -m1 "Liquid temperature" | awk '{print $4}' || echo "-1"; }
 
