@@ -104,6 +104,7 @@ make i3         # i3 window manager
 make tmux       # tmux terminal
 make polybar    # polybar status bar
 make rofi       # rofi launcher
+make ghostty    # ghostty terminal
 ```
 
 Remove all configurations:
@@ -324,6 +325,7 @@ Whether you're setting up a fresh install or looking for inspiration, these dotf
 │   ├── config
 │   ├── direnv
 │   ├── dunst
+│   ├── ghostty
 │   ├── i3
 │   ├── mpv
 │   ├── nautilus

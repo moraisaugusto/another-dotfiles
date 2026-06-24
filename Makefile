@@ -6,7 +6,7 @@ CONFIG_DIR = my-configs
 TARGET = $(HOME)
 
 # List of all packages inside my-configs
-PACKAGES = config starship direnv dunst i3 mpv nautilus picom polybar rofi tmux tmux-powerline tmuxinator zathura Xresources.d
+PACKAGES = config starship direnv dunst i3 mpv nautilus picom polybar rofi tmux tmux-powerline tmuxinator zathura Xresources.d ghostty
 
 # Set default target to help (prevents accidental installation)
 .DEFAULT_GOAL := help
