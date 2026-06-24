@@ -32,9 +32,10 @@ symbol = ''  # Move symbol into format if needed, or keep empty
 [python]
 format = '[](fg:green)([($virtualenv )$symbol$version]($style)[]( fg:green))'
 style = 'bg:green fg:black bold'
-detect_extensions = ['py']
-detect_files = [".python-version", "Pipfile", "pyproject.toml", "requirements.txt", "setup.py", "tox.ini"]
-# detect_folders = [".venv", "venv", "env", ".envrc"]
+detect_extensions = []
+detect_files = []
+# detect_files = [".python-version", "Pipfile", "pyproject.toml", "requirements.txt", "setup.py", "tox.ini"]
+detect_folders = [".venv", "venv", "env", ".envrc"]
 symbol = ' '
 
 # ── CHARACTER ──
