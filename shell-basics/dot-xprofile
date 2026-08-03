@@ -29,8 +29,11 @@ xset fp rehash
 # HiDPI support - 4k
 export GDK_SCALE=2
 export GDK_DPI_SCALE=0.5
+
+# Qt & Cursor
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
-export NON_GDK_APP_SCALE=2
+export QT_ENABLE_HIGHDPI_SCALING=1
+export XCURSOR_SIZE=48
 
 
 # HiDPI support - 2k
