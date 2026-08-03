@@ -1,7 +1,8 @@
 # general
 #
-alias la="ls -a"
-alias ll="ls -l"
+alias la="ls -a --group-directories-first"
+alias ll="ls -l --group-directories-first"
+alias ls="eza -G --group-directories-first"
 
 #git
 if (( $+commands[git] )); then

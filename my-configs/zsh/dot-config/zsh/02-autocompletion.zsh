@@ -33,8 +33,10 @@ fi
 autoload -Uz bashcompinit && bashcompinit
 #█▓▒░ 2. Completion Behavior & Matching
 # Define how completions are generated and matched
-zstyle ':completion:*' completer _expand _complete _correct _approximate
-zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
+zstyle ':completion:*' completer _complete
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+# zstyle ':completion:*' completer _expand _complete _correct _approximate
+# zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
 zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
 

@@ -9,9 +9,9 @@ alias mpv="mpv --hwdec=vaapi --vo=opengl"
 
 #alias fix-win-parts="sudo ntfsfix /dev/sda4 && sudo ntfsfix /dev/sda5"
 
-if command -v eza &> /dev/null; then
-  alias ls=eza
-fi
+# if command -v eza &> /dev/null; then
+#   alias ls=eza
+# fi
 
 # Pomodoro settings
 # timer app: https://github.com/caarlos0/timer
