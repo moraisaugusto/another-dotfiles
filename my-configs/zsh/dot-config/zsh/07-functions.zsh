@@ -42,3 +42,50 @@ function disks() {
 	_e "swaps"
 	_l "$s"
 }
+
+
+# wrap pi (pi.dev) into a bwrap
+pi() {
+  local pi_bin
+  pi_bin=$(whence -p pi)
+
+  if [[ -z "$pi_bin" ]]; then
+    echo "Error: real 'pi' binary not found in PATH." >&2
+    return 1
+  fi
+
+  if [[ "${PWD}" == "/" ]]; then
+    echo "Error: Refusing to run pi at system root." >&2
+    return 1
+  fi
+
+  bwrap \
+    --ro-bind /usr /usr \
+    --ro-bind /lib /lib \
+    --ro-bind /lib64 /lib64 \
+    --ro-bind /bin /bin \
+    --ro-bind /etc/resolv.conf /etc/resolv.conf \
+    --ro-bind /etc/ssl /etc/ssl \
+    --ro-bind /etc/hosts /etc/hosts \
+    --ro-bind /etc/passwd /etc/passwd \
+    --ro-bind /etc/group /etc/group \
+    --tmpfs /home \
+    --tmpfs /sandbox-home \
+    --setenv HOME /sandbox-home \
+    --ro-bind-try "${HOME}/.gitconfig" /sandbox-home/.gitconfig \
+    --ro-bind-try "${HOME}/.local" /sandbox-home/.local \
+    --ro-bind-try "${HOME}/.npm-global" /sandbox-home/.npm-global \
+    --bind-try "${HOME}/.pi" /sandbox-home/.pi \
+    --setenv PATH "/sandbox-home/.npm-global/bin:/sandbox-home/.local/bin:/usr/local/bin:/usr/bin:/bin" \
+    --dev /dev \
+    --dev-bind /dev/shm /dev/shm \
+    --tmpfs /tmp \
+    --proc /proc \
+    --bind "${PWD}" /workspace \
+    --chdir /workspace \
+    --setenv PWD /workspace \
+    --unshare-all \
+    --share-net \
+    --die-with-parent \
+    "/sandbox-home/.npm-global/bin/pi" "$@"
+}

@@ -131,3 +131,19 @@ unset zle_bracketed_paste
 # Source all modular zsh configs from directory
 for config (~/.config/zsh/*.zsh) source $config
 # zprof
+#
+
+# # >>> conda initialize >>>
+# # !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$('/home/augusto/.local/share/mise/installs/python/miniconda3-3.14-26.5.3-2/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/home/augusto/.local/share/mise/installs/python/miniconda3-3.14-26.5.3-2/etc/profile.d/conda.sh" ]; then
+#         . "/home/augusto/.local/share/mise/installs/python/miniconda3-3.14-26.5.3-2/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/home/augusto/.local/share/mise/installs/python/miniconda3-3.14-26.5.3-2/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+# # <<< conda initialize <<<
