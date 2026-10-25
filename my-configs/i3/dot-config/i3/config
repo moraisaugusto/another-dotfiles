@@ -241,7 +241,7 @@ bindsym $mod+d exec rofi -show drun
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #
 ## monitors (4k)
-exec_always --no-startup-id xrandr --dpi 192
+exec_always --no-startup-id xrandr --dpi 192 --rate 60
 # 1 external monitor (4k)
 #exec xrandr --output DP-0 --off --output DP-5 --primary --mode 3840x2160 --pos 0x0 --rotate normal
 

@@ -24,7 +24,7 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 export NO_AT_BRIDGE=1 # fix for zathura
 
 # Keyboard & Display
-setxkbmap -layout us -variant intl
+#setxkbmap -layout us -variant intl
 
 if [[ -n "$DISPLAY" ]]; then
     export BROWSER=brave

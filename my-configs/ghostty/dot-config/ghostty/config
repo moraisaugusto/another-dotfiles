@@ -26,7 +26,7 @@
 # # The config file consists of simple key-value pairs,
 # # separated by equals signs.
 #font-family = Terminess Nerd Font Mono
-#font-size = 13
+font-size = 20
 # window-padding-x = 2
 #
 # # Spacing around the equals sign does not matter.
@@ -48,6 +48,8 @@
 # # which is explained in the docs for that config option.
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
+#
+window-inherit-font-size = false
 gtk-titlebar-hide-when-maximized = true
 window-decoration = false
 mouse-scroll-multiplier = discrete:1

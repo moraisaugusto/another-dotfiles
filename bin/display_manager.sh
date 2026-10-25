@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # --- DISPLAY IDENTIFIERS ---
-PRIMARY_DISPLAY="DP-4"
+PRIMARY_DISPLAY="DP-3"
 SECONDARY_DISPLAY="DP-2"
 
 # --- DISPLAY SETTINGS ---
 RESOLUTION="3840x2160"
-REFRESH_RATE="120"
-SCREEN_DPI="192"
+REFRESH_RATE="100"
+SCALE="1"  # Wayland uses scale factor instead of DPI. 2 ≈ 192 DPI on 4K.
 
 # --- WALLPAPER SETTINGS ---
 WALLPAPER_DIR="$HOME/GoogleDrive/wallpapers"
@@ -19,7 +19,7 @@ show_usage() {
     cat << EOF
 Usage: $(basename "$0") [MODE]
 
-A display and wallpaper manager for i3wm/Polybar.
+A display and wallpaper manager for Sway/Wayland.
 
 Available Modes:
   primary      Enable only $PRIMARY_DISPLAY (Main)
@@ -30,7 +30,7 @@ Available Modes:
 Settings:
   Resolution:  $RESOLUTION
   Refresh:     $REFRESH_RATE Hz
-  DPI:         $SCREEN_DPI
+  Scale:       $SCALE
 EOF
 }
 
@@ -39,31 +39,27 @@ if [ ! -d "$WALLPAPER_DIR" ]; then
     notify-send "Display Manager" "Warning: Wallpaper directory not found at $WALLPAPER_DIR"
 fi
 
+# Ensure swaybg is not already running (avoid duplicate instances)
+pkill -x swaybg 2>/dev/null
+
 case "$1" in
     primary)
-        xrandr --output "$PRIMARY_DISPLAY" --primary --mode "$RESOLUTION" \
-               --rate "$REFRESH_RATE" --dpi "$SCREEN_DPI" --pos 0x0 --rotate normal \
-               --output "$SECONDARY_DISPLAY" --off
+        swaymsg "output \"$PRIMARY_DISPLAY\" mode ${RESOLUTION}@${REFRESH_RATE}Hz pos 0 0 scale $SCALE transform normal, output \"$SECONDARY_DISPLAY\" disable"
         sleep 1
-        feh --bg-fill "$PRIMARY_WALLPAPER"
+        swaybg -o "$PRIMARY_DISPLAY" -i "$PRIMARY_WALLPAPER" -m fill &
         ;;
 
     secondary)
-        xrandr --output "$SECONDARY_DISPLAY" --primary --mode "$RESOLUTION" \
-               --rate "$REFRESH_RATE" --dpi "$SCREEN_DPI" --pos 0x0 --rotate normal \
-               --output "$PRIMARY_DISPLAY" --off
+        swaymsg "output \"$SECONDARY_DISPLAY\" mode ${RESOLUTION}@${REFRESH_RATE}Hz pos 0 0 scale $SCALE transform normal, output \"$PRIMARY_DISPLAY\" disable"
         sleep 1
-        feh --bg-fill "$SECONDARY_WALLPAPER"
+        swaybg -o "$SECONDARY_DISPLAY" -i "$SECONDARY_WALLPAPER" -m fill &
         ;;
 
     both)
-        xrandr --output "$PRIMARY_DISPLAY" --primary --mode "$RESOLUTION" \
-               --rate "$REFRESH_RATE" --dpi "$SCREEN_DPI" --pos 0x0 --rotate normal \
-               --output "$SECONDARY_DISPLAY" --mode "$RESOLUTION" --rate "$REFRESH_RATE" \
-               --dpi "$SCREEN_DPI" --left-of "$PRIMARY_DISPLAY"
+        swaymsg "output \"$PRIMARY_DISPLAY\" mode ${RESOLUTION}@${REFRESH_RATE}Hz pos 0 0 scale $SCALE transform normal, output \"$SECONDARY_DISPLAY\" mode ${RESOLUTION}@${REFRESH_RATE}Hz scale $SCALE transform normal pos -${RESOLUTION%x*} 0"
         sleep 1
-        feh --bg-fill "$SECONDARY_WALLPAPER" --output "$SECONDARY_DISPLAY" \
-            --bg-fill "$PRIMARY_WALLPAPER" --output "$PRIMARY_DISPLAY"
+        swaybg -o "$SECONDARY_DISPLAY" -i "$SECONDARY_WALLPAPER" -m fill \
+               -o "$PRIMARY_DISPLAY" -i "$PRIMARY_WALLPAPER" -m fill &
         ;;
 
     help|--help|-h|"")
