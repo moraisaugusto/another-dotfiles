@@ -1,0 +1,13 @@
+{
+	"custom/power": {
+		"format": "⏻",
+		"tooltip-format": "Power Menu",
+		"menu": "on-click",
+		"menu-file": "~/.config/waybar/power_menu.xml",
+		"menu-actions": {
+			"shutdown": "systemctl poweroff",
+			"reboot": "systemctl reboot",
+			"suspend": "systemctl suspend"
+		}
+	}
+}

@@ -1,0 +1,7 @@
+{
+	"wlr/taskbar": {
+		"ignore-list": [ "kitty" ],
+		"on-click": "activate",
+		"cursor": true
+	}
+}

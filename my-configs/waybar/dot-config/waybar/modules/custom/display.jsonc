@@ -1,0 +1,13 @@
+{
+	"custom/display": {
+		"format": "󰍹",
+		"tooltip-format": "Display Manager",
+		"menu": "on-click",
+		"menu-file": "~/.config/waybar/display_menu.xml",
+		"menu-actions": {
+			"primary": "/home/augusto/.config/sway/display_manager.sh primary",
+			"secondary": "/home/augusto/.config/sway/display_manager.sh secondary",
+			"both": "/home/augusto/.config/sway/display_manager.sh both"
+		}
+	}
+}

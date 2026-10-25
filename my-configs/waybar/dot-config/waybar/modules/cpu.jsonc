@@ -1,0 +1,15 @@
+{
+	"cpu": {
+		"interval": 10,
+		"format": "󰍛 {usage}%",
+		"states": {
+			"warning": 75,
+			"critical": 90
+		},
+		"format-warning": "󰀨 {usage}%",
+		"format-critical": "󰀨 {usage}%",
+		"min-length": 8,
+		"max-length": 8,
+		"tooltip": false
+	}
+}

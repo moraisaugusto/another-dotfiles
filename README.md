@@ -7,11 +7,12 @@
 [![Window Manager](https://img.shields.io/badge/i3wm-gaps-blue)](https://i3wm.org/)
 [![Terminal](https://img.shields.io/badge/tmux-256color-4477aa)](https://tmux.github.io/)
 [![Status Bar](https://img.shields.io/badge/polybar-modular-ff6653)](https://polybar.github.io/)
+[![Waybar](https://img.shields.io/badge/waybar-sway-00b4d8)](https://github.com/Alexays/Waybar)
 [![Launcher](https://img.shields.io/badge/rofi-drun-e436f0)](https://github.com/davatorium/rofi/)
-[![Last Updated](https://img.shields.io/badge/last_updated-2026--04--07-informational)]()
+[![Last Updated](https://img.shields.io/badge/last_updated-2026--10--26-informational)]()
 [![Arch Linux](https://img.shields.io/badge/distro-Arch_Linux-1793d1)](https://archlinux.org/)
 
-A curated collection of dotfiles for a lightweight **Arch Linux + i3-gaps** workflow. Keyboard-driven productivity configurations for i3 window manager, tmux terminal multiplexer, polybar status bar, rofi launcher, and more.
+A curated collection of dotfiles for a lightweight **Arch Linux + i3-gaps** workflow. Keyboard-driven productivity configurations for i3 window manager, tmux terminal multiplexer, polybar/waybar status bars, rofi launcher, and more.
 
 <p align="center">
     <img src="imgs/terminal-installation.png" width=400px alt="Terminal installation">
@@ -47,6 +48,7 @@ A curated collection of dotfiles for a lightweight **Arch Linux + i3-gaps** work
   - [i3 Window Manager](#i3-window-manager-mod4super)
   - [tmux Terminal](#tmux-ctrla)
   - [Polybar Status Bar](#polybar-status-bar)
+  - [Waybar Status Bar (Sway)](#waybar-status-bar-sway)
   - [Rofi Launcher](#rofi-launcher)
 - [Workspace Assignments](#workspace-assignments)
 - [Neovim Configuration](#neovim-configuration)
@@ -68,6 +70,7 @@ A curated collection of dotfiles for a lightweight **Arch Linux + i3-gaps** work
 - **i3-gaps Tiling Window Manager** - Keyboard-driven layout with custom workspaces, gaps, multimedia keys, and auto-start applications
 - **tmux Terminal Multiplexer** - 256-color terminal, Vi keybindings, mouse support, copy-paste integration, and pane synchronization
 - **polybar Status Bar** - Real-time system metrics (CPU, memory, battery, network, temperature), custom audio/network modules, weather and VPN support
+- **Waybar (Sway) Status Bar** - Modular Wayland status bar with Catppuccin themes, Sway workspaces, pulseaudio/backlight controls, and display/power menus (see `my-configs/waybar`)
 - **rofi Application Launcher** - DRun, Run, SSH, and Window modes with themed squared-nord design
 - **ZSH/Neovim/Dunst/Picom** - Complete shell, editor, and UI configuration suite
 
@@ -103,6 +106,7 @@ make configs    # All applications
 make i3         # i3 window manager
 make tmux       # tmux terminal
 make polybar    # polybar status bar
+make waybar     # waybar status bar (Sway)
 make rofi       # rofi launcher
 make ghostty    # ghostty terminal
 ```
@@ -126,6 +130,7 @@ Apply individual configurations:
 # From my-configs directory
 stow --dotfiles -vv -d my-configs -t ~ tmux
 stow --dotfiles -vv -d my-configs -t ~ polybar
+stow --dotfiles -vv -d my-configs -t ~ waybar
 stow --dotfiles -vv -d my-configs -t ~ rofi
 
 # From root directory (shell-basics)
@@ -145,6 +150,13 @@ stow --dotfiles -v shell-basics
 sudo pacman -S i3-gaps polybar rofi zsh neovim dunst picom \
   scrot feh xsel git tmux xautolock networkmanager \
   pulseaudio pamixer brightnessctl xdotool
+```
+
+### Waybar Dependencies (Sway)
+
+```bash
+sudo pacman -S waybar fzf libnotify bluez-utils brightnessctl \
+  pacman-contrib networkmanager ttf-googlesanscode-nerd
 ```
 
 ## Quick Start Keybindings
@@ -247,6 +259,25 @@ sudo pacman -S i3-gaps polybar rofi zsh neovim dunst picom \
 | **Left click** powermenu | Power options |
 | **Left/Right click** Tailscale | Toggle VPN |
 
+### Waybar Status Bar (Sway)
+
+| Action | Module |
+|--------|--------|
+| **Left click** display | Open display manager menu (primary/secondary/both) |
+| **Left click** power | Open power menu (shutdown/reboot/suspend) |
+| **Left click** volume | Mute toggle |
+| **Scroll** volume | Adjust output volume |
+| **Right click** volume | Open `pavucontrol` |
+| **Left click** tray icons | Activate tray application |
+
+Launch Waybar manually with:
+
+```bash
+~/.config/waybar/launch.sh
+```
+
+> Themes live in `~/.config/waybar/themes/` (Catppuccin Mocha, Macchiato, Frappe, Latte, and a Polybar-matching palette) and are imported from `style.css`.
+
 ### Rofi Launcher
 
 | Shortcut | Action |
@@ -335,6 +366,7 @@ Whether you're setting up a fresh install or looking for inspiration, these dotf
 │   ├── tmux
 │   ├── tmuxinator
 │   ├── tmux-powerline
+│   ├── waybar
 │   └── zathura
 ├── oh-my-zsh/
 │   ├── lib/
@@ -425,7 +457,7 @@ nvim --headless +checkhealth
 
 - **Distro-Specific**: Optimized for Arch Linux. May require adjustments for other distributions
 - **Multi-Monitor**: Some polybar modules and i3lock configurations assume dual-monitor setup
-- **Wayland**: These configurations are X11-only. Wayland support is not included
+- **Wayland**: The primary i3 + polybar workflow is X11-based. A Wayland/Sway setup is available through the `waybar` package (`make waybar`) and the `sway-config` branch
 - **Hardware-Specific**: Temperature and network modules in polybar may require adjustment for your hardware
 - **Third-Party Scripts**: Some polybar scripts rely on external tools that may need manual installation
 
@@ -447,6 +479,10 @@ Contributions are welcome! Please follow these guidelines:
 - Follow existing naming conventions for config files
 
 ## Changelog
+
+### 2026-10-26
+- Added Waybar (mechabar) status bar configuration for Sway (`my-configs/waybar`)
+- Added `make waybar` target and documented Waybar mouse actions, themes, and dependencies
 
 ### 2026-04-07
 - Added troubleshooting section

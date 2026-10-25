@@ -1,0 +1,44 @@
+{
+	"group/pulseaudio": {
+		"modules": [
+			"pulseaudio#output",
+			"pulseaudio#input"
+		],
+		"orientation": "horizontal",
+		"drawer": {
+			"transition-left-to-right": false
+		}
+	},
+
+	"pulseaudio#output": {
+		"format": "{icon} {volume}%",
+		"format-muted": "{icon} {volume}%",
+		"format-icons": {
+			"default": [ "󰕿", "󰖀", "󰕾" ],
+			"default-muted": "󰝟",
+			"headphone": "󰋋",
+			"headphone-muted": "󰟎",
+			"headset": "󰋎",
+			"headset-muted": "󰋐"
+		},
+		"min-length": 8,
+		"max-length": 8,
+		"on-click": "~/.config/waybar/scripts/volume output mute",
+		"on-scroll-up": "~/.config/waybar/scripts/volume output up",
+		"on-scroll-down": "~/.config/waybar/scripts/volume output down",
+    "on-click-right": "pavucontrol",
+		"tooltip-format": "Output Device: {desc}"
+	},
+
+	"pulseaudio#input": {
+		"format": "{format_source}",
+		"format-source": "󰍬 {volume}%",
+		"format-source-muted": "󰍭 {volume}%",
+		"min-length": 8,
+		"max-length": 8,
+		"on-click": "~/.config/waybar/scripts/volume input mute",
+		"on-scroll-up": "~/.config/waybar/scripts/volume input up",
+		"on-scroll-down": "~/.config/waybar/scripts/volume input down",
+		"tooltip-format": "Input Device: {desc}"
+	}
+}

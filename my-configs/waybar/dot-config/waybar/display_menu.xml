@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <object class="GtkMenu" id="menu">
+    <child>
+      <object class="GtkMenuItem" id="primary">
+        <property name="label">󰍹  Primary</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="secondary">
+        <property name="label">󰍺  Secondary</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="both">
+        <property name="label">󰹖  Both</property>
+      </object>
+    </child>
+  </object>
+</interface>

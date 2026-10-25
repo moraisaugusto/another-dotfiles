@@ -1,0 +1,117 @@
+#!/usr/bin/env bash
+#
+# Connect to a Wi-Fi network
+#
+# Dependencies:
+#   - networkmanager (nmcli)
+#   - fzf
+#   - libnotify (notify-send)
+#
+# Author:  Jesse Mirabel <sejjymvm@gmail.com>
+# Date:    August 11, 2025
+# License: MIT
+
+print_help() {
+	local script=${0##*/}
+
+	cat <<-EOF
+		$script: $script <option>
+		    Connect to a Wi-Fi network
+
+		    Options:
+		      off       Turn Wi-Fi off
+		      on        Turn Wi-Fi on
+		      menu      Turn Wi-Fi on and launch the Wi-Fi menu
+	EOF
+}
+
+turn_wifi_on() {
+	local status
+	status=$(nmcli radio wifi)
+
+	case $status in
+		enabled)  return 0 ;;
+		disabled) nmcli radio wifi on ;;
+	esac
+
+	notify-send "Wi-Fi On" --icon "network-wireless-on" \
+		--hint "string:x-canonical-private-synchronous:network"
+}
+
+cleanup() {
+	kill "$PID"
+	wait "$PID"
+}
+
+main() {
+	local option=$1
+
+	case $option in
+		off)
+			local status
+			status=$(nmcli radio wifi)
+
+			[[ $status == disabled ]] && return 0
+
+			nmcli radio wifi off
+
+			notify-send "Wi-Fi Off" --icon "network-wireless-off" \
+				--hint "string:x-canonical-private-synchronous:network"
+			;;
+		on)
+			turn_wifi_on
+			;;
+		menu)
+			turn_wifi_on
+
+			trap cleanup EXIT
+
+			while true; do
+				nmcli device wifi rescan
+				sleep 10
+			done &
+			PID=$!
+
+			local list="nmcli device wifi list --rescan no"
+
+			local opts=(
+				--bind="start,every(2):reload-sync($list)"
+				--border-label=" Wi-Fi Networks "
+				--border="sharp"
+				--cycle
+				--ghost="Search"
+				--header-lines=1
+				--highlight-line
+				--info="inline-right"
+				--reverse
+			)
+
+			local bssid
+			bssid=$(fzf "${opts[@]}" | awk '{print $1}')
+
+			[[ -z $bssid ]] && return 1
+
+			if [[ $bssid == '*' ]]; then
+				notify-send "Wi-Fi" "Already connected to this network" \
+					--icon "package-install"
+				return 0
+			fi
+
+			printf "Connecting...\n"
+
+			if ! nmcli --ask device wifi connect "$bssid"; then
+				notify-send "Wi-Fi" "Failed to connect" --icon "package-purge"
+				return 1
+			fi
+
+			notify-send "Wi-Fi" "Successfully connected" \
+				--icon "package-install"
+			;;
+		*)
+			print_help >&2
+			return 1
+			;;
+	esac
+}
+
+main "$@"

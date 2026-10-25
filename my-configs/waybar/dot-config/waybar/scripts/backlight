@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+#
+# Adjust screen brightness
+#
+# Dependencies:
+#   - brightnessctl
+#   - libnotify (notify-send)
+#
+# Author:  Jesse Mirabel <sejjymvm@gmail.com>
+# Date:    August 28, 2025
+# License: MIT
+
+VALUE=2
+
+print_help() {
+	local script=${0##*/}
+
+	cat <<-EOF
+		$script: $script <option> [value]
+		    Adjust screen brightness
+
+		    Options:
+		      up        Increase brightness by [value] (default: $VALUE)
+		      down      Decrease brightness by [value] (default: $VALUE)
+	EOF
+}
+
+main() {
+	local option=$1
+	local value=${2:-$VALUE}
+
+	if ! [[ $value =~ ^[1-9][0-9]*$ ]]; then
+		printf "%s: value must be an integer greater than 0\n" "${0##*/}" >&2
+		return 1
+	fi
+
+	case $option in
+		up)
+			local sign="+"
+			;;
+		down)
+			local sign="-"
+			;;
+		*)
+			print_help >&2
+			return 1
+			;;
+	esac
+
+	brightnessctl set "${value}%${sign}" >/dev/null
+
+	local level
+	level=$(brightnessctl --machine-readable | awk -F ',' '{print $4}')
+
+	notify-send "Brightness: $level" --icon "contrast" \
+		--hint "int:value:${level}" \
+		--hint "string:x-canonical-private-synchronous:backlight"
+}
+
+main "$@"

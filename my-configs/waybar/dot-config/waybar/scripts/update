@@ -1,0 +1,132 @@
+#!/usr/bin/env bash
+#
+# Update Arch Linux packages
+#
+# Dependencies:
+#   - pacman-contrib (checkupdates)
+#   - libnotify (notify-send)
+#
+# Author:  Jesse Mirabel <sejjymvm@gmail.com>
+# Date:    August 16, 2025
+# License: MIT
+
+AUR_HELPER=
+
+print_help() {
+	local script=${0##*/}
+
+	cat <<-EOF
+		$script: $script [option]
+		    Update Arch Linux packages
+
+		    Options:
+		      data      Print data in JSON format
+	EOF
+}
+
+detect_helper() {
+	if [[ -z $AUR_HELPER ]]; then
+		local helper
+		for helper in aura pakku paru pikaur trizen yay; do
+			if command -v "$helper" >/dev/null; then
+				AUR_HELPER=$helper
+				return 0
+			fi
+		done
+	fi
+}
+
+detect_updates() {
+	local repo_updates repo_status
+	repo_updates=$(checkupdates)
+	repo_status=$?
+
+	if ((repo_status != 0 && repo_status != 2)); then
+		return 1
+	fi
+
+	repo_updates=$(grep -c . <<<"$repo_updates")
+
+	if [[ -n $AUR_HELPER ]]; then
+		local aur_updates aur_status
+		aur_updates=$(command "$AUR_HELPER" -Qua)
+		aur_status=$?
+
+		if ((aur_status != 0 && ${#aur_updates} > 0)); then
+			return 1
+		fi
+
+		aur_updates=$(awk '$NF != "[ignored]" {print $1}' <<<"$aur_updates" |
+			grep -c .)
+	fi
+
+	printf "%d %d" "$repo_updates" "${aur_updates:-0}"
+}
+
+main() {
+	local option=$1
+
+	case $option in
+		'')
+			trap "pkill -RTMIN+1 waybar" EXIT
+
+			detect_helper
+
+			local md_reset=$'\e[0m'
+			local fg_green=$'\e[32m'
+			local fg_blue=$'\e[34m'
+
+			printf "%bUpdating packages...%b\n" "$fg_blue" "$md_reset"
+
+			if [[ -n $AUR_HELPER ]]; then
+				command "$AUR_HELPER" -Syu
+			else
+				sudo pacman -Syu
+			fi
+
+			notify-send "Update Complete" --icon "package-install"
+
+			printf "\n%bUpdate complete!%b\n" "$fg_green" "$md_reset"
+			read -rn 1 -p "Press any key to exit..."
+			;;
+		data)
+			detect_helper
+
+			local updates icon tooltip
+
+			if ! updates=$(detect_updates); then
+				icon="󰒑"
+				tooltip="Failed to detect updates"
+				tooltip+="\nRight-click to retry"
+			else
+				local repo_updates aur_updates
+				read -r repo_updates aur_updates <<<"$updates"
+
+				if ((repo_updates + aur_updates > 0)); then
+					local count
+					printf -v count "%3d" "$repo_updates"
+					icon="󰄠"
+					tooltip="Repo: $count"
+
+					if [[ -n $AUR_HELPER ]]; then
+						printf -v count "%3d" "$aur_updates"
+						tooltip+="\n AUR: $count"
+					fi
+				else
+					icon="󰸟"
+					tooltip="No updates available"
+				fi
+			fi
+
+			cat <<-EOF
+				{ "text": "$icon", "tooltip": "$tooltip" }
+			EOF
+			;;
+		*)
+			print_help >&2
+			return 1
+			;;
+	esac
+}
+
+main "$@"

@@ -1,0 +1,54 @@
+/* Color Definitions from Polybar */
+@define-color bg #222222;
+@define-color bg-alt #444444;
+@define-color fg #dfdfdf;
+@define-color fg-alt #7a7a7a;
+@define-color primary #ffb52a;
+@define-color secondary #e60053;
+@define-color alert #bd2c40;
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "SauceCodePro Nerd Font", "Weather Icons", "Noto Emoji", "Font Awesome 5 Free", sans-serif;
+    font-size: 28px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: @bg;
+    color: @fg;
+}
+
+#custom-info-tailscale,
+#custom-mullvad-vpn,
+#custom-device-temperature,
+#clock,
+#custom-weather,
+#custom-updates-arch-combined,
+#pulseaudio,
+#disk,
+#network,
+#custom-monitors,
+#group-power,
+#tray {
+    padding: 0 10px;
+    margin-right: 12px;
+}
+
+#pulseaudio, #clock, #disk {
+    border-bottom: 2px solid #0000ff;
+}
+
+#tray {
+    background-color: @bg;
+    padding-right: 8px;
+}
+
+/* --- Inline Expanding Power Menu --- */
+/* --- Inline Expanding Power Menu (Font-Size & Opacity Animation) --- */
+
+#custom-power {
+    padding: 0 10px;
+    margin-right: 12px;
+}

@@ -1,0 +1,24 @@
+/* Polybar color scheme */
+
+/* Core palette (from polybar [colors]) */
+@define-color primary      #ffb52a;
+@define-color secondary    #e60053;
+@define-color alert        #bd2c40;
+@define-color cyan         #00ffff;
+
+/* Base colors */
+@define-color fg           #dfdfdf;
+@define-color fg_alt       #7a7a7a;
+@define-color bg_0         #222222;
+@define-color bg_1         #2a2a2a;
+@define-color bg_2         #363636;
+@define-color bg_3         #444444;
+@define-color bg_alt       #444444;
+@define-color accent       @primary;
+@define-color border       @fg_alt;
+@define-color shadow       #1a1a1a;
+
+/* States */
+@define-color warning      @primary;
+@define-color critical     @alert;
+@define-color charging     #5af78e;

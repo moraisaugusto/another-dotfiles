@@ -1,0 +1,127 @@
+#!/usr/bin/env bash
+#
+# Connect to a Bluetooth device
+#
+# Dependencies:
+#   - bluez-utils (bluetoothctl)
+#   - fzf
+#   - libnotify (notify-send)
+#
+# Author:  Jesse Mirabel <sejjymvm@gmail.com>
+# Date:    August 19, 2025
+# License: MIT
+
+print_help() {
+	local script=${0##*/}
+
+	cat <<-EOF
+		$script: $script <option>
+		    Connect to a Bluetooth device
+
+		    Options:
+		      off       Turn Bluetooth off
+		      on        Turn Bluetooth on
+		      menu      Turn Bluetooth on and launch the Bluetooth menu
+	EOF
+}
+
+turn_bluetooth_on() {
+	local state
+	state=$(bluetoothctl show | awk '/PowerState/ {print $2}')
+
+	case $state in
+		on)          return 0 ;;
+		off)         bluetoothctl power on ;;
+		off-blocked) rfkill unblock bluetooth ;;
+	esac
+
+	notify-send "Bluetooth On" --icon "network-bluetooth-activated" \
+		--hint "string:x-canonical-private-synchronous:bluetooth"
+}
+
+cleanup() {
+	kill "$PID"
+	wait "$PID"
+}
+
+main() {
+	local option=$1
+
+	case $option in
+		off)
+			local state
+			state=$(bluetoothctl show | awk '/PowerState/ {print $2}')
+
+			[[ $state == off ]] && return 0
+
+			bluetoothctl power off
+
+			notify-send "Bluetooth Off" --icon "network-bluetooth-inactive" \
+				--hint "string:x-canonical-private-synchronous:bluetooth"
+			;;
+		on)
+			turn_bluetooth_on
+			;;
+		menu)
+			turn_bluetooth_on
+
+			trap cleanup EXIT
+
+			while true; do
+				bluetoothctl --timeout 10 scan on >/dev/null
+			done &
+			PID=$!
+
+			local list="bluetoothctl devices | sed 's/^Device //'"
+
+			local opts=(
+				--bind="start,every(2):reload-sync($list)"
+				--border-label=" Bluetooth Devices "
+				--border="sharp"
+				--cycle
+				--ghost="Search"
+				--header="MAC ADDRESS       NAME"
+				--highlight-line
+				--info="inline-right"
+				--reverse
+			)
+
+			local address
+			address=$(fzf "${opts[@]}" | awk '{print $1}')
+
+			[[ -z $address ]] && return 1
+
+			local connected
+			connected=$(bluetoothctl info "$address" |
+				awk '/Connected/ {print $2}')
+
+			if [[ $connected == yes ]]; then
+				notify-send "Bluetooth" "Already connected to this device" \
+					--icon "package-install"
+				return 0
+			fi
+
+			local paired
+			paired=$(bluetoothctl info "$address" | awk '/Paired/ {print $2}')
+
+			if [[ $paired != yes ]]; then
+				bluetoothctl pair "$address"
+			fi
+
+			if ! bluetoothctl connect "$address"; then
+				notify-send "Bluetooth" "Failed to connect" \
+					--icon "package-purge"
+				return 1
+			fi
+
+			notify-send "Bluetooth" "Successfully connected" \
+				--icon "package-install"
+			;;
+		*)
+			print_help >&2
+			return 1
+			;;
+	esac
+}
+
+main "$@"

@@ -1,0 +1,145 @@
+#!/usr/bin/env bash
+#
+# Adjust default device volume
+#
+# Dependencies:
+#   - libpulse (pactl)
+#   - libnotify (notify-send)
+#
+# Author:  Jesse Mirabel <sejjymvm@gmail.com>
+# Date:    September 07, 2025
+# License: MIT
+
+VALUE=2
+MIN=0
+MAX=100
+
+print_help() {
+	local script=${0##*/}
+
+	cat <<-EOF
+		$script: $script <device> <option> [value]
+		    Adjust default device volume
+
+		    Devices:
+		      input     Use @DEFAULT_SOURCE@
+		      output    Use @DEFAULT_SINK@
+
+		    Options:
+		      mute      Toggle mute status
+		      up        Increase volume by [value] (default: $VALUE)
+		      down      Decrease volume by [value] (default: $VALUE)
+	EOF
+}
+
+get_status() {
+	local muted
+	muted=$(pactl "get-${DEVICE_TYPE}-mute" "$DEVICE_NAME" | awk '{print $2}')
+
+	case $muted in
+		yes) printf "muted" ;;
+		no)  printf "unmuted" ;;
+	esac
+}
+
+get_volume() {
+	pactl "get-${DEVICE_TYPE}-volume" "$DEVICE_NAME" | awk '{print $5}' |
+		tr -d "%"
+}
+
+get_icon() {
+	local status=$1
+	local volume=$2
+
+	case $status in
+		muted)
+			printf "%s-muted" "$DEVICE_ICON"
+			;;
+		unmuted)
+			if ((volume < MAX * 33 / 100)); then
+				printf "%s-low" "$DEVICE_ICON"
+			elif ((volume < MAX * 66 / 100)); then
+				printf "%s-medium" "$DEVICE_ICON"
+			else
+				printf "%s-high" "$DEVICE_ICON"
+			fi
+			;;
+	esac
+}
+
+set_volume() {
+	local volume=$1
+
+	((volume < MIN)) && volume=$MIN
+	((volume > MAX)) && volume=$MAX
+
+	pactl "set-${DEVICE_TYPE}-volume" "$DEVICE_NAME" "${volume}%"
+
+	local status icon
+	status=$(get_status)
+	icon=$(get_icon "$status" "$volume")
+
+	notify-send "${device^}: ${volume}%" --icon "$icon" \
+		--hint "int:value:${volume}" \
+		--hint "string:x-canonical-private-synchronous:volume"
+}
+
+main() {
+	local device=$1
+	local option=$2
+	local value=${3:-$VALUE}
+
+	if ! [[ $value =~ ^[1-9][0-9]*$ ]]; then
+		printf "%s: value must be an integer greater than 0\n" "${0##*/}" >&2
+		return 1
+	fi
+
+	case $device in
+		input)
+			DEVICE_TYPE="source"
+			DEVICE_NAME="@DEFAULT_SOURCE@"
+			DEVICE_ICON="mic-volume"
+			;;
+		output)
+			DEVICE_TYPE="sink"
+			DEVICE_NAME="@DEFAULT_SINK@"
+			DEVICE_ICON="audio-volume"
+			;;
+		*)
+			print_help >&2
+			return 1
+			;;
+	esac
+
+	case $option in
+		mute)
+			pactl "set-${DEVICE_TYPE}-mute" "$DEVICE_NAME" toggle
+
+			local status volume icon
+			status=$(get_status)
+			volume=$(get_volume)
+			icon=$(get_icon "$status" "$volume")
+
+			notify-send "${device^}: ${status^}" --icon "$icon" \
+				--hint "string:x-canonical-private-synchronous:volume"
+			;;
+		up)
+			local volume
+			volume=$(get_volume)
+
+			set_volume $((volume + value))
+			;;
+		down)
+			local volume
+			volume=$(get_volume)
+
+			set_volume $((volume - value))
+			;;
+		*)
+			print_help >&2
+			return 1
+			;;
+	esac
+}
+
+main "$@"

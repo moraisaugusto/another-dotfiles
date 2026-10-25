@@ -1,0 +1,255 @@
+@import "themes/polybar.css";
+
+* {
+	font-family: "SauceCodePro Nerd Font", "Weather Icons", "Noto Emoji", "Font Awesome 5 Free", "Font Awesome 5 Brands";
+	font-size: 28px;
+	font-weight: normal;
+	color: @fg;
+}
+
+#waybar {
+	background-color: @shadow;
+}
+#waybar > box {
+	margin: 3px;
+	background-color: @bg_0;
+}
+
+.module {
+	margin-bottom: -1px; /* Vertically align modules */
+}
+
+.modules-center {
+	padding-left: 14px; /* Center center modules */
+}
+
+button {
+	border: none;
+	border-radius: 16px;
+	padding: 0 10px;
+	min-width: 16px;
+	min-height: 24px;
+}
+button:hover {
+	background-color: @bg_alt;
+	background-image: none;
+	color: @fg_alt;
+}
+
+tooltip {
+	border: 2px solid @border;
+	border-radius: 0;
+	background-color: @bg_0;
+}
+tooltip box {
+	margin: -4px;
+	padding: 0 6px;
+}
+
+menu {
+	border: 2px solid @border;
+	border-radius: 0;
+	background-color: @bg_0;
+}
+menu menuitem {
+	margin: 0 2px;
+}
+menu menuitem:hover {
+	background-color: @bg_alt;
+}
+menu separator {
+	margin: 0 2px;
+	background-color: @bg_alt;
+}
+
+/* Left modules */
+
+#custom-user {
+	padding: 0 16px;
+}
+
+#workspaces {
+	padding: 0 1px;
+	background-color: @bg_1;
+}
+#workspaces button.active label,
+#workspaces button.focused label {
+	font-size: 25.75px;
+	color: @accent;
+}
+
+#window {
+	margin: -1px 0; /* https://github.com/Alexays/Waybar/issues/2026 */
+	padding-left: 12px;
+}
+
+/* Center modules */
+
+#temperature {
+	background-color: @bg_1;
+}
+#temperature.critical {
+	color: @critical;
+}
+
+#memory {
+	background-color: @bg_2;
+}
+#memory.warning {
+	color: @warning;
+}
+#memory.critical {
+	color: @critical;
+}
+
+#cpu {
+	background-color: @bg_3;
+}
+#cpu.warning {
+	color: @warning;
+}
+#cpu.critical {
+	color: @critical;
+}
+
+#custom-distro {
+	font-size: 25.75px;
+	padding: 0 10px 0 5px;
+	background-color: @accent;
+	color: @bg_0;
+}
+
+#idle_inhibitor {
+	background-color: @bg_3;
+}
+#idle_inhibitor:hover,
+#idle_inhibitor.deactivated {
+	color: @fg_alt;
+}
+#clock.time {
+	padding-right: 6px;
+	/* background-color: @bg_3; */
+}
+
+#clock.date {
+	padding-left: 6px;
+	/* background-color: @bg_2; */
+}
+#clock.date:hover {
+	color: @fg_alt;
+}
+
+#network {
+	padding: 0 6px 0 4px;
+	background-color: @bg_1;
+}
+#network:hover {
+	color: @fg_alt;
+}
+#bluetooth {
+	padding: 0 4px;
+	background-color: @bg_1;
+}
+#bluetooth:hover {
+	color: @fg_alt;
+}
+#custom-update {
+	padding: 0 6px 0 1px;
+	background-color: @bg_1;
+}
+#custom-update:hover {
+	color: @fg_alt;
+}
+
+/* Right modules */
+
+#mpris {
+	padding: 0 12px;
+}
+#mpris:hover,
+#mpris.paused {
+	color: @fg_alt;
+}
+
+#pulseaudio,
+#wireplumber {
+	background-color: @bg_1;
+}
+#pulseaudio:hover,
+#pulseaudio.output.muted,
+#pulseaudio.input.source-muted,
+#wireplumber:hover,
+#wireplumber.muted {
+	color: @fg_alt;
+}
+
+#backlight {
+	background-color: @bg_2;
+}
+
+#battery {
+	background-color: @bg_3;
+}
+#battery.warning {
+	color: @warning;
+}
+#battery.critical {
+	color: @critical;
+}
+#battery.charging {
+	color: @charging;
+}
+
+#custom-power {
+	border-radius: 16px;
+	padding: 0 30px 0 20px;
+  margin-right: 10px;
+	color: @accent;
+}
+#custom-power:hover {
+	background-color: @bg_alt;
+	color: @fg_alt;
+}
+
+/* Dividers */
+
+#custom-left,
+#custom-right,
+#custom-left_inverse,
+#custom-right_inverse {
+	font-size: 25.5px;
+}
+
+#custom-left.accent,
+#custom-right.accent {
+	color: @accent;
+}
+#custom-left.bg_1,
+#custom-right.bg_1 {
+	color: @bg_1;
+}
+#custom-left.bg_2,
+#custom-right.bg_2 {
+	background-color: @bg_1;
+	color: @bg_2;
+}
+#custom-left.bg_3,
+#custom-right.bg_3 {
+	background-color: @bg_2;
+	color: @bg_3;
+}
+
+#custom-left_inverse.bg_3,
+#custom-right_inverse.bg_3 {
+	color: @bg_3;
+}
+
+
+#custom-display {
+	border-radius: 16px;
+	color: @accent;
+  padding: 0 30px;
+}
+#custom-display:hover {
+	color: @fg_alt;
+}

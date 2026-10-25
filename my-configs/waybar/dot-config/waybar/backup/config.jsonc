@@ -1,0 +1,128 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 50,
+    "spacing": 0,
+
+    // Target monitor set to DP-3 (matching monitor = DP-3)
+    "output": [
+        "DP-3"
+    ],
+
+    // Module Order
+    "modules-left": [
+        "custom/info-tailscale",
+        "custom/mullvad-vpn",
+        "custom/device-temperature"
+    ],
+    "modules-center": [
+        "clock",
+        "custom/weather"
+    ],
+    "modules-right": [
+        "custom/updates-arch-combined",
+        "custom/pipewire-custom",
+        "disk#home",
+        "disk#slash",
+        "network#eth",
+        "custom/monitors",
+        "custom/power",
+        "custom/shutdown",
+        "custom/reboot",
+        "custom/suspend",
+        "custom/lock",
+        "tray"
+    ],
+
+    // --- LEFT MODULES ---
+
+    "custom/info-tailscale": {
+        "exec": "~/.config/polybar-scripts/polybar-scripts/tailscale/info-tailscale.sh | sed -E 's/%\\{F#([a-zA-Z0-9]+)\\}/<span foreground=\"#\\1\">/g; s/%\\{F-\\}/<\\/span>/g; s/%\\{F[^}]*\\}//g'",
+        "markup": true,
+        "on-click": "tailscale up",
+        "on-click-right": "tailscale down",
+        "interval": 1
+    },
+
+    "custom/mullvad-vpn": {
+        "exec": "if hash mullvad &>/dev/null; then ~/.config/polybar-scripts/polybar-scripts/polybar-vpn-controller/vpn_module status mullvad | sed -E 's/%\\{F#([a-zA-Z0-9]+)\\}/<span foreground=\"#\\1\">/g; s/%\\{F-\\}/<\\/span>/g; s/%\\{F[^}]*\\}//g'; fi",
+        "markup": true,
+        "on-click": "~/.config/polybar-scripts/polybar-scripts/polybar-vpn-controller/vpn_module toggle",
+        "on-click-right": "~/.config/polybar-scripts/polybar-scripts/polybar-vpn-controller/vpn_module menu",
+        "on-click-middle": "~/.config/polybar-scripts/polybar-scripts/polybar-vpn-controller/vpn_module ip-clip",
+        "interval": 5
+    },
+
+    "custom/device-temperature": {
+        "exec": "~/.config/polybar/device_temps.sh --render cpu,gpu,aio | sed -E 's/%\\{F#([a-zA-Z0-9]+)\\}/<span foreground=\"#\\1\">/g; s/%\\{F-\\}/<\\/span>/g; s/%\\{F[^}]*\\}//g'",
+        "markup": true,
+        "interval": 2
+    },
+
+    // --- CENTER MODULES ---
+
+    "clock": {
+        "interval": 1,
+        "format": "{:%d/%m/%y - %H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "custom/weather": {
+        "exec": "~/.config/polybar-scripts/polybar-scripts/custom-weather/weather.sh 2>/dev/null",
+        "markup": true,
+        "interval": 600
+    },
+
+    // --- RIGHT MODULES ---
+
+    "custom/updates-arch-combined": {
+        "exec": "~/.config/polybar-scripts/polybar-scripts/updates-arch-combined/updates-arch-combined.sh | sed -E 's/%\\{F#([a-zA-Z0-9]+)\\}/<span foreground=\"#\\1\">/g; s/%\\{F-\\}/<\\/span>/g; s/%\\{F[^}]*\\}//g'",
+        "markup": true,
+        "interval": 600
+    },
+
+    "custom/pipewire-custom": {
+        "exec": "~/.dotfiles/extras/config/polybar-scripts/pipewire-custom/pipewire-custom.sh | sed -E 's/%\\{F#([a-zA-Z0-9]+)\\}/<span foreground=\"#\\1\">/g; s/%\\{F-\\}/<\\/span>/g; s/%\\{F[^}]*\\}//g'",
+        "markup": true,
+        "interval": 0.01,
+        "on-click": "~/.dotfiles/extras/config/polybar-scripts/pipewire-custom/pipewire-custom.sh --change-sink",
+        "on-click-middle": "~/.dotfiles/extras/config/polybar-scripts/pipewire-custom/pipewire-custom.sh --mute",
+        "on-click-right": "pavucontrol",
+        "on-scroll-up": "~/.dotfiles/extras/config/polybar-scripts/pipewire-custom/pipewire-custom.sh --up",
+        "on-scroll-down": "~/.dotfiles/extras/config/polybar-scripts/pipewire-custom/pipewire-custom.sh --down"
+    },
+
+    "disk#home": {
+        "interval": 25,
+        "path": "/home",
+        "format": "<span foreground='#7a7a7a'></span> {percentage_used}%"
+    },
+
+    "disk#slash": {
+        "interval": 25,
+        "path": "/",
+        "format": "<span foreground='#7a7a7a'></span> {percentage_used}%"
+    },
+
+    "network#eth": {
+        "interface": "enp63s0",
+        "interval": 3,
+        "format-connected": " ",
+        "format-disconnected": "{ifname}"
+    },
+
+    "custom/monitors": {
+        "format": "",
+        "tooltip": "Display Switcher",
+        "on-click": "~/.config/polybar/display_manager.sh both"
+    },
+
+    // --- NATIVE HOVER DRAWER POWER MENU ---
+    "custom/power": {
+        "format": "<span foreground='#ff5c56'></span>",
+        "return-type": "json",
+        "exec": "~/.config/waybar/scripts/power-toggle.sh",
+        "on-click": "~/.config/waybar/scripts/power-toggle.sh",
+        "interval": "once"
+    }
+}
