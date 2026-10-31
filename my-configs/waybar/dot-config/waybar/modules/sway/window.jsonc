@@ -1,0 +1,10 @@
+{
+	"sway/window": {
+		"format": "{title}",
+		"max-length": 60,
+		"rewrite": {
+			"": "Desktop"
+		},
+		"tooltip": false
+	}
+}

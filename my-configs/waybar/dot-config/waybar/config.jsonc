@@ -10,6 +10,8 @@
 
 	"include": [
 		"~/.config/waybar/modules/custom/*.jsonc",
+		"~/.config/waybar/modules/sway/*.jsonc",
+		"~/.config/waybar/modules/optional/wireplumber.jsonc",
 		// "~/.config/waybar/modules/hyprland/*.jsonc",
 		// "~/.config/waybar/modules/optional/*.jsonc",
 		"~/.config/waybar/modules/*.jsonc"
@@ -27,6 +29,8 @@
 	],
 
 	"modules-center": [
+		"sway/window",
+
 		// "custom/left#bg_1",
 		// "temperature",
 		//
@@ -51,7 +55,8 @@
 
 	"modules-right": [
 		"custom/left#bg_1",
-		"group/pulseaudio",
+		"group/wireplumber",
+		// "group/pulseaudio",
 
 		// "custom/left#bg_2",
 		// "backlight",

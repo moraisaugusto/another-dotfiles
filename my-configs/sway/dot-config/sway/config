@@ -1,0 +1,319 @@
+# Sway config file
+#
+# Based on the i3 configuration, adapted for Wayland/Sway.
+#
+# Please see https://man.archlinux.org/man/sway.5 for a complete reference!
+
+set $mod Mod4
+set $CONFIG_PATH $HOME/.config/sway
+set $PICTURES_FOLDER $HOME/Pictures
+set $term ghostty
+
+# Import display/session env into systemd user manager and D-Bus activation env
+# so xdg-desktop-portal (file picker) and GUI apps launched via exec work.
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+
+exec_always {
+    gsettings set org.gnome.desktop.interface gtk-theme 'Arc-Dark'
+    gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
+    gsettings set org.gnome.desktop.interface font-name 'Cantarell 14'
+}
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+# font pango:Terminus 7
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+# font pango:DejaVu Sans Mono 8
+
+# Before i3 v4.8, we used to recommend this one as the default:
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp andk
+# clear in small sizes. However, its unicode glyph coverage is limited, the old
+# X core fonts rendering does not support right-to-left and this being a bitmap
+# font, it doesn’t scale on retina/hidpi displays.
+font pango:SauceCodePro Nerd Font 22
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec $term
+
+# move workspace to left
+bindsym $mod+m move workspace to output left
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# set workspace name
+set $tag1 "1;"
+set $tag2 "2;"
+set $tag3 "3;"
+set $tag4 "4;"
+set $tag5 "5;"
+set $tag6 "6;"
+set $tag7 "7;"
+set $tag8 "8;"
+set $tag9 "9;"
+set $tag10 "10;"
+
+#i3-gaps
+# new_window 1pixel
+default_border pixel 1
+smart_borders on
+gaps inner 10 
+# not used
+# gaps outer 5
+#smart_gaps on
+
+#################################################################################################
+#
+# MULTIMEDIA
+#
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86Tools exec tidal
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioStop exec playerctl stop
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+#
+#################################################################################################
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+# bindsym $mod+- split h
+bindsym $mod+minus split h
+
+
+# split in vertical orientation
+#bindsym $mod+| split v
+bindsym $mod+Shift+backslash split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# Remove title for all apps
+# Match both XWayland (class) and native Wayland (app_id) windows.
+for_window [class="^.*"] border pixel 1
+for_window [app_id="^.*"] border pixel 1
+
+# Workspace assignment #
+# Native Wayland apps are matched by app_id (class only matches XWayland in sway)
+# assign [app_id="brave-browser"] 1
+assign [app_id="google-chrome"] 1
+assign [app_id="chromium"] 1
+assign [app_id="com.mitchellh.ghostty"] 2
+assign [app_id="Spotify"] 3
+assign [app_id="tidal-hifi"] 3
+assign [app_id="lyricfier"] 3
+assign [app_id="thunar"] 4
+assign [app_id="org.gnome.Nautilus"] 4
+assign [app_id="VirtualBox"] 6
+assign [app_id="Transmission-gtk"] 0
+assign [app_id="Steam"] 8
+assign [app_id="Oplide"] 5
+assign [app_id="zsnes"] 8
+assign [app_id="Franz"] 9
+assign [app_id="firefox"] 9
+assign [app_id="firefoxdeveloperedition"] 9
+# XWayland / X11 apps are matched by class
+assign [class="Google-chrome"] 1
+assign [class="Chromium"] 1
+# assign [class="Brave-browser"] 1
+assign [class="URxvt"] 2
+assign [class="com.mitchellh.ghostty"] 2
+assign [class="Spotify"] 3
+assign [class="tidal-hifi"] 3
+assign [class="lyricfier"] 3
+assign [class="Nautilus"] 4
+assign [class="Thunar"] 4
+assign [class="VirtualBox"] 6
+assign [class="Transmission-gtk"] 0
+assign [class="Steam"] 8
+assign [class="Oplide"] 5
+assign [class="zsnes"] 8
+assign [class="Franz"] 9
+assign [class="firefox"] 9
+assign [class="firefoxdeveloperedition"] 9
+
+#################################################################################################
+#
+# APP rules
+#
+for_window [class="Subdownloader"] floating enable
+for_window [class="KeePass2"] floating enable
+for_window [class="Transmission-gtk"] floating enable
+for_window [class="Subl3"] floating enable
+for_window [class="Qalculate-gtk"] floating enable
+for_window [class="Kazam"] floating enable
+for_window [class="Gtk-recordMyDesktop"] floating enable
+for_window [class="mpv"] floating enable
+for_window [app_id="Spotify"] move to workspace 3
+for_window [app_id="tidal-hifi"] move to workspace 3
+for_window [class="Spotify"] move to workspace 3
+for_window [class="tidal-hifi"] move to workspace 3
+
+#################################################################################################
+#
+
+#
+## reload the configuration file
+bindsym $mod+Shift+c reload
+## restart sway inplace (preserves your layout/session, can be used to upgrade sway)
+bindsym $mod+Shift+r restart
+## exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+##lock screen customized
+bindsym $mod+Control+l exec swaylock -f -c 000000
+##monitor configuration
+bindsym $mod+Shift+p exec wdisplays
+##urxvt terminal
+bindsym $mod+F12 exec urxvt
+##sound settings
+bindsym $mod+Shift+s exec pavucontrol
+#
+## resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 2 px or 2 ppt
+        bindsym j resize grow height 2 px or 2 ppt
+        bindsym k resize shrink height 2 px or 2 ppt
+        bindsym l resize grow width 2 px or 2 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 2 px or 5 ppt
+        bindsym Down resize grow height 2 px or 2 ppt
+        bindsym Up resize shrink height 2 px or 2 ppt
+        bindsym Right resize grow width 2 px or 2 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+#
+## rofi
+bindsym $mod+d exec rofi -show drun
+#
+## Polybar
+# exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# exec_always --no-startup-id waybar
+exec_always --no-startup-id $HOME/.config/waybar/launch.sh
+#
+## monitors (4k)
+## Use wdisplays, the Waybar display menu, or `swaymsg output ...`.
+## Example: two 4K displays side by side.
+# exec_always --no-startup-id swaymsg "output DP-5 mode 3840x2160@60Hz pos 0 0 scale 1, output DP-0 mode 3840x2160@60Hz pos -3840 0 scale 1"
+
+#
+## Background
+exec_always --no-startup-id sleep 2 && $CONFIG_PATH/display_manager.sh both
+#
+## idle / lock (Wayland)
+exec swayidle -w timeout 900 'swaylock -f -c 000000' timeout 1200 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' before-sleep 'swaylock -f -c 000000'
+
+# dunst
+exec dunst &
+#
+## screenshot - Wayland (grim/slurp/wl-clipboard)
+bindsym --release Control+Shift+Print exec grim -g "$(slurp)" - | wl-copy
+bindsym --release Shift+Print exec grim -g "$(slurp)" - | wl-copy
+bindsym Print exec grim "$PICTURES_FOLDER/$(date +%Y-%m-%d_%H-%M-%S).png"
+#
+#
+## i3lock prevent for videos
+#exec ~/.dotfiles/scripts/bin/lightsOn.sh 300
+
+#
+## Startup Apps
+##################################################################################################
+##
+## Autostart
+##
+# Apps are placed by the assign rules above; do not race workspace switches here.
+exec --no-startup-id brave --disable-gpu-memory-buffer-video-frames  # prevent copy-paste to freezing inside brave
+exec --no-startup-id GDK_SCALE=1 ghostty
+exec --no-startup-id tidal-hifi --force-device-scale-factor=1.8
+exec --no-startup-id thunar
+# picom is an X11 compositor; Sway is already a compositor, so it is not needed.
+# exec_always --no-startup-id picom --config $HOME/.config/picom/picom.conf -b
+exec nextcloud
+
+seat seat0 xcursor_theme Adwaita 32
+
+#exec_always --no-startup-id xss-lock --transfer-sleep-lock killall picom; sleep 2; picom --config ~/.config/picom/picom.conf -b

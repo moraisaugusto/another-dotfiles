@@ -1,7 +1,7 @@
 # general
 #
-alias la="ls -a --group-directories-first"
-alias ll="ls -l -g --group-directories-first"
+alias la="eza -a --group-directories-first"
+alias ll="eza -l -g --group-directories-first"
 alias ls="eza -G --group-directories-first"
 
 #git

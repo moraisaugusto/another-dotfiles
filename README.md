@@ -5,6 +5,7 @@
 [![Shell](https://img.shields.io/badge/shell-zsh-89e051)](https://www.zsh.org/)
 [![Editor](https://img.shields.io/badge/editor-neovim-019733)](https://neovim.io/)
 [![Window Manager](https://img.shields.io/badge/i3wm-gaps-blue)](https://i3wm.org/)
+[![Sway](https://img.shields.io/badge/sway-wayland-00b4d8)](https://swaywm.org/)
 [![Terminal](https://img.shields.io/badge/tmux-256color-4477aa)](https://tmux.github.io/)
 [![Status Bar](https://img.shields.io/badge/polybar-modular-ff6653)](https://polybar.github.io/)
 [![Waybar](https://img.shields.io/badge/waybar-sway-00b4d8)](https://github.com/Alexays/Waybar)
@@ -12,7 +13,7 @@
 [![Last Updated](https://img.shields.io/badge/last_updated-2026--10--26-informational)]()
 [![Arch Linux](https://img.shields.io/badge/distro-Arch_Linux-1793d1)](https://archlinux.org/)
 
-A curated collection of dotfiles for a lightweight **Arch Linux + i3-gaps** workflow. Keyboard-driven productivity configurations for i3 window manager, tmux terminal multiplexer, polybar/waybar status bars, rofi launcher, and more.
+A curated collection of dotfiles for a lightweight **Arch Linux + i3-gaps/Sway** workflow. Keyboard-driven productivity configurations for the i3 and Sway window managers, tmux terminal multiplexer, polybar/waybar status bars, rofi launcher, and more.
 
 <p align="center">
     <img src="imgs/terminal-installation.png" width=400px alt="Terminal installation">
@@ -46,6 +47,7 @@ A curated collection of dotfiles for a lightweight **Arch Linux + i3-gaps** work
   - [Uninstall](#uninstall)
 - [Quick Start Keybindings](#quick-start-keybindings)
   - [i3 Window Manager](#i3-window-manager-mod4super)
+  - [Sway Window Manager](#sway-window-manager-mod4super)
   - [tmux Terminal](#tmux-ctrla)
   - [Polybar Status Bar](#polybar-status-bar)
   - [Waybar Status Bar (Sway)](#waybar-status-bar-sway)
@@ -68,9 +70,10 @@ A curated collection of dotfiles for a lightweight **Arch Linux + i3-gaps** work
 
 ### Core Components
 - **i3-gaps Tiling Window Manager** - Keyboard-driven layout with custom workspaces, gaps, multimedia keys, and auto-start applications
+- **Sway Tiling Window Manager** - Wayland-native i3-compatible configuration with Sway workspaces, Waybar, swaybg display management, idle/lock handling, and grim/slurp screenshots (`my-configs/sway`)
 - **tmux Terminal Multiplexer** - 256-color terminal, Vi keybindings, mouse support, copy-paste integration, and pane synchronization
 - **polybar Status Bar** - Real-time system metrics (CPU, memory, battery, network, temperature), custom audio/network modules, weather and VPN support
-- **Waybar (Sway) Status Bar** - Modular Wayland status bar with Catppuccin themes, Sway workspaces, pulseaudio/backlight controls, and display/power menus (see `my-configs/waybar`)
+- **Waybar (Sway) Status Bar** - Modular Wayland status bar with Catppuccin themes, Sway workspaces, WirePlumber audio/backlight controls, and display/power menus (see `my-configs/waybar`)
 - **rofi Application Launcher** - DRun, Run, SSH, and Window modes with themed squared-nord design
 - **ZSH/Neovim/Dunst/Picom** - Complete shell, editor, and UI configuration suite
 
@@ -103,7 +106,8 @@ Install specific components:
 ```bash
 make shell      # ZSH and shell basics
 make configs    # All applications
-make i3         # i3 window manager
+make i3         # i3 window manager (X11)
+make sway       # sway window manager (Wayland)
 make tmux       # tmux terminal
 make polybar    # polybar status bar
 make waybar     # waybar status bar (Sway)
@@ -123,12 +127,14 @@ cd ~/.dotfiles
 git submodule update --init --recursive
 stow --dotfiles -v shell-basics
 stow --dotfiles -vv -d my-configs -t ~ i3
+stow --dotfiles -vv -d my-configs -t ~ sway
 ```
 
 Apply individual configurations:
 ```bash
 # From my-configs directory
 stow --dotfiles -vv -d my-configs -t ~ tmux
+stow --dotfiles -vv -d my-configs -t ~ sway
 stow --dotfiles -vv -d my-configs -t ~ polybar
 stow --dotfiles -vv -d my-configs -t ~ waybar
 stow --dotfiles -vv -d my-configs -t ~ rofi
@@ -141,7 +147,7 @@ stow --dotfiles -v shell-basics
 
 ### System
 - Linux distribution (Arch-based recommended)
-- i3-gaps (4.x+), ZSH (5+), polybar, rofi
+- i3-gaps (4.x+) or Sway (1.10+), ZSH (5+), polybar/waybar, rofi
 - Terminal emulator (URXVT, Ghostty, etc.)
 
 ### Essential Packages (Arch)
@@ -152,11 +158,13 @@ sudo pacman -S i3-gaps polybar rofi zsh neovim dunst picom \
   pulseaudio pamixer brightnessctl xdotool
 ```
 
-### Waybar Dependencies (Sway)
+### Sway & Waybar Dependencies (Wayland)
 
 ```bash
-sudo pacman -S waybar fzf libnotify bluez-utils brightnessctl \
-  pacman-contrib networkmanager ttf-googlesanscode-nerd
+sudo pacman -S sway swaybg swayidle swaylock wdisplays \
+  grim slurp wl-clipboard waybar fzf libnotify bluez-utils \
+  pipewire wireplumber brightnessctl pacman-contrib \
+  networkmanager ttf-googlesanscode-nerd
 ```
 
 ## Quick Start Keybindings
@@ -211,6 +219,21 @@ sudo pacman -S waybar fzf libnotify bluez-utils brightnessctl \
 | `XF86AudioMute` | Toggle mute |
 | `XF86AudioPlay/Pause` | Play/Pause media |
 | `XF86AudioNext/Prev` | Next/Previous track |
+
+### Sway Window Manager (Mod4/Super)
+
+Sway uses the same `Mod4` bindings as i3 above. Install it with `make sway`; the configuration is written for Wayland and lives in `~/.config/sway/config`. Waybar is launched automatically. Wayland-specific bindings:
+
+| Shortcut | Action |
+|----------|--------|
+| `Mod4+Shift+e` | Exit Sway (via `swaynag`) |
+| `Mod4+Control+l` | Lock the screen with `swaylock` |
+| `Mod4+Shift+p` | Open `wdisplays` |
+| `Print` | Save a full screenshot to `~/Pictures` |
+| `Shift+Print` | Select a region and copy it to the clipboard |
+| `Control+Shift+Print` | Select a region and copy it to the clipboard |
+
+> Display and wallpaper changes are handled by `~/.config/sway/display_manager.sh`, which is also wired to the Waybar display menu. Idle locking and screen power-off are managed by `swayidle`.
 
 ### tmux Terminal (Ctrl+a)
 
@@ -363,6 +386,7 @@ Whether you're setting up a fresh install or looking for inspiration, these dotf
 │   ├── picom
 │   ├── polybar
 │   ├── rofi
+│   ├── sway
 │   ├── tmux
 │   ├── tmuxinator
 │   ├── tmux-powerline
@@ -457,7 +481,7 @@ nvim --headless +checkhealth
 
 - **Distro-Specific**: Optimized for Arch Linux. May require adjustments for other distributions
 - **Multi-Monitor**: Some polybar modules and i3lock configurations assume dual-monitor setup
-- **Wayland**: The primary i3 + polybar workflow is X11-based. A Wayland/Sway setup is available through the `waybar` package (`make waybar`) and the `sway-config` branch
+- **Wayland**: The primary i3 + polybar workflow is X11-based. A Wayland/Sway setup is included in `my-configs/sway` (`make sway`) and uses Waybar (`make waybar`)
 - **Hardware-Specific**: Temperature and network modules in polybar may require adjustment for your hardware
 - **Third-Party Scripts**: Some polybar scripts rely on external tools that may need manual installation
 
@@ -483,6 +507,8 @@ Contributions are welcome! Please follow these guidelines:
 ### 2026-10-26
 - Added Waybar (mechabar) status bar configuration for Sway (`my-configs/waybar`)
 - Added `make waybar` target and documented Waybar mouse actions, themes, and dependencies
+- Added Sway window manager configuration (`my-configs/sway`) with a `make sway` target
+- Wired Sway-native display/lock/idle/screenshot handling and a Waybar `sway/window` module
 
 ### 2026-04-07
 - Added troubleshooting section
