@@ -29,7 +29,7 @@
 	],
 
 	"modules-center": [
-		"sway/window",
+		// "sway/window",
 
 		// "custom/left#bg_1",
 		// "temperature",

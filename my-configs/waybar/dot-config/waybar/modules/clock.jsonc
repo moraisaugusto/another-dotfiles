@@ -6,9 +6,9 @@
 	},
 
 	"clock#date": {
-		"format": "{:%d/%m/%y}  - ",
-		"min-length": 10,
-		"max-length": 10,
+		"format": "{:%d/%m/%y} - ",
+		"min-length": 11,
+		"max-length": 11,
 		"actions": {
 			"on-click": "mode"
 		},
