@@ -14,6 +14,12 @@ set $term ghostty
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 
+# Configure us-int keyboard layout
+input type:keyboard {
+    xkb_layout us
+    xkb_variant intl
+}
+
 exec_always {
     gsettings set org.gnome.desktop.interface gtk-theme 'Arc-Dark'
     gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
