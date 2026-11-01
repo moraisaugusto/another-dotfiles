@@ -58,8 +58,11 @@ case "$1" in
         ;;
 
     both)
-        swaymsg "output \"$PRIMARY_DISPLAY\" enable mode ${RESOLUTION}@${REFRESH_RATE}Hz pos 0 0 scale $SCALE transform normal"
-        swaymsg "output \"$SECONDARY_DISPLAY\" enable mode ${RESOLUTION}@${REFRESH_RATE}Hz scale $SCALE transform normal pos -${RESOLUTION%x*} 0"
+        # Secondary (left) sits at the origin and primary (right) to its right:
+        # no output may have a negative X origin, or Steam/X11 popups (menus)
+        # render but never receive clicks on that monitor.
+        swaymsg "output \"$SECONDARY_DISPLAY\" enable mode ${RESOLUTION}@${REFRESH_RATE}Hz pos 0 0 scale $SCALE transform normal"
+        swaymsg "output \"$PRIMARY_DISPLAY\" enable mode ${RESOLUTION}@${REFRESH_RATE}Hz pos ${RESOLUTION%x*} 0 scale $SCALE transform normal"
         sleep 1
         swaybg -o "$SECONDARY_DISPLAY" -i "$SECONDARY_WALLPAPER" -m fill \
                -o "$PRIMARY_DISPLAY" -i "$PRIMARY_WALLPAPER" -m fill &
