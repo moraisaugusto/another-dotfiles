@@ -11,13 +11,25 @@ set $term ghostty
 
 # Import display/session env into systemd user manager and D-Bus activation env
 # so xdg-desktop-portal (file picker) and GUI apps launched via exec work.
+# exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+# exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+
+# Global Environment Variables for Sway: push the session env into the systemd
+# user manager + D-Bus activation env so GUI services (ghostty, portals) inherit it.
+# Do NOT force GDK_BACKEND/SDL_VIDEODRIVER globally - let apps autodetect.
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
-exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+# exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+
 
 # Configure us-int keyboard layout
 input type:keyboard {
     xkb_layout us
     xkb_variant intl
+}
+
+input "type:touchpad" {
+    natural_scroll enabled
+    accel_profile adaptive
 }
 
 exec_always {

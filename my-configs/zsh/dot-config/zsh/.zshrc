@@ -17,8 +17,18 @@ else
   export EDITOR='nvim'
 fi
 
+# Only set SWAYSOCK if we're in a Sway session and it's not already set
+# if [ -z "$SWAYSOCK" ] && [ -n "$WAYLAND_DISPLAY" ]; then
+#     export SWAYSOCK=/run/user/$(id -u)/sway-ipc.$(id -u).$(pgrep -x sway 2>/dev/null | head -n1).sock
+# fi
+
+if [ -z "$SWAYSOCK" ] && pgrep -x sway >/dev/null 2>&1; then
+   export SWAYSOCK=/run/user/$(id -u)/sway-ipc.$(id -u).$(pgrep -x sway | head -n1).sock
+fi
+
 # Themes & UI Interface Settings
 export GTK_THEME=Arc:dark
+# export GDK_BACKEND=wayland
 export QT_QPA_PLATFORMTHEME=qt5ct
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export NO_AT_BRIDGE=1 # fix for zathura
@@ -83,7 +93,10 @@ export ZSH_TMUX_FIXTERM=true
 # ==============================================================================
 if [[ -z "$TMUX" && -n "$DISPLAY" ]]; then
     # 1. Fix terminal if requested
-    [[ "$ZSH_TMUX_FIXTERM" == "true" ]] && export TERM="screen-256color"
+    # Only lie about TERM when the real one is unknown to tmux
+    if [[ "$ZSH_TMUX_FIXTERM" == "true" && "$TERM" != xterm-ghostty* && "$TERM" != tmux* ]]; then
+        export TERM="screen-256color"
+    fi
 
     # 2. Autoconnect or Start New
     if tmux has-session 2>/dev/null; then
