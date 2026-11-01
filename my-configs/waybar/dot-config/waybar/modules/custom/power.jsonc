@@ -5,6 +5,7 @@
 		"menu": "on-click",
 		"menu-file": "~/.config/waybar/power_menu.xml",
 		"menu-actions": {
+			"logout": "swaymsg exit",
 			"shutdown": "systemctl poweroff",
 			"reboot": "systemctl reboot",
 			"suspend": "systemctl suspend"

@@ -52,6 +52,4 @@ font-size = 14
 window-inherit-font-size = false
 gtk-titlebar-hide-when-maximized = true
 window-decoration = false
-# mouse-scroll-multiplier = discrete:1
-# mouse-scroll-multiplier = precision:1,discrete:1
-mouse-scroll-multiplier = 3
+mouse-scroll-multiplier = discrete:1

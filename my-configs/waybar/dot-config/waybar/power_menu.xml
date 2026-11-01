@@ -2,6 +2,11 @@
 <interface>
   <object class="GtkMenu" id="menu">
     <child>
+      <object class="GtkMenuItem" id="logout">
+        <property name="label">󰈆  Logout</property>
+      </object>
+    </child>
+    <child>
       <object class="GtkMenuItem" id="suspend">
         <property name="label">󰤄  Sleep</property>
       </object>

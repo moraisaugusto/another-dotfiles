@@ -17,7 +17,7 @@ set $term ghostty
 # Global Environment Variables for Sway: push the session env into the systemd
 # user manager + D-Bus activation env so GUI services (ghostty, portals) inherit it.
 # Do NOT force GDK_BACKEND/SDL_VIDEODRIVER globally - let apps autodetect.
-exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP GTK_IM_MODULE
 
 # Load X resources (urxvt font/colors, Xft.dpi, rofi) into the root window.
 # Sway never does this itself; without it X11 apps see an empty resource DB.
