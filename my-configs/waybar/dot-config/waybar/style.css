@@ -1,5 +1,16 @@
 @import "themes/polybar.css";
 
+/* ============================================================
+ * Waybar stylesheet.
+ * Colors (@fg, @bg_*, @accent, ...) come from themes/polybar.css.
+ * The font stack must include the Nerd Font for icon glyphs.
+ *
+ * NOTE: rules for #custom-user, #temperature, #memory, #cpu, #custom-distro,
+ * #idle_inhibitor, #network, #bluetooth, #custom-update, #mpris, #pulseaudio,
+ * #backlight, #battery reference modules removed from this setup;
+ * they are kept for reference and can be deleted safely.
+ * ============================================================ */
+
 * {
 	font-family: "SauceCodePro Nerd Font", "Weather Icons", "Noto Emoji", "Font Awesome 5 Free", "Font Awesome 5 Brands";
 	font-size: 28px;
@@ -10,6 +21,7 @@
 #waybar {
 	background-color: @shadow;
 }
+/* Bar frame: translucent backdrop over the whole screen edge */
 #waybar > box {
 	margin: 0px;
 	background-color: @bg_0;
@@ -26,10 +38,6 @@
 
 button {
 	border: none;
-	/* border-radius: 0px; */
-	/* padding: 0 10px; */
-	/* min-width: 16px; */
-	/* min-height: 24px; */
 }
 button:hover {
 	background-color: @bg_alt;
@@ -79,9 +87,8 @@ menu separator {
   /* margin: 0 50px; */
 }
 
+/* Compensate for glyph side-bearing so workspace icons look centered */
 #workspaces button label {
-  /* background: #f00; */
-  /* margin: 0; */
   padding-right: 8px;
 }
 
@@ -90,7 +97,8 @@ menu separator {
 }
 #workspaces button.active,
 #workspaces button.focused {
-	/* 5px underline on the active button, drawn inside the widget: */
+	/* 5px underline on the active workspace button. */
+	/* Gradient instead of box-shadow/border: no edge pixels, no layout shift */
 	background-image: linear-gradient(to top, @accent 0px, @accent 5px, transparent 5px);
 }
 
@@ -150,12 +158,10 @@ menu separator {
 }
 #clock.time {
 	padding-right: 6px;
-	/* background-color: @bg_3; */
 }
 
 #clock.date {
 	padding-left: 6px;
-	/* background-color: @bg_2; */
 }
 #clock.date:hover {
 	color: @fg_alt;
@@ -222,6 +228,7 @@ menu separator {
 	color: @charging;
 }
 
+/* Status cluster: weather, disk usage, Tailscale, Mullvad, updates */
 #custom-weather
 {
 	margin-left: 25px;
@@ -250,7 +257,7 @@ menu separator {
 }
 
 #custom-power {
-	border-radius: 0;   /* border-radius removed per request */
+	border-radius: 0;
 	padding: 0 35px 0 30px;
   margin-right: 20px;
 	color: @accent;
@@ -295,7 +302,7 @@ menu separator {
 
 
 #custom-display {
-	border-radius: 0;   /* border-radius removed per request */
+	border-radius: 0;
 	padding: 0 35px 0 30px;
   margin-right: 0px;
 }

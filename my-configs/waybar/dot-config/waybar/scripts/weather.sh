@@ -1,4 +1,8 @@
 #!/bin/bash
+# OpenWeatherMap weather for Berlin/DE - same script as the old polybar module.
+# Requires OPENWEATHER_KEY in ~/.secrets, plus curl, jq, bc.
+# Outputs Pango markup (icons from the Nerd Font, colors in the SETTINGS block).
+# Bound as waybar "custom/weather" (modules/custom/weather.jsonc, interval 600s).
 trap "exit 0" PIPE
 
 # SETTINGS vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv

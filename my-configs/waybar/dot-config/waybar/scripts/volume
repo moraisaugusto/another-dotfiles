@@ -9,6 +9,9 @@
 # Author:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    September 07, 2025
 # License: MIT
+#
+# Bound in modules/optional/wireplumber.jsonc:
+#   left-click mutes, scroll adjusts, right-click opens pavucontrol
 
 VALUE=2
 MIN=0

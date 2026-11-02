@@ -1,4 +1,7 @@
 {
+	// Waybar configuration (mirrored in dotfiles).
+	// Bar is pinned to output DP-3; per-feature modules live in modules/
+	// and are pulled in via "include" below.
 	"mode": "dock",
 	"position": "top",
 	"layer": "top",
@@ -8,22 +11,30 @@
 	"spacing": 0,
 	"reload_style_on_change": true,
 	"output": "DP-3",
+
+	// Module files to load (per-feature configs):
 	"include": [
 		"~/.config/waybar/modules/custom/*.jsonc",
 		"~/.config/waybar/modules/sway/*.jsonc",
 		"~/.config/waybar/modules/optional/wireplumber.jsonc",
 		"~/.config/waybar/modules/*.jsonc"
 	],
+
+	// Left: workspace switcher, Tailscale, Mullvad
 	"modules-left": [
 		"sway/workspaces",
 		"custom/info-tailscale",
 		"custom/mullvad"
 	],
+
+	// Center: date, time, weather
 	"modules-center": [
 		"clock#date",
 		"clock#time",
 		"custom/weather"
 	],
+
+	// Right: updates, volume, disks, display, power, tray
 	"modules-right": [
 		"custom/updates",
 		"custom/left#bg_1",
@@ -34,6 +45,8 @@
 		"custom/power",
 		"tray"
 	],
+
+	// Workspaces: show icons only (glyphs below)
 	"sway/workspaces": {
 		"format": "{icon}",
 		"format-icons": {
@@ -49,6 +62,8 @@
 			"default": ""
 		}
 	},
+
+	// System tray
 	"tray": {
 		"icon-size": 30,
 		"spacing": 10

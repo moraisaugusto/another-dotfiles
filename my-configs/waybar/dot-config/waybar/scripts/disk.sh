@@ -1,6 +1,13 @@
 #!/bin/sh
-# waybar disk usage, mirroring the polybar fs modules (icon + percent used)
+# Disk usage for a mountpoint, mirroring the old polybar fs modules.
+# Outputs Pango markup: <icon> <percent>%  (icon in @fg_alt #7a7a7a).
+#
 # usage: disk.sh <mountpoint>
+#   /home -> house glyph ()   (filesystem-home)
+#   *     -> hdd glyph ()     (filesystem-slash)
+#
+# Bound as waybar "custom/disk-home" and "custom/disk-slash"
+# (modules/custom/disk.jsonc, interval 25s).
 
 mount="$1"
 case "$mount" in
