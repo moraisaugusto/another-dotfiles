@@ -13,7 +13,7 @@
 
 
 [global]
-    font = Tewi 9
+    font = Tewi 18
 
     # Allow a small subset of html markup:
     #   <b>bold</b>
@@ -97,7 +97,7 @@
     idle_threshold = 0
 
     # Which monitor should the notifications be displayed on.
-    monitor = 0
+    monitor = 1
 
     # Display notification on focused monitor.  Possible modes are:
     #   mouse: follow mouse pointer
