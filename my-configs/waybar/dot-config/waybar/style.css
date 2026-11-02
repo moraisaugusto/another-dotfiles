@@ -244,6 +244,11 @@ menu separator {
 	padding: 0 25px 0 25px;
 }
 
+#custom-updates
+{
+	padding: 0 25px 0 25px;
+}
+
 #custom-power {
 	border-radius: 0;   /* border-radius removed per request */
 	padding: 0 35px 0 30px;

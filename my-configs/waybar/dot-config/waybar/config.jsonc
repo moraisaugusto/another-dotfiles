@@ -52,6 +52,7 @@
 	],
 
 	"modules-right": [
+		"custom/updates",
 		"custom/left#bg_1",
 		"group/wireplumber",
     "custom/disk-home",
