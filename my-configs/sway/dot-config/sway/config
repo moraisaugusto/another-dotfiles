@@ -315,8 +315,8 @@ exec swayidle -w timeout 900 'swaylock -f -c 000000' timeout 1200 'swaymsg "outp
 exec dunst &
 #
 ## screenshot - Wayland (grim/slurp/wl-clipboard)
-bindsym --release Control+Shift+Print exec grim -g "$(slurp)" - | wl-copy
-bindsym --release Shift+Print exec grim -g "$(slurp)" - | wl-copy
+bindsym Control+Shift+Print exec sh -c 'g=$(slurp); f="$PICTURES_FOLDER/$(date +%Y-%m-%d_%H-%M-%S).png"; grim -g "$g" "$f" && wl-copy -t image/png < "$f"'
+bindsym Shift+Print exec sh -c 'g=$(slurp); f="$PICTURES_FOLDER/$(date +%Y-%m-%d_%H-%M-%S).png"; grim -g "$g" "$f" && wl-copy -t image/png < "$f"'
 bindsym Print exec grim "$PICTURES_FOLDER/$(date +%Y-%m-%d_%H-%M-%S).png"
 #
 #
