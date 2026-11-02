@@ -20,11 +20,16 @@
 		"~/.config/waybar/modules/*.jsonc"
 	],
 
-	// Left: workspace switcher, Tailscale, Mullvad
+	// Left: workspace switcher, Tailscale, temps, Mullvad
 	"modules-left": [
 		"sway/workspaces",
 		"custom/info-tailscale",
-		"custom/mullvad"
+		"custom/mullvad",
+		"custom/temp-cpu",
+		"custom/temp-sep",
+		"custom/temp-gpu",
+		"custom/temp-sep",
+		"custom/temp-aio"
 	],
 
 	// Center: date, time, weather

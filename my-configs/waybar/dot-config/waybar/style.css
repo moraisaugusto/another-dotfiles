@@ -246,6 +246,12 @@ menu separator {
 #custom-info-tailscale{
 	padding: 0 25px 0 50px;
 }
+#custom-temp-cpu,
+#custom-temp-gpu,
+#custom-temp-aio
+{
+	padding: 0 25px 0 25px;
+}
 #custom-mullvad
 {
 	padding: 0 25px 0 25px;

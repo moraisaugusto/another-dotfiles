@@ -1,0 +1,24 @@
+{
+  "custom/temp-cpu": {
+    "exec": "~/.config/waybar/scripts/temps.sh cpu",
+    "markup": true,
+    "interval": 2,
+    "tooltip": false
+  },
+  "custom/temp-gpu": {
+    "exec": "~/.config/waybar/scripts/temps.sh gpu",
+    "markup": true,
+    "interval": 2,
+    "tooltip": false
+  },
+  "custom/temp-aio": {
+    "exec": "~/.config/waybar/scripts/temps.sh aio",
+    "markup": true,
+    "interval": 2,
+    "tooltip": false
+  },
+  "custom/temp-sep": {
+    "format": "·",
+    "tooltip": false
+  }
+}
