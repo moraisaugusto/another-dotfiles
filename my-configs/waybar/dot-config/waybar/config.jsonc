@@ -7,6 +7,7 @@
 	"margin": 0,
 	"spacing": 0,
 	"reload_style_on_change": true,
+	"output": "DP-3",
 
 	"include": [
 		"~/.config/waybar/modules/custom/*.jsonc",
