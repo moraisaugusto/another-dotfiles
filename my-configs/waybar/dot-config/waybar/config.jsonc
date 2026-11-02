@@ -8,79 +8,49 @@
 	"spacing": 0,
 	"reload_style_on_change": true,
 	"output": "DP-3",
-
 	"include": [
 		"~/.config/waybar/modules/custom/*.jsonc",
 		"~/.config/waybar/modules/sway/*.jsonc",
 		"~/.config/waybar/modules/optional/wireplumber.jsonc",
-		// "~/.config/waybar/modules/hyprland/*.jsonc",
-		// "~/.config/waybar/modules/optional/*.jsonc",
 		"~/.config/waybar/modules/*.jsonc"
 	],
-
 	"modules-left": [
 		"sway/workspaces",
-    "custom/info-tailscale",
-    "custom/mullvad"
-
-		// "hyprland/window"
+		"custom/info-tailscale",
+		"custom/mullvad"
 	],
-
 	"modules-center": [
-		// "sway/window",
-
-		// "custom/left#bg_1",
-		// "temperature",
-		//
-		// "custom/left#bg_2",
-		// "memory",
-		//
-		// "custom/left#bg_3",
-		// "cpu",
-		// "custom/left_inverse#bg_3",
-
 		"clock#date",
 		"clock#time",
 		"custom/weather"
-
-		// "custom/right_inverse#bg_3",
-		// "idle_inhibitor",
-		// "custom/right#bg_3",
-		//
-		// "custom/right#bg_2",
-		//
-		// "custom/right#bg_1"
 	],
-
 	"modules-right": [
 		"custom/updates",
 		"custom/left#bg_1",
 		"group/wireplumber",
-    "custom/disk-home",
-    "custom/disk-slash",
+		"custom/disk-home",
+		"custom/disk-slash",
 		"custom/display",
-    "custom/power",
-    "tray"
+		"custom/power",
+		"tray"
 	],
-
-  "sway/workspaces": {
-    "format": "{icon}",
-    "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "",
-      "6": "",
-      "7": "",
-      "8": "",
-      "9": "",
-      "default": ""
-    }
-  },
-
-  "tray": {
-    "icon-size": 30,
-    "spacing": 10
-  }
+	"sway/workspaces": {
+		"format": "{icon}",
+		"format-icons": {
+			"1": "",
+			"2": "",
+			"3": "",
+			"4": "",
+			"5": "",
+			"6": "",
+			"7": "",
+			"8": "",
+			"9": "",
+			"default": ""
+		}
+	},
+	"tray": {
+		"icon-size": 30,
+		"spacing": 10
+	}
 }
