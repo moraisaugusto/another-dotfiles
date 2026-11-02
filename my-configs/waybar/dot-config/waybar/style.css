@@ -11,8 +11,9 @@
 	background-color: @shadow;
 }
 #waybar > box {
-	margin: 3px;
+	margin: 0px;
 	background-color: @bg_0;
+  min-height: 50px;
 }
 
 .module {
@@ -25,10 +26,10 @@
 
 button {
 	border: none;
-	border-radius: 16px;
-	padding: 0 10px;
-	min-width: 16px;
-	min-height: 24px;
+	/* border-radius: 0px; */
+	/* padding: 0 10px; */
+	/* min-width: 16px; */
+	/* min-height: 24px; */
 }
 button:hover {
 	background-color: @bg_alt;
@@ -69,8 +70,23 @@ menu separator {
 }
 
 #workspaces {
-	padding: 0 1px;
+	padding: 0px 00px;
+
 	background-color: @bg_1;
+}
+#workspaces button {
+	padding: 0 30px;
+  /* margin: 0 50px; */
+}
+
+#workspaces button label {
+  /* background: #f00; */
+  /* margin: 0; */
+  padding-right: 8px;
+}
+
+#workspaces button:last-child {
+	margin-right: 0;
 }
 #workspaces button.active label,
 #workspaces button.focused label {
@@ -246,7 +262,7 @@ menu separator {
 
 
 #custom-display {
-	border-radius: 16px;
+	border-radius: 0px;
 	color: @accent;
   padding: 0 30px;
 }

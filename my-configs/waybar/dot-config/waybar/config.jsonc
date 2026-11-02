@@ -18,12 +18,9 @@
 	],
 
 	"modules-left": [
-    "custom/info-tailscale",
-    "custom/mullvad-vpn",
-
-		"custom/left#bg_1",
 		"sway/workspaces",
-		"custom/right#bg_1"
+    "custom/info-tailscale",
+    "custom/mullvad"
 
 		// "hyprland/window"
 	],
@@ -86,7 +83,7 @@
   },
 
   "tray": {
-    "icon-size": 28,
+    "icon-size": 30,
     "spacing": 10
   }
 }

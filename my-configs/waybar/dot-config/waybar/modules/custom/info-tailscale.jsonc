@@ -1,0 +1,9 @@
+{
+  "custom/info-tailscale": {
+    "exec": "if [ -x ~/.config/polybar-scripts/polybar-scripts/tailscale/info-tailscale.sh ]; then ~/.config/polybar-scripts/polybar-scripts/tailscale/info-tailscale.sh | sed -E 's/%\\{F#([a-zA-Z0-9]+)\\}/<span foreground=\"#\\1\">/g; s/%\\{F-\\}/<\\/span>/g; s/%\\{F[^}]*\\}//g'; fi",
+    "markup": true,
+    "on-click": "tailscale up",
+    "on-click-right": "tailscale down",
+    "interval": 2
+  }
+}

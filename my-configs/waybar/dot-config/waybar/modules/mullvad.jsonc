@@ -1,0 +1,11 @@
+{
+  "custom/mullvad": {
+
+    "exec": "if hash mullvad &>/dev/null; then ~/.config/polybar-scripts/polybar-scripts/polybar-vpn-controller/vpn_module status mullvad | sed -E 's/%\\{F#([a-zA-Z0-9]+)\\}/<span foreground=\"#\\1\">/g; s/%\\{F-\\}/<\\/span>/g; s/%\\{F[^}]*\\}//g'; fi",
+    "markup": true,
+    "on-click": "~/.config/polybar-scripts/polybar-scripts/polybar-vpn-controller/vpn_module toggle",
+    "on-click-right": "~/.config/polybar-scripts/polybar-scripts/polybar-vpn-controller/vpn_module menu",
+    "on-click-middle": "~/.config/polybar-scripts/polybar-scripts/polybar-vpn-controller/vpn_module ip-clip",
+    "interval": 5
+  }
+}
