@@ -39,7 +39,8 @@
 		// "custom/left_inverse#bg_3",
 
 		"clock#date",
-		"clock#time"
+		"clock#time",
+		"custom/weather"
 
 		// "custom/right_inverse#bg_3",
 		// "idle_inhibitor",

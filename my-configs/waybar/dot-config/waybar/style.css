@@ -222,6 +222,11 @@ menu separator {
 	color: @charging;
 }
 
+#custom-weather
+{
+	margin-left: 25px;
+}
+
 #custom-info-tailscale{
 	padding: 0 25px 0 50px;
 }
@@ -247,7 +252,7 @@ menu separator {
 #custom-right,
 #custom-left_inverse,
 #custom-right_inverse {
-	font-size: 25.5px;
+	font-size: 32px;
 }
 
 #custom-left.accent,
