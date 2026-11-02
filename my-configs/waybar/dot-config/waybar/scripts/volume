@@ -6,7 +6,8 @@
 #   - libpulse (pactl)
 #   - libnotify (notify-send)
 #
-# Author:  Jesse Mirabel <sejjymvm@gmail.com>
+# Author: Augusto Morais <me@morais.io>
+# Based on:  Jesse Mirabel <sejjymvm@gmail.com>
 # Date:    September 07, 2025
 # License: MIT
 #
@@ -16,6 +17,27 @@
 VALUE=2
 MIN=0
 MAX=100
+
+rotate_sink() {
+	local default_sink sinks list next_sink
+
+	default_sink=$(pactl info | sed -n 's/^Default Sink: //p')
+	sinks=$(pactl list short sinks | cut -f2)
+
+	# duplicate the list so rotation wraps around to the first sink
+	list="${sinks}
+${sinks}"
+
+	next_sink=$(printf '%s\n' "$list" | awk -v d="$default_sink" \
+		'index($0,d){getline x; print x; exit}')
+	[[ -n $next_sink ]] || next_sink=$(printf '%s\n' "$sinks" | head -n1)
+
+	pactl set-default-sink "$next_sink"
+	# move existing streams to the new default sink
+	pactl list short sink-inputs | cut -f1 | xargs -r -I{} pactl move-sink-input {} "$next_sink"
+
+	notify-send "Sink: ${next_sink##*.}" --hint "string:x-canonical-private-synchronous:volume"
+}
 
 print_help() {
 	local script=${0##*/}
@@ -32,6 +54,7 @@ print_help() {
 		      mute      Toggle mute status
 		      up        Increase volume by [value] (default: $VALUE)
 		      down      Decrease volume by [value] (default: $VALUE)
+		      sink      Rotate to the next default audio sink
 	EOF
 }
 
@@ -91,6 +114,12 @@ main() {
 	local device=$1
 	local option=$2
 	local value=${3:-$VALUE}
+
+	# standalone subcommand: rotate the default sink
+	if [[ $device == sink ]]; then
+		rotate_sink
+		return $?
+	fi
 
 	if ! [[ $value =~ ^[1-9][0-9]*$ ]]; then
 		printf "%s: value must be an integer greater than 0\n" "${0##*/}" >&2
