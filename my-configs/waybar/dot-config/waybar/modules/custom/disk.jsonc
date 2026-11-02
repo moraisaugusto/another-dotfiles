@@ -1,0 +1,14 @@
+{
+  "custom/disk-home": {
+    "exec": "~/.config/waybar/scripts/disk.sh /home",
+    "markup": true,
+    "interval": 25,
+    "tooltip": false
+  },
+  "custom/disk-slash": {
+    "exec": "~/.config/waybar/scripts/disk.sh /",
+    "markup": true,
+    "interval": 25,
+    "tooltip": false
+  }
+}

@@ -227,6 +227,15 @@ menu separator {
 	margin-left: 25px;
 }
 
+#custom-disk-home {
+	margin: 0 25px 0 50px;
+}
+
+#custom-disk-slash
+{
+	margin: 0 25px 0 25px;
+}
+
 #custom-info-tailscale{
 	padding: 0 25px 0 50px;
 }
@@ -237,8 +246,8 @@ menu separator {
 
 #custom-power {
 	border-radius: 0;   /* border-radius removed per request */
-	padding: 0 30px 0 20px;
-  margin-right: 10px;
+	padding: 0 35px 0 30px;
+  margin-right: 20px;
 	color: @accent;
 }
 #custom-power:hover {
@@ -281,10 +290,12 @@ menu separator {
 
 
 #custom-display {
-	border-radius: 0px;
-	color: @accent;
-  padding: 0 30px;
+	border-radius: 0;   /* border-radius removed per request */
+	padding: 0 35px 0 30px;
+  margin-right: 0px;
 }
+
 #custom-display:hover {
+	background-color: @bg_alt;
 	color: @fg_alt;
 }

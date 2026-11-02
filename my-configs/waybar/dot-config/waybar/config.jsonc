@@ -54,14 +54,8 @@
 	"modules-right": [
 		"custom/left#bg_1",
 		"group/wireplumber",
-		// "group/pulseaudio",
-
-		// "custom/left#bg_2",
-		// "backlight",
-
-		// "custom/left#bg_3",
-		// "custom/left_inverse#bg_3",
-
+    "custom/disk-home",
+    "custom/disk-slash",
 		"custom/display",
     "custom/power",
     "tray"
