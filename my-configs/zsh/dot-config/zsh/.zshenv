@@ -8,3 +8,10 @@
 # active .zshenv -- ~/.zshenv in $HOME is not used.
 
 [ -f "$HOME/.config/scaling.env" ] && . "$HOME/.config/scaling.env"
+
+# Do not force a global GTK theme. /etc/environment still provides
+# GTK_THEME=Arc:dark via pam_env; drop it for the session so each toolkit
+# reads its own settings:
+#   GTK3 -> ~/.config/gtk-3.0/settings.ini (Arc-Dark)
+#   GTK4/libadwaita -> ~/.config/gtk-4.0/settings.ini (Adwaita, prefer-dark)
+unset GTK_THEME

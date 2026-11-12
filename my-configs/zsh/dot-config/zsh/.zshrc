@@ -18,7 +18,9 @@ else
 fi
 
 # Themes & UI Interface Settings
-export GTK_THEME=Arc:dark
+# No GTK_THEME here: GTK3 reads gtk-3.0/settings.ini (Arc-Dark),
+# GTK4/libadwaita reads gtk-4.0/settings.ini (Adwaita, prefer-dark).
+unset GTK_THEME
 export QT_QPA_PLATFORMTHEME=qt5ct
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export NO_AT_BRIDGE=1 # fix for zathura

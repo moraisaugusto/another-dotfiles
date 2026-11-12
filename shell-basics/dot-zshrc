@@ -68,8 +68,9 @@ else
   export EDITOR='nvim'
 fi
 
-# Themes and UI
-export GTK_THEME=Arc:dark
+# Themes and UI: no global GTK_THEME.
+# GTK3 -> gtk-3.0/settings.ini (Arc-Dark), GTK4 -> gtk-4.0/settings.ini (Adwaita).
+unset GTK_THEME
 export QT_QPA_PLATFORMTHEME=qt5ct
 NO_AT_BRIDGE=1 # zathura
 unsetopt prompt_cr prompt_sp
