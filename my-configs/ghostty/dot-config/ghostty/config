@@ -25,8 +25,8 @@
 # ==========================
 # # The config file consists of simple key-value pairs,
 # # separated by equals signs.
-#font-family = Terminess Nerd Font Mono
-#font-size = 13
+# font-family = Terminess Nerd Font Mono
+font-size = 12
 # window-padding-x = 2
 #
 # # Spacing around the equals sign does not matter.
