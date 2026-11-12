@@ -1,3 +1,14 @@
+! ~/.Xresources
+!
+! X11 ONLY. Merged by xrdb in X11 sessions (SDDM, LightDM, startx).
+! Wayland/sway does NOT merge this automatically; add
+!     exec xrdb -merge ~/.Xresources
+! to the sway config if XWayland apps need these resources.
+!
+! The DPI/cursor values below are duplicated in ~/.xsessionrc, where SDDM
+! derives them from UI_SCALE in ~/.config/scaling.env. LightDM and startx do
+! not read ~/.xsessionrc, so keep this file in sync with UI_SCALE.
+
 !### Common Configs
 #include ".Xresources.d/meta-keys-fixed-nvim"
 !#include ".Xresources.d/rofi"
