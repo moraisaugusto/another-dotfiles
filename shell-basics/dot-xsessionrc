@@ -1,9 +1,18 @@
-#if [ -f $HOME/.Xresources]; then
-#  xrdb -merge ~/.Xresources
-#fi
+#!/bin/sh
 #
-## custom fonts
-#xset +fp /home/augusto/.fonts/tewi
-#xset +fp /home/augusto/.fonts/tamzen
-#xset +fp /home/augusto/.fonts/siji
-#xset fp rehash
+# ~/.xsessionrc
+#
+# X11 ONLY, and only read by SDDM's X session wrapper
+# (/usr/share/sddm/scripts/Xsession), AFTER ~/.Xresources has been merged.
+#
+# LightDM and startx do NOT read this file. For them the same DPI/cursor values
+# are kept (hardcoded) in ~/.Xresources -- keep both in sync with UI_SCALE in
+# ~/.config/scaling.env.
+
+[ -f "$HOME/.config/scaling.env" ] && . "$HOME/.config/scaling.env"
+
+xrdb -merge <<EOF
+Xft.dpi: $((96 * UI_SCALE))
+rofi.dpi: $((96 * UI_SCALE))
+Xcursor.size: $((24 * UI_SCALE))
+EOF
