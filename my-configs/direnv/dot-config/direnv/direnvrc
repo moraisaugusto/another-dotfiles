@@ -12,68 +12,152 @@
 #   if not used, the default version will be used
 # Returns: None
 layout_custom_anaconda() {
-  
-  # hook for conda environment
-  eval "$(conda shell.zsh hook)" 
   local python_version="python=3.9.0"
+  local conda env_name
 
   # Overwrites python version if it is passed as argument
   if [ $# -eq 1 ]; then
-    local python_version="$1"
+    python_version="$1"
   fi
 
-  if [ -d "${VIRTUAL_ENV}" ]; then
+  if ! conda=$(command -v conda); then
+    log_error "conda was not found in PATH"
+    return 1
+  fi
+
+  # hook for conda environment (this file is evaluated by bash or zsh)
+  if [[ -n ${ZSH_VERSION:-} ]]; then
+    eval "$("$conda" shell.zsh hook)"
+  else
+    eval "$("$conda" shell.bash hook)"
+  fi
+
+  # fall back to a local env dir when VIRTUAL_ENV was not set in the .envrc
+  VIRTUAL_ENV=${VIRTUAL_ENV:-.condaenv}
+  realpath.absolute "$VIRTUAL_ENV"
+  VIRTUAL_ENV=$REPLY
+  export VIRTUAL_ENV
+
+  if [[ -d $VIRTUAL_ENV ]]; then
     # if environment already exists then activate it
-    conda activate ./${VIRTUAL_ENV}
-  elif (grep -q name: environment.yml); then
+    conda activate "$VIRTUAL_ENV"
+  elif [[ -f environment.yml ]] && env_name=$(awk -F': *' '/^name:/{print $2; exit}' environment.yml) && [[ -n $env_name ]]; then
     # Detect environment exists from `environment.yml` file in `.envrc` directory
-    conda activate `grep name: environment.yml | sed -e 's/name: //' | cut -d "'" -f 2 | cut -d '"' -f 2`
+    env_name=${env_name//[\"\']/}
+    conda activate "$env_name"
   else
     # if environment doesnt exists then create it
-    conda create -y -p .condaenv ${python_version}
-    conda activate ./${VIRTUAL_ENV}
-    (>&2 echo Creating a project environment);
-  fi;
+    conda create -y -p "$VIRTUAL_ENV" "$python_version"
+    conda activate "$VIRTUAL_ENV"
+    (>&2 echo Creating a project environment)
+  fi
 }
 
 # Function: python-venv
-# Description: This function creates a custom virtual environment Layout for python
+# Description: This function creates (or reuses) a virtual environment for python
 #
-# For venv environment
-#   export VIRTUAL_ENV=.env
+# For venv environment, any of these forms is accepted:
+#   export VIRTUAL_ENV=.env      # optional, defaults to .direnv/python-venv-<X.Y>
+#   layout python-venv            # default interpreter (python3)
+#   layout python-venv 3.11
 #   layout python-venv python3.11
+#   layout python-venv python=3.11
+#   layout python-venv 3.11.4    # falls back to python3.11
+#   layout python-venv /usr/bin/python3.12
 #
+# Extra arguments after the version are forwarded to `python -m venv`
+# (e.g. `layout python-venv 3.12 --system-site-packages`).
+#
+# If VIRTUAL_ENV already exists but was built with another python version,
+# it is recreated. Directories that are not virtualenvs are never deleted.
 #
 # Parameters:
-#   $1 - python version. e.g. python3 (optional)
+#   $1 - python version or interpreter path (optional)
 #   if not used, the default version will be used
 # Returns: None
-
 layout_python-venv() {
-    local python=${1:-python3}
-    [[ $# -gt 0 ]] && shift
-    unset PYTHONHOME
-    if [[ -n $VIRTUAL_ENV ]]; then
-        if [[ $(uname) == "Darwin" ]]; then
-          VIRTUAL_ENV=$(grealpath "${VIRTUAL_ENV}")
-        else
-          VIRTUAL_ENV=$(realpath "${VIRTUAL_ENV}")
-        fi
-    else
-        local python_version
-        python_version=$("$python" -c "import platform; print(platform.python_version())")
-        if [[ -z $python_version ]]; then
-            log_error "Could not detect Python version"
-            return 1
-        fi
-        VIRTUAL_ENV=$PWD/.direnv/python-venv-$python_version
-    fi
-    export VIRTUAL_ENV
-    if [[ ! -d $VIRTUAL_ENV ]]; then
-        log_status "no venv found; creating $VIRTUAL_ENV"
-        "$python" -m venv "$VIRTUAL_ENV"
-    fi
+  local spec=${1:-} python wanted actual recreate=0
 
-    PATH="${VIRTUAL_ENV}/bin:${PATH}"
-    export PATH
+  [[ $# -gt 0 ]] && shift
+  unset PYTHONHOME
+
+  # --- resolve the requested interpreter ---------------------------------
+  case $spec in
+  "") python=python3 ;;
+  */*) python=$spec ;; # full path to an interpreter
+  python=*) python="python${spec#python=}" ;;
+  python[0-9]*) python=$spec ;;
+  [0-9]*) python="python$spec" ;;
+  *) python=$spec ;;
+  esac
+
+  # "3.11.4"/"python3.11.4" -> use the exact binary if it runs,
+  # otherwise fall back to the major.minor one (python3.11)
+  local version_part=${python#python}
+  if [[ $version_part =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] && ! "$python" -c 'pass' >/dev/null 2>&1; then
+    python="python${version_part%.*}"
+    version_part=${python#python}
+  fi
+
+  # Ask the interpreter for its own version. If it does not run, try to
+  # resolve it through mise: a version may be installed without a shim, and a
+  # shim may point to a version that has no such binary.
+  local wanted resolved
+  if ! wanted=$("$python" -c 'import sys; print("%d.%d" % sys.version_info[:2])' 2>/dev/null); then
+    if [[ $version_part =~ ^[0-9]+\.[0-9]+ ]] &&
+      command -v mise >/dev/null 2>&1 &&
+      resolved=$(mise which "$python" --tool "python@${version_part}" 2>/dev/null) &&
+      wanted=$("$resolved" -c 'import sys; print("%d.%d" % sys.version_info[:2])' 2>/dev/null); then
+      python=$resolved
+    else
+      log_error "python interpreter not found or not working: $python"
+      if [[ $version_part =~ ^[0-9]+\.[0-9]+ ]] && command -v mise >/dev/null 2>&1; then
+        log_error "hint: run 'mise install python@$version_part' (or use a version that is installed)"
+      fi
+      unset VIRTUAL_ENV
+      return 1
+    fi
+  fi
+
+  # --- where does the environment live? ----------------------------------
+  if [[ -n ${VIRTUAL_ENV:-} ]]; then
+    realpath.absolute "$VIRTUAL_ENV"
+    VIRTUAL_ENV=$REPLY
+  else
+    VIRTUAL_ENV=$(direnv_layout_dir)/python-venv-$wanted
+  fi
+  export VIRTUAL_ENV
+
+  # --- reuse it, or (re)create it ----------------------------------------
+  if [[ -x $VIRTUAL_ENV/bin/python ]]; then
+    actual=$("$VIRTUAL_ENV/bin/python" -c 'import sys; print("%d.%d" % sys.version_info[:2])' 2>/dev/null)
+    if [[ $actual != "$wanted" ]]; then
+      recreate=1
+      log_status "venv $VIRTUAL_ENV runs python ${actual:-unknown}, requested $wanted"
+    fi
+  else
+    recreate=1
+  fi
+
+  if ((recreate)); then
+    if [[ -e $VIRTUAL_ENV ]]; then
+      if [[ -f $VIRTUAL_ENV/pyvenv.cfg ]]; then
+        log_status "recreating $VIRTUAL_ENV with python $wanted"
+        rm -rf "$VIRTUAL_ENV"
+      else
+        log_error "$VIRTUAL_ENV exists but is not a virtualenv; refusing to delete it"
+        unset VIRTUAL_ENV
+        return 1
+      fi
+    else
+      log_status "no venv found; creating $VIRTUAL_ENV with python $wanted"
+    fi
+    if ! "$python" -m venv "$@" "$VIRTUAL_ENV"; then
+      log_error "failed to create the virtualenv with $python"
+      unset VIRTUAL_ENV
+      return 1
+    fi
+  fi
+
+  PATH_add "$VIRTUAL_ENV/bin"
 }

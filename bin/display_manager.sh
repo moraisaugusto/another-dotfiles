@@ -14,7 +14,7 @@ WALLPAPER_DIR="$HOME/GoogleDrive/wallpapers"
 PRIMARY_WALLPAPER="$WALLPAPER_DIR/space-exploration.jpg"
 SECONDARY_WALLPAPER="$WALLPAPER_DIR/mount.png"
 
-# --- HELPER FUNCTION ---
+# --- HELPER FUNCTIONS ---
 show_usage() {
     cat << EOF
 Usage: $(basename "$0") [MODE]
@@ -27,11 +27,20 @@ Available Modes:
   both         Enable both monitors ($SECONDARY_DISPLAY to the left of $PRIMARY_DISPLAY)
   help         Display this help message
 
+If only one display is attached, "both" falls back to the one that is.
+
 Settings:
   Resolution:  $RESOLUTION
   Refresh:     $REFRESH_RATE Hz
   DPI:         $SCREEN_DPI
 EOF
+}
+
+# True when the output has a display attached. Every connector name exists in
+# xrandr even with nothing plugged in (DP-5 is a phantom on this GPU), so check
+# the status instead of the name.
+is_connected() {
+    xrandr 2>/dev/null | grep -q "^$1 connected"
 }
 
 # Basic Check: Ensure wallpaper directory exists
@@ -41,6 +50,10 @@ fi
 
 case "$1" in
     primary)
+        is_connected "$PRIMARY_DISPLAY" || {
+            notify-send "Display Manager" "$PRIMARY_DISPLAY is not connected"
+            exit 1
+        }
         xrandr --output "$PRIMARY_DISPLAY" --primary --mode "$RESOLUTION" \
                --rate "$REFRESH_RATE" --dpi "$SCREEN_DPI" --pos 0x0 --rotate normal \
                --output "$SECONDARY_DISPLAY" --off
@@ -49,6 +62,7 @@ case "$1" in
         ;;
 
     secondary)
+        is_connected "$SECONDARY_DISPLAY" || exec "$0" primary
         xrandr --output "$SECONDARY_DISPLAY" --primary --mode "$RESOLUTION" \
                --rate "$REFRESH_RATE" --dpi "$SCREEN_DPI" --pos 0x0 --rotate normal \
                --output "$PRIMARY_DISPLAY" --off
@@ -57,6 +71,10 @@ case "$1" in
         ;;
 
     both)
+        # Degrade gracefully when only one display is attached (secondary
+        # powered off or moved to another machine).
+        is_connected "$PRIMARY_DISPLAY"   || exec "$0" secondary
+        is_connected "$SECONDARY_DISPLAY" || exec "$0" primary
         xrandr --output "$PRIMARY_DISPLAY" --primary --mode "$RESOLUTION" \
                --rate "$REFRESH_RATE" --dpi "$SCREEN_DPI" --pos 0x0 --rotate normal \
                --output "$SECONDARY_DISPLAY" --mode "$RESOLUTION" --rate "$REFRESH_RATE" \

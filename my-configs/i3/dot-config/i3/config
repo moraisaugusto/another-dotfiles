@@ -242,6 +242,12 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #
 ## monitors (4k)
 exec_always --no-startup-id xrandr --dpi 192
+
+## screensaver / DPMS
+## Keep the panel powered on: after a power transition the DP-4 link does not
+## re-establish cleanly, and only a fresh link train (DPMS off/on) clears it.
+## Wake from S3 is handled by /usr/lib/systemd/system-sleep/nvidia-retrain.sh
+exec_always --no-startup-id xset s off -dpms
 # 1 external monitor (4k)
 #exec xrandr --output DP-0 --off --output DP-5 --primary --mode 3840x2160 --pos 0x0 --rotate normal
 
