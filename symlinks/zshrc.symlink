@@ -1,49 +1,21 @@
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.dotfiles/oh-my-zsh
+# ── DEBUG (comment out when done) ────────────────────────────────────────────
+# zmodload zsh/zprof
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
+# ── PATH ─────────────────────────────────────────────────────────────────────
+export PATH="$HOME/.bin:$HOME/bin:/usr/local/bin:/usr/bin:/opt/homebrew/opt/libpq/bin:/opt/homebrew/opt/sqlite/bin:$HOME/.ana/bin:$PATH"
+# Consolidate all PATH exports into ONE line — multiple export PATH=… calls are redundant
+
+# ── OH-MY-ZSH ────────────────────────────────────────────────────────────────
+# Theme is linked by scripts/mac-link.sh:
+#   ~/.oh-my-zsh/themes/augusto-default.zsh-theme -> extras/oh-my-zsh/custom/themes/
+export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="augusto-default"
-#
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+# FIX 1: Disable compaudit (saves ~24ms — the security check is noisy and not useful day-to-day)
+ZSH_DISABLE_COMPFIX=true
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-#COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+# FIX 2: Disable auto-update check (saves ~16ms)
+zstyle ':omz:update' mode disabled
 
 # TMUX
 ZSH_TMUX_AUTOSTART=true
@@ -51,204 +23,84 @@ ZSH_TMUX_AUTOCONNECT=true
 ZSH_TMUX_AUTOSTART_ONCE=true
 ZSH_TMUX_FIXTERM=true
 
-
-## Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-## Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-## Example format: plugins=(rails git textmate ruby lighthouse)
-## Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages emoji-clock tmux tmuxinator nmap battery extract docker docker-compose poetry )
-
-#
-# User configuration
-#
-export IRACE_HOME=~/.R_libs/irace
-export R_LIBS=~/.R_libs
-
-export PATH=$HOME/.bin:/usr/local/bin:$PATH
-export MANPATH="/usr/local/man:$MANPATH"
-
-# jdk
-JAVA_HOME=/usr/lib/jvm/java-21-openjdk/
-PATH=$PATH:$HOME/bin:$JAVA_HOME/bin:$HOME/.config/i3/i3lock-fancy-multimonitor
-export JAVA_HOME
-export PATH
-
-# GUROBI
-# export GUROBI_HOME=/opt/gurobi810/linux64
-# LD_LIBRARY_PATH=$GUROBI_HOME/lib
-# PATH=$PATH:$GUROBI_HOME/bin
-
-# Cplex
-
-# cuda
-#LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/cuda/lib:/opt/cuda/targets/x86_64-linux/lib
-
-export LD_LIBRARY_PATH
-
-# literal ls command
-export QUOTING_STYLE=literal ls
+# FIX 3: Trim plugins — each plugin adds sourcing time.
+# Removed: emoji-clock, battery, nmap (rarely needed interactively)
+# Removed: docker, docker-compose (completions are heavy; add back only if you use tab-complete often)
+plugins=(git colored-man-pages tmux tmuxinator extract web-search)
 
 source $ZSH/oh-my-zsh.sh
 
-# You may need to manually set your language environment
-export LANG=en_US.utf-8
-export LC_ALL=en_US.utf-8
+# ── LOCALE / EDITOR ──────────────────────────────────────────────────────────
+export LANG=en_US.UTF-8
+export EDITOR="${SSH_CONNECTION:+vim}${SSH_CONNECTION:-nvim}"
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
-# GTK theme on QT
-export GTK_THEME=Arc:dark
-export QT_QPA_PLATFORMTHEME=qt5ct
-
-# Compilation flags
-export ARCHFLAGS="-arch x86_64"
-
-# tmux
-#PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
-
-alias mpv="mpv --hwdec=vaapi --vo=opengl"
-# mpv
+# ── ALIASES ──────────────────────────────────────────────────────────────────
 alias vi=nvim
-# alias vi=vim
-alias open=xdg-open
-alias wifi-menu="sudo wifi-menu"
+alias restart-docker="osascript -e 'quit app \"Docker\"' && open -a Docker"
+alias free-mac='vm_stat | perl -ne '"'"'/page size of (\d+)/ and $size=$1; /Pages\s+([^:]+)[^\d]+(\d+)/ and printf("%-16s % 16.2f Mi\n", "$1:", $2 * $size / 1048576);'"'"''
 
-# zathura
-NO_AT_BRIDGE=1
-
-#alias fix-win-parts="sudo ntfsfix /dev/sda4 && sudo ntfsfix /dev/sda5"
-
-# SSH Keys
-ps -u $(whoami) | grep ssh-agent &> /dev/null
-if [ $? -ne 0 ];then
-    eval "$(ssh-agent -s)" >&/dev/null
-    source $HOME/.dotfiles/scripts/bin/sshrc.sh
-    ls ~/.ssh/id_rsa* | awk '!/pub$/ {system("ssh-add "$0 " 2>/dev/null")} '
-fi
-trap 'ssh-agent -k; exit' 0
-# 
-# Tmuxinator Projects
-if [ -f ~/.zshAlias ]; then
-    source ~/.zshAlias
-fi
-
-# API Keys to be read
-if [ -f ~/.secrets ]; then
-    source ~/.secrets
-fi
-
-unsetopt prompt_cr prompt_sp
-
-# setting browse
-if [ -n "$DISPLAY" ]; then
-    export BROWSER=brave
-else 
-    export BROWSER=links
-fi
-
-#PATH="/home/augusto/perl5/bin${PATH:+:${PATH}}"; export PATH;
-#PERL5LIB="/home/augusto/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-#PERL_LOCAL_LIB_ROOT="/home/augusto/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-#PERL_MB_OPT="--install_base \"/home/augusto/perl5\""; export PERL_MB_OPT;
-#PERL_MM_OPT="INSTALL_BASE=/home/augusto/perl5"; export PERL_MM_OPT;
-
-
-## GCC error
-export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
- ### Default Directoru
- # if [[ $PWD != $HOME ]]; then
- #     cd $HOME
- # fi
-
-
-
-## Setting Keyboard layout
-# setxkbmap -model abnt2 -layout br -variant abnt2
-# setxkbmap -layout us -variant intl
-# Notebook keyboard
-# setxkbmap -model thinkpad60 -layout br
-setxkbmap -layout us -variant intl
-
-## asdf
-#export ASDF_DATA_DIR="$HOME/.asdf"
-#export PATH="$ASDF_DATA_DIR/shims:$PATH"
-
-## mise
-eval "$(/usr/bin/mise activate zsh)"
-
-#
-# Load privite infos
-if [ -f ~/.pass ]; then
-    source ~/.pass
-fi
-
-# user bins
-export PATH="$HOME/.local/bin:$PATH"
-
-# go
-#export PATH="$HOME/go/bin:$PATH"
-
-# cuda
-#export PATH="/opt/cuda/bin:$PATH"
-
-PATH="/home/augusto/.perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/augusto/.perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/augusto/.perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/augusto/.perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/augusto/.perl5"; export PERL_MM_OPT;
-
-# export PATH="/opt/schemacrawler/schemacrawler-16.5.2-distribution/_schemacrawler:$PATH"
-
-# node bin
-#export PATH="$PATH:$HOME/.node/node_modules/.bin"
-
-# direnv
-#eval "$(direnv hook zsh)"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/opt/google/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/google/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/opt/google/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/google/google-cloud-sdk/completion.zsh.inc'; fi
-
-# development imports
-#
-# API Keys to be read
-if [ -f ~/.pythonrc ]; then
-    source ~/.pythonrc
-fi
-
-export PATH="$HOME/.poetry/bin:$PATH"
-
-
-show_virtual_env() {
-  if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
-    echo "%{%K{yellow}%F{black}%}  "
-
-  fi
-}
-export show_virtual_env
-PS1='$(show_virtual_env)'$PS1
-
-# Pomodoro settings
-# timer app: https://github.com/caarlos0/timer
+# ── POMODORO ─────────────────────────────────────────────────────────────────
 POMODORO_BEFORE_LONG_BREAK=4
 alias pause_sound="mpv $HOME/.dotfiles/extras/sounds/pause.mp3 > /dev/null 2>&1"
-alias work="timer 25m && pause_sound && notify-send -u low --icon  'Pomodoro' 'Work Timer is up! Take a Break 😊'"
-alias rest="timer 5m && pause_sound && notify-send -u low --icon  'Pomodoro' 'Break is over! Get back to work 😬'"
-alias long_rest="timer 15m && pause_sound && notify-send -u low --icon  'Pomodoro' 'Long Break is over! Get back to work 😬'"
+alias work="timer 25m -n 'Work' && pause_sound && notify-send -u low 'Pomodoro' 'Work Timer is up! Take a Break 😊'"
+alias rest="timer 5m -n 'Rest' && pause_sound && notify-send -u low 'Pomodoro' 'Break is over! Get back to work 😬'"
+alias long_rest="timer 15m -n 'Long Rest' && pause_sound && notify-send -u low 'Pomodoro' 'Long Break is over! Get back to work 😬'"
 alias pomodoro='repeat $POMODORO_BEFORE_LONG_BREAK {work && rest} && long_rest'
 
-start_work() {
-  repeat $1 {work; rest} && rest
-}
-#alias morning_work="repeat 4 {work; rest} && rest"
+start_work() { repeat $1 {work; rest} && rest }
 
-# Enables or disables handling of pasted text to prevent it from executing or auto-indenting.
-#zle_highlight=('paste:none')
-unset zle_bracketed_paste
+# ── MISE ─────────────────────────────────────────────────────────────────────
+eval "$(mise activate zsh --shims)"
+
+# ── DIRENV ───────────────────────────────────────────────────────────────────
+eval "$(direnv hook zsh)"
+
+# ── CONDA (FIX 5: lazy-load — only initialise when you actually call conda) ──
+# Must match the `python` version in extras/config/mise/config.toml.
+CONDA_ROOT="$HOME/.local/share/mise/installs/python/anaconda3-2026.07-1"
+conda() {
+  unfunction conda
+  __conda_setup="$("$CONDA_ROOT/bin/conda" 'shell.zsh' 'hook' 2>/dev/null)"
+  if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+  else
+    [ -f "$CONDA_ROOT/etc/profile.d/conda.sh" ] \
+      && source "$CONDA_ROOT/etc/profile.d/conda.sh" \
+      || export PATH="$CONDA_ROOT/bin:$PATH"
+  fi
+  unset __conda_setup
+  conda "$@"
+}
+
+# ── SECRETS (machine-local, not tracked) ─────────────────────────────────────
+# ANACONDA_ORG_DOWNLOAD_TOKEN, PIP_EXTRA_INDEX_URL, AWS_PROFILE, AWS_REGION, ANTHROPIC_MODEL
+[ -f ~/.secrets ] && source ~/.secrets
+
+# ── ZOXIDE ───────────────────────────────────────────────────────────────────
+eval "$(zoxide init zsh)"
+
+# ── VIRTUAL ENV INDICATOR ────────────────────────────────────────────────────
+show_virtual_env() {
+  [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]] && echo "($(basename $VIRTUAL_ENV))"
+}
+export show_virtual_env
+
+# ── LOCAL ENV ────────────────────────────────────────────────────────────────
+[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
+
+# ── ALIASES FILE ─────────────────────────────────────────────────────────────
+[ -f ~/.zshAlias ] && source ~/.zshAlias
+
+# ── KILO ─────────────────────────────────────────────────────────────────────
+export PATH="$HOME/.kilo/bin:$PATH"
+
+# ── PNPM ─────────────────────────────────────────────────────────────────────
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
+
+# ── DEBUG (uncomment zmodload at top AND this line together) ─────────────────
+# zprof

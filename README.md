@@ -62,6 +62,20 @@ bash -c "$(wget https://raw.githubusercontent.com/aflavio/another-dotfiles/maste
 source .zshrc
 ```
  
+#### macOS ####
+
+On macOS (branch `mac-support`) run the idempotent linker instead of `install.sh`:
+
+```shell
+~/.dotfiles/scripts/mac-link.sh
+```
+
+It links `~/.zshrc`, `~/.zshAlias`, `~/.tmux.conf`, the direnv/ghostty configs, the
+oh-my-zsh theme and the `~/.config/{mise,karabiner,kilo}` directories into the repo.
+Existing targets are moved to `<target>-old.<timestamp>`. Quit Kilo and
+Karabiner-Elements before running it. Secrets (tokens, AWS profile) go in an
+untracked `~/.secrets` file, sourced by `.zshrc`.
+
 #### Init.d Scripts ###
 Added a script that restart (unload/load) ethernet drive. It's usefull for r8169 ethernet drive when the system is resumed from suspended state.
 

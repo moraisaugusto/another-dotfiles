@@ -1,3 +1,12 @@
+# direnv evaluates this file with bash.
+
+# Function: _abs_path
+# Description: Pure-shell absolute path (no coreutils/grealpath needed).
+#   Named to avoid shadowing the system `realpath`.
+_abs_path() {
+  [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
+}
+
 # Function: custom_anaconda
 # Description: This function creates a custom Project Layout for conda
 #
@@ -6,43 +15,54 @@
 #   export VIRTUAL_ENV=.condaenv
 #   layout custom_anaconda python=3.8.13
 #
+# VIRTUAL_ENV may be either the name of an existing conda env or a path.
+# If it is a path that does not exist yet, the env is created from
+# ./environment.yml when present, otherwise with the given python version.
+# If VIRTUAL_ENV is unset, .direnv/conda-env is used.
 #
 # Parameters:
 #   $1 - python version. e.g. python=3.8.13 (optional)
 #   if not used, the default version will be used
 # Returns: None
 layout_custom_anaconda() {
-  # hook for conda environment
-  eval "$(conda shell.zsh hook)" 
-  local python_version="python=3.11"
+  local python_version="${1:-python=3.11}"
 
-  # Overwrites python version if it is passed as argument
-  if [ $# -eq 1 ]; then
-    local python_version="$1"
+  if ! has conda; then
+    log_error "conda not found on PATH"
+    return 1
+  fi
+  eval "$(conda shell.bash hook)"
+
+  if [[ -n $VIRTUAL_ENV ]] && conda env list | awk -v n="$VIRTUAL_ENV" '$1 == n {found=1} END {exit !found}'; then
+    # Named env that already exists
+    conda activate "$VIRTUAL_ENV"
+    return
   fi
 
-  if [ "${VIRTUAL_ENV}" ]; then
-  # if environment already exists then activate it
-  ENV_NAME=$(conda env list | awk '$1 == "conda-mcp-server-dev" {print $2}')
-
-    if [ -n "${ENV_NAME}" ]; then
-      conda activate ${VIRTUAL_ENV}
-    else
-      conda activate ./${VIRTUAL_ENV}
-    fi
+  local env_path
+  if [[ -n $VIRTUAL_ENV ]]; then
+    env_path=$(_abs_path "$VIRTUAL_ENV")
   else
-    echo "not foudn"
-    #if (grep -q name: environment.yml); then
-    #  # Detect environment exists from `environment.yml` file in `.envrc` directory
-    #  #conda activate `grep name: environment.yml | sed -e 's/name: //' | cut -d "'" -f 2 | cut -d '"' -f 2`
-    #  conda create -y  -f environment.yml -p ${VIRTUAL_ENV}
-    #else
-    #  # if environment doesnt exists then create it
-    #  conda create -y -p ${VIRTUAL_ENV} ${python_version}
-    #  conda activate ./${VIRTUAL_ENV}
-    #  (>&2 echo Creating a project environment);
-    #fi;
-  fi;
+    env_path=$PWD/.direnv/conda-env
+  fi
+
+  if [[ ! -d $env_path ]]; then
+    if [[ -f environment.yml ]]; then
+      log_status "no conda env found; creating $env_path from environment.yml"
+      conda env create -f environment.yml -p "$env_path" || {
+        log_error "failed to create conda env from environment.yml"
+        return 1
+      }
+    else
+      log_status "no conda env found; creating $env_path ($python_version)"
+      conda create -y -p "$env_path" "$python_version" || {
+        log_error "failed to create conda env $env_path"
+        return 1
+      }
+    fi
+  fi
+
+  conda activate "$env_path"
 }
 
 # Function: python-venv
@@ -57,17 +77,12 @@ layout_custom_anaconda() {
 #   $1 - python version. e.g. python3 (optional)
 #   if not used, the default version will be used
 # Returns: None
-
 layout_python-venv() {
     local python=${1:-python3}
     [[ $# -gt 0 ]] && shift
     unset PYTHONHOME
     if [[ -n $VIRTUAL_ENV ]]; then
-        if [[ $(uname) == "Darwin" ]]; then
-          VIRTUAL_ENV=$(grealpath "${VIRTUAL_ENV}")
-        else
-          VIRTUAL_ENV=$(realpath "${VIRTUAL_ENV}")
-        fi
+        VIRTUAL_ENV=$(_abs_path "${VIRTUAL_ENV}")
     else
         local python_version
         python_version=$("$python" -c "import platform; print(platform.python_version())")
@@ -82,7 +97,5 @@ layout_python-venv() {
         log_status "no venv found; creating $VIRTUAL_ENV"
         "$python" -m venv "$VIRTUAL_ENV"
     fi
-
-    PATH="${VIRTUAL_ENV}/bin:${PATH}"
-    export PATH
+    PATH_add "$VIRTUAL_ENV/bin"
 }

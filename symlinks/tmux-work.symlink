@@ -224,3 +224,7 @@ set -g update-environment "DISPLAY SSH_ASKPASS SSH_AGENT_PID \
 setenv -g SSH_AUTH_SOCK $HOME/.ssh/ssh_auth_sock
 
 set -g focus-events
+
+# used for pi.dev
+set -g extended-keys on
+set -g extended-keys-format csi-u
