@@ -363,7 +363,7 @@
                                 "from": {
                                     "key_code": "tab",
                                     "modifiers": {
-                                        "mandatory": ["left_command"],
+                                        "mandatory": ["command"],
                                         "optional": ["caps_lock"]
                                     }
                                 },
@@ -379,7 +379,7 @@
                                 "from": {
                                     "key_code": "tab",
                                     "modifiers": {
-                                        "mandatory": ["left_command", "left_shift"],
+                                        "mandatory": ["command", "shift"],
                                         "optional": ["caps_lock"]
                                     }
                                 },
@@ -437,6 +437,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
+                                            "^com\\.mitchellh\\.ghostty$",
                                             "^com\\.microsoft\\.rdc$",
                                             "^com\\.microsoft\\.rdc\\.mac$",
                                             "^com\\.microsoft\\.rdc\\.macos$",
@@ -496,6 +497,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
+                                            "^com\\.mitchellh\\.ghostty$",
                                             "^org\\.macports\\.X11$",
                                             "^com\\.apple\\.Terminal$",
                                             "^com\\.googlecode\\.iterm2$",
@@ -531,6 +533,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
+                                            "^com\\.mitchellh\\.ghostty$",
                                             "^com\\.microsoft\\.rdc$",
                                             "^com\\.microsoft\\.rdc\\.mac$",
                                             "^com\\.microsoft\\.rdc\\.macos$",
@@ -590,6 +593,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
+                                            "^com\\.mitchellh\\.ghostty$",
                                             "^com\\.microsoft\\.rdc$",
                                             "^com\\.microsoft\\.rdc\\.mac$",
                                             "^com\\.microsoft\\.rdc\\.macos$",
@@ -719,6 +723,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
+                                            "^com\\.mitchellh\\.ghostty$",
                                             "^com\\.microsoft\\.rdc$",
                                             "^com\\.microsoft\\.rdc\\.mac$",
                                             "^com\\.microsoft\\.rdc\\.macos$",
