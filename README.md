@@ -70,11 +70,21 @@ On macOS (branch `mac-support`) run the idempotent linker instead of `install.sh
 ~/.dotfiles/scripts/mac-link.sh
 ```
 
-It links `~/.zshrc`, `~/.zshAlias`, `~/.tmux.conf`, the direnv/ghostty configs, the
-oh-my-zsh theme and the `~/.config/{mise,karabiner,kilo}` directories into the repo.
-Existing targets are moved to `<target>-old.<timestamp>`. Quit Kilo and
-Karabiner-Elements before running it. Secrets (tokens, AWS profile) go in an
-untracked `~/.secrets` file, sourced by `.zshrc`.
+It links `~/.zshenv`, `~/.config/zsh`, the starship prompt (`~/.config/starship`,
+`~/.config/starship.toml`), `~/.zshAlias`, `~/.tmux.conf`, the direnv/ghostty configs
+and the `~/.config/{mise,karabiner,kilo}` directories into the repo.
+Existing targets are moved to `<target>-old.<timestamp>`; `~/.zshrc` and `~/.zprofile`
+are retired the same way because `~/.zshenv` sets `ZDOTDIR=~/.config/zsh`.
+`~/.zsh_history` is copied to `~/.local/state/zsh/history` on first run.
+Quit Kilo and Karabiner-Elements and close other shells before running it.
+Secrets (tokens, AWS profile) go in an untracked `~/.secrets` file, sourced by `.zshrc`.
+
+The zsh config is shared with Linux (`my-configs/zsh`); macOS-only settings live in
+`os/darwin.zsh`. oh-my-zsh is no longer used on macOS. Install the tools it expects:
+
+```shell
+brew install starship eza tmuxinator
+```
 
 #### Init.d Scripts ###
 Added a script that restart (unload/load) ethernet drive. It's usefull for r8169 ethernet drive when the system is resumed from suspended state.

@@ -1,0 +1,3 @@
+# Point zsh at the XDG config dir (Linux does this in /etc/zsh/zshenv).
+export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+[[ -f "$ZDOTDIR/.zshenv" ]] && source "$ZDOTDIR/.zshenv"
