@@ -44,4 +44,9 @@ fi
 sleep 1
 xset dpms force on >/dev/null 2>&1
 
+# Resume re-arms DPMS with the server defaults, so re-apply the idle policy
+# here as well (the xorg.conf ServerFlags values keep it at zero afterwards).
+xset s off >/dev/null 2>&1
+xset dpms 0 0 0 >/dev/null 2>&1
+
 exit 0
